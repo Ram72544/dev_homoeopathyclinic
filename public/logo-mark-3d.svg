@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Glass body: cool teal glass with realistic light falloff -->
+    <linearGradient id="glass3d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8FCFC9"/>
+      <stop offset="18%" stop-color="#D8F2EE"/>
+      <stop offset="42%" stop-color="#F2FBFA"/>
+      <stop offset="70%" stop-color="#BCE4DE"/>
+      <stop offset="100%" stop-color="#7FBFB8"/>
+    </linearGradient>
+    <linearGradient id="glassEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0B6362"/>
+      <stop offset="50%" stop-color="#139392"/>
+      <stop offset="100%" stop-color="#0A5453"/>
+    </linearGradient>
+    <!-- Cap: brushed metal-look teal with rib shading -->
+    <linearGradient id="cap3d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0A5150"/>
+      <stop offset="15%" stop-color="#128584"/>
+      <stop offset="35%" stop-color="#35B0AC"/>
+      <stop offset="50%" stop-color="#57C7C2"/>
+      <stop offset="65%" stop-color="#2FA5A1"/>
+      <stop offset="85%" stop-color="#0F706F"/>
+      <stop offset="100%" stop-color="#084746"/>
+    </linearGradient>
+    <linearGradient id="capTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#63CFCA"/>
+      <stop offset="100%" stop-color="#0F7B7A"/>
+    </linearGradient>
+    <!-- Leaves: deep natural green with light hitting the tips -->
+    <linearGradient id="leafL3" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1E5A2C"/>
+      <stop offset="55%" stop-color="#3E8A48"/>
+      <stop offset="100%" stop-color="#7CC26E"/>
+    </linearGradient>
+    <linearGradient id="leafR3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#245F31"/>
+      <stop offset="55%" stop-color="#48984F"/>
+      <stop offset="100%" stop-color="#8FD07C"/>
+    </linearGradient>
+    <!-- Globules: glossy sugar pills -->
+    <radialGradient id="pill3d" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#F4EFE1"/>
+      <stop offset="80%" stop-color="#DDD4BC"/>
+      <stop offset="100%" stop-color="#C4B896"/>
+    </radialGradient>
+    <radialGradient id="pillShine" cx="30%" cy="22%" r="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Soft shadow blur -->
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="softer" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="100" cy="176" rx="52" ry="9" fill="#3E3A2E" opacity="0.18" filter="url(#soft)"/>
+
+  <!-- LEFT LEAF -->
+  <g>
+    <path d="M96,150 C74,150 34,140 14,96 C12,91 14,88 19,90 C58,104 88,122 96,150 Z" fill="url(#leafL3)"/>
+    <!-- underside shadow near the base for depth -->
+    <path d="M96,150 C82,146 62,136 48,122 C66,132 84,140 96,150 Z" fill="#123B1C" opacity="0.45" filter="url(#softer)"/>
+    <!-- midrib -->
+    <path d="M93,146 C76,128 52,110 22,94" fill="none" stroke="#CFEBB9" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+    <!-- side veins -->
+    <g stroke="#CFEBB9" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none">
+      <path d="M36,102 C40,108 42,114 41,120"/>
+      <path d="M52,112 C56,118 58,124 57,130"/>
+      <path d="M68,123 C72,129 74,134 73,140"/>
+    </g>
+    <!-- top light sheen -->
+    <path d="M20,92 C46,102 70,116 88,136 C66,120 42,104 20,92 Z" fill="#FFFFFF" opacity="0.14"/>
+  </g>
+
+  <!-- RIGHT LEAF -->
+  <g>
+    <path d="M104,150 C126,150 166,140 186,96 C188,91 186,88 181,90 C142,104 112,122 104,150 Z" fill="url(#leafR3)"/>
+    <path d="M104,150 C118,146 138,136 152,122 C134,132 116,140 104,150 Z" fill="#123B1C" opacity="0.45" filter="url(#softer)"/>
+    <path d="M107,146 C124,128 148,110 178,94" fill="none" stroke="#CFEBB9" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+    <g stroke="#CFEBB9" stroke-width="1" stroke-linecap="round" opacity="0.4" fill="none">
+      <path d="M164,102 C160,108 158,114 159,120"/>
+      <path d="M148,112 C144,118 142,124 143,130"/>
+      <path d="M132,123 C128,129 126,134 127,140"/>
+    </g>
+    <path d="M180,92 C154,102 130,116 112,136 C134,120 158,104 180,92 Z" fill="#FFFFFF" opacity="0.14"/>
+  </g>
+
+  <!-- VIAL -->
+  <g>
+    <!-- soft cast shadow of vial on leaves -->
+    <ellipse cx="103" cy="152" rx="22" ry="6" fill="#0A3A39" opacity="0.25" filter="url(#soft)"/>
+
+    <!-- glass body -->
+    <path d="M82,66 L118,66 L118,138 C118,147 110,152 100,152 C90,152 82,147 82,138 Z" fill="url(#glass3d)"/>
+    <!-- glass outline with dimensional stroke -->
+    <path d="M82,66 L118,66 L118,138 C118,147 110,152 100,152 C90,152 82,147 82,138 Z"
+          fill="none" stroke="url(#glassEdge)" stroke-width="3"/>
+    <!-- inner-left highlight streak -->
+    <path d="M88,72 C87,94 87,116 88,134" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" opacity="0.85" filter="url(#softer)"/>
+    <path d="M93,74 C92.5,96 92.5,114 93,130" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    <!-- right inner reflection -->
+    <path d="M112,74 C113,96 113,118 112,136" stroke="#0E7C7B" stroke-width="2.4" stroke-linecap="round" opacity="0.3"/>
+    <!-- bottom glass thickness -->
+    <path d="M84,140 C88,148 112,148 116,140 C112,151 88,151 84,140 Z" fill="#0E7C7B" opacity="0.25"/>
+
+    <!-- globules inside the vial, resting at the bottom -->
+    <g>
+      <circle cx="93" cy="140" r="6.6" fill="url(#pill3d)"/>
+      <circle cx="106" cy="141" r="6.6" fill="url(#pill3d)"/>
+      <circle cx="99.5" cy="131" r="6.6" fill="url(#pill3d)"/>
+      <circle cx="91" cy="140" r="2.4" fill="url(#pillShine)"/>
+      <circle cx="104" cy="141" r="2.4" fill="url(#pillShine)"/>
+      <circle cx="97.5" cy="129" r="2.4" fill="url(#pillShine)"/>
+    </g>
+
+    <!-- neck shadow under the cap -->
+    <rect x="82" y="66" width="36" height="6" fill="#0A5453" opacity="0.35"/>
+
+    <!-- cap: ribbed, metallic -->
+    <rect x="78" y="42" width="44" height="26" rx="5" fill="url(#cap3d)"/>
+    <ellipse cx="100" cy="43.5" rx="22" ry="4.5" fill="url(#capTop)"/>
+    <!-- ribs -->
+    <g stroke="#063938" stroke-width="1.6" opacity="0.55">
+      <line x1="85" y1="46" x2="85" y2="66"/>
+      <line x1="92" y1="46" x2="92" y2="67"/>
+      <line x1="100" y1="47" x2="100" y2="68"/>
+      <line x1="108" y1="46" x2="108" y2="67"/>
+      <line x1="115" y1="46" x2="115" y2="66"/>
+    </g>
+    <!-- cap highlight -->
+    <path d="M88,45 C88,53 88,60 88,64" stroke="#9FE8E3" stroke-width="2.4" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- GLOBULES scattered under the vial on the ground -->
+  <g>
+    <ellipse cx="72" cy="172" rx="7" ry="2.2" fill="#3E3A2E" opacity="0.22" filter="url(#softer)"/>
+    <ellipse cx="88" cy="179" rx="7" ry="2.2" fill="#3E3A2E" opacity="0.22" filter="url(#softer)"/>
+    <ellipse cx="106" cy="181" rx="7" ry="2.2" fill="#3E3A2E" opacity="0.22" filter="url(#softer)"/>
+    <ellipse cx="124" cy="177" rx="7" ry="2.2" fill="#3E3A2E" opacity="0.22" filter="url(#softer)"/>
+    <ellipse cx="137" cy="169" rx="6" ry="2" fill="#3E3A2E" opacity="0.2" filter="url(#softer)"/>
+
+    <circle cx="72" cy="167" r="7.2" fill="url(#pill3d)"/>
+    <circle cx="88" cy="174" r="7.2" fill="url(#pill3d)"/>
+    <circle cx="106" cy="176" r="7.2" fill="url(#pill3d)"/>
+    <circle cx="124" cy="172" r="7.2" fill="url(#pill3d)"/>
+    <circle cx="137" cy="164" r="6.2" fill="url(#pill3d)"/>
+
+    <circle cx="69.5" cy="164.5" r="2.6" fill="url(#pillShine)"/>
+    <circle cx="85.5" cy="171.5" r="2.6" fill="url(#pillShine)"/>
+    <circle cx="103.5" cy="173.5" r="2.6" fill="url(#pillShine)"/>
+    <circle cx="121.5" cy="169.5" r="2.6" fill="url(#pillShine)"/>
+    <circle cx="135" cy="162" r="2.2" fill="url(#pillShine)"/>
+  </g>
+</svg>
