@@ -50,7 +50,7 @@ export const site = {
   phoneDisplay: "+91 79053 71551",
   phone: "+917905371551", // used for tel: links, no spaces
   whatsapp: "917905371551", // country code + number, no + or spaces
-  email: "care@drsheetalhomoeopathy.com",
+  email: "care@drsheetalclinic.com",
   address: "Dr. Sheetal's Homoeopathy Clinic, D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
 
   // Google Maps embed: search + center on the clinic
@@ -58,7 +58,7 @@ export const site = {
     "https://www.google.com/maps?q=Dr.+Sheetal%27s+Homoeopathy+Clinic&ll=28.506497,77.3216683&z=16&output=embed",
 
   // Calendly / booking link (leave as # until you have one)
-  bookingUrl: "#contact",
+  bookingUrl: "#contact-form",
 
   // Social links (leave "#" to hide-in-place; replace when ready)
   social: {
@@ -72,9 +72,9 @@ export const site = {
 
   // --- Timings --------------------------------------------------
   timings: [
-    { days: "Monday – Saturday", hours: "10:00 AM – 1:30 PM" },
-    { days: "Monday – Saturday", hours: "5:00 PM – 8:30 PM" },
-    { days: "Sunday", hours: "By appointment only" },
+    { days: "Monday – Saturday", hours: "10:00 AM – 1:00 PM" },
+    { days: "Monday – Saturday", hours: "6:00 PM – 9:00 PM" },
+    { days: "Sunday", hours: "10:00 AM – 1:00 PM (By appointment only)" },
   ] as { days: string; hours: string }[],
 
   // --- About ----------------------------------------------------

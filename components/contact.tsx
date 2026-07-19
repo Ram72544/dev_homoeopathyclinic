@@ -6,6 +6,7 @@ import { site } from "@/lib/site-config";
 
 export function Contact() {
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
@@ -111,28 +112,42 @@ export function Contact() {
 
           {/* Form */}
           <form
+            id="contact-form"
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-beige bg-white p-7 shadow-sm"
+            className="scroll-mt-24 rounded-2xl border border-beige bg-white p-7 shadow-sm"
           >
             <div className="space-y-5">
-              <Field label="Your name">
+              <Field label="Patient's Name">
                 <input
                   type="text"
                   required
+                  pattern="[A-Za-z\s'-]+"
                   maxLength={30}
+                  title="Only letters, spaces, apostrophes and hyphens are allowed"
                   value={name}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    const invalid = /[^a-zA-Z\s'-]/.test(raw);
+                    setNameError(
+                      invalid
+                        ? "Only letters, spaces, apostrophes and hyphens are allowed"
+                        : ""
+                    );
                     setName(
-                      e.target.value
+                      raw
+                        .replace(/[^a-zA-Z\s'-]/g, "")
                         .toLowerCase()
                         .replace(/\b\w/g, (char) => char.toUpperCase())
                         .slice(0, 30)
-                    )
-                  }
+                    );
+                  }}
                   className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="e.g. Priya Sharma"
                 />
               </Field>
+              {nameError && (
+                <p className="text-xs text-red-600">{nameError}</p>
+              )}
               <Field label="Phone number">
                 <input
                   type="tel"
