@@ -11,13 +11,47 @@ export function Contact() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const text = `New enquiry for ${site.name}%0A%0AName: ${encodeURIComponent(
-      name
-    )}%0APhone: ${encodeURIComponent(phone)}%0AMessage: ${encodeURIComponent(
-      message
-    )}`;
-    // Sends the enquiry straight to the clinic's WhatsApp.
+
+    // Date and daily patient/enquiry number for records.
+    const dateStr = new Date().toLocaleDateString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    const dateKey = new Date().toLocaleDateString("en-CA", {
+      timeZone: "Asia/Kolkata",
+    });
+    const stored = JSON.parse(
+      localStorage.getItem("enquiryCounter") ?? '{"date":"","count":0}'
+    );
+    const count = stored.date === dateKey ? stored.count + 1 : 1;
+    localStorage.setItem(
+      "enquiryCounter",
+      JSON.stringify({ date: dateKey, count })
+    );
+    const patientNo = `OPD${String(count).padStart(4, "0")}`;
+
+    const confirmationText = `Hello ${name}! Thank you for contacting ${site.name}. We've received your enquiry (Ref: ${patientNo}) for today, ${dateStr}. Our team will get back to you shortly to confirm your appointment time. Take care!`;
+    const text = encodeURIComponent(confirmationText);
+
+    // Open WhatsApp chat with the clinic on the user's own account.
     window.open(`https://wa.me/${site.whatsapp}?text=${text}`, "_blank");
+
+    // Save a record for the clinic's daily enquiry log.
+    const record = {
+      name,
+      phone,
+      message,
+      patientNo,
+      date: dateStr,
+      createdAt: new Date().toISOString(),
+    };
+    void fetch("/api/enquiry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(record),
+    });
   }
 
   return (
@@ -85,8 +119,16 @@ export function Contact() {
                 <input
                   type="text"
                   required
+                  maxLength={30}
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) =>
+                    setName(
+                      e.target.value
+                        .toLowerCase()
+                        .replace(/\b\w/g, (char) => char.toUpperCase())
+                        .slice(0, 30)
+                    )
+                  }
                   className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="e.g. Priya Sharma"
                 />
@@ -95,20 +137,29 @@ export function Contact() {
                 <input
                   type="tel"
                   required
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  title="Please enter a 10-digit mobile number"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) =>
+                    setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
+                  }
                   className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="e.g. 98765 43210"
+                  placeholder="e.g. 9876543210"
                 />
               </Field>
               <Field label="How can we help?">
                 <textarea
                   required
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => {
+                    const match = e.target.value.match(/(\S+\s*){0,300}/);
+                    setMessage(match ? match[0] : "");
+                  }}
                   rows={4}
                   className="w-full resize-none rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="Briefly describe your concern..."
+                  placeholder="Briefly describe your concern... (max 300 words)"
                 />
               </Field>
               <button
@@ -119,7 +170,8 @@ export function Contact() {
                 Send via WhatsApp
               </button>
               <p className="text-center text-xs text-teal-dark/50">
-                Opens WhatsApp with your details pre-filled.
+                Opens a WhatsApp chat on your device to send this enquiry to{" "}
+                {site.phoneDisplay}.
               </p>
             </div>
           </form>

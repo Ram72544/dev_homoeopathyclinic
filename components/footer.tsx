@@ -2,38 +2,6 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { navLinks, site } from "@/lib/site-config";
 
-export function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z" />
-    </svg>
-  );
-}
-
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -101,22 +69,7 @@ export function Footer() {
             </li>
           </ul>
 
-          <div className="mt-5 flex gap-3">
-            <a
-              href={site.social.instagram}
-              aria-label="Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-            >
-              <InstagramIcon className="h-4 w-4" />
-            </a>
-            <a
-              href={site.social.facebook}
-              aria-label="Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-            >
-              <FacebookIcon className="h-4 w-4" />
-            </a>
-          </div>
+          {/* Social links hidden until accounts are ready */}
 
           <a
             href={site.googleUrl}
