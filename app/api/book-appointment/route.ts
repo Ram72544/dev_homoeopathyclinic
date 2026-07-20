@@ -72,11 +72,13 @@ export async function POST(request: Request) {
   const { name, phone, slot, concern } = parsed.data;
 
   const message =
-    `🚨 <b>NEW APPOINTMENT REQUEST</b>\n` +
-    `👤 Name: ${escapeHtml(name)}\n` +
-    `📞 Phone: ${escapeHtml(phone)}\n` +
-    `📅 Preferred Slot: ${escapeHtml(slot)}\n` +
-    `💬 Concern: ${escapeHtml(concern)}`;
+    `🌿 <b>New Appointment Request</b>\n` +
+    `A patient would love to book a consultation with you.\n\n` +
+    `👤 <b>Patient:</b> ${escapeHtml(name)}\n` +
+    `📞 <b>Phone:</b> ${escapeHtml(phone)}\n` +
+    `�️ <b>Preferred Slot:</b> ${escapeHtml(slot)}\n` +
+    `💬 <b>Concern:</b> ${escapeHtml(concern)}\n\n` +
+    `Please reach out to confirm their visit. 💚`;
 
   try {
     await sendTelegramMessage(message);

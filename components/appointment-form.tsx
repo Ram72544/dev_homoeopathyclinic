@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2, Loader2, Send, ShieldCheck } from "lucide-react";
@@ -31,7 +31,10 @@ const appointmentSchema = z.object({
     .string()
     .trim()
     .min(1, "Please briefly describe your concern")
-    .max(500, "Please keep this under 500 characters"),
+    .refine(
+      (val) => val.trim().split(/\s+/).length <= 300,
+      "Please keep this under 300 words"
+    ),
 });
 
 type AppointmentFormValues = z.infer<typeof appointmentSchema>;
@@ -82,7 +85,7 @@ export function AppointmentForm() {
     register,
     handleSubmit,
     reset,
-    trigger,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<AppointmentFormValues>({
     resolver: zodResolver(appointmentSchema),
@@ -132,34 +135,49 @@ export function AppointmentForm() {
         className="scroll-mt-24 rounded-2xl border border-beige bg-white p-7 shadow-sm"
       >
         <div className="space-y-5">
-          {(() => {
-            const nameField = register("name");
-            return (
-              <Field label="Patient's full name" error={errors.name?.message}>
+          <Controller
+            name="name"
+            control={control}
+            render={({ field, fieldState }) => (
+              <Field label="Patient's full name" error={fieldState.error?.message}>
                 <input
                   type="text"
-                  {...nameField}
+                  {...field}
                   onChange={(e) => {
-                    nameField.onChange(e);
-                    void trigger("name");
+                    const cleaned = e.target.value
+                      .replace(/[^a-zA-Z\s'-]/g, "")
+                      .toLowerCase()
+                      .replace(/\b\w/g, (char) => char.toUpperCase())
+                      .slice(0, 50);
+                    field.onChange(cleaned);
                   }}
                   className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="Enter patient's full name"
                 />
               </Field>
-            );
-          })()}
+            )}
+          />
 
-          <Field label="Phone number" error={errors.phone?.message}>
-            <input
-              type="tel"
-              inputMode="numeric"
-              maxLength={10}
-              {...register("phone")}
-              className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-              placeholder="Enter 10-digit mobile number"
-            />
-          </Field>
+          <Controller
+            name="phone"
+            control={control}
+            render={({ field, fieldState }) => (
+              <Field label="Phone number" error={fieldState.error?.message}>
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  maxLength={10}
+                  {...field}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    field.onChange(digits);
+                  }}
+                  className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                  placeholder="Enter 10-digit mobile number"
+                />
+              </Field>
+            )}
+          />
 
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="Preferred date" error={errors.date?.message}>
@@ -195,14 +213,24 @@ export function AppointmentForm() {
             </p>
           )}
 
-          <Field label="Brief concern" error={errors.concern?.message}>
-            <textarea
-              rows={4}
-              {...register("concern")}
-              className="w-full resize-none rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-              placeholder="Briefly describe your concern..."
-            />
-          </Field>
+          <Controller
+            name="concern"
+            control={control}
+            render={({ field, fieldState }) => (
+              <Field label="Brief concern" error={fieldState.error?.message}>
+                <textarea
+                  rows={4}
+                  {...field}
+                  onChange={(e) => {
+                    const match = e.target.value.match(/(\S+\s*){0,300}/);
+                    field.onChange(match ? match[0] : "");
+                  }}
+                  className="w-full resize-none rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                  placeholder="Briefly describe your concern... (max 300 words)"
+                />
+              </Field>
+            )}
+          />
 
           <Button type="submit" disabled={isSubmitting} className="w-full">
             {isSubmitting ? (
