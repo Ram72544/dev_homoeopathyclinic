@@ -1,60 +1,8 @@
-"use client";
-
-import { useState, type FormEvent } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { site } from "@/lib/site-config";
+import { AppointmentForm } from "@/components/appointment-form";
 
 export function Contact() {
-  const [name, setName] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    // Date and daily patient/enquiry number for records.
-    const dateStr = new Date().toLocaleDateString("en-IN", {
-      timeZone: "Asia/Kolkata",
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-    const dateKey = new Date().toLocaleDateString("en-CA", {
-      timeZone: "Asia/Kolkata",
-    });
-    const stored = JSON.parse(
-      localStorage.getItem("enquiryCounter") ?? '{"date":"","count":0}'
-    );
-    const count = stored.date === dateKey ? stored.count + 1 : 1;
-    localStorage.setItem(
-      "enquiryCounter",
-      JSON.stringify({ date: dateKey, count })
-    );
-    const patientNo = `OPD${String(count).padStart(4, "0")}`;
-
-    const confirmationText = `Hello ${name}! Thank you for contacting ${site.name}. We've received your enquiry (Ref: ${patientNo}) for today, ${dateStr}. Our team will get back to you shortly to confirm your appointment time. Take care!`;
-    const text = encodeURIComponent(confirmationText);
-
-    // Open WhatsApp chat with the clinic on the user's own account.
-    window.open(`https://wa.me/${site.whatsapp}?text=${text}`, "_blank");
-
-    // Save a record for the clinic's daily enquiry log.
-    const record = {
-      name,
-      phone,
-      message,
-      patientNo,
-      date: dateStr,
-      createdAt: new Date().toISOString(),
-    };
-    void fetch("/api/enquiry", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(record),
-    });
-  }
-
   return (
     <section id="contact" className="bg-beige-soft py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -85,7 +33,10 @@ export function Contact() {
               </a>
             </InfoRow>
             <InfoRow icon={<MapPin className="h-5 w-5" />} label="Visit us">
-              {site.address}
+              <div className="flex flex-col">
+                <span>{site.name}</span>
+                <span>{site.address}</span>
+              </div>
             </InfoRow>
             <InfoRow icon={<Clock className="h-5 w-5" />} label="Timings">
               <ul>
@@ -111,85 +62,7 @@ export function Contact() {
           </div>
 
           {/* Form */}
-          <form
-            id="contact-form"
-            onSubmit={handleSubmit}
-            className="scroll-mt-24 rounded-2xl border border-beige bg-white p-7 shadow-sm"
-          >
-            <div className="space-y-5">
-              <Field label="Patient's Name">
-                <input
-                  type="text"
-                  required
-                  pattern="[A-Za-z\s'-]+"
-                  maxLength={30}
-                  title="Only letters, spaces, apostrophes and hyphens are allowed"
-                  value={name}
-                  onChange={(e) => {
-                    const raw = e.target.value;
-                    const invalid = /[^a-zA-Z\s'-]/.test(raw);
-                    setNameError(
-                      invalid
-                        ? "Only letters, spaces, apostrophes and hyphens are allowed"
-                        : ""
-                    );
-                    setName(
-                      raw
-                        .replace(/[^a-zA-Z\s'-]/g, "")
-                        .toLowerCase()
-                        .replace(/\b\w/g, (char) => char.toUpperCase())
-                        .slice(0, 30)
-                    );
-                  }}
-                  className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="e.g. Priya Sharma"
-                />
-              </Field>
-              {nameError && (
-                <p className="text-xs text-red-600">{nameError}</p>
-              )}
-              <Field label="Phone number">
-                <input
-                  type="tel"
-                  required
-                  inputMode="numeric"
-                  pattern="[0-9]{10}"
-                  maxLength={10}
-                  title="Please enter a 10-digit mobile number"
-                  value={phone}
-                  onChange={(e) =>
-                    setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
-                  }
-                  className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="e.g. 9876543210"
-                />
-              </Field>
-              <Field label="How can we help?">
-                <textarea
-                  required
-                  value={message}
-                  onChange={(e) => {
-                    const match = e.target.value.match(/(\S+\s*){0,300}/);
-                    setMessage(match ? match[0] : "");
-                  }}
-                  rows={4}
-                  className="w-full resize-none rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="Briefly describe your concern... (max 300 words)"
-                />
-              </Field>
-              <button
-                type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-teal px-6 py-3.5 text-base font-semibold text-white shadow-md transition-colors hover:bg-teal-dark"
-              >
-                <Send className="h-5 w-5" />
-                Send via WhatsApp
-              </button>
-              <p className="text-center text-xs text-teal-dark/50">
-                Opens a WhatsApp chat on your device to send this enquiry to{" "}
-                {site.phoneDisplay}.
-              </p>
-            </div>
-          </form>
+          <AppointmentForm />
         </div>
       </div>
     </section>
@@ -215,22 +88,5 @@ function InfoRow({
         <div className="mt-0.5 text-teal-dark/75">{children}</div>
       </div>
     </div>
-  );
-}
-
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-teal-dark">
-        {label}
-      </span>
-      {children}
-    </label>
   );
 }

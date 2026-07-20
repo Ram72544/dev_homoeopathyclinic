@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     title: `${site.name}`,
     description: site.intro,
     type: "website",
-    images: ["/logo-mark-3d.svg"],
   },
 };
 

@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
-import { Services } from "@/components/services";
+import { WhatWeTreat } from "@/components/what-we-treat";
 import { WhyHomeopathy } from "@/components/why-homeopathy";
 import { Testimonials } from "@/components/testimonials";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
+import { MobileBookCta } from "@/components/mobile-book-cta";
 
 export default function Home() {
   return (
@@ -15,13 +16,14 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
-        <Services />
+        <WhatWeTreat />
         <WhyHomeopathy />
         <Testimonials />
         <Contact />
       </main>
       <Footer />
       <WhatsAppFloat />
+      <MobileBookCta />
     </>
   );
 }

@@ -51,7 +51,8 @@ export const site = {
   phone: "+917905371551", // used for tel: links, no spaces
   whatsapp: "917905371551", // country code + number, no + or spaces
   email: "care@drsheetalclinic.com",
-  address: "Dr. Sheetal's Homoeopathy Clinic, D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
+  address:
+    "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
 
   // Google Maps embed: search + center on the clinic
   mapsEmbedUrl:

@@ -21,7 +21,7 @@ export function Navbar() {
             alt=""
             width={48}
             height={48}
-            priority
+            loading="eager"
             className="h-10 w-10 flex-shrink-0 sm:h-12 sm:w-12"
           />
           <span className="leading-tight">
@@ -64,6 +64,7 @@ export function Navbar() {
           className="inline-flex items-center justify-center rounded-md p-2 text-teal-dark md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -71,7 +72,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-beige bg-white md:hidden">
+        <div id="mobile-menu" className="border-t border-beige bg-white md:hidden">
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
             {navLinks.map((link) => (
               <li key={link.href}>

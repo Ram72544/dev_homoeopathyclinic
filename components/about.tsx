@@ -36,7 +36,7 @@ export function About() {
             <div className="text-left">
               <p className="text-sm text-teal-dark/70">Approach</p>
               <p className="font-semibold text-teal-dark">
-                Classical &amp; personalised
+                Classical & personalised
               </p>
             </div>
           </div>

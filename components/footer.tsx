@@ -2,11 +2,65 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { navLinks, site } from "@/lib/site-config";
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: site.name,
+  image: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/logo-mark-3d.svg`,
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address,
+    addressCountry: "IN",
+  },
+  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "10:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "18:00",
+      closes: "21:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "10:00",
+      closes: "13:00",
+    },
+  ],
+  medicalSpecialty: "Homeopathic",
+};
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-teal-dark text-white/80">
+    <footer className="bg-teal-dark text-white/80 pb-20 md:pb-0">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
@@ -65,7 +119,10 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
-              <span>{site.address}</span>
+              <div className="flex flex-col">
+                <span>{site.name}</span>
+                <span>{site.address}</span>
+              </div>
             </li>
           </ul>
 
