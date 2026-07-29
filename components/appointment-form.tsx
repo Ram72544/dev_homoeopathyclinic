@@ -132,7 +132,7 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-24 rounded-2xl border border-beige bg-white p-7 shadow-sm"
+        className="scroll-mt-24 rounded-2xl border border-border bg-white p-7 shadow-sm"
       >
         <div className="space-y-5">
           <Controller
@@ -151,7 +151,7 @@ export function AppointmentForm() {
                       .slice(0, 50);
                     field.onChange(cleaned);
                   }}
-                  className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                  className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="Enter patient's full name"
                 />
               </Field>
@@ -172,7 +172,7 @@ export function AppointmentForm() {
                     const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                     field.onChange(digits);
                   }}
-                  className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                  className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="Enter 10-digit mobile number"
                 />
               </Field>
@@ -185,7 +185,7 @@ export function AppointmentForm() {
                 type="date"
                 min={minDate}
                 {...dateField}
-                className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
               />
             </Field>
 
@@ -193,7 +193,7 @@ export function AppointmentForm() {
               <select
                 {...register("time")}
                 disabled={!selectedDate}
-                className="w-full rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 disabled:cursor-not-allowed disabled:opacity-60"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -225,7 +225,7 @@ export function AppointmentForm() {
                     const match = e.target.value.match(/(\S+\s*){0,300}/);
                     field.onChange(match ? match[0] : "");
                   }}
-                  className="w-full resize-none rounded-lg border border-beige bg-beige-soft px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                  className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
                   placeholder="Briefly describe your concern... (max 300 words)"
                 />
               </Field>

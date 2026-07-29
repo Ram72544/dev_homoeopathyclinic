@@ -1,60 +1,119 @@
+"use client";
+
 import Image from "next/image";
-import { CalendarCheck, Phone } from "lucide-react";
+import { CalendarCheck, Phone, Star } from "lucide-react";
 import { site } from "@/lib/site-config";
+import { motion } from "framer-motion";
+import { Spotlight } from "@/components/ui/spotlight";
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-beige-soft"
+      className="relative overflow-hidden bg-surface-warm"
     >
-      {/* soft decorative blobs */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-cork/10 blur-3xl" />
+      <Spotlight
+        className="-top-40 left-0 md:-top-20 md:left-60"
+        fill="rgba(201, 169, 110, 0.06)"
+      />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
-        <div>
-          <span className="inline-block rounded-full bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-            {site.about.credentials}
-          </span>
-          <h1 className="mt-5 text-4xl font-bold leading-tight text-teal-dark sm:text-5xl">
+      {/* Soft organic accent */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
+        <div className="absolute -right-20 top-10 h-[500px] w-[500px] rounded-full bg-gold" />
+      </div>
+
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 sm:px-8 md:grid-cols-[1.1fr_0.9fr] md:py-20 lg:gap-16 lg:py-24">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+        >
+          {/* Trust badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2"
+          >
+            <div className="flex -space-x-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
+              ))}
+            </div>
+            <span className="text-xs font-medium text-foreground">
+              Trusted by 500+ families
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+            className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-teal-dark sm:text-5xl lg:text-[3.5rem]"
+          >
             {site.tagline}
-          </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-teal-dark/80">
-            {site.intro}
-          </p>
+          </motion.h1>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
+          >
+            {site.intro}
+          </motion.p>
+
+          {/* Credentials */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-4 text-sm font-semibold text-gold-dark"
+          >
+            {site.about.credentials}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="mt-8 flex flex-wrap gap-3"
+          >
             <a
               href={site.bookingUrl}
-              className="inline-flex items-center gap-2 rounded-full bg-teal px-7 py-3.5 text-base font-semibold text-white shadow-md transition-colors hover:bg-teal-dark"
+              className="inline-flex items-center gap-2 rounded-full bg-mint-dark px-7 py-3.5 text-sm font-semibold text-teal-dark shadow-sm transition-all duration-300 hover:bg-mint hover:shadow-md hover:-translate-y-0.5"
             >
-              <CalendarCheck className="h-5 w-5" />
+              <CalendarCheck className="h-4 w-4" />
               Book Appointment
             </a>
             <a
               href={`tel:${site.phone}`}
-              className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-white px-7 py-3.5 text-base font-semibold text-teal transition-colors hover:bg-white/60"
+              className="inline-flex items-center gap-2 rounded-full border border-teal-dark px-7 py-3.5 text-sm font-semibold text-teal-dark transition-all duration-300 hover:bg-teal-dark hover:text-white hover:-translate-y-0.5"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-4 w-4" />
               {site.phoneDisplay}
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex justify-center">
-          <div className="rounded-3xl border border-beige bg-white p-6 shadow-xl sm:p-10">
-            <Image
-              src="/logo-mark-3d.svg"
-              alt={site.name}
-              width={280}
-              height={280}
-              priority
-              className="h-56 w-auto sm:h-72"
-            />
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+          className="flex justify-center"
+        >
+          <Image
+            src="/logo-mark-3d.svg"
+            alt={site.name}
+            width={400}
+            height={400}
+            priority
+            className="h-60 w-auto animate-float sm:h-72 lg:h-80"
+          />
+        </motion.div>
       </div>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-gold-light/60 to-transparent" />
     </section>
   );
 }

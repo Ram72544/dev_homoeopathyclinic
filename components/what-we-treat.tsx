@@ -1,74 +1,93 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { ChevronDown } from "lucide-react";
 import { site } from "@/lib/site-config";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+
+function handleTiltMove(e: MouseEvent<HTMLButtonElement>) {
+  const el = e.currentTarget;
+  const rect = el.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -2;
+  const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 2;
+  el.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+}
+
+function handleTiltLeave(e: MouseEvent<HTMLButtonElement>) {
+  e.currentTarget.style.transform = "";
+}
 
 export function WhatWeTreat() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-beige-soft py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-teal-mid">
-            What We Treat
+    <section id="services" className="bg-surface py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+        <FadeUp className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gold-dark">
+            Our Services
           </span>
-          <h2 className="mt-2 text-3xl font-bold text-teal-dark sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-teal-dark sm:text-4xl">
             Conditions we care for
           </h2>
-          <p className="mt-4 text-lg text-teal-dark/75">
+          <p className="mt-4 text-base text-muted">
             Holistic homoeopathic treatment across a wide range of acute and
-            chronic conditions. Tap a card to learn more.
+            chronic conditions.
           </p>
-        </div>
+        </FadeUp>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {site.services.map((service, index) => {
             const Icon = service.icon;
             const isOpen = openIndex === index;
             return (
-              <button
-                key={service.title}
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                aria-expanded={isOpen}
-                className={`group flex flex-col rounded-2xl border p-7 text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-md ${
-                  isOpen
-                    ? "border-teal bg-white"
-                    : "border-beige bg-white"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div
-                    className={`flex h-14 w-14 items-center justify-center rounded-xl transition-colors ${
-                      isOpen
-                        ? "bg-teal text-white"
-                        : "bg-teal/10 text-teal group-hover:bg-teal group-hover:text-white"
+              <StaggerItem key={service.title} className="flex">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onMouseMove={handleTiltMove}
+                  onMouseLeave={handleTiltLeave}
+                  aria-expanded={isOpen}
+                  className={`card-luxury group flex h-full w-full flex-col rounded-xl border p-6 text-left transition-colors ${
+                    isOpen
+                      ? "border-gold/40 bg-white shadow-md"
+                      : "border-border bg-white shadow-sm hover:border-gold/25"
+                  }`}
+                  style={{ willChange: "transform" }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-lg transition-colors duration-300 ${
+                        isOpen
+                          ? "bg-teal-dark text-white"
+                          : "bg-mint-soft text-teal-dark group-hover:bg-mint/30"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <ChevronDown
+                      className={`h-4 w-4 text-muted transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-teal-dark">
+                    {service.title}
+                  </h3>
+                  <p
+                    className={`mt-2 text-sm leading-relaxed text-muted transition-all duration-300 ${
+                      isOpen ? "block" : "line-clamp-2"
                     }`}
                   >
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <ChevronDown
-                    className={`h-5 w-5 text-teal-dark/40 transition-transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-teal-dark">
-                  {service.title}
-                </h3>
-                <p
-                  className={`mt-2 leading-relaxed text-teal-dark/75 transition-all ${
-                    isOpen ? "block" : "line-clamp-2"
-                  }`}
-                >
-                  {service.description}
-                </p>
-              </button>
+                    {service.description}
+                  </p>
+                </button>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { BadgeCheck, Quote, Star } from "lucide-react";
 import { site } from "@/lib/site-config";
+import { FadeUp } from "@/components/ui/motion";
 
 function initials(name: string): string {
   return name
@@ -38,18 +39,18 @@ export function Testimonials() {
   }, [emblaApi]);
 
   return (
-    <section className="bg-gradient-to-b from-white via-white to-beige-soft py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-teal-mid">
+    <section className="bg-surface-warm py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+        <FadeUp className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gold-dark">
             Patient Stories
           </span>
-          <h2 className="mt-2 text-3xl font-bold text-teal-dark sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-teal-dark sm:text-4xl">
             Loved by our patients
           </h2>
-        </div>
+        </FadeUp>
 
-        <div className="mt-12">
+        <FadeUp delay={0.2} className="mt-12">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {site.testimonials.map((t, i) => {
@@ -57,42 +58,42 @@ export function Testimonials() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="flex-[0_0_88%] px-2.5 sm:flex-[0_0_68%] lg:flex-[0_0_44%]"
+                    className="flex-[0_0_88%] px-3 sm:flex-[0_0_65%] lg:flex-[0_0_42%]"
                   >
                     <figure
-                      className={`relative flex h-full flex-col overflow-hidden rounded-[28px] border bg-white p-8 transition-all duration-300 ${
+                      className={`relative flex h-full flex-col rounded-xl border bg-white p-6 transition-all duration-400 ${
                         isActive
-                          ? "border-teal/20 shadow-2xl shadow-teal-dark/15 opacity-100"
-                          : "border-beige shadow-md opacity-50"
+                          ? "border-gold/30 shadow-lg opacity-100 scale-[1.01]"
+                          : "border-border shadow-sm opacity-40 scale-100"
                       }`}
                     >
                       <Quote
-                        className="pointer-events-none absolute -right-4 -top-4 h-28 w-28 text-teal/5"
+                        className="pointer-events-none absolute -right-2 -top-2 h-20 w-20 text-gold/[0.08]"
                         strokeWidth={1}
                       />
-                      <div className="flex items-center gap-0.5 text-cork">
+                      <div className="flex items-center gap-0.5 text-gold">
                         {Array.from({ length: 5 }).map((_, star) => (
                           <Star key={star} className="h-3.5 w-3.5 fill-current" />
                         ))}
                       </div>
-                      <blockquote className="relative mt-4 flex-1 text-lg leading-relaxed text-teal-dark/85">
+                      <blockquote className="relative mt-4 flex-1 text-base leading-relaxed text-foreground/80">
                         &ldquo;{t.quote}&rdquo;
                       </blockquote>
-                      <figcaption className="relative mt-6 flex items-center gap-3">
-                        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-teal/10 text-sm font-semibold text-teal-dark">
+                      <figcaption className="relative mt-5 flex items-center gap-3 border-t border-border pt-4">
+                        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-mint-soft text-sm font-bold text-teal-dark">
                           {initials(t.name)}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <p className="font-semibold text-teal-dark">
+                            <p className="text-sm font-bold text-teal-dark">
                               {t.name}
                             </p>
                             <BadgeCheck
-                              className="h-4 w-4 text-teal"
+                              className="h-3.5 w-3.5 text-mint-dark"
                               aria-label="Verified patient"
                             />
                           </div>
-                          <p className="text-xs text-teal-dark/60">
+                          <p className="text-xs text-muted">
                             {t.location}
                           </p>
                         </div>
@@ -104,7 +105,7 @@ export function Testimonials() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-1.5">
+          <div className="mt-8 flex items-center justify-center gap-2">
             {site.testimonials.map((t, i) => (
               <button
                 key={`${t.name}-dot-${i}`}
@@ -113,13 +114,13 @@ export function Testimonials() {
                 aria-label={`Go to testimonial ${i + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   selectedIndex === i
-                    ? "w-7 bg-teal"
-                    : "w-2 bg-beige hover:bg-teal/40"
+                    ? "w-7 bg-teal-dark"
+                    : "w-2 bg-border hover:bg-gold/50"
                 }`}
               />
             ))}
           </div>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );
