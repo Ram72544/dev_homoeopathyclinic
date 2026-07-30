@@ -1,11 +1,3 @@
-/**
- * ============================================================
- *  EDIT EVERYTHING HERE.
- *  Replace the placeholder values below with your real clinic
- *  details. You do NOT need to touch any other file.
- * ============================================================
- */
-
 import type { LucideIcon } from "lucide-react";
 import {
   Sparkles,
@@ -41,52 +33,48 @@ export type Benefit = {
 export const site = {
   // --- Identity -------------------------------------------------
   name: "Dr. Sheetal's Homoeopathy Clinic",
-  shortName: "Dr. Sheetal's",
-  tagline: "Gentle, natural healing for the whole family",
+  shortName: "Dr. Sheetal's Clinic",
+  tagline: "Gentle, Natural & Permanent Healing for Your Whole Family",
   intro:
-    "Personalised homoeopathic care that works on the root cause of illness, not just the symptoms. Homoeopathy is a recognised system of medicine in India under the Ministry of AYUSH, and it is safe for patients of every age — from newborns to the elderly.",
+    "Get personalized homeopathic treatment that treats the root cause of your illness, not just temporary symptoms. Recognized by the Ministry of AYUSH, India — 100% safe, natural sweet pills with zero side effects for kids, adults, and seniors.",
 
-  // --- Contact (REPLACE THESE) ---------------------------------
+  // --- Contact -------------------------------------------------
   phoneDisplay: "+91 79053 71551",
-  phone: "+917905371551", // used for tel: links, no spaces
-  whatsapp: "917905371551", // country code + number, no + or spaces
+  phone: "+917905371551",
+  whatsapp: "917905371551",
   email: "care@drsheetalclinic.com",
   address:
     "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
 
-  // Google Maps embed: search + center on the clinic
   mapsEmbedUrl:
     "https://www.google.com/maps?q=Dr.+Sheetal%27s+Homoeopathy+Clinic&ll=28.506497,77.3216683&z=16&output=embed",
 
-  // Calendly / booking link (leave as # until you have one)
-  bookingUrl: "#contact-form",
+  bookingUrl: "#contact",
 
-  // Social links (leave "#" to hide-in-place; replace when ready)
   social: {
     instagram: "#",
     facebook: "#",
   },
 
-  // Google Business / Maps listing link
   googleUrl:
     "https://www.google.com/maps/place/Dr.+Sheetal's+Homoeopathy+Clinic/@28.506497,77.321668,16z/data=!4m6!3m5!1s0x390ce7724f1e3f15:0x8431485b70a4a30e!8m2!3d28.506497!4d77.3216683!16s%2Fg%2F11zgz3w3hv?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D",
 
   // --- Timings --------------------------------------------------
   timings: [
-    { days: "Monday – Saturday", hours: "10:00 AM – 1:00 PM" },
-    { days: "Monday – Saturday", hours: "6:00 PM – 9:00 PM" },
-    { days: "Sunday", hours: "10:00 AM – 1:00 PM (By appointment only)" },
+    { days: "Monday – Saturday (Morning)", hours: "10:00 AM – 1:00 PM" },
+    { days: "Monday – Saturday (Evening)", hours: "6:00 PM – 9:00 PM" },
+    { days: "Sunday", hours: "10:00 AM – 1:00 PM (Prior Appointment Only)" },
   ] as { days: string; hours: string }[],
 
-  // --- About ----------------------------------------------------
+  // --- About Doctor ---------------------------------------------
   about: {
     doctorName: "Dr. Sheetal",
-    credentials: "BHMS, MD — Homoeopathic Physician",
-    experience: "4+ years",
-    photo: "", // put an image in /public and set e.g. "/dr-sheetal.jpg"
+    credentials: "BHMS, MD (Homoeopathy)",
+    experience: "4+ Years Clinical Practice",
+    photo: "",
     bio: [
-      "Dr. Sheetal holds a BHMS (Bachelor of Homoeopathic Medicine and Surgery) and an MD in Homoeopathy. She is a registered homoeopathic physician who practises classical homoeopathy, where one remedy is carefully selected after a detailed study of the patient.",
-      "With over 4 years of clinical experience, Dr. Sheetal has helped patients across India manage both chronic and acute conditions. She combines classical homoeopathic knowledge with modern diagnostic awareness to build treatment plans around each patient's constitution, lifestyle, and full medical history.",
+      "Dr. Sheetal is a qualified, registered Homoeopathic Doctor holding BHMS and MD in Homoeopathy. She practices classical homeopathy, which means finding the exact single medicine that matches your unique body type, personality, and full health history.",
+      "With over 4 years of clinical experience, Dr. Sheetal has successfully treated hundreds of patients across Delhi NCR and India for long-standing chronic health issues, skin allergies, digestive problems, and childhood illnesses — without heavy chemicals or side effects.",
     ],
   },
 
@@ -95,100 +83,94 @@ export const site = {
     {
       title: "Skin & Hair Problems",
       description:
-        "Eczema, psoriasis, acne, urticaria, hair fall, and dandruff — treated at the root for lasting relief.",
+        "Eczema, psoriasis, acne, fungal allergy, hives (urticaria), hair fall & stubborn dandruff — cured from within.",
       icon: Sparkles,
     },
     {
-      title: "Respiratory & Allergy Care",
+      title: "Cough, Cold & Allergies",
       description:
-        "Allergic rhinitis, asthma, sinusitis, tonsillitis, and recurrent colds managed with gentle remedies.",
+        "Sinusitis, asthma, allergic sneezing, frequent colds & tonsils — strengthening natural chest immunity.",
       icon: Wind,
     },
     {
-      title: "Digestive Health",
+      title: "Gas, Acidity & Stomach",
       description:
-        "Acidity, gas, constipation, irritable bowel syndrome (IBS), and piles addressed with constitutional care.",
+        "Chronic acidity, gas, indigestion, constipation, IBS & piles treated gently without lifetime dependence.",
       icon: Soup,
     },
     {
       title: "Stress, Sleep & Migraine",
       description:
-        "Anxiety, migraine, headaches, and disturbed sleep eased with calming, personalised treatment.",
+        "Severe headaches, migraine, anxiety, sleep issues & mental fatigue eased with soothing constitutional care.",
       icon: Brain,
     },
     {
-      title: "Women & Child Care",
+      title: "Women's Care & PCOS",
       description:
-        "Management of PMOS (previously called PCOS or PCOD) and menstrual irregularities, alongside gentle care for childhood concerns like recurrent infections, tonsillitis, and low immunity.",
+        "PCOS/PCOD, irregular periods, hormonal imbalance, thyroid & menopause discomfort handled safely.",
       icon: Baby,
     },
     {
-      title: "Chronic & Lifestyle Conditions",
+      title: "Child Health & Immunity",
       description:
-        "Thyroid disorders, joint pain, arthritis, and other long-standing conditions managed holistically.",
+        "Recurrent infections, slow growth, low appetite, teething troubles & poor immunity in children.",
       icon: HeartPulse,
     },
   ] as Service[],
 
-  // --- Why homoeopathy -----------------------------------------
+  // --- Benefits -------------------------------------------------
   benefits: [
     {
-      title: "A time-tested science",
+      title: "Treats Root Cause",
       description:
-        "Homoeopathy was founded by Dr. Samuel Hahnemann in 1796 and has been practised for over 200 years. It is based on the principle of 'Similia Similibus Curentur' — like cures like.",
+        "Instead of suppressing symptoms temporarily, homeopathy works deep inside your body to cure the real root cause.",
       icon: Leaf,
     },
     {
-      title: "Recognised in India",
+      title: "100% Safe & Natural",
       description:
-        "Homoeopathy is an official system of medicine in India under the Ministry of AYUSH. India has one of the largest networks of homoeopathic doctors, colleges, and hospitals in the world.",
+        "Sweet pills prepared from natural substances. Extremely safe for infants, pregnant mothers, and senior citizens.",
       icon: ShieldCheck,
     },
     {
-      title: "Gentle and safe",
+      title: "No Side Effects",
       description:
-        "Remedies are prepared from natural sources and given in highly diluted doses. When prescribed correctly, they are safe for infants, pregnant women, and the elderly.",
+        "Gentle remedies that do not cause acidity, drowsiness, organ damage, or habit-forming drug addiction.",
       icon: UserRound,
     },
     {
-      title: "Treats the whole person",
+      title: "Recognized by Govt. of India",
       description:
-        "A homoeopath studies your physical, mental, and emotional state before selecting a remedy. The goal is long-term health, not short-term relief.",
+        "Approved system of medicine under the Ministry of AYUSH, Govt. of India, backed by over 200 years of medical research.",
       icon: Clock,
     },
   ] as Benefit[],
 
-  // --- Testimonials ---------------------------------------------
+  // --- Patient Reviews ------------------------------------------
   testimonials: [
     {
-      name: "Priya M.",
-      location: "Patient since 2024",
+      name: "Priya Sharma",
+      location: "New Delhi",
       quote:
-        "I struggled with skin allergies for years. Dr. Sheetal listened patiently, understood my full history, and her treatment gave me lasting relief.",
+        "I suffered from severe skin allergy and itching for 3 years. After taking Dr. Sheetal's medicine for 4 months, my skin is completely clear. Best homeopathy doctor in Badarpur!",
     },
     {
-      name: "Rahul S.",
-      location: "Patient since 2025",
+      name: "Rahul Verma",
+      location: "Faridabad",
       quote:
-        "My son used to catch a cold every month. After a few months of treatment, his immunity has clearly improved. The sweet pills were easy for him to take.",
+        "My 5-year-old son used to get cough and fever every single month. Homeopathy sweet pills improved his immunity tremendously. He rarely gets sick now.",
     },
     {
-      name: "Anita K.",
-      location: "Patient since 2025",
+      name: "Anita Gupta",
+      location: "New Delhi",
       quote:
-        "My migraines are finally under control without any heavy medicines. Dr. Sheetal is professional, caring, and genuinely effective.",
+        "My chronic migraine and acidity are finally cured without heavy painkiller tablets. Dr. Sheetal gives ample time to listen to all details.",
     },
     {
-      name: "Vikram T.",
-      location: "Patient since 2024",
+      name: "Vikram Teotia",
+      location: "Noida",
       quote:
-        "My acid reflux has reduced a lot in just a few months. The treatment was easy to follow and the follow-ups were very thorough.",
-    },
-    {
-      name: "Sunita R.",
-      location: "Patient since 2026",
-      quote:
-        "I was very uncomfortable with my hair fall and dandruff. Dr. Sheetal explained the root cause and now my hair is much healthier.",
+        "Very honest and knowledgeable doctor. She explained the root cause of my digestive issues clearly. Highly recommended for family care.",
     },
   ] as Testimonial[],
 };
@@ -196,11 +178,12 @@ export const site = {
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Treatments", href: "#services" },
   { label: "Why Us", href: "#why" },
+  { label: "Reviews", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-  "Hi, I'd like to book an appointment at Dr. Sheetal's Homoeopathy Clinic."
+  "Hello Dr. Sheetal, I want to book an appointment for consultation."
 )}`;

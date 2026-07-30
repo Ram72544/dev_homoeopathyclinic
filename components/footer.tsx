@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink, Sparkles } from "lucide-react";
 import { navLinks, site } from "@/lib/site-config";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -30,95 +29,130 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-teal-dark text-white/65 pb-20 md:pb-0">
+    <footer className="relative bg-transparent text-[#2C4036] pt-16 pb-24 md:pb-12 overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        
+        {/* Floating Spatial Footer Container */}
+        <div className="rounded-[2.5rem] border border-white/80 bg-white/60 p-8 sm:p-12 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
+          <div className="grid gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-12 pb-12 border-b border-[#EAE3DA]/80">
+            
+            {/* Column 1: Brand & Vial Logo */}
+            <div className="lg:col-span-4 space-y-4">
+              <div className="flex items-center gap-3.5">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white/90 p-1 shadow-xs">
+                  <Image
+                    src="/logo-mark-3d.svg"
+                    alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <span className="leading-tight">
+                  <span className="block font-serif text-lg font-normal text-[#1F2C25]">
+                    Dr. Sheetal&apos;s
+                  </span>
+                  <span className="block font-serif text-lg font-normal text-[#1F2C25]">
+                    Homoeopathy Clinic
+                  </span>
+                  <span className="block text-[9px] font-light uppercase tracking-[0.2em] text-[#0E7C7B] mt-0.5">
+                    Natural Family Healing
+                  </span>
+                </span>
+              </div>
 
-      <StaggerContainer className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:px-8 md:grid-cols-3">
-        <StaggerItem>
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logo-mark-3d.svg"
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10 flex-shrink-0"
-            />
-            <span className="leading-tight">
-              <span className="block font-serif text-lg font-bold text-white">
-                {site.shortName}
-              </span>
-              <span className="block text-[9px] font-medium uppercase tracking-[0.2em] text-gold-light">
-                Homoeopathy Clinic
-              </span>
-            </span>
+              <p className="text-sm font-light leading-relaxed text-[#5C6B62] max-w-sm">
+                Personalized homeopathic care treating the root cause of health issues with 100% natural, safe sweet pills for your whole family.
+              </p>
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/90 bg-white/80 px-3.5 py-1.5 text-[11px] tracking-wider text-[#0E7C7B] uppercase font-light shadow-2xs">
+                <Sparkles className="h-3 w-3 text-[#C5A059]" />
+                <span>Ministry of AYUSH Recognized</span>
+              </div>
+            </div>
+
+            {/* Column 2: Quick Links */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
+                Navigation
+              </h4>
+              <ul className="space-y-2.5 text-sm font-normal text-[#2C4036]">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="transition-colors hover:text-[#0E7C7B]"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Specializations */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
+                Specialized Care
+              </h4>
+              <ul className="space-y-2.5 text-sm font-normal text-[#2C4036]">
+                <li>Skin & Hair Allergies</li>
+                <li>Cough, Sinus & Asthma</li>
+                <li>Gas, Acidity & Stomach</li>
+                <li>PCOS & Women's Health</li>
+                <li>Child Health & Immunity</li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contact Info */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
+                Clinic Contact
+              </h4>
+              <ul className="space-y-3 text-sm font-light text-[#2C4036]">
+                <li className="flex items-start gap-2.5">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-normal">
+                    {site.phoneDisplay}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors text-xs">
+                    {site.email}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5 text-xs leading-relaxed text-[#5C6B62]">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <span>{site.address}</span>
+                </li>
+              </ul>
+
+              <a
+                href={site.googleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0E7C7B] hover:underline pt-1"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                <span>Google Maps Location & Reviews</span>
+              </a>
+            </div>
+
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/45">
-            {site.intro.slice(0, 120)}...
-          </p>
-        </StaggerItem>
 
-        <StaggerItem>
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gold">
-            Quick Links
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="transition-colors duration-200 hover:text-white">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </StaggerItem>
-
-        <StaggerItem>
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gold">
-            Contact
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            <li className="flex items-start gap-2.5">
-              <Phone className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-gold/60" />
-              <a href={`tel:${site.phone}`} className="transition-colors hover:text-white">
-                {site.phoneDisplay}
-              </a>
-            </li>
-            <li className="flex items-start gap-2.5">
-              <Mail className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-gold/60" />
-              <a href={`mailto:${site.email}`} className="transition-colors hover:text-white">
-                {site.email}
-              </a>
-            </li>
-            <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-gold/60" />
-              <span>{site.address}</span>
-            </li>
-          </ul>
-
-          <a
-            href={site.googleUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm text-gold/80 transition-colors hover:text-gold"
-          >
-            <ExternalLink className="h-3.5 w-3.5" />
-            Find us on Google
-          </a>
-        </StaggerItem>
-      </StaggerContainer>
-
-      <FadeUp>
-        <div className="border-t border-white/8">
-          <div className="mx-auto max-w-6xl px-6 py-5 text-center text-xs text-white/35 sm:px-8">
-            &copy; {year} {site.name}. All rights reserved.
+          {/* Bottom Copyright */}
+          <div className="pt-8 text-center text-xs font-light text-[#7A8A80]">
+            <p>&copy; {year} {site.name}. All rights reserved. Registered Homoeopathic Medical Practice.</p>
           </div>
         </div>
-      </FadeUp>
+
+      </div>
     </footer>
   );
 }

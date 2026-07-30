@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* HealthHosts-inspired: Mint + Gold + Dark Green */
   --teal: #0a2e2e;
   --teal-dark: #0a2e2e;
   --teal-mid: #1a4a3a;
@@ -11,39 +10,17 @@
   --mint: #6ee7b7;
   --mint-dark: #34d399;
   --mint-soft: #d1fae5;
-  --surface: #fdfcfa;
-  --surface-warm: #f7f0e8;
-  --foreground: #1a1a1a;
-  --muted: #6b7280;
-  --border: #e8e2d9;
+  --surface: #EAE3D7;
+  --surface-warm: #E2DACB;
+  --foreground: #1f2c25;
+  --muted: #5c6b62;
+  --border: #e8e1d5;
   --card: #ffffff;
-  --accent-green: #4a9e7e;
-  --accent-sage: #87a99a;
 }
 
 @theme inline {
-  --color-teal: var(--teal);
-  --color-teal-dark: var(--teal-dark);
-  --color-teal-mid: var(--teal-mid);
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-dark: var(--gold-dark);
-  --color-surface: var(--surface);
-  --color-surface-warm: var(--surface-warm);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-mint: var(--mint);
-  --color-mint-dark: var(--mint-dark);
-  --color-mint-soft: var(--mint-soft);
-  --color-accent-green: var(--accent-green);
-  --color-accent-sage: var(--accent-sage);
-
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
-
-  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-heading), "Playfair Display", Georgia, serif;
 }
 
 body {
@@ -54,109 +31,29 @@ body {
   letter-spacing: -0.01em;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-heading), Georgia, serif;
-  letter-spacing: -0.02em;
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-section {
-  scroll-margin-top: 5rem;
-}
-
-/* Spotlight animation */
-@keyframes spotlight {
-  0% {
-    opacity: 0;
-    transform: translate(-72%, -62%) scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -40%) scale(1);
-  }
-}
-
-/* Shimmer sweep — refined */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.shimmer-bg {
-  background-image: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(201, 169, 110, 0.04) 45%,
-    rgba(201, 169, 110, 0.06) 50%,
-    rgba(201, 169, 110, 0.04) 55%,
-    transparent 60%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 10s ease-in-out infinite;
-}
-
-/* Floating animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+section, [id] {
+  scroll-margin-top: 4.25rem;
 }
 
 /* Glass morphism utilities */
 .glass {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.glass-dark {
-  background: rgba(10, 46, 46, 0.6);
-  backdrop-filter: blur(16px) saturate(1.5);
-  -webkit-backdrop-filter: blur(16px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Gold gradient accent */
-.gold-gradient {
-  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
-}
-
-.gold-text {
-  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Premium card hover */
-.card-luxury {
-  transition: transform 0.3s cubic-bezier(0.25, 0.4, 0.25, 1),
-              box-shadow 0.3s cubic-bezier(0.25, 0.4, 0.25, 1);
-}
-
-.card-luxury:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px -12px rgba(10, 46, 46, 0.15),
-              0 8px 24px -8px rgba(201, 169, 110, 0.1);
-}
-
-/* Luxury divider */
-.divider-gold {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .shimmer-bg {
-    animation: none;
+  html {
+    scroll-behavior: auto;
   }
 }

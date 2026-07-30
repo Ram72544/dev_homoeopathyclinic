@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Menu, X, CalendarCheck } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import { navLinks, site } from "@/lib/site-config";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,86 +11,96 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-      className="sticky top-0 z-50 border-b border-border/50 bg-white/90 backdrop-blur-md"
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-4 z-50 mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10"
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 sm:px-8">
+      {/* Floating Spatial Glass Navigation Bar (Matching Lightest Beige Palette) */}
+      <nav className="w-full flex items-center justify-between rounded-[2.5rem] border border-white/80 bg-[#FAF8F5]/65 px-8 lg:px-12 py-4.5 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.06)] [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
+        
+        {/* Brand with 64px 3D Medicine Vial & Leaf Logo */}
         <a
           href="#home"
-          className="flex items-center gap-3"
+          className="flex items-center gap-5 shrink-0 group mr-6"
           aria-label={site.name}
         >
-          <Image
-            src="/logo-mark-3d.svg"
-            alt=""
-            width={44}
-            height={44}
-            loading="eager"
-            className="h-9 w-9 flex-shrink-0 sm:h-10 sm:w-10"
-          />
-          <span className="leading-tight">
-            <span className="block font-serif text-lg font-bold tracking-tight text-teal-dark sm:text-xl">
-              {site.shortName}
+          <div className="relative h-15 w-15 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/logo-mark-3d.svg"
+              alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
+              width={60}
+              height={60}
+              priority
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <span className="leading-tight shrink-0">
+            <span className="block font-serif text-base sm:text-lg font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
+              Dr. Sheetal&apos;s
             </span>
-            <span className="block text-[9px] font-medium uppercase tracking-[0.2em] text-gold-dark sm:text-[10px]">
+            <span className="block font-serif text-base sm:text-lg font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
               Homoeopathy Clinic
             </span>
           </span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        {/* Desktop Links Distributed Flexibly */}
+        <ul className="hidden items-center gap-6 lg:gap-10 md:flex shrink-0">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 transition-colors duration-200 hover:text-teal-dark"
+                className="text-xs lg:text-sm font-medium tracking-wider text-[#3D4D44] uppercase transition-colors duration-300 hover:text-[#1F2C25] whitespace-nowrap"
               >
                 {link.label}
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href={site.bookingUrl}
-              className="inline-flex items-center gap-2 rounded-full bg-mint-dark px-5 py-2.5 text-sm font-semibold text-teal-dark transition-all duration-200 hover:bg-mint hover:shadow-md hover:-translate-y-0.5"
-            >
-              <CalendarCheck className="h-4 w-4" />
-              Book Appointment
-            </a>
-          </li>
         </ul>
 
+        {/* Right CTA Button */}
+        <div className="hidden md:flex items-center shrink-0">
+          <a
+            href={site.bookingUrl}
+            className="inline-flex items-center gap-2.5 rounded-full bg-[#1F2C25] px-7 py-3.5 text-xs sm:text-sm font-medium tracking-wider text-[#FAF8F5] uppercase shadow-lg transition-all duration-300 hover:bg-[#0E7C7B] hover:shadow-xl whitespace-nowrap shrink-0 hover:-translate-y-0.5"
+          >
+            <Calendar className="h-4 w-4 text-[#C5A059]" />
+            <span>Book Consultation</span>
+          </a>
+        </div>
+
+        {/* Mobile Toggle */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-lg p-2 text-teal-dark transition-colors hover:bg-surface-warm md:hidden"
+          className="inline-flex items-center justify-center rounded-full p-2 text-[#1F2C25] transition-colors hover:bg-white/80 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
+      {/* Spatial Mobile Menu Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: [0.25, 0.4, 0.25, 1] }}
-            className="overflow-hidden border-t border-border/50 bg-white md:hidden"
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="mt-3 overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-6 shadow-2xl backdrop-blur-2xl md:hidden"
           >
-            <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4">
+            <ul className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-base font-medium text-foreground/80 transition-colors hover:bg-surface-warm"
+                    className="block rounded-2xl px-4 py-3 text-xs font-light tracking-wider text-[#1F2C25] uppercase transition-colors hover:bg-[#FAF8F5]"
                   >
                     {link.label}
                   </a>
@@ -100,10 +110,10 @@ export function Navbar() {
                 <a
                   href={site.bookingUrl}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-full bg-mint-dark px-6 py-3 text-sm font-semibold text-teal-dark"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#1F2C25] px-6 py-3 text-xs font-light tracking-wider text-[#FAF8F5] uppercase"
                 >
-                  <CalendarCheck className="h-4 w-4" />
-                  Book Appointment
+                  <Calendar className="h-4 w-4 text-[#C5A059]" />
+                  <span>Book Consultation</span>
                 </a>
               </li>
             </ul>

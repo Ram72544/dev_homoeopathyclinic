@@ -4,8 +4,7 @@ import { useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Loader2, Send, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CheckCircle2, Loader2, Sparkles, ShieldCheck, HeartPulse } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -18,22 +17,22 @@ const appointmentSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(1, "Please enter the patient's full name")
+    .min(1, "Please enter your name")
     .max(50, "Name is too long")
-    .regex(/^[A-Za-z\s'-]+$/, "Only letters, spaces, apostrophes and hyphens are allowed"),
+    .regex(/^[A-Za-z\s'-]+$/, "Only letters and spaces allowed"),
   phone: z
     .string()
     .trim()
-    .regex(/^\d{10}$/, "Enter a valid 10-digit phone number"),
-  date: z.string().trim().min(1, "Please select a preferred date"),
-  time: z.string().trim().min(1, "Please select a preferred time slot"),
+    .regex(/^\d{10}$/, "Enter a valid 10-digit mobile number"),
+  date: z.string().trim().min(1, "Please select a date"),
+  time: z.string().trim().min(1, "Please select a time slot"),
   concern: z
     .string()
     .trim()
-    .min(1, "Please briefly describe your concern")
+    .min(1, "Please briefly mention your health issue")
     .refine(
       (val) => val.trim().split(/\s+/).length <= 300,
-      "Please keep this under 300 words"
+      "Please keep under 300 words"
     ),
 });
 
@@ -51,10 +50,9 @@ const EVENING_SLOTS = [
   "8:00 PM – 9:00 PM",
 ];
 
-/** Sunday is by-appointment-only, morning slots only. Mon–Sat get both. */
 function getSlotsForDate(dateStr: string): string[] {
   if (!dateStr) return [];
-  const day = new Date(`${dateStr}T00:00:00`).getDay(); // 0 = Sunday
+  const day = new Date(`${dateStr}T00:00:00`).getDay();
   return day === 0 ? MORNING_SLOTS : [...MORNING_SLOTS, ...EVENING_SLOTS];
 }
 
@@ -114,7 +112,7 @@ export function AppointmentForm() {
       const data = (await response.json()) as { ok?: boolean; error?: string };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "Failed to send your request");
+        throw new Error(data.error || "Failed to send consultation request");
       }
 
       setConfirmedName(values.name);
@@ -132,14 +130,25 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-24 rounded-2xl border border-border bg-white p-7 shadow-sm"
+        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/70 p-8 shadow-2xl backdrop-blur-md [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding"
       >
+        {/* Warm Caring Form Header */}
+        <div className="flex items-center gap-3.5 border-b border-[#F0EADF]/80 pb-5 mb-6">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+            <HeartPulse className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-serif text-xl font-normal text-[#1F2C25]">Request a Consultation</h3>
+            <p className="text-xs font-light text-[#7A8A80] mt-0.5">Our medical team will review your case & confirm timing</p>
+          </div>
+        </div>
+
         <div className="space-y-5">
           <Controller
             name="name"
             control={control}
             render={({ field, fieldState }) => (
-              <Field label="Patient's full name" error={fieldState.error?.message}>
+              <Field label="Your Full Name" error={fieldState.error?.message}>
                 <input
                   type="text"
                   {...field}
@@ -151,8 +160,8 @@ export function AppointmentForm() {
                       .slice(0, 50);
                     field.onChange(cleaned);
                   }}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="Enter patient's full name"
+                  className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
+                  placeholder="e.g. Rajesh Kumar"
                 />
               </Field>
             )}
@@ -162,7 +171,7 @@ export function AppointmentForm() {
             name="phone"
             control={control}
             render={({ field, fieldState }) => (
-              <Field label="Phone number" error={fieldState.error?.message}>
+              <Field label="Mobile / WhatsApp Number" error={fieldState.error?.message}>
                 <input
                   type="tel"
                   inputMode="numeric"
@@ -172,32 +181,32 @@ export function AppointmentForm() {
                     const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                     field.onChange(digits);
                   }}
-                  className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="Enter 10-digit mobile number"
+                  className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
+                  placeholder="10-digit phone number"
                 />
               </Field>
             )}
           />
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Preferred date" error={errors.date?.message}>
+            <Field label="Preferred Date" error={errors.date?.message}>
               <input
                 type="date"
                 min={minDate}
                 {...dateField}
-                className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
+                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
               />
             </Field>
 
-            <Field label="Preferred time slot" error={errors.time?.message}>
+            <Field label="Preferred Time" error={errors.time?.message}>
               <select
                 {...register("time")}
                 disabled={!selectedDate}
-                className="w-full rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20 disabled:opacity-60"
                 defaultValue=""
               >
                 <option value="" disabled>
-                  {selectedDate ? "Select a slot" : "Pick a date first"}
+                  {selectedDate ? "Select time slot" : "Pick date first"}
                 </option>
                 {availableSlots.map((slot) => (
                   <option key={slot} value={slot}>
@@ -207,66 +216,65 @@ export function AppointmentForm() {
               </select>
             </Field>
           </div>
-          {selectedDate && new Date(`${selectedDate}T00:00:00`).getDay() === 0 && (
-            <p className="text-xs text-teal-dark/60">
-              Sundays are by appointment only (morning slots).
-            </p>
-          )}
 
           <Controller
             name="concern"
             control={control}
             render={({ field, fieldState }) => (
-              <Field label="Brief concern" error={fieldState.error?.message}>
+              <Field label="Health Concern or Symptoms" error={fieldState.error?.message}>
                 <textarea
-                  rows={4}
+                  rows={3}
                   {...field}
                   onChange={(e) => {
                     const match = e.target.value.match(/(\S+\s*){0,300}/);
                     field.onChange(match ? match[0] : "");
                   }}
-                  className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
-                  placeholder="Briefly describe your concern... (max 300 words)"
+                  className="w-full resize-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
+                  placeholder="Describe your health problem (e.g. skin allergy, severe acidity, sinusitis...)"
                 />
               </Field>
             )}
           />
 
-          <Button type="submit" disabled={isSubmitting} className="w-full">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full flex items-center justify-center gap-2.5 rounded-full bg-[#2C4036] px-8 py-4 text-xs font-light tracking-widest text-[#FAF8F5] uppercase shadow-md transition-all duration-500 hover:bg-[#1F2C25] hover:shadow-xl disabled:opacity-50"
+          >
             {isSubmitting ? (
-              <Loader2 className="h-5 w-5 animate-spin" />
+              <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
             ) : (
-              <Send className="h-5 w-5" />
+              <Sparkles className="h-4 w-4 text-[#C5A059]" />
             )}
-            {isSubmitting ? "Sending..." : "Book Appointment"}
-          </Button>
+            <span>{isSubmitting ? "Submitting..." : "Request Doctor Consultation"}</span>
+          </button>
 
           {submitError && (
-            <p className="text-center text-sm text-red-600">{submitError}</p>
+            <p className="text-center text-xs text-red-600 font-light">{submitError}</p>
           )}
 
-          <p className="flex items-start justify-center gap-1.5 text-center text-xs font-medium text-teal-dark/70">
-            <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-teal" />
-            Your request goes straight to Dr. Sheetal&apos;s team — safe, private
-            &amp; confirmed within hours.
+          <p className="flex items-center justify-center gap-1.5 text-center text-[11px] font-light text-[#7A8A80] pt-1">
+            <ShieldCheck className="h-4 w-4 text-[#C5A059] shrink-0" />
+            100% Private & Confidential. Our team will contact you to confirm timing.
           </p>
         </div>
       </form>
 
       <Dialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md bg-[#FAF8F5] rounded-3xl p-6 border border-[#E8E1D5]">
           <DialogHeader className="items-center text-center">
-            <CheckCircle2 className="h-12 w-12 text-teal" />
-            <DialogTitle>Appointment request sent!</DialogTitle>
-            <DialogDescription>
-              Thank you, {confirmedName}! Your appointment request has been sent
-              to Dr. Sheetal. Our team will review your requested time slot and
-              call/message you shortly to confirm.
+            <CheckCircle2 className="h-12 w-12 text-[#2C4036]" />
+            <DialogTitle className="font-serif text-2xl font-normal text-[#1F2C25]">Consultation Request Sent!</DialogTitle>
+            <DialogDescription className="text-sm font-light leading-relaxed text-[#5C6B62] mt-2">
+              Thank you, <strong className="text-[#1F2C25] font-normal">{confirmedName}</strong>! Your consultation request has been received. We will call/message you shortly to confirm your consultation timing.
             </DialogDescription>
           </DialogHeader>
-          <Button className="mt-4 w-full" onClick={() => setShowConfirmation(false)}>
-            Got it
-          </Button>
+          <button
+            className="mt-4 w-full rounded-full bg-[#2C4036] py-3 text-xs font-light tracking-widest text-[#FAF8F5] uppercase transition-colors hover:bg-[#1F2C25]"
+            onClick={() => setShowConfirmation(false)}
+          >
+            Done
+          </button>
         </DialogContent>
       </Dialog>
     </>
@@ -283,12 +291,12 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-teal-dark">
+    <label className="block space-y-1.5">
+      <span className="block text-xs font-medium tracking-wide text-[#1F2C25]">
         {label}
       </span>
       {children}
-      {error && <span className="mt-1 block text-xs text-red-600">{error}</span>}
+      {error && <span className="block text-xs text-red-600 font-light">{error}</span>}
     </label>
   );
 }

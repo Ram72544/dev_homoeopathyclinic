@@ -1,93 +1,96 @@
 "use client";
 
-import { useState, type MouseEvent } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site-config";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
-
-function handleTiltMove(e: MouseEvent<HTMLButtonElement>) {
-  const el = e.currentTarget;
-  const rect = el.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -2;
-  const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 2;
-  el.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-}
-
-function handleTiltLeave(e: MouseEvent<HTMLButtonElement>) {
-  e.currentTarget.style.transform = "";
-}
+import { motion } from "framer-motion";
 
 export function WhatWeTreat() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-surface py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <FadeUp className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gold-dark">
-            Our Services
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-teal-dark sm:text-4xl">
-            Conditions we care for
-          </h2>
-          <p className="mt-4 text-base text-muted">
-            Holistic homoeopathic treatment across a wide range of acute and
-            chronic conditions.
-          </p>
-        </FadeUp>
+    <section id="services" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
+      {/* Soft Faded Luxury Ambient Light (Replacing Solid Background & Hard Border) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[900px] rounded-full bg-radial from-[#F0EADF]/60 via-[#F7F3EC]/30 to-transparent blur-3xl" />
+      </div>
 
-        <StaggerContainer className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <span className="text-xs font-light tracking-[0.25em] text-[#C5A059] uppercase">
+            Curated Specializations
+          </span>
+          <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1F2C25]">
+            Conditions We Heal
+          </h2>
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#5C6B62]">
+            Comprehensive, individualized homoeopathic remedies designed to restore your body's natural harmony.
+          </p>
+        </motion.div>
+
+        {/* Faded Glassmorphism Cards Grid */}
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {site.services.map((service, index) => {
             const Icon = service.icon;
             const isOpen = openIndex === index;
             return (
-              <StaggerItem key={service.title} className="flex">
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  onMouseMove={handleTiltMove}
-                  onMouseLeave={handleTiltLeave}
                   aria-expanded={isOpen}
-                  className={`card-luxury group flex h-full w-full flex-col rounded-xl border p-6 text-left transition-colors ${
+                  className={`group relative flex h-full w-full flex-col justify-between rounded-3xl border p-7 text-left backdrop-blur-md transition-all duration-500 ${
                     isOpen
-                      ? "border-gold/40 bg-white shadow-md"
-                      : "border-border bg-white shadow-sm hover:border-gold/25"
+                      ? "border-[#C5A059] bg-white/95 shadow-xl scale-[1.01]"
+                      : "border-white/80 bg-white/60 shadow-lg shadow-[#2C4036]/5 hover:border-[#C5A059]/40 hover:bg-white/85 hover:shadow-xl"
                   }`}
-                  style={{ willChange: "transform" }}
                 >
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-lg transition-colors duration-300 ${
-                        isOpen
-                          ? "bg-teal-dark text-white"
-                          : "bg-mint-soft text-teal-dark group-hover:bg-mint/30"
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md group-hover:scale-105 transition-all duration-300">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FAF8F5] border border-[#E8E1D5] text-[#2C4036]">
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            isOpen ? "rotate-180 text-[#C5A059]" : ""
+                          }`}
+                        />
+                      </div>
+                    </div>
+
+                    <h3 className="mt-6 font-serif text-xl font-normal text-[#1F2C25]">
+                      {service.title}
+                    </h3>
+                    <p
+                      className={`mt-2.5 text-sm font-light leading-relaxed text-[#5C6B62] transition-all duration-300 ${
+                        isOpen ? "block" : "line-clamp-3"
                       }`}
                     >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <ChevronDown
-                      className={`h-4 w-4 text-muted transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="mt-4 text-base font-bold text-teal-dark">
-                    {service.title}
-                  </h3>
-                  <p
-                    className={`mt-2 text-sm leading-relaxed text-muted transition-all duration-300 ${
-                      isOpen ? "block" : "line-clamp-2"
-                    }`}
-                  >
-                    {service.description}
-                  </p>
+
+                  <div className="mt-4 flex justify-end">
+                    <ArrowUpRight className="h-4 w-4 text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                 </button>
-              </StaggerItem>
+              </motion.div>
             );
           })}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

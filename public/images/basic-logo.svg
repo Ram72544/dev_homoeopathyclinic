@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <circle cx="100" cy="85" r="55" fill="none" stroke="#2C4036" stroke-width="3" />
+  
+  <!-- Leaf Vector -->
+  <path d="M 100 45 C 75 60 70 95 92 115 C 80 90 90 65 100 45 Z" fill="#4A6B5D" />
+  <path d="M 100 45 C 95 70 85 95 92 115" fill="none" stroke="#FAF8F5" stroke-width="1.5" />
+  
+  <!-- Healing Drop Vector -->
+  <path d="M 100 45 C 125 60 130 95 108 115 C 120 90 110 65 100 45 Z" fill="#C5A059" />
+
+  <!-- Base Leaf Stem Curve -->
+  <path d="M 92 115 C 98 128 115 132 135 125" fill="none" stroke="#2C4036" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Clean Typography -->
+  <text x="100" y="160" font-family="serif, Georgia" font-size="14" font-weight="600" fill="#1F2C25" text-anchor="middle" letter-spacing="1.5">DR. SHEETAL</text>
+  <text x="100" y="176" font-family="sans-serif, system-ui" font-size="8" font-weight="400" fill="#7A8A80" text-anchor="middle" letter-spacing="2">HOMOEOPATHY CLINIC</text>
+</svg>
