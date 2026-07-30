@@ -65,18 +65,18 @@ export function Hero() {
               >
                 <a
                   href={site.bookingUrl}
-                  className="group relative inline-flex items-center gap-2.5 rounded-full bg-[#1F2C25] px-8 py-4 text-xs font-light tracking-widest text-[#FAF8F5] uppercase shadow-lg transition-all duration-500 hover:bg-[#0E7C7B] hover:shadow-xl hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center gap-2.5 rounded-full bg-[#1F2C25] px-7 py-3.5 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-lg transition-all duration-300 hover:bg-[#0E7C7B] hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <Calendar className="h-4 w-4 text-[#C5A059]" />
                   <span>Schedule Visit</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="h-4 w-4 opacity-80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
 
                 <a
                   href={`tel:${site.phone}`}
-                  className="inline-flex items-center gap-2.5 rounded-full border border-white/90 bg-white/70 px-8 py-4 text-xs font-light tracking-widest text-[#1F2C25] uppercase backdrop-blur-md shadow-xs transition-all duration-500 hover:border-[#1F2C25] hover:bg-white hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-[#1F2C25]/15 bg-white/80 px-7 py-3.5 text-sm font-medium tracking-wide text-[#1F2C25] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#1F2C25] hover:bg-white hover:-translate-y-0.5"
                 >
-                  <Phone className="h-3.5 w-3.5 text-[#0E7C7B]" />
+                  <Phone className="h-4 w-4 text-[#0E7C7B]" />
                   <span>Call Doctor</span>
                 </a>
               </motion.div>
