@@ -17,12 +17,12 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        
+
         {/* Main Floating Spatial Glass Window Panel */}
         <div className="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-[#FAF8F5]/65 p-8 sm:p-12 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.06)] backdrop-blur-2xl [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
-          
+
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            
+
             {/* Left Column: Spatial Hero Content */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
@@ -112,7 +112,7 @@ export function Hero() {
               className="lg:col-span-5 relative"
             >
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/70 p-5 shadow-2xl backdrop-blur-2xl">
-                
+
                 {/* Expanded High-Quality Image Container */}
                 <div className="relative h-[450px] sm:h-[540px] lg:h-[580px] w-full overflow-hidden rounded-[2rem]">
                   <Image

@@ -232,3 +232,6 @@
     <circle cx="268" cy="323" r="3.6" fill="url(#pillShine)"/>
   </g>
 </svg>
+    <path d="M 0 -14 Q 0 0 14 0 Q 0 0 0 14 Q 0 0 -14 0 Q 0 0 0 -14 Z" fill="url(#gold-grad-c10-v2)" />
+  </g>
+</svg>

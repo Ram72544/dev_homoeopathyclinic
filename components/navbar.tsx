@@ -18,7 +18,7 @@ export function Navbar() {
     >
       {/* Floating Spatial Glass Navigation Bar (Fluid Responsive Under High Browser Zoom) */}
       <nav className="w-full flex items-center justify-between rounded-[2.5rem] border border-white/80 bg-[#FAF8F5]/65 px-3.5 sm:px-6 lg:px-8 xl:px-12 py-2.5 sm:py-3.5 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.06)] [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
-        
+
         {/* Brand with 3D Medicine Vial & Leaf Logo */}
         <a
           href="#home"

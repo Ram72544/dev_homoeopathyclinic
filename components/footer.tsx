@@ -36,11 +36,11 @@ export function Footer() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        
+
         {/* Floating Spatial Footer Container */}
         <div className="rounded-[2.5rem] border border-white/80 bg-white/60 p-8 sm:p-12 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
           <div className="grid gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-12 pb-12 border-b border-[#EAE3DA]/80">
-            
+
             {/* Column 1: Brand & Vial Logo */}
             <div className="lg:col-span-4 space-y-4">
               <div className="flex items-center gap-4">
