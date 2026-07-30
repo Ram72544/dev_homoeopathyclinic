@@ -77,16 +77,16 @@ export function Footer() {
             </div>
 
             {/* Column 2: Quick Links */}
-            <div className="lg:col-span-2 space-y-3">
-              <h4 className="font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B]">
+            <div className="lg:col-span-2 space-y-4">
+              <h4 className="font-sans text-sm sm:text-base font-bold uppercase tracking-widest text-[#0E7C7B]">
                 Navigation
               </h4>
-              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#5C6B62]">
+              <ul className="space-y-3 text-sm sm:text-base font-normal leading-relaxed text-[#3B4A41]">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="transition-colors hover:text-[#0E7C7B]"
+                      className="transition-colors hover:text-[#0E7C7B] font-medium"
                     >
                       {link.label}
                     </a>
@@ -96,11 +96,11 @@ export function Footer() {
             </div>
 
             {/* Column 3: Specializations */}
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B]">
+            <div className="lg:col-span-3 space-y-4">
+              <h4 className="font-sans text-sm sm:text-base font-bold uppercase tracking-widest text-[#0E7C7B]">
                 Specialized Care
               </h4>
-              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#5C6B62]">
+              <ul className="space-y-3 text-sm sm:text-base font-normal leading-relaxed text-[#3B4A41]">
                 <li>Skin & Hair Allergies</li>
                 <li>Cough, Sinus & Asthma</li>
                 <li>Gas, Acidity & Stomach</li>
@@ -110,36 +110,36 @@ export function Footer() {
             </div>
 
             {/* Column 4: Contact Info */}
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B]">
+            <div className="lg:col-span-3 space-y-4">
+              <h4 className="font-sans text-sm sm:text-base font-bold uppercase tracking-widest text-[#0E7C7B]">
                 Clinic Contact
               </h4>
-              <ul className="space-y-3 text-sm font-light leading-relaxed text-[#5C6B62]">
+              <ul className="space-y-3.5 text-sm sm:text-base font-normal leading-relaxed text-[#3B4A41]">
                 <li className="flex items-start gap-2.5">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-light">
+                  <Phone className="mt-1 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-medium">
                     {site.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <MessageCircle className="mt-1 h-4 w-4 shrink-0 text-[#0E7C7B]" />
                   <a
                     href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Dr. Sheetal, I would like to consult about...")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#0E7C7B] transition-colors font-light"
+                    className="hover:text-[#0E7C7B] transition-colors font-medium"
                   >
                     WhatsApp: {site.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors font-light">
+                  <Mail className="mt-1 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors font-medium">
                     {site.email}
                   </a>
                 </li>
-                <li className="flex items-start gap-2.5 font-light leading-relaxed text-[#5C6B62]">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                <li className="flex items-start gap-2.5 font-normal leading-relaxed text-[#3B4A41]">
+                  <MapPin className="mt-1 h-4 w-4 shrink-0 text-[#0E7C7B]" />
                   <span>{site.address}</span>
                 </li>
               </ul>
