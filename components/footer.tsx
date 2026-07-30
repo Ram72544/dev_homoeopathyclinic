@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Phone, Mail, MapPin, ExternalLink, Sparkles } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink, Sparkles, MessageCircle } from "lucide-react";
 import { navLinks, site } from "@/lib/site-config";
 
 const structuredData = {
@@ -119,6 +119,17 @@ export function Footer() {
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
                   <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-light">
                     {site.phoneDisplay}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
+                  <a
+                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Dr. Sheetal, I would like to consult about...")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#0E7C7B] transition-colors font-light"
+                  >
+                    WhatsApp: {site.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">

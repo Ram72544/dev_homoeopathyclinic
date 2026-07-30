@@ -6,8 +6,6 @@ import { About } from "@/components/about";
 import { Testimonials } from "@/components/testimonials";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
-import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { MobileBookCta } from "@/components/mobile-book-cta";
 
 export default function Home() {
   return (
@@ -33,8 +31,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <WhatsAppFloat />
-      <MobileBookCta />
     </>
   );
 }
