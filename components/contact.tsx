@@ -32,7 +32,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-12">
+        <div className="mt-14 grid gap-12 lg:grid-cols-12 items-stretch">
           
           {/* Left Column: Info & Map */}
           <motion.div
@@ -40,7 +40,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6 space-y-4"
+            className="lg:col-span-6 space-y-4 flex flex-col justify-between"
           >
             <InfoRow icon={<Phone className="h-4 w-4" />} label="Call Doctor Directly">
               <a href={`tel:${site.phone}`} className="font-sans font-normal text-base sm:text-lg text-[#1F2C25] tracking-wide hover:text-[#0E7C7B] transition-colors">
@@ -100,13 +100,13 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Column: Booking Form */}
+          {/* Right Column: Booking Form (Symmetrical Height to Map) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6"
+            className="lg:col-span-6 flex flex-col h-full"
           >
             <AppointmentForm />
           </motion.div>
