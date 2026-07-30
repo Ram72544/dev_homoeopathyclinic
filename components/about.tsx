@@ -26,10 +26,9 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-1.5 text-xs tracking-widest text-[#4A6B5D] uppercase backdrop-blur-md shadow-2xs">
-              <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
-              <span>Practitioner Profile</span>
-            </div>
+            <span className="text-xs font-light tracking-[0.25em] text-[#C5A059] uppercase block">
+              Practitioner Profile
+            </span>
 
             <h2 className="font-serif text-4xl sm:text-5xl font-normal text-[#1F2C25] leading-tight">
               Meet {about.doctorName}
