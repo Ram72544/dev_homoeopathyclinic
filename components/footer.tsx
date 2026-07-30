@@ -81,7 +81,7 @@ export function Footer() {
               <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
                 Navigation
               </h4>
-              <ul className="space-y-2.5 text-sm font-normal text-[#2C4036]">
+              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#5C6B62]">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
@@ -100,7 +100,7 @@ export function Footer() {
               <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
                 Specialized Care
               </h4>
-              <ul className="space-y-2.5 text-sm font-normal text-[#2C4036]">
+              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#5C6B62]">
                 <li>Skin & Hair Allergies</li>
                 <li>Cough, Sinus & Asthma</li>
                 <li>Gas, Acidity & Stomach</li>
@@ -114,20 +114,20 @@ export function Footer() {
               <h4 className="font-sans text-xs font-normal tracking-[0.2em] text-[#0E7C7B] uppercase">
                 Clinic Contact
               </h4>
-              <ul className="space-y-3 text-sm font-light text-[#2C4036]">
+              <ul className="space-y-3 text-sm font-light leading-relaxed text-[#5C6B62]">
                 <li className="flex items-start gap-2.5">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-normal">
+                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-light">
                     {site.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors text-xs">
+                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors font-light">
                     {site.email}
                   </a>
                 </li>
-                <li className="flex items-start gap-2.5 text-xs leading-relaxed text-[#5C6B62]">
+                <li className="flex items-start gap-2.5 font-light leading-relaxed text-[#5C6B62]">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
                   <span>{site.address}</span>
                 </li>
@@ -137,7 +137,7 @@ export function Footer() {
                 href={site.googleUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0E7C7B] hover:underline pt-1"
+                className="inline-flex items-center gap-1.5 text-sm font-light text-[#0E7C7B] hover:underline pt-1"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 <span>Google Maps Location & Reviews</span>
