@@ -14,18 +14,18 @@ export function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-4 z-50 mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10"
+      className="sticky top-2 sm:top-4 z-40 mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-10"
     >
-      {/* Floating Spatial Glass Navigation Bar (Fluid Responsive Across Nest Hub, iPad & Desktop) */}
-      <nav className="w-full flex items-center justify-between rounded-[2.5rem] border border-white/80 bg-[#FAF8F5]/65 px-4 sm:px-6 lg:px-8 xl:px-12 py-3 sm:py-4 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.06)] [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
+      {/* Floating Spatial Glass Navigation Bar (Fluid Responsive Under High Browser Zoom) */}
+      <nav className="w-full flex items-center justify-between rounded-[2.5rem] border border-white/80 bg-[#FAF8F5]/65 px-3.5 sm:px-6 lg:px-8 xl:px-12 py-2.5 sm:py-3.5 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.06)] [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
         
         {/* Brand with 3D Medicine Vial & Leaf Logo */}
         <a
           href="#home"
-          className="flex items-center gap-2.5 sm:gap-4 shrink-0 group mr-2 sm:mr-4 lg:mr-6"
+          className="flex items-center gap-2 sm:gap-4 shrink-0 group mr-2 sm:mr-4 lg:mr-6 min-w-0"
           aria-label={site.name}
         >
-          <div className="relative h-11 w-11 sm:h-12 sm:w-12 lg:h-14 lg:w-14 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-0.5 sm:p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/logo-mark-3d.svg"
               alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
@@ -36,16 +36,16 @@ export function Navbar() {
             />
           </div>
           <span className="leading-tight shrink-0">
-            <span className="block font-serif text-xs sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
+            <span className="block font-serif text-[11px] sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
               Dr. Sheetal&apos;s
             </span>
-            <span className="block font-serif text-xs sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
+            <span className="block font-serif text-[11px] sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
               Homoeopathy Clinic
             </span>
           </span>
         </a>
 
-        {/* Desktop Links (lg:flex for Nest Hub 1024px & Up) */}
+        {/* Desktop Links (lg:flex for 1024px & Up) */}
         <ul className="hidden items-center gap-3 lg:gap-5 xl:gap-8 lg:flex shrink-0">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -74,7 +74,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-full p-2 text-[#1F2C25] transition-colors hover:bg-white/80 lg:hidden"
+          className="inline-flex items-center justify-center rounded-full p-2 text-[#1F2C25] transition-colors hover:bg-white/80 lg:hidden shrink-0"
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -83,7 +83,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Spatial Mobile & Tablet Menu Panel */}
+      {/* Spatial Mobile & Tablet Menu Panel (Zoom Safe) */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -92,7 +92,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="mt-3 overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-6 shadow-2xl backdrop-blur-2xl lg:hidden"
+            className="mt-2.5 max-h-[75vh] overflow-y-auto rounded-3xl border border-white/80 bg-white/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50"
           >
             <ul className="flex flex-col gap-2">
               {navLinks.map((link) => (
