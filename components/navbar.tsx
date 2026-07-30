@@ -25,12 +25,12 @@ export function Navbar() {
           className="flex items-center gap-2 sm:gap-4 shrink-0 group mr-2 sm:mr-4 lg:mr-6 min-w-0"
           aria-label={site.name}
         >
-          <div className="relative h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-0.5 sm:p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/logo-mark-3d.svg"
               alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
-              width={56}
-              height={56}
+              width={64}
+              height={64}
               priority
               className="h-full w-full object-contain"
             />

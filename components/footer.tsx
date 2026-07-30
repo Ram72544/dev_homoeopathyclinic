@@ -43,13 +43,13 @@ export function Footer() {
             
             {/* Column 1: Brand & Vial Logo */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="flex items-center gap-3.5">
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white/90 p-1 shadow-xs">
+              <div className="flex items-center gap-4">
+                <div className="relative h-18 w-18 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white/90 p-1.5 shadow-md">
                   <Image
                     src="/logo-mark-3d.svg"
                     alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
-                    width={48}
-                    height={48}
+                    width={80}
+                    height={80}
                     className="h-full w-full object-contain"
                   />
                 </div>
