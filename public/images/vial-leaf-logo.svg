@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
   <defs>
-    <!-- True transparent glass: nearly invisible body, visible only at edges -->
+    <!-- Glass Refractions & Sheens -->
     <linearGradient id="glassEdgeL" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#0E7C7B" stop-opacity="0.85"/>
       <stop offset="100%" stop-color="#0E7C7B" stop-opacity="0"/>
@@ -10,16 +10,16 @@
       <stop offset="100%" stop-color="#0E7C7B" stop-opacity="0.75"/>
     </linearGradient>
     <linearGradient id="glassBottomCurve" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0E7C7B" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#0E7C7B" stop-opacity="0.3"/>
+      <stop offset="0%" stop-color="#0E7C7B" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0E7C7B" stop-opacity="0.35"/>
     </linearGradient>
     <linearGradient id="glassSheen" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65"/>
-      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
 
-    <!-- Cap: Brushed Deep Emerald & Gold Rim -->
+    <!-- Cap: Brushed Deep Emerald & Gold Accent Rim -->
     <linearGradient id="capBody" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#122019"/>
       <stop offset="20%" stop-color="#1F2C25"/>
@@ -35,23 +35,23 @@
     </linearGradient>
     <linearGradient id="capRimGold" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#C5A059"/>
-      <stop offset="50%" stop-color="#E5C583"/>
+      <stop offset="50%" stop-color="#F2DFB3"/>
       <stop offset="100%" stop-color="#C5A059"/>
     </linearGradient>
 
-    <!-- Natural Emerald Leaves with Warm Gold Accents -->
+    <!-- Emerald Leaves (Placed Behind Vial Body) -->
     <linearGradient id="leafL" x1="100%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="#14331C"/>
-      <stop offset="25%" stop-color="#1F522E"/>
-      <stop offset="50%" stop-color="#2D7A45"/>
-      <stop offset="75%" stop-color="#47A364"/>
+      <stop offset="30%" stop-color="#1F522E"/>
+      <stop offset="60%" stop-color="#2D7A45"/>
+      <stop offset="85%" stop-color="#47A364"/>
       <stop offset="100%" stop-color="#6EC88B"/>
     </linearGradient>
     <linearGradient id="leafR" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#14331C"/>
-      <stop offset="25%" stop-color="#1F522E"/>
-      <stop offset="50%" stop-color="#2D7A45"/>
-      <stop offset="75%" stop-color="#47A364"/>
+      <stop offset="30%" stop-color="#1F522E"/>
+      <stop offset="60%" stop-color="#2D7A45"/>
+      <stop offset="85%" stop-color="#47A364"/>
       <stop offset="100%" stop-color="#6EC88B"/>
     </linearGradient>
 
@@ -59,9 +59,9 @@
     <radialGradient id="pill" cx="30%" cy="25%" r="75%">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="35%" stop-color="#FAF8F5"/>
-      <stop offset="65%" stop-color="#EBE3D3"/>
-      <stop offset="88%" stop-color="#D8CBAD"/>
-      <stop offset="100%" stop-color="#BEAF8A"/>
+      <stop offset="65%" stop-color="#ECE4D2"/>
+      <stop offset="88%" stop-color="#D6C8A6"/>
+      <stop offset="100%" stop-color="#B8A77E"/>
     </radialGradient>
     <radialGradient id="pillShine" cx="28%" cy="20%" r="25%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
@@ -80,91 +80,68 @@
     </filter>
   </defs>
 
-  <!-- Ground Shadow -->
-  <ellipse cx="200" cy="352" rx="84" ry="12" fill="#0D1812" opacity="0.16" filter="url(#softShadow)"/>
+  <!-- LAYER 1: Ground Shadow -->
+  <ellipse cx="200" cy="354" rx="86" ry="12" fill="#0D1812" opacity="0.18" filter="url(#softShadow)"/>
 
-  <!-- LEFT LEAF -->
-  <g>
-    <path d="M192,298 C148,298 68,278 30,194 C26,184 30,178 40,182 C116,208 174,242 192,298 Z" fill="url(#leafL)"/>
-    <path d="M192,298 C164,290 124,270 96,244 C132,262 168,278 192,298 Z" fill="#0A1D10" opacity="0.45" filter="url(#thinBlur)"/>
-    <path d="M186,290 C152,254 104,220 46,190" fill="none" stroke="#E5C583" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-    <g stroke="#E5C583" stroke-width="1.2" stroke-linecap="round" opacity="0.5" fill="none">
-      <path d="M72,204 C80,214 83,226 81,236"/>
-      <path d="M104,222 C112,234 115,244 113,256"/>
-      <path d="M136,244 C143,254 146,264 144,274"/>
+  <!-- LAYER 2: BACKGROUND LEAVES (Placed BEHIND the Vial & Globules) -->
+  <g id="leaf-background">
+    <!-- LEFT LEAF (Curving outward behind left edge of vial) -->
+    <g>
+      <path d="M172,275 C120,285 58,265 24,192 C20,182 24,176 34,180 C106,204 156,238 172,275 Z" fill="url(#leafL)"/>
+      <path d="M172,275 C146,268 110,250 84,228 C116,244 148,258 172,275 Z" fill="#0A1D10" opacity="0.45" filter="url(#thinBlur)"/>
+      <path d="M166,268 C136,236 94,206 40,180" fill="none" stroke="#E5C583" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+      <g stroke="#E5C583" stroke-width="1.2" stroke-linecap="round" opacity="0.5" fill="none">
+        <path d="M68,198 C75,208 78,218 76,228"/>
+        <path d="M96,214 C103,224 106,234 104,244"/>
+        <path d="M124,232 C131,242 133,250 131,258"/>
+      </g>
+      <path d="M36,182 C80,200 124,224 156,258 C116,230 74,204 36,182 Z" fill="#FFFFFF" opacity="0.1"/>
     </g>
-    <path d="M42,184 C90,204 138,230 174,268 C130,238 84,208 42,184 Z" fill="#FFFFFF" opacity="0.1"/>
+
+    <!-- RIGHT LEAF (Curving outward behind right edge of vial) -->
+    <g>
+      <path d="M228,275 C280,285 342,265 376,192 C380,182 376,176 366,180 C294,204 244,238 228,275 Z" fill="url(#leafR)"/>
+      <path d="M228,275 C254,268 290,250 316,228 C284,244 252,258 228,275 Z" fill="#0A1D10" opacity="0.45" filter="url(#thinBlur)"/>
+      <path d="M234,268 C264,236 306,206 360,180" fill="none" stroke="#E5C583" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+      <g stroke="#E5C583" stroke-width="1.2" stroke-linecap="round" opacity="0.5" fill="none">
+        <path d="M332,198 C325,208 322,218 324,228"/>
+        <path d="M304,214 C297,224 294,234 296,244"/>
+        <path d="M276,232 C269,242 267,250 269,258"/>
+      </g>
+      <path d="M364,182 C320,200 276,224 244,258 C284,230 326,204 364,182 Z" fill="#FFFFFF" opacity="0.1"/>
+    </g>
   </g>
 
-  <!-- RIGHT LEAF -->
-  <g>
-    <path d="M208,298 C252,298 332,278 370,194 C374,184 370,178 360,182 C284,208 226,242 208,298 Z" fill="url(#leafR)"/>
-    <path d="M208,298 C236,290 276,270 304,244 C268,262 232,278 208,298 Z" fill="#0A1D10" opacity="0.45" filter="url(#thinBlur)"/>
-    <path d="M214,290 C248,254 296,220 354,190" fill="none" stroke="#E5C583" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-    <g stroke="#E5C583" stroke-width="1.2" stroke-linecap="round" opacity="0.5" fill="none">
-      <path d="M328,204 C320,214 317,226 319,236"/>
-      <path d="M296,222 C288,234 285,244 287,256"/>
-      <path d="M264,244 C257,254 254,264 256,274"/>
-    </g>
-    <path d="M358,184 C310,204 262,230 226,268 C270,238 316,208 358,184 Z" fill="#FFFFFF" opacity="0.1"/>
-  </g>
-
-  <!-- VIAL & INSIDE GLOBULES -->
-  <g>
-    <!-- Vial shadow on leaves -->
+  <!-- LAYER 3: VIAL & STACKED GLOBULES (IN FRONT OF LEAVES) -->
+  <g id="vial-and-globules-foreground">
+    <!-- Vial shadow -->
     <ellipse cx="200" cy="302" rx="34" ry="8" fill="#0D1812" opacity="0.25" filter="url(#softShadow)"/>
 
-    <!-- Glass body: TRANSPARENT fill -->
-    <path d="M168,132 L232,132 L232,274 C232,290 218,300 200,300 C182,300 168,290 168,274 Z"
-          fill="#B8E8E4" fill-opacity="0.05"/>
+    <!-- Glass body: Crystal transparent background -->
+    <path d="M168,125 L232,125 L232,274 C232,290 218,300 200,300 C182,300 168,290 168,274 Z"
+          fill="#FFFFFF" fill-opacity="0.85"/>
+    <path d="M168,125 L232,125 L232,274 C232,290 218,300 200,300 C182,300 168,290 168,274 Z"
+          fill="#B8E8E4" fill-opacity="0.12"/>
 
-    <!-- Left edge -->
-    <path d="M168,132 L168,274 C168,290 182,300 200,300"
-          fill="none" stroke="url(#glassEdgeL)" stroke-width="3"/>
-    <!-- Right edge -->
-    <path d="M232,132 L232,274 C232,290 218,300 200,300"
-          fill="none" stroke="url(#glassEdgeR)" stroke-width="3"/>
-    <!-- Top edge -->
-    <line x1="168" y1="132" x2="232" y2="132" stroke="#0E7C7B" stroke-width="2.5" stroke-opacity="0.6"/>
-
-    <!-- Bottom curve glass thickness -->
-    <path d="M170,278 C178,294 222,294 230,278 C222,298 178,298 170,278 Z" fill="url(#glassBottomCurve)"/>
-
-    <!-- Primary left highlight streak -->
-    <path d="M176,140 C175,185 175,230 176,270" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.75" filter="url(#thinBlur)"/>
-    <path d="M183,144 C182,190 182,230 183,264" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-
-    <!-- Secondary left highlight -->
-    <path d="M172,155 C171,200 171,240 172,268" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
-
-    <!-- Right subtle reflection -->
-    <path d="M222,145 C223,190 223,235 222,268" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
-
-    <!-- Top area sheen -->
-    <path d="M170,132 L230,132 L228,165 C215,170 185,170 172,165 Z" fill="url(#glassSheen)" opacity="0.25"/>
-
-    <!-- Bottom caustic glow -->
-    <path d="M185,288 C192,294 208,294 215,288" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.3" filter="url(#glow)"/>
-
-    <!-- GLOBULES INSIDE VIAL (7 Sweet Homeopathic Pills Fill Pyramid Stack) -->
-    <g id="vial-globules">
-      <!-- Bottom Layer (3 globules sitting at base) -->
+    <!-- 8 STACKED HOMEOPATHIC GLOBULES (RENDERED CLEARLY INSIDE VIAL) -->
+    <g id="vial-globules-stacked">
+      <!-- Tier 1: Base (3 Globules) -->
       <circle cx="183" cy="281" r="11" fill="url(#pill)"/>
       <circle cx="200" cy="282" r="11" fill="url(#pill)"/>
       <circle cx="217" cy="281" r="11" fill="url(#pill)"/>
 
-      <!-- Second Layer (2 globules nestled above bottom layer) -->
+      <!-- Tier 2: Middle (2 Globules) -->
       <circle cx="191" cy="264" r="11" fill="url(#pill)"/>
       <circle cx="209" cy="264" r="11" fill="url(#pill)"/>
 
-      <!-- Third Layer (2 globules stacked higher) -->
+      <!-- Tier 3: Upper (2 Globules) -->
       <circle cx="196" cy="247" r="10.5" fill="url(#pill)"/>
       <circle cx="204" cy="247" r="10.5" fill="url(#pill)"/>
 
-      <!-- Top Peak Globule (1 bonus globule crowning the vial fill) -->
-      <circle cx="200" cy="231" r="9.5" fill="url(#pill)"/>
+      <!-- Tier 4: Peak (1 Globule crowning upper stack) -->
+      <circle cx="200" cy="230" r="9.5" fill="url(#pill)"/>
 
-      <!-- Globule Highlights & Shines for 3D Luminous Pill Depth -->
+      <!-- 3D Highlights on all 8 Globules -->
       <circle cx="179" cy="276" r="3.8" fill="url(#pillShine)"/>
       <circle cx="196" cy="277" r="3.8" fill="url(#pillShine)"/>
       <circle cx="213" cy="276" r="3.8" fill="url(#pillShine)"/>
@@ -172,37 +149,66 @@
       <circle cx="205" cy="259" r="3.8" fill="url(#pillShine)"/>
       <circle cx="192" cy="242" r="3.5" fill="url(#pillShine)"/>
       <circle cx="200" cy="242" r="3.5" fill="url(#pillShine)"/>
-      <circle cx="197" cy="227" r="3.2" fill="url(#pillShine)"/>
+      <circle cx="197" cy="226" r="3.2" fill="url(#pillShine)"/>
     </g>
 
+    <!-- Glass Refraction Edges OVER Globules -->
+    <!-- Left edge -->
+    <path d="M168,125 L168,274 C168,290 182,300 200,300"
+          fill="none" stroke="url(#glassEdgeL)" stroke-width="3.5"/>
+    <!-- Right edge -->
+    <path d="M232,125 L232,274 C232,290 218,300 200,300"
+          fill="none" stroke="url(#glassEdgeR)" stroke-width="3.5"/>
+    <!-- Top edge -->
+    <line x1="168" y1="125" x2="232" y2="125" stroke="#0E7C7B" stroke-width="2.5" stroke-opacity="0.6"/>
+
+    <!-- Bottom curve glass thickness -->
+    <path d="M170,278 C178,294 222,294 230,278 C222,298 178,298 170,278 Z" fill="url(#glassBottomCurve)"/>
+
+    <!-- Primary left glass highlight streak -->
+    <path d="M176,135 C175,180 175,230 176,270" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.8" filter="url(#thinBlur)"/>
+    <path d="M183,140 C182,185 182,230 183,264" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Secondary left highlight -->
+    <path d="M172,150 C171,195 171,240 172,268" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Right subtle reflection -->
+    <path d="M222,140 C223,185 223,235 222,268" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Top area sheen -->
+    <path d="M170,125 L230,125 L228,160 C215,165 185,165 172,160 Z" fill="url(#glassSheen)" opacity="0.3"/>
+
+    <!-- Bottom caustic glow -->
+    <path d="M185,288 C192,294 208,294 215,288" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.35" filter="url(#glow)"/>
+
     <!-- Neck shadow under cap -->
-    <rect x="168" y="132" width="64" height="8" rx="2" fill="#0D1812" opacity="0.35"/>
+    <rect x="168" y="125" width="64" height="8" rx="2" fill="#0D1812" opacity="0.35"/>
 
     <!-- CAP -->
-    <g>
-      <rect x="158" y="86" width="84" height="50" rx="7" fill="url(#capBody)"/>
-      <ellipse cx="200" cy="89" rx="42" ry="7.5" fill="url(#capTop)"/>
+    <g id="vial-cap">
+      <rect x="158" y="80" width="84" height="50" rx="7" fill="url(#capBody)"/>
+      <ellipse cx="200" cy="83" rx="42" ry="7.5" fill="url(#capTop)"/>
       
       <!-- Gold Rim Ring on Cap -->
-      <rect x="158" y="130" width="84" height="6" rx="2" fill="url(#capRimGold)"/>
+      <rect x="158" y="124" width="84" height="6" rx="2" fill="url(#capRimGold)"/>
       
       <!-- Ribs -->
       <g stroke="#08140E" stroke-width="2" opacity="0.45">
-        <line x1="172" y1="94" x2="172" y2="130"/>
-        <line x1="184" y1="93" x2="184" y2="130"/>
-        <line x1="196" y1="92" x2="196" y2="130"/>
-        <line x1="208" y1="92" x2="208" y2="130"/>
-        <line x1="220" y1="93" x2="220" y2="130"/>
-        <line x1="232" y1="94" x2="232" y2="130"/>
+        <line x1="172" y1="88" x2="172" y2="124"/>
+        <line x1="184" y1="87" x2="184" y2="124"/>
+        <line x1="196" y1="86" x2="196" y2="124"/>
+        <line x1="208" y1="86" x2="208" y2="124"/>
+        <line x1="220" y1="87" x2="220" y2="124"/>
+        <line x1="232" y1="88" x2="232" y2="124"/>
       </g>
       <!-- Cap highlights -->
-      <path d="M178,94 C178,106 178,118 178,128" stroke="#5AD4CF" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
-      <path d="M186,93 C186,105 186,117 186,128" stroke="#B4F5F1" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
-      <ellipse cx="192" cy="88" rx="16" ry="3" fill="#FFFFFF" opacity="0.25"/>
+      <path d="M178,88 C178,100 178,112 178,122" stroke="#5AD4CF" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+      <path d="M186,87 C186,99 186,111 186,122" stroke="#B4F5F1" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
+      <ellipse cx="192" cy="82" rx="16" ry="3" fill="#FFFFFF" opacity="0.25"/>
     </g>
   </g>
 
-  <!-- SCATTERED GLOBULES UNDERNEATH -->
+  <!-- LAYER 4: SCATTERED GLOBULES UNDERNEATH -->
   <g id="scattered-globules">
     <!-- Shadows -->
     <ellipse cx="148" cy="342" rx="10" ry="3" fill="#0D1812" opacity="0.2" filter="url(#thinBlur)"/>
