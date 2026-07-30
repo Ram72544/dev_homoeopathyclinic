@@ -60,7 +60,7 @@ export function Footer() {
                   <span className="block font-serif text-lg font-normal text-[#1F2C25]">
                     Homoeopathy Clinic
                   </span>
-                  <span className="block text-[9px] font-light uppercase tracking-[0.2em] text-[#0E7C7B] mt-0.5">
+                  <span className="block font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B] mt-1">
                     Natural Family Healing
                   </span>
                 </span>
