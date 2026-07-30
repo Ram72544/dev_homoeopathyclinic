@@ -27,10 +27,11 @@ export function Navbar() {
         >
           <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/logo-mark-3d.svg"
+              src="/logo-first-original.png"
               alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
-              width={64}
-              height={64}
+              width={256}
+              height={256}
+              unoptimized
               priority
               className="h-full w-full object-contain"
             />

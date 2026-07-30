@@ -46,10 +46,11 @@ export function Footer() {
               <div className="flex items-center gap-4">
                 <div className="relative h-18 w-18 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white/90 p-1.5 shadow-md">
                   <Image
-                    src="/logo-mark-3d.svg"
+                    src="/logo-first-original.png"
                     alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
-                    width={80}
-                    height={80}
+                    width={256}
+                    height={256}
+                    unoptimized
                     className="h-full w-full object-contain"
                   />
                 </div>
