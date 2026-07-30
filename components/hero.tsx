@@ -68,7 +68,7 @@ export function Hero() {
                   className="group relative inline-flex items-center gap-2.5 rounded-full bg-[#1F2C25] px-8 py-4 text-xs font-light tracking-widest text-[#FAF8F5] uppercase shadow-lg transition-all duration-500 hover:bg-[#0E7C7B] hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <Calendar className="h-4 w-4 text-[#C5A059]" />
-                  <span>Book Consultation</span>
+                  <span>Consult Dr. Sheetal</span>
                   <ArrowUpRight className="h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
 
