@@ -230,7 +230,7 @@ export function AppointmentForm() {
                     field.onChange(match ? match[0] : "");
                   }}
                   className="w-full resize-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-                  placeholder="Describe your health problem (e.g. skin allergy, severe acidity, sinusitis...)"
+                  placeholder="Describe your health problem (e.g. skin allergy, acidity, cough, fever...)"
                 />
               </Field>
             )}
