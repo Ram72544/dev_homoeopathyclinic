@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Loader2, Sparkles, ShieldCheck, HeartPulse } from "lucide-react";
+import { CheckCircle2, Loader2, Sparkles, ShieldCheck, HeartPulse, ClipboardList } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -244,7 +244,7 @@ export function AppointmentForm() {
             {isSubmitting ? (
               <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
             ) : (
-              <Sparkles className="h-4 w-4 text-[#C5A059]" />
+              <ClipboardList className="h-4 w-4 text-[#C5A059]" />
             )}
             <span>{isSubmitting ? "Submitting..." : "Request Doctor Consultation"}</span>
           </button>
