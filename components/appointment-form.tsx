@@ -130,10 +130,10 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/70 p-8 sm:p-10 shadow-2xl backdrop-blur-md [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding h-full flex flex-col justify-between"
+        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/70 p-6 sm:p-8 shadow-2xl backdrop-blur-md [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding"
       >
         {/* Warm Caring Form Header */}
-        <div className="flex items-center gap-3.5 border-b border-[#F0EADF]/80 pb-5 mb-6 shrink-0">
+        <div className="flex items-center gap-3.5 border-b border-[#F0EADF]/80 pb-4 mb-4">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
             <HeartPulse className="h-5 w-5" />
           </div>
@@ -143,7 +143,7 @@ export function AppointmentForm() {
           </div>
         </div>
 
-        <div className="space-y-6 flex-1 flex flex-col justify-between">
+        <div className="space-y-3.5">
           <Controller
             name="name"
             control={control}
@@ -188,7 +188,7 @@ export function AppointmentForm() {
             )}
           />
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-3.5 sm:grid-cols-2">
             <Field label="Preferred Date" error={errors.date?.message}>
               <input
                 type="date"
@@ -223,7 +223,7 @@ export function AppointmentForm() {
             render={({ field, fieldState }) => (
               <Field label="Health Concern or Symptoms" error={fieldState.error?.message}>
                 <textarea
-                  rows={4}
+                  rows={3}
                   {...field}
                   onChange={(e) => {
                     const match = e.target.value.match(/(\S+\s*){0,300}/);
