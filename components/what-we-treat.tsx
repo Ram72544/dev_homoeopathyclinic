@@ -1,71 +1,93 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site-config";
+import { motion } from "framer-motion";
 
 export function WhatWeTreat() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-beige-soft py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-teal-mid">
-            What We Treat
-          </span>
-          <h2 className="mt-2 text-3xl font-bold text-teal-dark sm:text-4xl">
-            Conditions we care for
-          </h2>
-          <p className="mt-4 text-lg text-teal-dark/75">
-            Holistic homoeopathic treatment across a wide range of acute and
-            chronic conditions. Tap a card to learn more.
-          </p>
-        </div>
+    <section id="services" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
+      {/* Soft Faded Luxury Ambient Light (Replacing Solid Background & Hard Border) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[900px] rounded-full bg-radial from-[#F0EADF]/60 via-[#F7F3EC]/30 to-transparent blur-3xl" />
+      </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <span className="text-xs font-light tracking-[0.25em] text-[#C5A059] uppercase">
+            Curated Specializations
+          </span>
+          <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1F2C25]">
+            Conditions We Heal
+          </h2>
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#5C6B62]">
+            Comprehensive, individualized homoeopathic remedies designed to restore your body's natural harmony.
+          </p>
+        </motion.div>
+
+        {/* Faded Glassmorphism Cards Grid */}
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {site.services.map((service, index) => {
             const Icon = service.icon;
             const isOpen = openIndex === index;
             return (
-              <button
+              <motion.div
                 key={service.title}
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                aria-expanded={isOpen}
-                className={`group flex flex-col rounded-2xl border p-7 text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-md ${
-                  isOpen
-                    ? "border-teal bg-white"
-                    : "border-beige bg-white"
-                }`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <div className="flex items-center justify-between">
-                  <div
-                    className={`flex h-14 w-14 items-center justify-center rounded-xl transition-colors ${
-                      isOpen
-                        ? "bg-teal text-white"
-                        : "bg-teal/10 text-teal group-hover:bg-teal group-hover:text-white"
-                    }`}
-                  >
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <ChevronDown
-                    className={`h-5 w-5 text-teal-dark/40 transition-transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-teal-dark">
-                  {service.title}
-                </h3>
-                <p
-                  className={`mt-2 leading-relaxed text-teal-dark/75 transition-all ${
-                    isOpen ? "block" : "line-clamp-2"
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  className={`group relative flex h-full w-full flex-col justify-between rounded-3xl border p-7 text-left backdrop-blur-md transition-all duration-500 ${
+                    isOpen
+                      ? "border-[#C5A059] bg-white/95 shadow-xl scale-[1.01]"
+                      : "border-white/80 bg-white/60 shadow-lg shadow-[#2C4036]/5 hover:border-[#C5A059]/40 hover:bg-white/85 hover:shadow-xl"
                   }`}
                 >
-                  {service.description}
-                </p>
-              </button>
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md group-hover:scale-105 transition-all duration-300">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FAF8F5] border border-[#E8E1D5] text-[#2C4036]">
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            isOpen ? "rotate-180 text-[#C5A059]" : ""
+                          }`}
+                        />
+                      </div>
+                    </div>
+
+                    <h3 className="mt-6 font-serif text-xl font-normal text-[#1F2C25]">
+                      {service.title}
+                    </h3>
+                    <p
+                      className={`mt-2.5 text-sm font-light leading-relaxed text-[#5C6B62] transition-all duration-300 ${
+                        isOpen ? "block" : "line-clamp-3"
+                      }`}
+                    >
+                      {service.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 flex justify-end">
+                    <ArrowUpRight className="h-4 w-4 text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </button>
+              </motion.div>
             );
           })}
         </div>

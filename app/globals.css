@@ -1,50 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #12403f;
-
-  /* Brand palette */
-  --teal: #0e7c7b;
-  --teal-dark: #0e4f4e;
-  --teal-mid: #17a398;
-  --beige: #efe7d5;
-  --beige-soft: #f8f2e4;
-  --cork: #c89a6b;
+  --teal: #0a2e2e;
+  --teal-dark: #0a2e2e;
+  --teal-mid: #1a4a3a;
+  --gold: #c9a96e;
+  --gold-light: #e2d4b0;
+  --gold-dark: #9c7d3e;
+  --mint: #6ee7b7;
+  --mint-dark: #34d399;
+  --mint-soft: #d1fae5;
+  --surface: #EAE3D7;
+  --surface-warm: #E2DACB;
+  --foreground: #1f2c25;
+  --muted: #5c6b62;
+  --border: #e8e1d5;
+  --card: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-teal: var(--teal);
-  --color-teal-dark: var(--teal-dark);
-  --color-teal-mid: var(--teal-mid);
-  --color-beige: var(--beige);
-  --color-beige-soft: var(--beige-soft);
-  --color-cork: var(--cork);
-
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-serif: var(--font-heading), "Playfair Display", Georgia, serif;
 }
 
 body {
-  background: var(--background);
+  background: var(--surface);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading), Georgia, serif;
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-section {
-  scroll-margin-top: 5rem;
+section, [id] {
+  scroll-margin-top: 4.25rem;
+}
+
+/* Glass morphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
