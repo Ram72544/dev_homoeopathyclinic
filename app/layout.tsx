@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { DM_Sans, Playfair_Display, Cormorant_Garamond, Cinzel } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { site } from "@/lib/site-config";
 
@@ -12,6 +13,21 @@ const bodyFont = DM_Sans({
 
 const headingFont = Playfair_Display({
   variable: "--font-heading",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const luxuryFont = Cormorant_Garamond({
+  variable: "--font-luxury",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const accentFont = Cinzel({
+  variable: "--font-accent",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -52,10 +68,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bodyFont.variable} ${headingFont.variable} h-full antialiased`}
+      className={`${bodyFont.variable} ${headingFont.variable} ${luxuryFont.variable} ${accentFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-surface text-foreground">
         {children}
+        <Analytics />
       </body>
     </html>
   );
