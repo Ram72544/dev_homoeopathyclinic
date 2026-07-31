@@ -22,12 +22,12 @@ export function Navbar() {
         {/* Brand with 3D Medicine Vial & Leaf Logo */}
         <a
           href="#home"
-          className="flex items-center gap-2 sm:gap-4 shrink-0 group mr-2 sm:mr-4 lg:mr-6 min-w-0"
+          className="flex items-center gap-2.5 sm:gap-3.5 shrink-0 group mr-2 sm:mr-4 lg:mr-6 min-w-0"
           aria-label={site.name}
         >
-          <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white p-1 shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-11 w-11 sm:h-13 sm:w-13 lg:h-14 lg:w-14 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_10px_rgba(14,124,123,0.18)]">
             <Image
-              src="/logo-first-original.png"
+              src="/logo-concept-1-transparent.png"
               alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
               width={256}
               height={256}
@@ -36,11 +36,11 @@ export function Navbar() {
               className="h-full w-full object-contain"
             />
           </div>
-          <span className="leading-tight shrink-0">
-            <span className="block font-serif text-[11px] sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
+          <span className="leading-tight shrink-0 flex flex-col justify-center">
+            <span className="font-luxury text-base sm:text-lg lg:text-xl font-medium tracking-[0.02em] text-[#1F2C25] whitespace-nowrap">
               Dr. Sheetal&apos;s
             </span>
-            <span className="block font-serif text-[11px] sm:text-sm lg:text-base font-normal tracking-wide text-[#1F2C25] whitespace-nowrap">
+            <span className="font-accent text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-[0.22em] text-[#0E7C7B] uppercase whitespace-nowrap mt-0.5">
               Homoeopathy Clinic
             </span>
           </span>

@@ -44,9 +44,9 @@ export function Footer() {
             {/* Column 1: Brand & Vial Logo */}
             <div className="lg:col-span-4 space-y-4">
               <div className="flex items-center gap-4">
-                <div className="relative h-18 w-18 sm:h-20 sm:w-20 shrink-0 overflow-hidden rounded-full border border-[#0E7C7B]/30 bg-white/90 p-1.5 shadow-md">
+                <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(14,124,123,0.18)]">
                   <Image
-                    src="/logo-first-original.png"
+                    src="/logo-concept-1-transparent.png"
                     alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
                     width={256}
                     height={256}
@@ -54,14 +54,14 @@ export function Footer() {
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <span className="leading-tight">
-                  <span className="block font-serif text-lg font-normal text-[#1F2C25]">
+                <span className="leading-tight flex flex-col justify-center">
+                  <span className="font-luxury text-xl sm:text-2xl font-medium tracking-[0.02em] text-[#1F2C25]">
                     Dr. Sheetal&apos;s
                   </span>
-                  <span className="block font-serif text-lg font-normal text-[#1F2C25]">
+                  <span className="font-accent text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#0E7C7B] uppercase mt-0.5">
                     Homoeopathy Clinic
                   </span>
-                  <span className="block font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B] mt-1">
+                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[#C5A059] mt-1">
                     Natural Family Healing
                   </span>
                 </span>

@@ -21,6 +21,16 @@
 @theme inline {
   --font-sans: var(--font-body), system-ui, sans-serif;
   --font-serif: var(--font-heading), "Playfair Display", Georgia, serif;
+  --font-luxury: var(--font-luxury), "Cormorant Garamond", Georgia, serif;
+  --font-accent: var(--font-accent), "Cinzel", Georgia, serif;
+}
+
+.font-luxury {
+  font-family: var(--font-luxury), "Cormorant Garamond", Georgia, serif;
+}
+
+.font-accent {
+  font-family: var(--font-accent), "Cinzel", Georgia, serif;
 }
 
 body {
