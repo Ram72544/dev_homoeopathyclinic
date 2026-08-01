@@ -83,9 +83,15 @@ export async function POST(request: Request) {
   try {
     await sendTelegramMessage(message);
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Failed to notify the clinic";
-    return NextResponse.json({ ok: false, error: errorMessage }, { status: 502 });
+    console.error("[book-appointment] Telegram notification error:", error);
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Unable to submit your request right now. Please try again or contact the clinic directly.",
+      },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({ ok: true, name });
