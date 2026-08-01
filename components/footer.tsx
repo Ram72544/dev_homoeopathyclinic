@@ -93,6 +93,14 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
+                <li className="pt-1">
+                  <a
+                    href="/gbp-dashboard"
+                    className="inline-flex items-center gap-1 text-xs font-semibold tracking-wider uppercase text-[#0E7C7B] hover:underline"
+                  >
+                    <span>GBP Marketing Hub</span>
+                  </a>
+                </li>
               </ul>
             </div>
 
