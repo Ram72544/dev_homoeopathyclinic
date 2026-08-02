@@ -101,12 +101,124 @@ export function Footer() {
               <h4 className="font-sans text-xs font-medium uppercase tracking-wider text-[#0E7C7B]">
                 Specialized Care
               </h4>
-              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#5C6B62]">
-                <li>Skin & Hair Allergies</li>
-                <li>Cough, Sinus & Asthma</li>
-                <li>Gas, Acidity & Stomach</li>
-                <li>PCOS & Women's Health</li>
-                <li>Child Health & Immunity</li>
+              <ul className="space-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#5C6B62]">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "skin-hair" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Skin & Hair Allergies
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "cough-sinus-asthma" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Cough, Sinus & Asthma
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "gas-acidity-stomach" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Gas, Acidity & Stomach
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "pcos-womens-health" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    PCOS & Women's Health
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "child-health-immunity" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Child Health & Immunity
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "migraine-stress-sleep" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Migraine, Stress & Sleep
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "joint-pain-arthritis" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Joint Pain, Arthritis & Sciatica
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "thyroid-metabolic" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Thyroid & Metabolic Care
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "kidney-stones-urinary" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Kidney Stones & Urinary Care
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -149,10 +261,15 @@ export function Footer() {
                 href={site.googleUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-light text-[#0E7C7B] hover:underline pt-1"
+                className="inline-flex items-center gap-2 text-sm font-light text-[#0E7C7B] hover:text-[#C5A059] transition-colors duration-200 pt-1 group"
               >
-                <ExternalLink className="h-3.5 w-3.5" />
-                <span>Google Maps Location & Reviews</span>
+                {/* Google Maps pin icon */}
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#0E7C7B]/10 group-hover:bg-[#C5A059]/15 transition-colors duration-200 shrink-0">
+                  <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span className="group-hover:underline underline-offset-2">Google Maps Location &amp; Reviews</span>
               </a>
             </div>
 

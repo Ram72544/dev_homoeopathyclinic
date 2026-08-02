@@ -55,7 +55,10 @@ export function WhyHomeopathy() {
             transition={{ duration: 0.8 }}
             className="relative z-10 mx-auto max-w-4xl text-center"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
+            <span className="text-xs font-light tracking-[0.25em] text-[#E5C583] uppercase block">
+              Trusted Since Ancient Times
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white mt-2">
               Why Patients Choose Homeopathy
             </h2>
             <p className="mt-4 text-sm sm:text-base lg:text-lg font-light leading-relaxed tracking-wide text-white/80">
@@ -108,7 +111,7 @@ export function WhyHomeopathy() {
                         <Icon className="h-5 w-5" />
                       </div>
                     </div>
-                    <h4 className="font-serif text-lg text-white font-normal">{s.title}</h4>
+                    <h4 className="font-serif text-xl font-normal text-white">{s.title}</h4>
                     <p className="text-sm font-light leading-relaxed text-white/75">{s.desc}</p>
                   </div>
                 );

@@ -10,12 +10,25 @@ import {
   Leaf,
   Clock,
   UserRound,
+  Flame,
+  Droplets,
+  Activity,
 } from "lucide-react";
 
 export type Service = {
+  id: string;
   title: string;
-  description: string;
+  description?: string;
+  shortDesc: string;
   icon: LucideIcon;
+  subConditions: string[];
+  medicalOverview: string;
+  rootCause: string;
+  homeopathyAdvantage: string;
+  symptoms: string[];
+  keyRemedies: string[];
+  recoveryDuration: string;
+  caseQuestions?: string;
 };
 
 export type Testimonial = {
@@ -78,43 +91,277 @@ export const site = {
     ],
   },
 
-  // --- Services -------------------------------------------------
+  // --- Services & Disease Details (Short, Crisp, Validated Data) ---
   services: [
     {
-      title: "Skin & Hair Problems",
-      description:
-        "Eczema, psoriasis, acne, fungal allergy, hives (urticaria), hair fall & stubborn dandruff — cured from within.",
+      id: "skin-hair",
+      title: "Skin & Hair Allergies",
+      shortDesc:
+        "Eczema, urticaria, psoriasis, alopecia & stubborn hair fall — cured permanently from within without steroids.",
       icon: Sparkles,
+      subConditions: [
+        "Itchy Skin Rashes & Eczema",
+        "Sudden Hives & Skin Allergy",
+        "Thick Scaly Skin Patches (Psoriasis)",
+        "Patchy Hair Loss & Thinning",
+        "Fungal Rash, Pimples & Acne",
+      ],
+      medicalOverview:
+        "Skin & hair issues like eczema, hives, or hair fall are your body's way of signaling an internal immune imbalance. When you apply strong chemical creams, they temporarily suppress the rash on the surface, but the underlying inflammation remains inside.",
+      rootCause:
+        "Over-sensitive immune response, daily stress, blood toxicity, or digestion issues.",
+      homeopathyAdvantage:
+        "Homeopathy cleanses your system from within and calms your immune response naturally. It restores your skin's healthy cell renewal without steroid side effects or skin thinning.",
+      symptoms: [
+        "Intense itching, burning sensation, or red inflamed skin patches",
+        "Dry, scaling, or oozing skin eruptions triggered by weather changes",
+        "Sudden circular hair loss patches or excessive scalp hair thinning",
+        "Recurrent hives or rash outbreaks following specific foods or stress",
+      ],
+      keyRemedies: ["Sulphur", "Arsenicum Album", "Graphites", "Rhus Tox", "Thuja Occidentalis"],
+      recoveryDuration: "3 to 6 months for permanent long-term resolution.",
+      caseQuestions:
+        "Please share what skin or hair issue you are facing. Where do you get rashes or hair fall, and when does itching get worse (like in cold air, night, or after stress)? Have you used steroid creams or allopathy before?",
     },
     {
-      title: "Cough, Cold & Allergies",
-      description:
-        "Sinusitis, asthma, allergic sneezing, frequent colds & tonsils — strengthening natural chest immunity.",
+      id: "cough-sinus-asthma",
+      title: "Cough, Sinus & Asthma",
+      shortDesc:
+        "Allergic rhinitis, chronic sinusitis, bronchial asthma & chest congestion — strengthening natural respiratory immunity.",
       icon: Wind,
+      subConditions: [
+        "Continuous Sneezing & Runny Nose",
+        "Sinus Headache & Face Pain",
+        "Asthma, Chest Tightness & Wheezing",
+        "Dry or Wet Cough That Won't Go",
+        "Dust & Cold Weather Allergies",
+      ],
+      medicalOverview:
+        "Frequent sneezing, sinus pain, or chest wheezing happen when your airways become overly sensitive to cold air, dust, pollution, or pollen.",
+      rootCause:
+        "Weak lung immunity, sensitive nasal lining, or inherited allergy tendencies.",
+      homeopathyAdvantage:
+        "Homeopathy strengthens your lung immunity and naturally thins stubborn nasal mucus, helping you breathe freely without depending on lifelong inhalers or anti-allergic pills.",
+      symptoms: [
+        "10-20 continuous morning sneezing fits upon waking",
+        "Nasal blockage, post-nasal drip, and heavy sinus headache",
+        "Shortness of breath, chest tightness, or nocturnal wheezing",
+        "Persistent tickling throat cough that worsens at night or in cold air",
+      ],
+      keyRemedies: ["Natrum Muriaticum", "Sabadilla", "Hepar Sulphur", "Blatta Orientalis", "Arsenicum Album"],
+      recoveryDuration: "2 to 4 months for significant reduction in allergy attacks.",
+      caseQuestions:
+        "Please share your chest or sinus concerns. Do you get continuous morning sneezing, nasal blockage, or cough at night? Let us know if weather changes, dust, or cold food trigger your symptoms, and if you use inhalers.",
     },
     {
+      id: "gas-acidity-stomach",
       title: "Gas, Acidity & Stomach",
-      description:
-        "Chronic acidity, gas, indigestion, constipation, IBS & piles treated gently without lifetime dependence.",
+      shortDesc:
+        "Chronic GERD, bloating, IBS, constipation & gastritis healed gently without lifetime antacid dependence.",
       icon: Soup,
+      subConditions: [
+        "Stomach Pain, Loose Stools & IBS",
+        "Chest Burning & Acid After Meals",
+        "Gas, Bloating & Stomach Heaviness",
+        "Constipation & Piles (Haemorrhoids)",
+        "Weak Digestion & Food Sensitivity",
+      ],
+      medicalOverview:
+        "Acidity, stomach bloating, gas, or IBS happen when your stomach's natural digestion and gut movement get out of rhythm.",
+      rootCause:
+        "Irregular meal times, daily stress, weak digestive enzymes, or frequent antacid pills.",
+      homeopathyAdvantage:
+        "Homeopathy balances your stomach acid levels naturally and heals your gut lining, ending painful bloating and digestive discomfort without lifetime antacid dependency.",
+      symptoms: [
+        "Burning sensation in chest or throat after meals (Heartburn)",
+        "Excessive abdominal gas, fullness, and severe bloating",
+        "Alternating diarrhea and constipation triggered by stress (IBS)",
+        "Heavy sluggish feeling and loss of natural appetite",
+      ],
+      keyRemedies: ["Nux Vomica", "Lycopodium Clavatum", "Carbo Vegetabilis", "Pulsatilla", "Robinia"],
+      recoveryDuration: "2 to 3 months for complete digestive harmony.",
+      caseQuestions:
+        "Please share your stomach discomfort details. Are you troubled by chest burning after meals, severe bloating, or irregular morning bowels? Feel free to mention how long you've been taking antacids and if stress affects your stomach.",
     },
     {
-      title: "Stress, Sleep & Migraine",
-      description:
-        "Severe headaches, migraine, anxiety, sleep issues & mental fatigue eased with soothing constitutional care.",
-      icon: Brain,
-    },
-    {
-      title: "Women's Care & PCOS",
-      description:
-        "PCOS/PCOD, irregular periods, hormonal imbalance, thyroid & menopause discomfort handled safely.",
+      id: "pcos-womens-health",
+      title: "PCOS & Women's Health",
+      shortDesc:
+        "PCOS/PCOD, irregular periods, hormonal acne, thyroid & menopausal distress treated without synthetic hormones.",
       icon: Baby,
+      subConditions: [
+        "PCOD / PCOS (Cysts on Ovaries)",
+        "Late, Irregular or Heavy Periods",
+        "Acne, Unwanted Facial Hair & Thyroid",
+        "Unexplained Weight Gain & Fatigue",
+        "Painful Period Cramps",
+      ],
+      medicalOverview:
+        "PCOS, delayed periods, or hormonal acne occur when your body's natural hormone cycle gets interrupted, preventing normal monthly ovulation.",
+      rootCause:
+        "Hormonal axis imbalance, insulin resistance, thyroid fluctuations, or emotional stress.",
+      homeopathyAdvantage:
+        "Homeopathy gently restores your natural monthly period cycle and helps dissolve ovarian cysts naturally without synthetic hormone pills or birth control.",
+      symptoms: [
+        "Delayed menstrual cycles (35 to 90+ days interval)",
+        "Stubborn jawline acne, thinning hair, or unwanted facial hair growth",
+        "Unexplained weight gain around waist and difficulty losing weight",
+        "Severe mood swings, pelvic cramps, and chronic fatigue",
+      ],
+      keyRemedies: ["Pulsatilla", "Sepia", "Calcarea Carbonica", "Thuja", "Folliculinum"],
+      recoveryDuration: "3 to 6 months to regulate natural menstrual cycles.",
+      caseQuestions:
+        "Please share your period and health concerns. Are your cycles delayed (by 35 to 60+ days)? Are you experiencing facial hair, stubborn acne, or weight gain? Do mention if you have an ultrasound (USG) report.",
     },
     {
+      id: "child-health-immunity",
       title: "Child Health & Immunity",
-      description:
-        "Recurrent infections, slow growth, low appetite, teething troubles & poor immunity in children.",
+      shortDesc:
+        "Recurrent colds, enlarged tonsils, poor appetite & low immunity in children — 100% safe, tasty sweet pills.",
       icon: HeartPulse,
+      subConditions: [
+        "Frequent Cold, Cough & Fever",
+        "Swollen Tonsils & Throat Infections",
+        "Poor Eating & Slow Growth in Kids",
+        "Teething Pain & Crankiness",
+        "Low Immunity & Repeated Illness",
+      ],
+      medicalOverview:
+        "When children catch frequent colds, fever, or swollen throat tonsils every few weeks, it means their natural immune system is struggling to fight everyday germs.",
+      rootCause:
+        "Underdeveloped childhood immunity or gut imbalance from frequent antibiotic use.",
+      homeopathyAdvantage:
+        "Homeopathy offers 100% safe, sweet pills that kids love taking. It builds strong natural immunity and naturally shrinks enlarged tonsils so children avoid painful throat surgery.",
+      symptoms: [
+        "Catching cold and throat infection every 2-3 weeks",
+        "Difficulty swallowing, snoring, or mouth breathing due to enlarged adenoids",
+        "Refusal to eat solid food and sluggish physical growth",
+        "Irritability, night terrors, or painful dentition during teething",
+      ],
+      keyRemedies: ["Calcarea Phosphorica", "Baryta Carbonica", "Chamomilla", "Belladonna", "Silicea"],
+      recoveryDuration: "2 to 4 months for robust immune defense.",
+      caseQuestions:
+        "Please share your child's health details. How often does your child catch cold or fever? Do they snore, have enlarged tonsils, or refuse solid food? Let us know their age and if they've taken frequent antibiotics.",
+    },
+    {
+      id: "migraine-stress-sleep",
+      title: "Migraine, Stress & Sleep",
+      shortDesc:
+        "Chronic migraine, tension headaches, severe anxiety, insomnia & brain fog eased with calming constitutional care.",
+      icon: Brain,
+      subConditions: [
+        "One-Sided Throbbing Headache (Migraine)",
+        "Tight Head & Stiff Neck Pain",
+        "Can't Sleep or Waking Up at Night",
+        "Anxiety, Worry & Panic Attacks",
+        "Mental Fog & Constant Overthinking",
+      ],
+      medicalOverview:
+        "Throbbing migraines, tension headaches, or sleepless nights happen when your nervous system becomes over-excited from continuous mental stress or fatigue.",
+      rootCause:
+        "Nerve sensitivity, stress hormones, irregular sleep patterns, or eye/neck strain.",
+      homeopathyAdvantage:
+        "Homeopathy gently calms your nervous system, reduces the frequency of painful migraine attacks, and restores deep, relaxing sleep without sleeping pills or habit-forming medicines.",
+      symptoms: [
+        "One-sided throbbing headache with nausea, vomiting, or light sensitivity",
+        "Difficulty falling asleep or waking up exhausted at 2 AM",
+        "Tight band-like pressure around forehead and neck tension",
+        "Constant anxiety, restlessness, and inability to relax mind",
+      ],
+      keyRemedies: ["Belladonna", "Spigelia", "Natrum Muriaticum", "Coffea Cruda", "Kali Phosphoricum"],
+      recoveryDuration: "2 to 4 months for long-lasting freedom from attacks.",
+      caseQuestions:
+        "Please share your headache or sleep concerns. Where do you feel the pain (one side, forehead, or neck)? Do sunlight, skipped meals, or stress trigger it? Tell us about your sleep quality and daily stress levels.",
+    },
+    {
+      id: "joint-pain-arthritis",
+      title: "Joint Pain, Arthritis & Sciatica",
+      shortDesc:
+        "Osteoarthritis, rheumatoid pain, sciatica, cervical spondylosis & uric acid gout treated gently without NSAID stomach damage.",
+      icon: Activity,
+      subConditions: [
+        "Knee Pain & Morning Stiffness",
+        "Swollen, Hot & Painful Joints",
+        "Shooting Back Pain Down the Leg",
+        "Neck & Lower Back Bone Pain",
+        "Uric Acid & Gout (Big Toe Pain)",
+      ],
+      medicalOverview:
+        "Joint stiffness, knee pain, or shooting sciatica pain occur when joint lubrication reduces, cartilage wears down, or spinal nerves get compressed.",
+      rootCause:
+        "Joint fluid depletion, cartilage wear, uric acid buildup, or spinal nerve pressure.",
+      homeopathyAdvantage:
+        "Homeopathy reduces joint swelling and stiffness, promotes natural joint lubrication, and dissolves uric acid crystals safely without damaging your stomach or kidneys with painkillers.",
+      symptoms: [
+        "Morning joint stiffness lasting over 30 minutes upon waking",
+        "Sharp shooting pain from lower back down the leg (Sciatica)",
+        "Crepitus (grinding noise), swelling, and pain while climbing stairs",
+        "Throbbing pain in big toe or small finger joints due to uric acid",
+      ],
+      keyRemedies: ["Rhus Toxicodendron", "Bryonia Alba", "Colocynthis", "Ruta Graveolens", "Lithium Carb"],
+      recoveryDuration: "3 to 6 months for permanent mobility improvement.",
+      caseQuestions:
+        "Please share your joint or back pain details. Which joints hurt (knees, lower back, neck, or fingers)? Is stiffness worse in the morning? Does warm water or cold weather affect the pain? Mention any X-ray or uric acid reports.",
+    },
+    {
+      id: "thyroid-metabolic",
+      title: "Thyroid & Metabolic Care",
+      shortDesc:
+        "Hypothyroidism, elevated TSH, weight gain, sluggish metabolism & fatigue treated naturally by restoring gland health.",
+      icon: Flame,
+      subConditions: [
+        "High TSH (Underactive Thyroid)",
+        "Thyroid Caused by Immune Attack",
+        "Slow Metabolism & Hard to Lose Weight",
+        "Always Tired & Sensitive to Cold",
+        "Hair Thinning & Dry Skin from Thyroid",
+      ],
+      medicalOverview:
+        "Hypothyroidism (high TSH), constant tiredness, and stubborn weight gain happen when your thyroid gland slows down its natural metabolic signals.",
+      rootCause:
+        "Thyroid gland weakness, immune imbalance (anti-TPO), or slow metabolic rate.",
+      homeopathyAdvantage:
+        "Homeopathy gently stimulates your thyroid gland to produce its own natural hormones, helping boost your metabolism and energy level safely under medical guidance.",
+      symptoms: [
+        "Unexplained weight gain despite normal or low diet",
+        "Constant sluggishness, brain fog, and low energy levels",
+        "Extreme sensitivity to cold weather and dry rough skin",
+        "Irregular menstrual cycles and swelling in throat/face",
+      ],
+      keyRemedies: ["Thyroidinum", "Calcarea Carbonica", "Sepia", "Iodium", "Natrum Muriaticum"],
+      recoveryDuration: "4 to 8 months for thyroid hormone stabilization.",
+      caseQuestions:
+        "Please share your thyroid health concerns. Are you experiencing low energy, unexpected weight gain, hair fall, or cold sensitivity? Please share your latest TSH level if known, and if you currently take thyroxine tablets.",
+    },
+    {
+      id: "kidney-stones-urinary",
+      title: "Kidney Stones & Urinary Care",
+      shortDesc:
+        "Renal calculi (stones), recurrent UTIs, burning urination & urinary frequency treated gently to flush stones naturally.",
+      icon: Droplets,
+      subConditions: [
+        "Kidney Stones (Any Size)",
+        "Repeated Urine Infections (UTI)",
+        "Burning or Painful Urination",
+        "Bladder Cramps & Urge to Urinate",
+        "Leaking Urine or Going Too Frequently",
+      ],
+      medicalOverview:
+        "Kidney stones and burning urine occur when mineral salts crystallize in the kidneys or bacteria irritate your urinary tract.",
+      rootCause:
+        "Dehydration, mineral salt crystallization, or low urinary tract immunity.",
+      homeopathyAdvantage:
+        "Homeopathy eases severe kidney pain spasms, smooths stone sharp edges, and helps flush out small to medium kidney stones naturally through urine without surgery.",
+      symptoms: [
+        "Sharp agonizing flank pain radiating from lower back to groin",
+        "Burning, stinging pain during or after urination",
+        "Frequent urge to urinate with cloudy or reddish urine",
+        "Nausea, chills, and fever associated with renal pain",
+      ],
+      keyRemedies: ["Berberis Vulgaris", "Cantharis", "Sarsaparilla", "Lycopodium", "Hydrangea"],
+      recoveryDuration: "2 to 6 weeks for stone clearance and infection control.",
+      caseQuestions:
+        "Please share your kidney or urinary concerns. Where is your pain located (lower back or side)? Is there burning or frequent urination? Mention your kidney stone size in mm if you have an ultrasound report.",
     },
   ] as Service[],
 

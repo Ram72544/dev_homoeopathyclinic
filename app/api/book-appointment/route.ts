@@ -24,7 +24,12 @@ const appointmentSchema = z.object({
     .string()
     .trim()
     .min(1, "Please briefly describe your concern")
-    .max(500, "Concern is too long"),
+    .max(1000, "Concern is too long"),
+  age: z.string().trim().optional(),
+  gender: z.string().trim().optional(),
+  diseaseCategory: z.string().trim().optional(),
+  duration: z.string().trim().optional(),
+  lifestyle: z.string().trim().optional(),
 });
 
 async function sendTelegramMessage(text: string): Promise<void> {
@@ -69,16 +74,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: message }, { status: 400 });
   }
 
-  const { name, phone, slot, concern } = parsed.data;
+  const { name, phone, slot, concern, age, gender, diseaseCategory, duration, lifestyle } = parsed.data;
+
+  const ageGenderStr = age || gender ? ` (${[age ? `${age} yrs` : "", gender].filter(Boolean).join(", ")})` : "";
 
   const message =
-    `🌿 <b>New Appointment Request</b>\n` +
-    `A patient would love to book a consultation with you.\n\n` +
-    `👤 <b>Patient:</b> ${escapeHtml(name)}\n` +
+    `🌿 <b>New Consultation Request</b>\n` +
+    `A patient has submitted a detailed case profile.\n\n` +
+    `👤 <b>Patient:</b> ${escapeHtml(name)}${escapeHtml(ageGenderStr)}\n` +
     `📞 <b>Phone:</b> ${escapeHtml(phone)}\n` +
-    `�️ <b>Preferred Slot:</b> ${escapeHtml(slot)}\n` +
-    `💬 <b>Concern:</b> ${escapeHtml(concern)}\n\n` +
-    `Please reach out to confirm their visit. 💚`;
+    `📅 <b>Preferred Slot:</b> ${escapeHtml(slot)}\n` +
+    `🩺 <b>Specialization:</b> ${escapeHtml(diseaseCategory || "General Consultation")}\n` +
+    `⏳ <b>Duration of Illness:</b> ${escapeHtml(duration || "Not specified")}\n` +
+    `🧬 <b>Daily Life / Factors:</b> ${escapeHtml(lifestyle || "Not specified")}\n` +
+    `💬 <b>Clinical Notes:</b> ${escapeHtml(concern)}\n\n` +
+    `Please reach out to review case & confirm visit. 💚`;
 
   try {
     await sendTelegramMessage(message);

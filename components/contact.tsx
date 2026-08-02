@@ -28,62 +28,91 @@ export function Contact() {
             Book Doctor Consultation
           </h2>
           <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#5C6B62]">
-            Fill in your details below or call us directly. OPD Clinic Visits & Online Consultations available.
+            Fill in your details below or call us directly. OPD Clinic Visits &amp; Online Consultations available.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-12 items-stretch">
-          
-          {/* Left Column: Info & Map */}
+        <div className="mt-14 grid gap-8 lg:grid-cols-12 items-start">
+
+          {/* Left Column: Unified Info Card + Map */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6 space-y-4 flex flex-col justify-between"
+            className="lg:col-span-5 space-y-5"
           >
-            <InfoRow icon={<Phone className="h-4 w-4" />} label="Call Doctor Directly">
-              <a href={`tel:${site.phone}`} className="font-sans font-normal text-base sm:text-lg text-[#1F2C25] tracking-wide hover:text-[#0E7C7B] transition-colors">
-                {site.phoneDisplay}
-              </a>
-            </InfoRow>
+            {/* Unified Contact Info Card */}
+            <div className="rounded-[2rem] border border-white/80 bg-white/70 backdrop-blur-md shadow-lg shadow-[#2C4036]/5 overflow-hidden divide-y divide-[#F0EADF]/80">
 
-            <InfoRow icon={<Mail className="h-4 w-4" />} label="Email Us">
-              <a href={`mailto:${site.email}`} className="text-sm font-light text-[#2C4036] hover:text-[#C5A059] transition-colors">
-                {site.email}
-              </a>
-            </InfoRow>
-
-            <InfoRow icon={<MapPin className="h-4 w-4" />} label="Clinic Location">
-              <div className="text-sm font-light leading-relaxed text-[#5C6B62]">
-                <p className="font-medium text-[#1F2C25]">{site.name}</p>
-                <p>{site.address}</p>
+              {/* Phone */}
+              <div className="flex items-center gap-4 px-5 py-4 hover:bg-white/90 transition-colors duration-200 group">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#2C4036] text-[#C5A059]">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-light tracking-[0.2em] text-[#7A8A80] uppercase">Call Doctor Directly</p>
+                  <a href={`tel:${site.phone}`} className="text-base font-normal text-[#1F2C25] tracking-wide hover:text-[#0E7C7B] transition-colors">
+                    {site.phoneDisplay}
+                  </a>
+                </div>
               </div>
-            </InfoRow>
 
-            <InfoRow icon={<Clock className="h-4 w-4" />} label="OPD Timings">
-              <ul className="space-y-1 text-sm font-light text-[#5C6B62]">
-                {site.timings.map((t, i) => (
-                  <li key={i}>
-                    <span className="font-medium text-[#1F2C25]">{t.days}:</span> {t.hours}
-                  </li>
-                ))}
-              </ul>
-            </InfoRow>
+              {/* Email */}
+              <div className="flex items-center gap-4 px-5 py-4 hover:bg-white/90 transition-colors duration-200 group">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#2C4036] text-[#C5A059]">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-light tracking-[0.2em] text-[#7A8A80] uppercase">Email Us</p>
+                  <a href={`mailto:${site.email}`} className="text-sm font-light text-[#2C4036] hover:text-[#C5A059] transition-colors">
+                    {site.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start gap-4 px-5 py-4 hover:bg-white/90 transition-colors duration-200 group">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#2C4036] text-[#C5A059] mt-0.5">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-light tracking-[0.2em] text-[#7A8A80] uppercase mb-0.5">Clinic Location</p>
+                  <p className="text-sm font-medium text-[#1F2C25]">{site.name}</p>
+                  <p className="text-xs font-light text-[#5C6B62] leading-relaxed mt-0.5">{site.address}</p>
+                </div>
+              </div>
+
+              {/* Timings */}
+              <div className="flex items-start gap-4 px-5 py-4 hover:bg-white/90 transition-colors duration-200 group">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-[#2C4036] text-[#C5A059] mt-0.5">
+                  <Clock className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-light tracking-[0.2em] text-[#7A8A80] uppercase mb-1">OPD Timings</p>
+                  <ul className="space-y-0.5">
+                    {site.timings.map((t, i) => (
+                      <li key={i} className="text-xs font-light text-[#5C6B62]">
+                        <span className="font-medium text-[#1F2C25]">{t.days}:</span> {t.hours}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             {/* Spatial Glass Map Card */}
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/70 p-3.5 shadow-2xl backdrop-blur-2xl group transition-all duration-500 hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)] mt-6">
-              <div className="relative h-[260px] w-full overflow-hidden rounded-[2rem]">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/90 bg-white/70 p-3 shadow-xl backdrop-blur-2xl group transition-all duration-500 hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)]">
+              <div className="relative h-[220px] w-full overflow-hidden rounded-[1.5rem]">
                 <iframe
                   src={site.mapsEmbedUrl}
                   title="Dr. Sheetal's Homoeopathy Clinic location"
                   width="100%"
-                  height="320"
+                  height="280"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute -top-12 left-0 w-full h-[320px] rounded-[2rem] filter contrast-[1.06] saturate-[0.8] sepia-[0.12] brightness-[0.98] transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-100"
+                  className="absolute -top-10 left-0 w-full h-[280px] rounded-[1.5rem] filter contrast-[1.06] saturate-[0.8] sepia-[0.12] brightness-[0.98] transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-100"
                 />
-                
                 {/* Floating Directions Button */}
                 <div className="absolute top-3 right-3">
                   <a
@@ -100,13 +129,13 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Column: Booking Form (Symmetrical Height to Map) */}
+          {/* Right Column: Booking Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6 flex flex-col h-full"
+            className="lg:col-span-7 flex flex-col h-full"
           >
             <AppointmentForm />
           </motion.div>
@@ -114,27 +143,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  );
-}
-
-function InfoRow({
-  icon,
-  label,
-  children,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex gap-4 rounded-2xl border border-white/80 bg-white/60 p-5 shadow-lg shadow-[#2C4036]/5 backdrop-blur-md transition-all hover:border-[#C5A059]/40 hover:bg-white/85">
-      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#2C4036] text-[#C5A059]">
-        {icon}
-      </div>
-      <div>
-        <p className="text-xs font-light tracking-widest text-[#7A8A80] uppercase">{label}</p>
-        <div className="mt-1">{children}</div>
-      </div>
-    </div>
   );
 }

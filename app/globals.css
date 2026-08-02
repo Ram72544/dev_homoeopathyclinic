@@ -62,8 +62,87 @@ section, [id] {
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Gemini Style Warm White Rotating Glowing Border */
+@keyframes spin-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gemini-glow-warm-white {
+  position: relative;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.gemini-glow-warm-white::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #FFFDF8 60deg,
+    #F4EFE6 120deg,
+    transparent 180deg,
+    #FAF6EE 260deg,
+    #E8E1D5 320deg,
+    transparent 360deg
+  );
+  animation: spin-glow 6s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.gemini-glow-inner {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+/* Static Card + Soft Pulsing Warm White Glowing Shadow */
+@keyframes warm-white-breathing-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 35px rgba(255, 253, 248, 0.7),
+      0 0 70px rgba(244, 239, 230, 0.45),
+      0 25px 80px rgba(0, 0, 0, 0.16);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255, 255, 255, 0.95),
+      0 0 110px rgba(244, 239, 230, 0.65),
+      0 30px 90px rgba(0, 0, 0, 0.14);
+  }
+}
+
+.breathing-warm-glow {
+  animation: warm-white-breathing-glow 5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .gemini-glow-warm-white::before,
+  .breathing-warm-glow {
+    animation: none;
   }
 }
