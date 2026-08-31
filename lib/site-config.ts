@@ -13,6 +13,7 @@ import {
   Flame,
   Droplets,
   Activity,
+  Heart,
 } from "lucide-react";
 
 export type Service = {
@@ -364,6 +365,96 @@ export const site = {
       recoveryDuration: "2 to 6 weeks for stone clearance and infection control.",
       caseQuestions:
         "Please share your kidney or urinary concerns. Where is your pain located (lower back or side)? Is there burning or frequent urination? Mention your kidney stone size in mm if you have an ultrasound report.",
+    },
+    {
+      id: "diabetes-blood-sugar",
+      title: "Diabetes & Blood Sugar Care",
+      shortDesc:
+        "Type 2 diabetes, insulin resistance, HbA1c control & diabetic neuropathy prevented naturally with safe botanical potencies.",
+      icon: Activity,
+      subConditions: [
+        "High Fasting & Post-Meal Blood Sugar",
+        "Elevated HbA1c & Insulin Resistance",
+        "Diabetic Nerve Tingling (Neuropathy)",
+        "Extreme Fatigue, Thirst & Frequent Urination",
+        "Slow Healing Wounds & Sluggish Metabolism",
+      ],
+      medicalOverview:
+        "Type 2 diabetes and fluctuating blood sugar happen when your body's cells develop insulin resistance, causing excess glucose to circulate in the bloodstream.",
+      rootCause:
+        "Insulin receptor fatigue, chronic stress, pancreatic strain, or sedentary lifestyle.",
+      homeopathyAdvantage:
+        "Classical homeopathy combined with proven mother tinctures (like Syzygium & Gymnema) stimulates natural insulin sensitivity, reduces sugar spikes, and protects kidneys and nerves from diabetic damage.",
+      symptoms: [
+        "Elevated fasting blood sugar (>126 mg/dL) or HbA1c (>6.5%)",
+        "Tingling, numbness, or burning sensation in feet and soles",
+        "Excessive thirst, dry tongue, and frequent urination at night",
+        "Post-meal lethargy, brain fog, and slow wound healing",
+      ],
+      keyRemedies: ["Syzygium Jambolanum", "Gymnema Sylvestre", "Cephalandra Indica", "Phosphoric Acid", "Uranium Nitricum"],
+      recoveryDuration: "3 to 6 months for metabolic stabilization & HbA1c reduction.",
+      caseQuestions:
+        "Please share your latest Fasting, PP blood sugar, and HbA1c levels. Do you experience tingling in your feet, excessive thirst, or fatigue? Let us know if you take oral medications or insulin.",
+    },
+    {
+      id: "supportive-oncology-care",
+      title: "Supportive Cancer & Palliative Care",
+      shortDesc:
+        "Integrative relief for chemotherapy side effects, radiation fatigue, nausea, pain & immune vitality to improve quality of life.",
+      icon: ShieldCheck,
+      subConditions: [
+        "Chemotherapy Nausea, Vomiting & Weakness",
+        "Radiation Burns & Painful Mouth Sores (Mucositis)",
+        "Cancer-Related Extreme Fatigue & Low Appetite",
+        "Neuropathic Pain & Post-Surgery Recovery",
+        "Immune Resilience & Emotional Vitality",
+      ],
+      medicalOverview:
+        "While conventional oncology treatments target cancer cells, they often cause a heavy physical toll, severe fatigue, nausea, and immune suppression.",
+      rootCause:
+        "Cellular oxidative stress, chemotherapy toxicity, and weakened immune vitality.",
+      homeopathyAdvantage:
+        "Homeopathy acts as a gentle, non-interfering adjuvant support. It alleviates nausea, heals painful mouth sores, eases nerve pain, restores natural appetite, and strengthens vitality alongside your primary medical care.",
+      symptoms: [
+        "Severe nausea, vomiting, or altered taste following chemo cycles",
+        "Debilitating chronic exhaustion and muscle weakness",
+        "Painful mouth ulcers (mucositis) or radiation skin redness",
+        "Anxiety, sleep disruption, and loss of physical strength",
+      ],
+      keyRemedies: ["Arnica Montana", "Cadmium Sulphuricum", "Ipecacuanha", "Arsenicum Album", "Carbo Vegetabilis"],
+      recoveryDuration: "Ongoing supportive care aligned with your treatment cycles.",
+      caseQuestions:
+        "Please share what cancer treatment you are currently undergoing (chemo, radiation, or post-surgery). What side effects trouble you most (nausea, fatigue, mouth sores, or pain)? We work in gentle harmony with your oncologist.",
+    },
+    {
+      id: "liver-cholesterol-health",
+      title: "Fatty Liver & Cholesterol Care",
+      shortDesc:
+        "Grade 1 & 2 fatty liver, elevated triglycerides, high LDL cholesterol & sluggish hepatic metabolism treated safely without statin side effects.",
+      icon: Flame,
+      subConditions: [
+        "Fatty Liver (Grade 1 & Grade 2)",
+        "High Triglycerides & Bad LDL Cholesterol",
+        "Sluggish Liver, Heavy Right Abdomen Ache",
+        "Poor Fat Digestion & Nausea Tendency",
+        "Elevated Liver Enzymes (SGOT/SGPT)",
+      ],
+      medicalOverview:
+        "Fatty liver and high cholesterol occur when the liver becomes overloaded with excess lipids, slowing down its natural detoxification and bile flow.",
+      rootCause:
+        "Metabolic syndrome, refined carbohydrates, high triglycerides, or sluggish hepatic circulation.",
+      homeopathyAdvantage:
+        "Homeopathy naturally stimulates healthy bile flow, reverses liver cell fat accumulation, and normalizes cholesterol levels safely without causing muscle cramps or enzyme spikes.",
+      symptoms: [
+        "Ultrasound finding of Grade 1 or Grade 2 Fatty Liver",
+        "High serum triglycerides or LDL cholesterol on lipid profile",
+        "Dull dragging heaviness under the right rib cage after meals",
+        "Bitter taste in mouth, morning nausea, and sluggish digestion",
+      ],
+      keyRemedies: ["Chelidonium Majus", "Carduus Marianus", "Lycopodium", "Cholesterinum", "Hydrastis"],
+      recoveryDuration: "3 to 5 months to normalize lipid profile and liver enzymes.",
+      caseQuestions:
+        "Please share your latest lipid profile (Cholesterol, Triglycerides) and ultrasound report if available. Do you feel heaviness under your right ribs or sluggish digestion after oily food?",
     },
   ] as Service[],
 

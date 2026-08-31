@@ -221,6 +221,45 @@ export function Footer() {
                     Kidney Stones &amp; Urinary Care
                   </button>
                 </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "diabetes-blood-sugar" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Diabetes &amp; Blood Sugar Care
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "supportive-oncology-care" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Supportive Cancer &amp; Palliative Care
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent("open-disease-modal", { detail: "liver-cholesterol-health" })
+                      );
+                    }}
+                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                  >
+                    Fatty Liver &amp; Cholesterol
+                  </button>
+                </li>
               </ul>
             </div>
 

@@ -9,9 +9,9 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 const CATEGORIES = [
   { id: "all", label: "All Treatments" },
   { id: "skin-resp", label: "Skin & Respiratory", match: ["skin-hair", "cough-sinus-asthma"] },
-  { id: "digestive-metabolic", label: "Gut & Metabolism", match: ["gas-acidity-stomach", "thyroid-metabolic", "kidney-stones-urinary"] },
+  { id: "digestive-metabolic", label: "Gut, Liver & Metabolism", match: ["gas-acidity-stomach", "thyroid-metabolic", "diabetes-blood-sugar", "liver-cholesterol-health", "kidney-stones-urinary"] },
   { id: "women-child", label: "Women & Child", match: ["pcos-womens-health", "child-health-immunity"] },
-  { id: "pain-mind", label: "Joints, Mind & Sleep", match: ["joint-pain-arthritis", "migraine-stress-sleep"] },
+  { id: "pain-mind", label: "Joints, Mind & Supportive Care", match: ["joint-pain-arthritis", "migraine-stress-sleep", "supportive-oncology-care"] },
 ];
 
 export function WhatWeTreat() {
