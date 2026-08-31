@@ -1,9 +1,40 @@
 "use client";
 
-import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Sparkles, Navigation, Train, Car, Compass } from "lucide-react";
 import { site } from "@/lib/site-config";
 import { AppointmentForm } from "@/components/appointment-form";
 import { motion } from "framer-motion";
+
+const NEARBY_HUBS = [
+  {
+    name: "Badarpur Metro (Violet Line)",
+    time: "8–10 mins",
+    dist: "2.5 km",
+    icon: Train,
+    url: `https://www.google.com/maps/dir/?api=1&origin=Badarpur+Metro+Station+Delhi&destination=${encodeURIComponent(site.name + " " + site.address)}`,
+  },
+  {
+    name: "Sarita Vihar / Mohan Estate",
+    time: "12–15 mins",
+    dist: "4.5 km",
+    icon: Car,
+    url: `https://www.google.com/maps/dir/?api=1&origin=Mohan+Estate+Metro+Station+Delhi&destination=${encodeURIComponent(site.name + " " + site.address)}`,
+  },
+  {
+    name: "Hari Nagar & Jaitpur Rd",
+    time: "3–5 mins",
+    dist: "1.0 km",
+    icon: Navigation,
+    url: `https://www.google.com/maps/dir/?api=1&origin=Hari+Nagar+Extn+Jaitpur+Delhi&destination=${encodeURIComponent(site.name + " " + site.address)}`,
+  },
+  {
+    name: "Kalindi Kunj & Noida Border",
+    time: "15–18 mins",
+    dist: "6.5 km",
+    icon: Compass,
+    url: `https://www.google.com/maps/dir/?api=1&origin=Kalindi+Kunj+Delhi&destination=${encodeURIComponent(site.name + " " + site.address)}`,
+  },
+];
 
 export function Contact() {
   return (
@@ -46,7 +77,7 @@ export function Contact() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-5"
           >
-            {/* Unified Contact Info Card */}
+            {/* Unified Clinical Info Panel */}
             <div className="rounded-[2.5rem] border border-white/90 bg-white/85 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] overflow-hidden divide-y divide-[#EAE3DA]/80">
 
               {/* Phone */}
@@ -124,17 +155,17 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Spatial Glass Map Card */}
+            {/* Spatial Glass Map Card with Commute Landmarks */}
             <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/85 p-3.5 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] backdrop-blur-2xl group transition-all duration-500 hover:shadow-2xl">
-              <div className="relative h-[220px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
+              <div className="relative h-[200px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
                 <iframe
                   src={site.mapsEmbedUrl}
                   title="Dr. Sheetal's Homoeopathy Clinic location"
                   width="100%"
-                  height="280"
+                  height="260"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute -top-10 left-0 w-full h-[280px] rounded-[2rem] filter contrast-[1.05] saturate-[0.85] sepia-[0.08] transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-100"
+                  className="absolute -top-8 left-0 w-full h-[260px] rounded-[2rem] filter contrast-[1.05] saturate-[0.85] sepia-[0.08] transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-100"
                 />
                 {/* Floating Directions Button */}
                 <div className="absolute top-3.5 right-3.5">
@@ -148,6 +179,45 @@ export function Contact() {
                     <span className="text-[#E5C583]">↗</span>
                   </a>
                 </div>
+              </div>
+
+              {/* Quick Commute & Landmarks Guide */}
+              <div className="mt-3.5 pt-3.5 border-t border-[#EAE3DA]/80">
+                <div className="flex items-center justify-between mb-2.5 px-1">
+                  <p className="text-[10px] font-semibold tracking-[0.16em] text-[#0E7C7B] uppercase flex items-center gap-1.5 font-sans">
+                    <Navigation className="h-3 w-3" />
+                    <span>Travel Time from Nearby Hubs</span>
+                  </p>
+                  <span className="text-[10px] text-[#7A8A80] font-light">Tap to navigate ↗</span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {NEARBY_HUBS.map((hub) => {
+                    const Icon = hub.icon;
+                    return (
+                      <a
+                        key={hub.name}
+                        href={hub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/hub flex items-start gap-2 rounded-2xl border border-[#EAE3DA]/70 bg-white/70 p-2.5 transition-all hover:bg-white hover:border-[#0E7C7B]/40 hover:shadow-xs"
+                      >
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#0E7C7B]/10 text-[#0E7C7B] group-hover/hub:bg-[#0E7C7B] group-hover/hub:text-white transition-colors duration-200 mt-0.5">
+                          <Icon className="h-3.5 w-3.5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[11px] font-medium text-[#14221B] truncate group-hover/hub:text-[#0E7C7B] transition-colors">{hub.name}</p>
+                          <p className="text-[10px] font-light text-[#7A8A80] mt-0.5">{hub.time} • {hub.dist}</p>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+                
+                <p className="mt-2.5 text-[11px] font-light text-[#4A5D52] flex items-center gap-1.5 bg-[#FAF8F5] rounded-xl px-3 py-1.5 border border-[#EAE3DA]/60">
+                  <MapPin className="h-3 w-3 text-[#C5A059] shrink-0" />
+                  <span>Landmark: 2 mins from <strong>Kali Badi Mandir</strong> &amp; <strong>Love Kush Sweets</strong>, Saurabh Vihar</span>
+                </p>
               </div>
             </div>
           </motion.div>
