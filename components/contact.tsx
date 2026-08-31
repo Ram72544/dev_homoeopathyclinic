@@ -56,7 +56,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase">Call Doctor Directly</p>
-                  <a href={`tel:${site.phone}`} className="text-base font-medium text-[#14221B] tracking-wide hover:text-[#0E7C7B] transition-colors">
+                  <a href={`tel:${site.phone}`} className="text-sm font-light text-[#14221B] hover:text-[#0E7C7B] transition-colors">
                     {site.phoneDisplay}
                   </a>
                 </div>
