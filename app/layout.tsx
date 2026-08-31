@@ -51,7 +51,13 @@ export const metadata: Metadata = {
     "classical homoeopathy",
   ],
   icons: {
-    icon: "/logo-mark-3d.svg",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo-concept-1-transparent.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
   openGraph: {
     title: `${site.name}`,
