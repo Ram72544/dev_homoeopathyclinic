@@ -80,7 +80,7 @@ export function WhyHomeopathy() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/20 bg-[#162D20]/80 p-6 sm:p-7 backdrop-blur-2xl transition-all duration-400 hover:border-white/40 hover:bg-[#1E3B2A]/95 hover:-translate-y-1 shadow-lg shadow-black/20 [transform:translate3d(0,0,0)]"
+                  className="group relative overflow-hidden rounded-[2rem] border border-white/20 bg-[#162D20]/45 p-6 sm:p-7 backdrop-blur-2xl transition-all duration-400 hover:border-white/40 hover:bg-[#1E3B2A]/65 hover:-translate-y-1 shadow-lg shadow-black/20 [transform:translate3d(0,0,0)]"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 bg-white/15 text-white group-hover:scale-105 transition-transform">
                     <Icon className="h-6 w-6 text-[#E5C583]" />
@@ -97,7 +97,7 @@ export function WhyHomeopathy() {
           </div>
 
           {/* 3-Step Process Liquid Glass Capsule */}
-          <div className="relative z-10 mt-10 sm:mt-12 overflow-hidden rounded-[2rem] border border-white/20 bg-[#142A1E]/75 p-6 sm:p-10 lg:p-12 backdrop-blur-2xl [transform:translate3d(0,0,0)]">
+          <div className="relative z-10 mt-10 sm:mt-12 overflow-hidden rounded-[2rem] border border-white/15 bg-[#142A1E]/40 p-6 sm:p-10 lg:p-12 backdrop-blur-2xl [transform:translate3d(0,0,0)]">
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
               <span className="text-xs font-medium tracking-widest text-[#E5C583] uppercase block">Simplicity &amp; Care</span>
               <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1 font-normal">3 Steps to Your Permanent Recovery</h3>
@@ -107,7 +107,7 @@ export function WhyHomeopathy() {
               {HEALING_STEPS.map((s, idx) => {
                 const Icon = s.icon;
                 return (
-                  <div key={idx} className="relative space-y-3 p-5 sm:p-6 text-center sm:text-left rounded-2xl border border-white/15 bg-white/8 backdrop-blur-md transition-all duration-300 hover:bg-white/12">
+                  <div key={idx} className="relative space-y-3 p-5 sm:p-6 text-center sm:text-left rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur-md transition-all duration-300 hover:bg-white/[0.08]">
                     <div className="flex items-center gap-3 justify-center sm:justify-start">
                       <span className="font-serif text-3xl font-normal text-[#E5C583]">{s.step}</span>
                       <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-white">

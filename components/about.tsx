@@ -90,6 +90,7 @@ export function About() {
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, (max-width: 1536px) 48vw, 720px"
                   quality={95}
+                  priority
                   className="object-cover object-center transition-transform duration-700 hover:scale-105 [transform:translate3d(0,0,0)]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#14221B]/85 via-[#14221B]/20 to-transparent pointer-events-none" />
