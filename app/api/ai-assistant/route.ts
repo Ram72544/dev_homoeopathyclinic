@@ -24,7 +24,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const { prompt, history } = await req.json();
+    const body = (await req.json()) as { prompt?: string };
+    const prompt = body.prompt;
 
     if (!prompt || typeof prompt !== "string") {
       return NextResponse.json(
@@ -48,7 +49,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       text: response.text ?? "I'm sorry, I couldn't generate a response. Please try again or contact the clinic.",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Gemini AI API error:", error);
     return NextResponse.json(
       {

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { BadgeCheck, Quote, Star } from "lucide-react";
+import { BadgeCheck, Quote, Star, Sparkles } from "lucide-react";
 import { site } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
@@ -39,33 +39,37 @@ export function Testimonials() {
   }, [emblaApi]);
 
   return (
-    <section id="testimonials" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
-      {/* Soft Faded Luxury Ambient Light */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute bottom-10 left-10 h-[500px] w-[500px] rounded-full bg-radial from-[#F0EADF]/50 via-[#F7F3EC]/20 to-transparent blur-3xl" />
+    <section id="testimonials" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+      {/* Soft Ambient Light */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute bottom-10 left-10 h-[550px] w-[550px] rounded-full bg-radial from-[#F4EFE6]/60 via-[#F8F5EE]/25 to-transparent blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
+        
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="text-xs font-light tracking-[0.25em] text-[#C5A059] uppercase">
-            Patient Stories & Reviews
-          </span>
-          <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1F2C25]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-medium tracking-[0.2em] text-[#967531] uppercase">
+            <Sparkles className="h-3 w-3 text-[#C5A059]" />
+            <span>Patient Stories &amp; Reviews</span>
+          </div>
+
+          <h2 className="mt-3 font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] leading-tight">
             Real Healing Experiences
           </h2>
-          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#5C6B62]">
-            Read how patients across Delhi NCR recovered their health with gentle homeopathic remedies.
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52]">
+            Read how patients across Delhi NCR recovered their health permanently with gentle homeopathic remedies.
           </p>
         </motion.div>
 
-        <div className="mt-12">
-          {/* Embla Viewport with vertical padding py-8 to prevent shadow/border clipping */}
+        <div className="mt-10 sm:mt-12">
+          {/* Embla Viewport */}
           <div className="overflow-hidden py-8 -my-4" ref={emblaRef}>
             <div className="flex">
               {site.testimonials.map((t, i) => {
@@ -73,13 +77,13 @@ export function Testimonials() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="flex-[0_0_90%] px-3.5 sm:flex-[0_0_65%] lg:flex-[0_0_42%]"
+                    className="flex-[0_0_92%] px-3 sm:flex-[0_0_68%] lg:flex-[0_0_42%] xl:flex-[0_0_36%]"
                   >
                     <figure
-                      className={`relative flex h-full flex-col justify-between rounded-3xl border p-8 backdrop-blur-md transition-all duration-500 ${
+                      className={`relative flex h-full flex-col justify-between rounded-[2rem] border p-7 sm:p-8 backdrop-blur-md transition-all duration-500 [transform:translate3d(0,0,0)] ${
                         isActive
-                          ? "border-[#C5A059] bg-[#FAF8F5] shadow-2xl shadow-[#2C4036]/10 opacity-100 scale-[1.02]"
-                          : "border-white/80 bg-[#FAF8F5]/70 shadow-md shadow-[#2C4036]/5 opacity-55 scale-95"
+                          ? "border-[#C5A059] bg-[#FAF8F5] shadow-2xl shadow-[#14221B]/10 opacity-100 scale-[1.02]"
+                          : "border-white/80 bg-[#FAF8F5]/75 shadow-md shadow-[#14221B]/4 opacity-60 scale-95"
                       }`}
                     >
                       <Quote
@@ -92,22 +96,22 @@ export function Testimonials() {
                             <Star key={star} className="h-4 w-4 fill-current" />
                           ))}
                         </div>
-                        <blockquote className="relative mt-5 text-base font-light leading-relaxed text-[#2C4036]">
+                        <blockquote className="relative mt-4 text-base font-light leading-relaxed text-[#14221B]">
                           &ldquo;{t.quote}&rdquo;
                         </blockquote>
                       </div>
 
-                      <figcaption className="relative mt-8 flex items-center gap-3.5 border-t border-[#F0EADF]/70 pt-5">
-                        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] font-serif text-sm font-normal text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+                      <figcaption className="relative mt-7 flex items-center gap-3.5 border-t border-[#EAE3DA] pt-4">
+                        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] font-serif text-sm font-normal text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
                           {initials(t.name)}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <p className="font-serif text-base font-normal text-[#1F2C25]">
+                            <p className="font-serif text-base font-normal text-[#14221B]">
                               {t.name}
                             </p>
                             <BadgeCheck
-                              className="h-4 w-4 text-[#4A6B5D]"
+                              className="h-4 w-4 text-[#0E7C7B]"
                               aria-label="Verified patient"
                             />
                           </div>
@@ -124,17 +128,17 @@ export function Testimonials() {
           </div>
 
           {/* Minimalist Sleek Pagination Indicator Dots */}
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-4 flex items-center justify-center gap-2">
             {site.testimonials.map((t, i) => (
               <button
                 key={`${t.name}-dot-${i}`}
                 type="button"
                 onClick={() => scrollTo(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer touch-target ${
                   selectedIndex === i
-                    ? "w-6 bg-[#1F2C25]"
-                    : "w-1.5 bg-[#C8BFB2] hover:bg-[#0E7C7B]"
+                    ? "w-8 bg-[#14221B]"
+                    : "w-2 bg-[#C8BFB2] hover:bg-[#0E7C7B]"
                 }`}
               />
             ))}

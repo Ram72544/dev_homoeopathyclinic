@@ -23,8 +23,9 @@ const appointmentSchema = z.object({
   concern: z
     .string()
     .trim()
-    .min(1, "Please briefly describe your concern")
-    .max(1000, "Concern is too long"),
+    .max(1000, "Concern is too long")
+    .optional()
+    .default("Direct consultation booking request"),
   age: z.string().trim().optional(),
   gender: z.string().trim().optional(),
   diseaseCategory: z.string().trim().optional(),

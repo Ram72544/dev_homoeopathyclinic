@@ -1,25 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --teal: #0a2e2e;
-  --teal-dark: #0a2e2e;
-  --teal-mid: #1a4a3a;
-  --gold: #c9a96e;
-  --gold-light: #e2d4b0;
-  --gold-dark: #9c7d3e;
+  /* Core Luxury Botanical Palette (sRGB Fallback) */
+  --teal: #0d2820;
+  --teal-dark: #08170f;
+  --teal-mid: #153e30;
+  --teal-emerald: #0e7c7b;
+  --gold: #c5a059;
+  --gold-light: #e5c583;
+  --gold-dark: #967531;
   --mint: #6ee7b7;
   --mint-dark: #34d399;
-  --mint-soft: #d1fae5;
-  --surface: #EAE3D7;
-  --surface-warm: #E2DACB;
-  --foreground: #1f2c25;
+  --mint-soft: #ecfdf5;
+  --surface: #faf8f5;
+  --surface-warm: #eae3d7;
+  --surface-cream: #f4efe6;
+  --foreground: #14221b;
+  --foreground-muted: #4a5d52;
   --muted: #5c6b62;
   --border: #e8e1d5;
+  --border-light: rgba(255, 255, 255, 0.85);
   --card: #ffffff;
+  --card-glass: rgba(250, 248, 245, 0.72);
+}
+
+/* Display-P3 Wide Color Gamut (Apple Retina, LTPO & OLED displays) */
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --teal: color(display-p3 0.05 0.16 0.13);
+    --teal-dark: color(display-p3 0.03 0.09 0.06);
+    --teal-mid: color(display-p3 0.08 0.24 0.19);
+    --teal-emerald: color(display-p3 0.05 0.49 0.48);
+    --gold: color(display-p3 0.77 0.63 0.35);
+    --gold-light: color(display-p3 0.90 0.77 0.51);
+    --gold-dark: color(display-p3 0.59 0.46 0.19);
+    --mint: color(display-p3 0.43 0.91 0.72);
+    --foreground: color(display-p3 0.08 0.13 0.11);
+    --foreground-muted: color(display-p3 0.29 0.36 0.32);
+  }
 }
 
 @theme inline {
-  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-sans: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-heading), "Playfair Display", Georgia, serif;
   --font-luxury: var(--font-luxury), "Cormorant Garamond", Georgia, serif;
   --font-accent: var(--font-accent), "Cinzel", Georgia, serif;
@@ -33,33 +55,82 @@
   font-family: var(--font-accent), "Cinzel", Georgia, serif;
 }
 
-body {
-  background: var(--surface);
-  color: var(--foreground);
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-h1, h2, h3, h4, .font-serif {
-  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
-  letter-spacing: -0.01em;
+/* 8K Subpixel Rendering & Typography Optimization */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--surface-warm);
+}
+
+body {
+  background: var(--surface-warm);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* Safe Area Inset Support for Modern Mobile / iPhone Dynamic Island */
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-heading), "Playfair Display", Georgia, serif;
+  letter-spacing: -0.015em;
 }
 
 section, [id] {
-  scroll-margin-top: 4.25rem;
+  scroll-margin-top: 5rem;
 }
 
-/* Glass morphism utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+/* 120 FPS Hardware Acceleration Compositing Layer */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Luxury Spatial Frosted Glass with Subpixel Precision */
+.glass-luxury {
+  background: rgba(250, 248, 245, 0.72);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 20px 60px -15px rgba(20, 34, 27, 0.06),
+    0 1px 2px 0 rgba(255, 255, 255, 0.8) inset;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  background-clip: padding-box;
+}
+
+/* Dark OLED Liquid Glass */
+.glass-dark-luxury {
+  background: rgba(13, 30, 22, 0.82);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 30px 80px -20px rgba(0, 0, 0, 0.35),
+    0 1px 1px 0 rgba(255, 255, 255, 0.25) inset;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  background-clip: padding-box;
+}
+
+/* Crisp Hairline Borders */
+.subpixel-border {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
 }
 
 /* Hide scrollbar utility */
@@ -71,7 +142,7 @@ section, [id] {
   scrollbar-width: none;
 }
 
-/* Gemini Style Warm White Rotating Glowing Border */
+/* Warm White Rotating Glowing Border */
 @keyframes spin-glow {
   0% {
     transform: rotate(0deg);
@@ -104,7 +175,7 @@ section, [id] {
     #E8E1D5 320deg,
     transparent 360deg
   );
-  animation: spin-glow 6s linear infinite;
+  animation: spin-glow 7s linear infinite;
   z-index: 0;
   pointer-events: none;
   opacity: 0.95;
@@ -117,29 +188,43 @@ section, [id] {
   width: 100%;
 }
 
-/* Static Card + Soft Pulsing Warm White Glowing Shadow */
+/* Breathing Warm White Ambient Glow */
 @keyframes warm-white-breathing-glow {
   0%, 100% {
     box-shadow: 
       0 0 35px rgba(255, 253, 248, 0.7),
       0 0 70px rgba(244, 239, 230, 0.45),
-      0 25px 80px rgba(0, 0, 0, 0.16);
+      0 25px 80px rgba(0, 0, 0, 0.12);
   }
   50% {
     box-shadow: 
       0 0 60px rgba(255, 255, 255, 0.95),
       0 0 110px rgba(244, 239, 230, 0.65),
-      0 30px 90px rgba(0, 0, 0, 0.14);
+      0 30px 90px rgba(0, 0, 0, 0.10);
   }
 }
 
 .breathing-warm-glow {
-  animation: warm-white-breathing-glow 5s ease-in-out infinite;
+  animation: warm-white-breathing-glow 6s ease-in-out infinite;
 }
 
+/* Responsive Touch Target Helper (48px minimum on mobile) */
+@media (pointer: coarse) {
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
   .gemini-glow-warm-white::before,
   .breathing-warm-glow {
