@@ -248,6 +248,7 @@ export function AppointmentForm() {
                   error={fieldState.error?.message}
                 >
                   <input
+                    id="appointment-name-input"
                     type="text"
                     {...field}
                     onChange={(e) => {

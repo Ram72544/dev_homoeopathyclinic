@@ -75,7 +75,7 @@ export function Hero() {
               >
                 <a
                   href={site.bookingUrl}
-                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] border-t border-white/20 shadow-[0_12px_32px_-8px_rgba(15,34,24,0.5)] transition-all duration-300 hover:from-[#142C20] hover:to-[#0E7C7B] hover:shadow-[0_16px_36px_-6px_rgba(14,124,123,0.4)] hover:scale-[1.01] active:scale-[0.99] w-full sm:w-auto"
+                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] border-t border-white/20 shadow-[0_12px_32px_-8px_rgba(15,34,24,0.5)] transition-all duration-300 hover:from-[#142C20] hover:to-[#0E7C7B] hover:shadow-[0_16px_36px_-6px_rgba(14,124,123,0.4)] hover:scale-[1.01] active:scale-95 w-full sm:w-auto"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583]" />
                   <span>Schedule Consultation</span>
@@ -84,7 +84,7 @@ export function Hero() {
 
                 <a
                   href={`tel:${site.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#14221B]/15 bg-white/85 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#14221B] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#0E7C7B] hover:text-[#0E7C7B] hover:bg-white hover:scale-[1.01] active:scale-[0.99] w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#14221B]/15 bg-white/85 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#14221B] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#0E7C7B] hover:text-[#0E7C7B] hover:bg-white hover:scale-[1.01] active:scale-95 w-full sm:w-auto"
                 >
                   <Phone className="h-4 w-4 text-[#0E7C7B]" />
                   <span>Call Doctor: {site.phoneDisplay}</span>
@@ -124,7 +124,7 @@ export function Hero() {
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/70 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
 
                 {/* Expanded High-Quality Image Container */}
-                <div className="relative h-[420px] sm:h-[500px] lg:h-[540px] xl:h-[580px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
+                <div className="relative h-[340px] sm:h-[480px] lg:h-[540px] xl:h-[580px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
                   <Image
                     src="/images/homeopathy-remedies-v2.png"
                     alt="Homeopathy Sweet Pills and Medicine Vial"

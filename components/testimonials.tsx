@@ -77,17 +77,17 @@ export function Testimonials() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="flex-[0_0_92%] px-3 sm:flex-[0_0_68%] lg:flex-[0_0_42%] xl:flex-[0_0_36%]"
+                    className="flex-[0_0_88%] px-2 sm:flex-[0_0_68%] lg:flex-[0_0_42%] xl:flex-[0_0_36%]"
                   >
                     <figure
-                      className={`relative flex h-full flex-col justify-between rounded-[2rem] border p-7 sm:p-8 backdrop-blur-md transition-all duration-500 [transform:translate3d(0,0,0)] ${
+                      className={`relative flex h-full flex-col justify-between rounded-[2rem] border p-5 sm:p-8 backdrop-blur-md transition-all duration-500 [transform:translate3d(0,0,0)] ${
                         isActive
-                          ? "border-[#C5A059] bg-[#FAF8F5] shadow-2xl shadow-[#14221B]/10 opacity-100 scale-[1.02]"
+                          ? "border-[#C5A059] bg-[#FAF8F5] shadow-xl shadow-[#14221B]/8 opacity-100 scale-[1.01]"
                           : "border-white/80 bg-[#FAF8F5]/75 shadow-md shadow-[#14221B]/4 opacity-60 scale-95"
                       }`}
                     >
                       <Quote
-                        className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-[#C5A059]/10"
+                        className="pointer-events-none absolute -right-2 -top-2 h-20 w-20 text-[#C5A059]/10"
                         strokeWidth={1}
                       />
                       <div>
@@ -96,18 +96,18 @@ export function Testimonials() {
                             <Star key={star} className="h-4 w-4 fill-current" />
                           ))}
                         </div>
-                        <blockquote className="relative mt-4 text-base font-light leading-relaxed text-[#14221B]">
+                        <blockquote className="relative mt-3.5 text-sm sm:text-base font-light leading-relaxed text-[#14221B]">
                           &ldquo;{t.quote}&rdquo;
                         </blockquote>
                       </div>
 
-                      <figcaption className="relative mt-7 flex items-center gap-3.5 border-t border-[#EAE3DA] pt-4">
-                        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] font-serif text-sm font-normal text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+                      <figcaption className="relative mt-5 sm:mt-7 flex items-center gap-3.5 border-t border-[#EAE3DA] pt-3.5">
+                        <div className="flex h-10 w-10 sm:h-11 sm:w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] font-serif text-sm font-normal text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
                           {initials(t.name)}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <p className="font-serif text-base font-normal text-[#14221B]">
+                            <p className="font-serif text-sm sm:text-base font-normal text-[#14221B]">
                               {t.name}
                             </p>
                             <BadgeCheck
@@ -115,7 +115,7 @@ export function Testimonials() {
                               aria-label="Verified patient"
                             />
                           </div>
-                          <p className="text-xs font-light text-[#7A8A80]">
+                          <p className="text-[11px] sm:text-xs font-light text-[#7A8A80]">
                             {t.location} • Verified Patient
                           </p>
                         </div>
@@ -127,20 +127,24 @@ export function Testimonials() {
             </div>
           </div>
 
-          {/* Minimalist Sleek Pagination Indicator Dots */}
-          <div className="mt-4 flex items-center justify-center gap-2">
+          {/* Minimalist Sleek Pagination Indicator Dots (Fixed Scale) */}
+          <div className="mt-4 flex items-center justify-center gap-1">
             {site.testimonials.map((t, i) => (
               <button
                 key={`${t.name}-dot-${i}`}
                 type="button"
                 onClick={() => scrollTo(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer touch-target ${
-                  selectedIndex === i
-                    ? "w-8 bg-[#14221B]"
-                    : "w-2 bg-[#C8BFB2] hover:bg-[#0E7C7B]"
-                }`}
-              />
+                className="p-2 cursor-pointer focus:outline-none flex items-center justify-center"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    selectedIndex === i
+                      ? "w-7 bg-[#14221B]"
+                      : "w-2 bg-[#C8BFB2] hover:bg-[#0E7C7B]"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

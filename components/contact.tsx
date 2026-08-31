@@ -99,44 +99,37 @@ export function Contact() {
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase">Email Us</p>
+                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase">Direct Email</p>
                   <a href={`mailto:${site.email}`} className="text-sm font-light text-[#14221B] hover:text-[#0E7C7B] transition-colors">
                     {site.email}
                   </a>
                 </div>
               </div>
 
-              {/* Address (Clickable to Google Maps) */}
-              <a
-                href={site.googleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group/loc cursor-pointer"
-                aria-label={`View ${site.name} on Google Maps`}
-              >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] mt-0.5 shadow-xs group-hover/loc:bg-[#0E7C7B] group-hover/loc:text-white transition-colors duration-300">
+              {/* Address */}
+              <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] shadow-xs mt-0.5">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase mb-0.5">Clinic Location</p>
-                  <p className="text-sm font-medium text-[#14221B] group-hover/loc:text-[#0E7C7B] transition-colors flex items-center gap-1.5">
-                    <span>{site.name}</span>
-                    <span className="text-[#C5A059] text-xs transition-transform duration-200 group-hover/loc:translate-x-0.5 group-hover/loc:-translate-y-0.5">↗</span>
+                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase">Clinic Location</p>
+                  <p className="text-xs font-light text-[#4A5D52] leading-relaxed mt-0.5">
+                    {site.address}
                   </p>
-                  <p className="text-xs font-light text-[#4A5D52] leading-relaxed mt-0.5 group-hover/loc:text-[#14221B] transition-colors">{site.address}</p>
                 </div>
-              </a>
+              </div>
 
               {/* Timings */}
               <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] mt-0.5 shadow-xs">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] shadow-xs mt-0.5">
                   <Clock className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase mb-1.5">OPD Timings</p>
-                  <div className="space-y-2 text-xs text-[#4A5D52]">
+                  <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase">Consultation Timings</p>
+                  
+                  <div className="mt-1 space-y-1.5 text-xs text-[#4A5D52]">
                     <div>
-                      <p className="font-medium text-[#14221B]">Monday – Saturday (Except Tuesday):</p>
+                      <p className="font-medium text-[#14221B]">Monday &amp; Wednesday – Saturday:</p>
                       <p className="font-light pl-2 mt-0.5">• Morning: 10:00 AM – 1:00 PM</p>
                       <p className="font-light pl-2 mt-0.5">• Evening: 6:00 PM – 9:00 PM</p>
                     </div>
@@ -157,18 +150,18 @@ export function Contact() {
 
             {/* Spatial Glass Map Card with Commute Landmarks */}
             <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 bg-white/85 p-3.5 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] backdrop-blur-2xl group transition-all duration-500 hover:shadow-2xl">
-              <div className="relative h-[200px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
+              <div className="relative h-[220px] sm:h-[240px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
                 <iframe
                   src={site.mapsEmbedUrl}
-                  title="Dr. Sheetal's Homoeopathy Clinic location"
+                  title="Dr. Sheetal's Homoeopathy Clinic location map"
                   width="100%"
-                  height="260"
+                  height="100%"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute -top-8 left-0 w-full h-[260px] rounded-[2rem] filter contrast-[1.05] saturate-[0.85] sepia-[0.08] transition-all duration-700 group-hover:scale-[1.02] group-hover:saturate-100"
+                  className="w-full h-full rounded-[2rem] border-0 filter contrast-[1.03] saturate-[0.9] transition-all duration-700 group-hover:scale-[1.01]"
                 />
                 {/* Floating Directions Button */}
-                <div className="absolute top-3.5 right-3.5">
+                <div className="absolute top-3.5 right-3.5 z-10">
                   <a
                     href={site.googleUrl}
                     target="_blank"

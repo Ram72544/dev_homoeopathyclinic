@@ -76,8 +76,8 @@ export function WhatWeTreat() {
           </p>
         </motion.div>
 
-        {/* Interactive Category Filter Pills */}
-        <div className="mt-8 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+        {/* Interactive Category Filter Pills (Horizontal Swipeable on Mobile) */}
+        <div className="mt-8 flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar scroll-smooth snap-x py-2 px-1 sm:px-0 sm:justify-center sm:flex-wrap">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -88,10 +88,10 @@ export function WhatWeTreat() {
                   setActiveCategory(cat.id);
                   if (cat.id !== "all") setShowAll(true);
                 }}
-                className={`relative rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer touch-target ${
+                className={`shrink-0 snap-start relative rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 active:scale-95 cursor-pointer touch-target ${
                   isActive
                     ? "bg-[#14221B] text-[#FAF8F5] shadow-md"
-                    : "bg-white/80 text-[#4A5D52] hover:bg-white hover:text-[#14221B] border border-[#E8E1D5]"
+                    : "bg-white/85 text-[#4A5D52] hover:bg-white hover:text-[#14221B] border border-[#E8E1D5]"
                 }`}
               >
                 <span>{cat.label}</span>
@@ -133,7 +133,7 @@ export function WhatWeTreat() {
                       if (e.key === "Enter" || e.key === " ") setSelectedService(service);
                     }}
                     aria-label={`View medical details for ${service.title}`}
-                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 bg-white/75 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] transition-all duration-400 hover:border-[#C5A059]/60 hover:bg-white/95 hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] hover:-translate-y-1"
+                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 bg-white/75 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 hover:bg-white/95 hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] hover:-translate-y-1"
                   >
                     <div className="flex flex-col justify-between h-full">
                       <div>

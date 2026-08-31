@@ -25,13 +25,13 @@ export function Navbar() {
           className="flex items-center gap-3 sm:gap-3.5 shrink-0 group mr-3 sm:mr-6 lg:mr-8 min-w-0"
           aria-label={site.name}
         >
-          <div className="relative h-12 w-12 sm:h-13 sm:w-13 lg:h-14 lg:w-14 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_3px_12px_rgba(14,124,123,0.28)]">
+          <div className="relative h-13 w-13 sm:h-14 sm:w-14 lg:h-15 lg:w-15 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_3px_14px_rgba(14,124,123,0.30)]">
             <Image
               src="/logo-concept-1-transparent.png"
               alt="Dr. Sheetal's Homoeopathy Clinic Logo"
               width={256}
               height={256}
-              sizes="(max-width: 640px) 48px, (max-width: 1024px) 52px, 56px"
+              sizes="(max-width: 640px) 52px, (max-width: 1024px) 56px, 60px"
               unoptimized
               priority
               loading="eager"
@@ -42,7 +42,7 @@ export function Navbar() {
             <span className="font-serif text-lg sm:text-xl lg:text-2xl font-normal leading-tight text-[#14221B] whitespace-nowrap group-hover:text-[#0E7C7B] transition-colors duration-300">
               Dr. Sheetal&apos;s
             </span>
-            <span className="font-accent text-[9px] sm:text-[10px] lg:text-[11px] font-bold tracking-[0.30em] text-[#0E7C7B] uppercase whitespace-nowrap mt-1">
+            <span className="font-accent text-[9.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.24em] text-[#0E7C7B] uppercase whitespace-nowrap mt-1">
               HOMOEOPATHY CLINIC
             </span>
           </span>
