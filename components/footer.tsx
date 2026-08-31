@@ -44,26 +44,26 @@ export function Footer() {
 
             {/* Column 1: Brand & Vial Logo */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(14,124,123,0.2)]">
+              <div className="flex items-center gap-4">
+                <div className="relative h-16 w-16 sm:h-18 sm:w-18 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.3)]">
                   <Image
                     src="/logo-concept-1-transparent.png"
                     alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
                     width={256}
                     height={256}
-                    sizes="(max-width: 640px) 56px, 64px"
+                    sizes="(max-width: 640px) 64px, 72px"
                     unoptimized
                     className="h-full w-full object-contain"
                   />
                 </div>
                 <span className="leading-tight flex flex-col justify-center">
-                  <span className="font-luxury text-xl sm:text-2xl font-medium tracking-[0.02em] text-[#14221B]">
+                  <span className="font-luxury text-2xl sm:text-3xl font-semibold tracking-[0.02em] text-[#14221B]">
                     Dr. Sheetal&apos;s
                   </span>
-                  <span className="font-accent text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#0E7C7B] uppercase mt-0.5">
+                  <span className="font-accent text-xs sm:text-sm font-bold tracking-[0.24em] text-[#0E7C7B] uppercase mt-0.5">
                     Homoeopathy Clinic
                   </span>
-                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[#967531] mt-1">
+                  <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#967531] mt-1">
                     Natural Family Healing
                   </span>
                 </span>

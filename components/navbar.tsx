@@ -25,13 +25,13 @@ export function Navbar() {
           className="flex items-center gap-2.5 sm:gap-3.5 shrink-0 group mr-2 sm:mr-4 lg:mr-6 min-w-0"
           aria-label={site.name}
         >
-          <div className="relative h-11 w-11 sm:h-13 sm:w-13 lg:h-14 lg:w-14 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_12px_rgba(14,124,123,0.22)]">
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_14px_rgba(14,124,123,0.28)]">
             <Image
               src="/logo-concept-1-transparent.png"
               alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
               width={256}
               height={256}
-              sizes="(max-width: 640px) 44px, (max-width: 1024px) 52px, 56px"
+              sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
               unoptimized
               priority
               loading="eager"
@@ -39,10 +39,10 @@ export function Navbar() {
             />
           </div>
           <span className="leading-tight shrink-0 flex flex-col justify-center">
-            <span className="font-luxury text-base sm:text-lg lg:text-xl font-medium tracking-[0.02em] text-[#14221B] whitespace-nowrap group-hover:text-[#0E7C7B] transition-colors duration-300">
+            <span className="font-luxury text-lg sm:text-xl lg:text-2xl font-semibold tracking-[0.02em] text-[#14221B] whitespace-nowrap group-hover:text-[#0E7C7B] transition-colors duration-300">
               Dr. Sheetal&apos;s
             </span>
-            <span className="font-accent text-[9px] sm:text-[10px] lg:text-[11px] font-semibold tracking-[0.22em] text-[#0E7C7B] uppercase whitespace-nowrap mt-0.5">
+            <span className="font-accent text-[10px] sm:text-[11px] lg:text-[12px] font-bold tracking-[0.24em] text-[#0E7C7B] uppercase whitespace-nowrap mt-0.5">
               Homoeopathy Clinic
             </span>
           </span>
