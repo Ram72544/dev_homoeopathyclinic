@@ -26,7 +26,7 @@ export function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-accent font-bold tracking-[0.20em] text-[#967531] uppercase mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] uppercase mb-4">
               <Sparkles className="h-3 w-3 text-[#C5A059]" />
               <span>Practitioner Profile</span>
             </div>

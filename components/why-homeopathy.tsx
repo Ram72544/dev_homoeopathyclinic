@@ -56,7 +56,7 @@ export function WhyHomeopathy() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 mx-auto max-w-4xl text-center"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E5C583]/30 bg-[#E5C583]/10 px-3.5 py-1 text-xs font-accent font-bold tracking-[0.20em] text-[#E5C583] uppercase mb-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E5C583]/30 bg-[#E5C583]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#E5C583] uppercase mb-3">
               <Sparkles className="h-3 w-3 text-[#E5C583]" />
               <span>Trusted Natural Science</span>
             </div>

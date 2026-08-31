@@ -43,15 +43,15 @@ export function Footer() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 pb-10 border-b border-[#EAE3DA]">
 
             {/* Column 1: Brand & Vial Logo */}
-            <div className="lg:col-span-4 space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="relative h-16 w-16 sm:h-18 sm:w-18 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.3)]">
+            <div className="lg:col-span-3 space-y-4">
+              <div className="flex items-center gap-3.5">
+                <div className="relative h-15 w-15 sm:h-16 sm:w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.3)]">
                   <Image
                     src="/logo-concept-1-transparent.png"
                     alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
                     width={256}
                     height={256}
-                    sizes="(max-width: 640px) 64px, 72px"
+                    sizes="(max-width: 640px) 60px, 64px"
                     unoptimized
                     className="h-full w-full object-contain"
                   />
@@ -69,7 +69,7 @@ export function Footer() {
                 </span>
               </div>
 
-              <p className="text-sm font-light leading-relaxed text-[#4A5D52] max-w-sm">
+              <p className="text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
                 Personalized homeopathic care treating the root cause of health issues with 100% natural, safe sweet pills for your whole family.
               </p>
 
@@ -84,7 +84,7 @@ export function Footer() {
               <h4 className="font-accent text-xs sm:text-[13px] font-bold uppercase tracking-[0.20em] text-[#14221B]">
                 Navigation
               </h4>
-              <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#4A5D52]">
+              <ul className="space-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
@@ -98,169 +98,174 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Specializations */}
-            <div className="lg:col-span-3 space-y-3">
+            {/* Column 3: Specializations (Clean 2-Column Split) */}
+            <div className="lg:col-span-4 space-y-3">
               <h4 className="font-accent text-xs sm:text-[13px] font-bold uppercase tracking-[0.20em] text-[#14221B]">
                 Specialized Care
               </h4>
-              <ul className="space-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "skin-hair" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Skin &amp; Hair Allergies
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "cough-sinus-asthma" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Cough, Sinus &amp; Asthma
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "gas-acidity-stomach" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Gas, Acidity &amp; Stomach
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "pcos-womens-health" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    PCOS, PCOD &amp; Women&apos;s Health
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "child-health-immunity" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Child Health &amp; Immunity
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "migraine-stress-sleep" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Migraine, Stress &amp; Sleep
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "joint-pain-arthritis" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Joint Pain, Arthritis &amp; Sciatica
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "thyroid-metabolic" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Thyroid &amp; Endocrine Care
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "kidney-stones-urinary" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Kidney Stones &amp; Urinary Care
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "diabetes-blood-sugar" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Diabetes &amp; Metabolic Care
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "supportive-oncology-care" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Supportive Cancer &amp; Palliative Care
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      window.dispatchEvent(
-                        new CustomEvent("open-disease-modal", { detail: "liver-cholesterol-health" })
-                      );
-                    }}
-                    className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
-                  >
-                    Fatty Liver &amp; Cholesterol
-                  </button>
-                </li>
-              </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
+                <ul className="space-y-2">
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "skin-hair" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Skin &amp; Hair Allergies
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "cough-sinus-asthma" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Cough, Sinus &amp; Asthma
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "gas-acidity-stomach" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Gas, Acidity &amp; Stomach
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "pcos-womens-health" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      PCOS &amp; Women&apos;s Health
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "child-health-immunity" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Child Health &amp; Immunity
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "migraine-stress-sleep" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Migraine, Stress &amp; Sleep
+                    </button>
+                  </li>
+                </ul>
+
+                <ul className="space-y-2">
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "joint-pain-arthritis" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Joint Pain &amp; Arthritis
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "thyroid-metabolic" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Thyroid &amp; Endocrine
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "kidney-stones-urinary" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Kidney Stones Care
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "diabetes-blood-sugar" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Diabetes &amp; Metabolism
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "supportive-oncology-care" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Supportive Cancer Care
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.dispatchEvent(
+                          new CustomEvent("open-disease-modal", { detail: "liver-cholesterol-health" })
+                        );
+                      }}
+                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
+                    >
+                      Fatty Liver &amp; Cholesterol
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Column 4: Contact Info */}

@@ -17,6 +17,7 @@ const CATEGORIES = [
 export function WhatWeTreat() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [activeCategory, setActiveCategory] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     function handleOpenModal(e: Event) {
@@ -36,12 +37,14 @@ export function WhatWeTreat() {
     };
   }, []);
 
-  const filteredServices = useMemo(() => {
-    if (activeCategory === "all") return site.services;
+  const displayedServices = useMemo(() => {
+    if (activeCategory === "all") {
+      return showAll ? site.services : site.services.slice(0, 6);
+    }
     const cat = CATEGORIES.find((c) => c.id === activeCategory);
     if (!cat?.match) return site.services;
     return site.services.filter((s) => cat.match?.includes(s.id));
-  }, [activeCategory]);
+  }, [activeCategory, showAll]);
 
   return (
     <section id="services" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
@@ -60,7 +63,7 @@ export function WhatWeTreat() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-accent font-bold tracking-[0.20em] text-[#967531] uppercase">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] uppercase">
             <Sparkles className="h-3 w-3 text-[#C5A059]" />
             <span>Curated Specializations</span>
           </div>
@@ -81,7 +84,10 @@ export function WhatWeTreat() {
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  if (cat.id !== "all") setShowAll(true);
+                }}
                 className={`relative rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer touch-target ${
                   isActive
                     ? "bg-[#14221B] text-[#FAF8F5] shadow-md"
@@ -107,7 +113,7 @@ export function WhatWeTreat() {
           className="mt-10 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
-            {filteredServices.map((service, index) => {
+            {displayedServices.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div
@@ -158,6 +164,20 @@ export function WhatWeTreat() {
             })}
           </AnimatePresence>
         </motion.div>
+
+        {/* Expand / Collapse All 12 Treatments Button (Only visible on All tab) */}
+        {activeCategory === "all" && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 bg-white/90 px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] hover:bg-[#14221B] hover:text-white hover:shadow-md cursor-pointer"
+            >
+              <span>{showAll ? "Show Less Specializations" : "Explore All 12 Conditions & Treatments"}</span>
+              <span className="font-serif text-base">{showAll ? "↑" : "↓"}</span>
+            </button>
+          </div>
+        )}
 
       </div>
 
