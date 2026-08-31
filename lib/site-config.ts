@@ -308,7 +308,7 @@ export const site = {
     },
     {
       id: "thyroid-metabolic",
-      title: "Thyroid & Metabolic Care",
+      title: "Thyroid & Endocrine Care",
       shortDesc:
         "Hypothyroidism, elevated TSH, weight gain, sluggish metabolism & fatigue treated naturally by restoring gland health.",
       icon: Flame,
@@ -368,7 +368,7 @@ export const site = {
     },
     {
       id: "diabetes-blood-sugar",
-      title: "Diabetes & Blood Sugar Care",
+      title: "Diabetes & Metabolic Care",
       shortDesc:
         "Type 2 diabetes, insulin resistance, HbA1c control & diabetic neuropathy prevented naturally with safe botanical potencies.",
       icon: Activity,

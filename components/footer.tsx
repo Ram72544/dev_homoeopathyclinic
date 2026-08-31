@@ -205,7 +205,7 @@ export function Footer() {
                     }}
                     className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
                   >
-                    Thyroid &amp; Metabolic Care
+                    Thyroid &amp; Endocrine Care
                   </button>
                 </li>
                 <li>
@@ -231,7 +231,7 @@ export function Footer() {
                     }}
                     className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer"
                   >
-                    Diabetes &amp; Blood Sugar Care
+                    Diabetes &amp; Metabolic Care
                   </button>
                 </li>
                 <li>
