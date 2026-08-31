@@ -28,46 +28,49 @@ const HEALING_STEPS = [
 
 export function WhyHomeopathy() {
   return (
-    <section id="why" className="relative py-8 md:py-12 bg-transparent overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+    <section id="why" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+      <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
         
-        {/* Main Floating Liquid Glass Container */}
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-[#1A2E20]/80 p-8 sm:p-12 lg:p-16 text-white backdrop-blur-3xl [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
+        {/* Main Floating Liquid Dark OLED Glass Container */}
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-[#0A1A12]/85 p-6 sm:p-10 lg:p-14 xl:p-16 text-white backdrop-blur-3xl shadow-[0_30px_90px_rgba(0,0,0,0.3)] [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding">
           
           {/* Background Botanical Image Refracted Underneath Liquid Glass */}
-          <div className="absolute inset-0 -z-10 opacity-35 mix-blend-overlay">
+          <div className="absolute inset-0 -z-10 opacity-30 mix-blend-overlay pointer-events-none">
             <Image
-              src="/images/homeopathy-remedies.png"
-              alt="Botanical Texture Background"
+              src="/images/homeopathy-remedies-v2.png"
+              alt="Natural Homeopathic Medicine"
               fill
-              className="object-cover scale-125 filter blur-xs"
+              sizes="(max-width: 1536px) 100vw, 1536px"
+              className="object-cover scale-110 filter blur-xs"
             />
           </div>
 
           {/* Liquid Top Edge Highlight */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
 
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 mx-auto max-w-4xl text-center"
           >
-            <span className="text-xs font-light tracking-[0.25em] text-[#E5C583] uppercase block">
-              Trusted Since Ancient Times
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white mt-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E5C583]/30 bg-[#E5C583]/10 px-3.5 py-1 text-xs font-medium tracking-[0.2em] text-[#E5C583] uppercase mb-3">
+              <Sparkles className="h-3 w-3 text-[#E5C583]" />
+              <span>Trusted Natural Science</span>
+            </div>
+
+            <h2 className="font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-white mt-1 leading-tight">
               Why Patients Choose Homeopathy
             </h2>
             <p className="mt-4 text-sm sm:text-base lg:text-lg font-light leading-relaxed tracking-wide text-white/80">
-              Gentle, effective & 100% safe medicine recognized by the Ministry of AYUSH, Govt. of India.
+              Gentle, scientifically proven &amp; 100% natural medicine designed for lasting vitality.
             </p>
           </motion.div>
 
-          {/* 4 Floating Liquid Glass Pills (Smoothed Anti-Aliased Corners) */}
-          <div className="relative z-10 mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* 4 Floating Liquid Glass Benefit Cards */}
+          <div className="relative z-10 mt-10 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {site.benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
@@ -76,16 +79,16 @@ export function WhyHomeopathy() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-[#25422C]/80 p-7 backdrop-blur-2xl transition-all duration-300 hover:border-white/40 hover:bg-[#2C4F35]/95 hover:-translate-y-1 [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding"
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative overflow-hidden rounded-[2rem] border border-white/20 bg-[#162D20]/80 p-6 sm:p-7 backdrop-blur-2xl transition-all duration-400 hover:border-white/40 hover:bg-[#1E3B2A]/95 hover:-translate-y-1 shadow-lg shadow-black/20 [transform:translate3d(0,0,0)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white group-hover:scale-105 transition-transform [transform:translateZ(0)]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 bg-white/15 text-white group-hover:scale-105 transition-transform">
                     <Icon className="h-6 w-6 text-[#E5C583]" />
                   </div>
-                  <h3 className="mt-6 font-serif text-xl font-normal text-white">
+                  <h3 className="mt-5 font-serif text-xl font-normal text-white">
                     {benefit.title}
                   </h3>
-                  <p className="mt-2.5 text-sm font-light leading-relaxed text-white/75">
+                  <p className="mt-2 text-sm font-light leading-relaxed text-white/75">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -94,21 +97,21 @@ export function WhyHomeopathy() {
           </div>
 
           {/* 3-Step Process Liquid Glass Capsule */}
-          <div className="relative z-10 mt-14 overflow-hidden rounded-3xl border border-white/20 bg-[#223B27]/75 p-8 lg:p-12 backdrop-blur-2xl [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding">
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="text-xs font-light tracking-widest text-[#E5C583] uppercase">Simplicity & Care</span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1.5 font-normal">3 Steps to Your Permanent Recovery</h3>
+          <div className="relative z-10 mt-10 sm:mt-12 overflow-hidden rounded-[2rem] border border-white/20 bg-[#142A1E]/75 p-6 sm:p-10 lg:p-12 backdrop-blur-2xl [transform:translate3d(0,0,0)]">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+              <span className="text-xs font-medium tracking-widest text-[#E5C583] uppercase block">Simplicity &amp; Care</span>
+              <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1 font-normal">3 Steps to Your Permanent Recovery</h3>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-3">
               {HEALING_STEPS.map((s, idx) => {
                 const Icon = s.icon;
                 return (
-                  <div key={idx} className="relative space-y-3.5 p-5 text-center sm:text-left rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md [transform:translateZ(0)] bg-clip-padding">
+                  <div key={idx} className="relative space-y-3 p-5 sm:p-6 text-center sm:text-left rounded-2xl border border-white/15 bg-white/8 backdrop-blur-md transition-all duration-300 hover:bg-white/12">
                     <div className="flex items-center gap-3 justify-center sm:justify-start">
                       <span className="font-serif text-3xl font-normal text-[#E5C583]">{s.step}</span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/20 text-white">
-                        <Icon className="h-5 w-5" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-white">
+                        <Icon className="h-5 w-5 text-[#E5C583]" />
                       </div>
                     </div>
                     <h4 className="font-serif text-xl font-normal text-white">{s.title}</h4>

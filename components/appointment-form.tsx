@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Loader2, ShieldCheck, HeartPulse, ClipboardList, Stethoscope } from "lucide-react";
+import { CheckCircle2, Loader2, ShieldCheck, HeartPulse, Sparkles, ChevronDown, ChevronUp, Calendar, Phone, User, Stethoscope } from "lucide-react";
 import { site } from "@/lib/site-config";
 import {
   Dialog,
@@ -18,7 +18,7 @@ const appointmentSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(1, "Please enter your name")
+    .min(1, "Please enter your full name")
     .max(50, "Name is too long")
     .regex(/^[A-Za-z\s'-]+$/, "Only letters and spaces allowed"),
   phone: z
@@ -28,10 +28,6 @@ const appointmentSchema = z.object({
   date: z.string().trim().min(1, "Please select a date"),
   time: z.string().trim().min(1, "Please select a time slot"),
   diseaseCategory: z.string().trim().optional(),
-  age: z.string().trim().optional(),
-  gender: z.string().trim().optional(),
-  duration: z.string().trim().optional(),
-  lifestyle: z.string().trim().optional(),
   concern: z.string().trim().optional(),
 });
 
@@ -49,10 +45,25 @@ const EVENING_SLOTS = [
   "8:00 PM – 9:00 PM",
 ];
 
+const SUNDAY_EVENING_SLOTS = [
+  "6:00 PM – 7:00 PM (Prior Appointment Only)",
+  "7:00 PM – 8:00 PM (Prior Appointment Only)",
+  "8:00 PM – 9:00 PM (Prior Appointment Only)",
+];
+
 function getSlotsForDate(dateStr: string): string[] {
   if (!dateStr) return [];
   const day = new Date(`${dateStr}T00:00:00`).getDay();
-  return day === 0 ? MORNING_SLOTS : [...MORNING_SLOTS, ...EVENING_SLOTS];
+  // 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
+  if (day === 2) {
+    // Tuesday is Clinic Off
+    return [];
+  }
+  if (day === 0) {
+    // Sunday: Morning OPD + Evening Prior Appt Only
+    return [...MORNING_SLOTS, ...SUNDAY_EVENING_SLOTS];
+  }
+  return [...MORNING_SLOTS, ...EVENING_SLOTS];
 }
 
 function todayISO(): string {
@@ -74,6 +85,7 @@ export function AppointmentForm() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmedName, setConfirmedName] = useState("");
   const [submitError, setSubmitError] = useState("");
+  const [showOptionalNotes, setShowOptionalNotes] = useState(false);
   const minDate = useMemo(() => todayISO(), []);
 
   const [selectedDate, setSelectedDate] = useState("");
@@ -94,10 +106,6 @@ export function AppointmentForm() {
       date: "",
       time: "",
       diseaseCategory: "",
-      age: "",
-      gender: "",
-      duration: "",
-      lifestyle: "",
       concern: "",
     },
   });
@@ -108,15 +116,11 @@ export function AppointmentForm() {
     return site.services.find((s) => s.title === selectedCategory);
   }, [selectedCategory]);
 
-  const dynamicFieldLabel = currentService
-    ? `Health Concern & Symptoms (${currentService.title}) *`
-    : "Tell Us About Your Health Concern *";
-
   const dynamicPlaceholder = useMemo(() => {
     if (currentService?.caseQuestions) {
       return currentService.caseQuestions;
     }
-    return "Please describe your primary health concerns, main symptoms, how long you've experienced them, and any past or current medications taken...";
+    return "Any specific symptoms, duration, or previous treatments you'd like Dr. Sheetal to know beforehand (optional)...";
   }, [currentService]);
 
   // Listen for prefill event from DiseaseModal
@@ -126,15 +130,15 @@ export function AppointmentForm() {
         e as CustomEvent<{
           diseaseTitle: string;
           initialNotes?: string;
-          placeholderHint?: string;
         }>
       ).detail;
       if (detail) {
         if (detail.diseaseTitle) {
           setValue("diseaseCategory", detail.diseaseTitle, { shouldValidate: true });
         }
-        if (detail.initialNotes !== undefined) {
+        if (detail.initialNotes) {
           setValue("concern", detail.initialNotes, { shouldValidate: true });
+          setShowOptionalNotes(true);
         }
       }
     }
@@ -161,12 +165,8 @@ export function AppointmentForm() {
           name: values.name,
           phone: values.phone,
           slot,
-          concern: values.concern,
-          age: values.age,
-          gender: values.gender,
+          concern: values.concern || `Consultation request for ${values.diseaseCategory || "General Health"}`,
           diseaseCategory: values.diseaseCategory,
-          duration: values.duration,
-          lifestyle: values.lifestyle,
         }),
       });
       const data = (await response.json()) as { ok?: boolean; error?: string };
@@ -178,6 +178,7 @@ export function AppointmentForm() {
       setConfirmedName(values.name);
       setShowConfirmation(true);
       reset();
+      setShowOptionalNotes(false);
     } catch (err) {
       setSubmitError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
@@ -190,44 +191,62 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/70 p-6 sm:p-8 shadow-2xl backdrop-blur-md [transform:translateZ(0)] [backface-visibility:hidden] bg-clip-padding"
+        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/85 p-6 sm:p-8 lg:p-9 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding"
       >
-        {/* Warm Caring Form Header */}
-        <div className="flex items-center gap-3.5 border-b border-[#F0EADF]/80 pb-5 mb-5">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#2A4034] to-[#1F2C25] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md shrink-0">
-            <HeartPulse className="h-5 w-5" />
+        {/* Fast & Reassuring Header */}
+        <div className="flex items-center justify-between border-b border-[#EAE3DA]/80 pb-5 mb-6">
+          <div className="flex items-center gap-3.5">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md shrink-0">
+              <HeartPulse className="h-5 w-5" />
+            </div>
+            <div>
+              <span className="text-[10px] font-semibold tracking-[0.2em] text-[#967531] uppercase block">
+                Quick 30-Second Booking
+              </span>
+              <h3 className="font-serif text-2xl sm:text-[1.75rem] font-normal text-[#14221B] mt-0.5 tracking-tight">
+                Request a Consultation
+              </h3>
+            </div>
           </div>
-          <div>
-            <span className="text-[10px] font-light tracking-[0.22em] text-[#C5A059] uppercase block">Online & OPD Booking</span>
-            <h3 className="font-serif text-2xl font-normal text-[#1F2C25] mt-0.5">Request a Consultation</h3>
-            <p className="text-xs font-light text-[#7A8A80] mt-0.5">Classical Homeopathic Intake Form — All details kept confidential</p>
+          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/20 bg-[#0E7C7B]/8 px-3.5 py-1.5 text-[11px] font-medium text-[#0E7C7B] shadow-2xs">
+            <Sparkles className="h-3 w-3 text-[#C5A059]" />
+            <span>Direct Doctor Visit</span>
           </div>
         </div>
 
-        <div className="space-y-4">
-          {/* Targeted Disease Specialization */}
-          <Field label="Target Specialization / Health Issue" error={errors.diseaseCategory?.message}>
-            <select
-              {...register("diseaseCategory")}
-              className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-            >
-              <option value="">-- Select Disease / Specialization --</option>
-              {site.services.map((s) => (
-                <option key={s.id} value={s.title}>
-                  {s.title}
-                </option>
-              ))}
-              <option value="General Consultation">General / Other Health Concern</option>
-            </select>
+        <div className="space-y-4 sm:space-y-4.5">
+          {/* Field 1: Health Issue / Specialization */}
+          <Field label="Health Concern / Treatment Needed" icon={<Stethoscope className="h-3.5 w-3.5 text-[#0E7C7B]" />}>
+            <div className="relative group">
+              <select
+                {...register("diseaseCategory")}
+                className="w-full appearance-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
+              >
+                <option value="">-- Select Condition (e.g. Skin, Asthma, PCOS/PCOD, Joints) --</option>
+                {site.services.map((s) => (
+                  <option key={s.id} value={s.title}>
+                    {s.title}
+                  </option>
+                ))}
+                <option value="General Consultation">General / Other Health Issue</option>
+              </select>
+              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] transition-transform duration-200 group-hover:text-[#14221B]">
+                <ChevronDown className="h-4 w-4" />
+              </div>
+            </div>
           </Field>
 
-          {/* Personal Info: Name & Phone */}
+          {/* Fields 2 & 3: Name & Phone */}
           <div className="grid gap-3.5 sm:grid-cols-2">
             <Controller
               name="name"
               control={control}
               render={({ field, fieldState }) => (
-                <Field label="Your Full Name *" error={fieldState.error?.message}>
+                <Field
+                  label="Your Full Name *"
+                  icon={<User className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+                  error={fieldState.error?.message}
+                >
                   <input
                     type="text"
                     {...field}
@@ -239,8 +258,8 @@ export function AppointmentForm() {
                         .slice(0, 50);
                       field.onChange(cleaned);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-                    placeholder="Enter full name"
+                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
+                    placeholder="e.g. Rahul Sharma"
                   />
                 </Field>
               )}
@@ -250,7 +269,11 @@ export function AppointmentForm() {
               name="phone"
               control={control}
               render={({ field, fieldState }) => (
-                <Field label="Mobile / WhatsApp Number *" error={fieldState.error?.message}>
+                <Field
+                  label="Mobile / WhatsApp Number *"
+                  icon={<Phone className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+                  error={fieldState.error?.message}
+                >
                   <input
                     type="tel"
                     inputMode="numeric"
@@ -260,7 +283,7 @@ export function AppointmentForm() {
                       const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                       field.onChange(digits);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
+                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
                     placeholder="10-digit mobile number"
                   />
                 </Field>
@@ -268,122 +291,107 @@ export function AppointmentForm() {
             />
           </div>
 
-          {/* Patient Details: Age, Gender & Duration */}
-          <div className="grid gap-3.5 grid-cols-1 sm:grid-cols-3">
-            <Field label="Patient Age" error={errors.age?.message}>
-              <input
-                type="number"
-                min={1}
-                max={110}
-                {...register("age")}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-                placeholder="Age (e.g. 28)"
-              />
-            </Field>
-
-            <Field label="Gender" error={errors.gender?.message}>
-              <select
-                {...register("gender")}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-              >
-                <option value="">Select Gender</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-                <option value="Child / Minor">Child / Minor</option>
-                <option value="Other">Other</option>
-              </select>
-            </Field>
-
-            <Field label="Duration of Issue" error={errors.duration?.message}>
-              <select
-                {...register("duration")}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-              >
-                <option value="">How long?</option>
-                <option value="Recent (< 3 Months)">Recent (&lt; 3 Months)</option>
-                <option value="3 Months to 1 Year">3 Months – 1 Year</option>
-                <option value="1 Year to 3 Years">1 Year – 3 Years</option>
-                <option value="Chronic (3+ Years)">Chronic (3+ Years)</option>
-              </select>
-            </Field>
-          </div>
-
-          {/* Daily Life & Thermal/Stress Factors */}
-          <Field label="Daily Life / Lifestyle Factors" error={errors.lifestyle?.message}>
-            <select
-              {...register("lifestyle")}
-              className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
-            >
-              <option value="">Primary Lifestyle Sensitivity (Optional)</option>
-              <option value="High Work/Mental Stress">High Mental/Work Stress</option>
-              <option value="Disrupted Sleep / Insomnia">Disrupted Sleep / Insomnia</option>
-              <option value="Chilly / Sensitive to Cold Weather">Sensitive to Cold Air / Weather</option>
-              <option value="Warm / Sensitive to Heat">Sensitive to Heat / Sun</option>
-              <option value="Irregular Diet / Sedentary Routine">Irregular Diet / Sedentary Work</option>
-            </select>
-          </Field>
-
-          {/* Preferred Date & Slot */}
+          {/* Field 4: Preferred Date & Slot */}
           <div className="grid gap-3.5 sm:grid-cols-2">
-            <Field label="Preferred Date *" error={errors.date?.message}>
+            <Field
+              label="Preferred Date *"
+              icon={<Calendar className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+              error={errors.date?.message}
+            >
               <input
                 type="date"
                 min={minDate}
                 {...dateField}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20"
+                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
               />
             </Field>
 
-            <Field label="Preferred Time *" error={errors.time?.message}>
-              <select
-                {...register("time")}
-                disabled={!selectedDate}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20 disabled:opacity-60"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  {selectedDate ? "Select time slot" : "Pick date first"}
-                </option>
-                {availableSlots.map((slot) => (
-                  <option key={slot} value={slot}>
-                    {slot}
+            <Field label="Preferred Time Slot *" error={errors.time?.message}>
+              <div className="relative group">
+                <select
+                  {...register("time")}
+                  disabled={!selectedDate}
+                  className="w-full appearance-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] disabled:opacity-50 min-h-[48px] cursor-pointer"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {!selectedDate
+                      ? "Pick date first"
+                      : availableSlots.length === 0
+                      ? "Tuesday is Weekly Off (Clinic Closed)"
+                      : "Select convenient slot"}
                   </option>
-                ))}
-              </select>
+                  {availableSlots.map((slot) => (
+                    <option key={slot} value={slot}>
+                      {slot}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] transition-transform duration-200 group-hover:text-[#14221B]">
+                  <ChevronDown className="h-4 w-4" />
+                </div>
+              </div>
             </Field>
           </div>
 
-          {/* Health Concern Field */}
-          <Controller
-            name="concern"
-            control={control}
-            render={({ field, fieldState }) => (
-              <Field label={dynamicFieldLabel} error={fieldState.error?.message}>
-                <textarea
-                  rows={4}
-                  {...field}
-                  onChange={(e) => {
-                    const val = e.target.value.slice(0, 1000);
-                    field.onChange(val);
-                  }}
-                  className="w-full resize-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5] px-4.5 py-3.5 text-sm font-light text-[#1F2C25] outline-none transition-all duration-300 focus:border-[#C5A059] focus:bg-white focus:ring-2 focus:ring-[#C5A059]/20 font-sans leading-relaxed"
-                  placeholder={dynamicPlaceholder}
+          {/* Optional Note Accordion / Toggle */}
+          <div className="pt-1">
+            {!showOptionalNotes ? (
+              <button
+                type="button"
+                onClick={() => setShowOptionalNotes(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0E7C7B] hover:text-[#14221B] transition-colors py-1 cursor-pointer group"
+              >
+                <span className="group-hover:underline underline-offset-2">+ Add symptoms or health note (optional)</span>
+                <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
+              </button>
+            ) : (
+              <div className="space-y-2 pt-1 animate-in fade-in duration-200">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-[#14221B]">
+                    Brief Symptoms / Notes (Optional)
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowOptionalNotes(false)}
+                    className="text-[11px] text-[#7A8A80] hover:text-[#14221B] flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Hide note</span>
+                    <ChevronUp className="h-3 w-3" />
+                  </button>
+                </div>
+                <Controller
+                  name="concern"
+                  control={control}
+                  render={({ field }) => (
+                    <textarea
+                      rows={3}
+                      {...field}
+                      onChange={(e) => {
+                        const val = e.target.value.slice(0, 1000);
+                        field.onChange(val);
+                      }}
+                      className="w-full resize-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/90 px-4 py-3 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] font-sans leading-relaxed"
+                      placeholder={dynamicPlaceholder}
+                    />
+                  )}
                 />
-              </Field>
+              </div>
             )}
-          />
+          </div>
 
+          {/* 2026 Minimalist Luxury CTA */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2.5 rounded-full bg-[#2C4036] px-8 py-4 text-xs font-light tracking-widest text-[#FAF8F5] uppercase shadow-md transition-all duration-500 hover:bg-[#1F2C25] hover:shadow-xl disabled:opacity-50 cursor-pointer"
+            className="w-full relative overflow-hidden flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] px-8 py-4 text-xs sm:text-sm font-medium tracking-[0.14em] text-[#FAF8F5] uppercase border-t border-white/20 shadow-[0_12px_32px_-8px_rgba(15,34,24,0.5)] transition-all duration-300 hover:scale-[1.01] hover:from-[#142C20] hover:to-[#0E7C7B] hover:shadow-[0_16px_36px_-6px_rgba(14,124,123,0.4)] active:scale-[0.99] disabled:opacity-50 cursor-pointer min-h-[52px] mt-3"
           >
             {isSubmitting ? (
-              <Loader2 className="h-4 w-4 animate-spin text-[#C5A059]" />
+              <Loader2 className="h-4 w-4 animate-spin text-[#E5C583]" />
             ) : (
-              <ClipboardList className="h-4 w-4 text-[#C5A059]" />
+              <CheckCircle2 className="h-4 w-4 text-[#E5C583]" />
             )}
-            <span>{isSubmitting ? "Submitting..." : "Submit Consultation Request"}</span>
+            <span>{isSubmitting ? "Confirming..." : "Confirm Consultation Request"}</span>
           </button>
 
           {submitError && (
@@ -392,22 +400,26 @@ export function AppointmentForm() {
 
           <p className="flex items-center justify-center gap-1.5 text-center text-[11px] font-light text-[#7A8A80] pt-1">
             <ShieldCheck className="h-4 w-4 text-[#C5A059] shrink-0" />
-            100% Private & Confidential. Dr. Sheetal's team will contact you to confirm timing.
+            100% Confidential • Dr. Sheetal&apos;s clinic will call/message to confirm.
           </p>
         </div>
       </form>
 
       <Dialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <DialogContent className="sm:max-w-md bg-[#FAF8F5] rounded-3xl p-6 border border-[#E8E1D5]">
+        <DialogContent className="sm:max-w-md bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 border border-[#E8E1D5] shadow-2xl">
           <DialogHeader className="items-center text-center">
-            <CheckCircle2 className="h-12 w-12 text-[#2C4036]" />
-            <DialogTitle className="font-serif text-2xl font-normal text-[#1F2C25]">Consultation Request Sent!</DialogTitle>
-            <DialogDescription className="text-sm font-light leading-relaxed text-[#5C6B62] mt-2">
-              Thank you, <strong className="text-[#1F2C25] font-normal">{confirmedName}</strong>! Your consultation request has been received with your case profile. We will call/message you shortly to confirm your consultation timing.
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0E7C7B]/15 text-[#0E7C7B] mb-2">
+              <CheckCircle2 className="h-8 w-8 text-[#0E7C7B]" />
+            </div>
+            <DialogTitle className="font-serif text-2xl font-normal text-[#14221B]">
+              Consultation Request Received!
+            </DialogTitle>
+            <DialogDescription className="text-sm font-light leading-relaxed text-[#4A5D52] mt-2">
+              Thank you, <strong className="text-[#14221B] font-medium">{confirmedName}</strong>! Your appointment request has been submitted. Our team will contact you shortly to confirm your consultation.
             </DialogDescription>
           </DialogHeader>
           <button
-            className="mt-4 w-full rounded-full bg-[#2C4036] py-3 text-xs font-light tracking-widest text-[#FAF8F5] uppercase transition-colors hover:bg-[#1F2C25]"
+            className="mt-4 w-full rounded-full bg-[#14221B] py-3.5 text-xs font-medium tracking-widest text-[#FAF8F5] uppercase transition-colors hover:bg-[#0E7C7B] cursor-pointer"
             onClick={() => setShowConfirmation(false)}
           >
             Done
@@ -420,16 +432,19 @@ export function AppointmentForm() {
 
 function Field({
   label,
+  icon,
   error,
   children,
 }: {
   label: string;
+  icon?: React.ReactNode;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className="block space-y-1.5">
-      <span className="block text-xs font-medium tracking-wide text-[#1F2C25]">
+      <span className="flex items-center gap-1.5 text-xs font-medium tracking-wide text-[#14221B]">
+        {icon}
         {label}
       </span>
       {children}

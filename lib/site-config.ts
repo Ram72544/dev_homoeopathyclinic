@@ -49,7 +49,7 @@ export const site = {
   shortName: "Dr. Sheetal's Clinic",
   tagline: "Gentle, Natural & Permanent Healing for Your Whole Family",
   intro:
-    "Get personalized homeopathic treatment that treats the root cause of your illness, not just temporary symptoms. Recognized by the Ministry of AYUSH, India — 100% safe, natural sweet pills with zero side effects for kids, adults, and seniors.",
+    "Get personalized homeopathic treatment that treats the root cause of your illness, not just temporary symptoms. 100% safe, natural sweet pills with zero side effects for kids, adults, and seniors.",
 
   // --- Contact -------------------------------------------------
   phoneDisplay: "+91 79053 71551",
@@ -74,9 +74,11 @@ export const site = {
 
   // --- Timings --------------------------------------------------
   timings: [
-    { days: "Monday – Saturday (Morning)", hours: "10:00 AM – 1:00 PM" },
-    { days: "Monday – Saturday (Evening)", hours: "6:00 PM – 9:00 PM" },
-    { days: "Sunday", hours: "10:00 AM – 1:00 PM (Prior Appointment Only)" },
+    { days: "Monday – Saturday (Morning)", hours: "10:00 AM – 1:00 PM (Except Tuesday)" },
+    { days: "Monday – Saturday (Evening)", hours: "6:00 PM – 9:00 PM (Except Tuesday)" },
+    { days: "Sunday (Morning)", hours: "10:00 AM – 1:00 PM" },
+    { days: "Sunday (Evening)", hours: "6:00 PM – 9:00 PM (Prior Appointment Only)" },
+    { days: "Tuesday", hours: "Closed (Weekly Off)" },
   ] as { days: string; hours: string }[],
 
   // --- About Doctor ---------------------------------------------
@@ -185,7 +187,7 @@ export const site = {
     },
     {
       id: "pcos-womens-health",
-      title: "PCOS & Women's Health",
+      title: "PCOS, PCOD & Women's Health",
       shortDesc:
         "PCOS/PCOD, irregular periods, hormonal acne, thyroid & menopausal distress treated without synthetic hormones.",
       icon: Baby,
@@ -386,9 +388,9 @@ export const site = {
       icon: UserRound,
     },
     {
-      title: "Recognized by Govt. of India",
+      title: "Clinically Proven & Safe",
       description:
-        "Approved system of medicine under the Ministry of AYUSH, Govt. of India, backed by over 200 years of medical research.",
+        "A time-tested medical science backed by over 200 years of global research and safe, predictable clinical outcomes.",
       icon: Clock,
     },
   ] as Benefit[],

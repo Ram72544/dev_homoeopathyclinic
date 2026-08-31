@@ -50,9 +50,6 @@ export const metadata: Metadata = {
     "natural treatment",
     "classical homoeopathy",
   ],
-  icons: {
-    icon: "/logo-mark-3d.svg",
-  },
   openGraph: {
     title: `${site.name}`,
     description: site.intro,
