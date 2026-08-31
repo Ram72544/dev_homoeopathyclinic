@@ -75,17 +75,26 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Address */}
-              <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] mt-0.5 shadow-xs">
+              {/* Address (Clickable to Google Maps) */}
+              <a
+                href={site.googleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group/loc cursor-pointer"
+                aria-label={`View ${site.name} on Google Maps`}
+              >
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] text-[#E5C583] mt-0.5 shadow-xs group-hover/loc:bg-[#0E7C7B] group-hover/loc:text-white transition-colors duration-300">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
                   <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] uppercase mb-0.5">Clinic Location</p>
-                  <p className="text-sm font-medium text-[#14221B]">{site.name}</p>
-                  <p className="text-xs font-light text-[#4A5D52] leading-relaxed mt-0.5">{site.address}</p>
+                  <p className="text-sm font-medium text-[#14221B] group-hover/loc:text-[#0E7C7B] transition-colors flex items-center gap-1.5">
+                    <span>{site.name}</span>
+                    <span className="text-[#C5A059] text-xs transition-transform duration-200 group-hover/loc:translate-x-0.5 group-hover/loc:-translate-y-0.5">↗</span>
+                  </p>
+                  <p className="text-xs font-light text-[#4A5D52] leading-relaxed mt-0.5 group-hover/loc:text-[#14221B] transition-colors">{site.address}</p>
                 </div>
-              </div>
+              </a>
 
               {/* Timings */}
               <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 transition-colors duration-200 group">
@@ -130,7 +139,7 @@ export function Contact() {
                 {/* Floating Directions Button */}
                 <div className="absolute top-3.5 right-3.5">
                   <a
-                    href="https://maps.google.com/?q=Dr.+Sheetal%27s+Homoeopathy+Clinic+Badarpur+New+Delhi"
+                    href={site.googleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full bg-[#14221B]/90 px-4 py-2 text-[10px] font-medium uppercase tracking-wider text-[#FAF8F5] shadow-lg backdrop-blur-md transition-all hover:bg-[#0E7C7B] shrink-0"
