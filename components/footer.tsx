@@ -81,7 +81,7 @@ export function Footer() {
 
             {/* Column 2: Quick Links */}
             <div className="lg:col-span-2 space-y-3">
-              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
+              <h4 className="font-accent text-xs sm:text-[13px] font-bold uppercase tracking-[0.20em] text-[#14221B]">
                 Navigation
               </h4>
               <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#4A5D52]">
@@ -100,7 +100,7 @@ export function Footer() {
 
             {/* Column 3: Specializations */}
             <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
+              <h4 className="font-accent text-xs sm:text-[13px] font-bold uppercase tracking-[0.20em] text-[#14221B]">
                 Specialized Care
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
@@ -226,7 +226,7 @@ export function Footer() {
 
             {/* Column 4: Contact Info */}
             <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
+              <h4 className="font-accent text-xs sm:text-[13px] font-bold uppercase tracking-[0.20em] text-[#14221B]">
                 Clinic Contact
               </h4>
               <ul className="space-y-3 text-sm font-light leading-relaxed text-[#4A5D52]">
