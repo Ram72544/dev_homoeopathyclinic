@@ -50,15 +50,6 @@ export const metadata: Metadata = {
     "natural treatment",
     "classical homoeopathy",
   ],
-  icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo-concept-1-transparent.png", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/icon.png",
-  },
   openGraph: {
     title: `${site.name}`,
     description: site.intro,
