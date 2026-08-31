@@ -83,13 +83,13 @@ export const site = {
 
   // --- About Doctor ---------------------------------------------
   about: {
-    doctorName: "Dr. Sheetal",
+    doctorName: "Dr. Sheetal Tiwari",
     credentials: "BHMS, MD (Homoeopathy)",
     experience: "4+ Years Clinical Practice",
     photo: "",
     bio: [
-      "Dr. Sheetal is a qualified, registered Homoeopathic Doctor holding BHMS and MD in Homoeopathy. She practices classical homeopathy, which means finding the exact single medicine that matches your unique body type, personality, and full health history.",
-      "With over 4 years of clinical experience, Dr. Sheetal has successfully treated hundreds of patients across Delhi NCR and India for long-standing chronic health issues, skin allergies, digestive problems, and childhood illnesses — without heavy chemicals or side effects.",
+      "Dr. Sheetal Tiwari is a qualified, registered Homoeopathic Doctor holding BHMS and MD in Homoeopathy. She practices classical homeopathy, which means finding the exact single medicine that matches your unique body type, personality, and full health history.",
+      "With over 4 years of clinical experience, Dr. Sheetal Tiwari has successfully treated hundreds of patients across Delhi NCR and India for long-standing chronic health issues, skin allergies, digestive problems, and childhood illnesses — without heavy chemicals or side effects.",
     ],
   },
 
@@ -425,12 +425,12 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Treatments", href: "#services" },
-  { label: "Why Us", href: "#why" },
-  { label: "Reviews", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "HOME", href: "#home" },
+  { label: "ABOUT", href: "#about" },
+  { label: "TREATMENTS", href: "#services" },
+  { label: "WHY US", href: "#why" },
+  { label: "REVIEWS", href: "#testimonials" },
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(

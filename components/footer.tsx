@@ -81,7 +81,7 @@ export function Footer() {
 
             {/* Column 2: Quick Links */}
             <div className="lg:col-span-2 space-y-3">
-              <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0E7C7B]">
+              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
                 Navigation
               </h4>
               <ul className="space-y-2.5 text-sm font-light leading-relaxed text-[#4A5D52]">
@@ -100,7 +100,7 @@ export function Footer() {
 
             {/* Column 3: Specializations */}
             <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0E7C7B]">
+              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
                 Specialized Care
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm font-light leading-relaxed text-[#4A5D52]">
@@ -226,13 +226,13 @@ export function Footer() {
 
             {/* Column 4: Contact Info */}
             <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-[#0E7C7B]">
+              <h4 className="font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-[#14221B]">
                 Clinic Contact
               </h4>
               <ul className="space-y-3 text-sm font-light leading-relaxed text-[#4A5D52]">
                 <li className="flex items-start gap-2.5">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-medium text-[#14221B]">
+                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors font-light">
                     {site.phoneDisplay}
                   </a>
                 </li>
@@ -253,9 +253,16 @@ export function Footer() {
                     {site.email}
                   </a>
                 </li>
-                <li className="flex items-start gap-2.5 font-light leading-relaxed text-[#4A5D52]">
+                <li className="flex items-start gap-2.5">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0E7C7B]" />
-                  <span>{site.address}</span>
+                  <a
+                    href={site.googleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#0E7C7B] transition-colors font-light leading-relaxed text-[#4A5D52]"
+                  >
+                    {site.address}
+                  </a>
                 </li>
               </ul>
 
