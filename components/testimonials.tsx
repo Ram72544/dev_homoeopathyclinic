@@ -55,7 +55,7 @@ export function Testimonials() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-medium tracking-[0.2em] text-[#967531] uppercase">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-accent font-bold tracking-[0.20em] text-[#967531] uppercase">
             <Sparkles className="h-3 w-3 text-[#C5A059]" />
             <span>Patient Stories &amp; Reviews</span>
           </div>

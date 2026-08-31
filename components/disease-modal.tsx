@@ -53,7 +53,7 @@ export function DiseaseModal({
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-[0.2em] text-[#967531] uppercase block">
+                  <span className="font-accent text-[11px] font-bold tracking-[0.20em] text-[#967531] uppercase block">
                     Treatment &amp; Root Cause Overview
                   </span>
                   <DialogTitle className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] mt-0.5">
@@ -70,7 +70,7 @@ export function DiseaseModal({
             <div className="space-y-6 pt-6">
               {/* Treated Sub-Conditions Tags */}
               <div>
-                <h4 className="text-xs font-semibold tracking-[0.18em] text-[#14221B] uppercase mb-3 flex items-center gap-2">
+                <h4 className="font-accent text-xs font-bold tracking-[0.18em] text-[#14221B] uppercase mb-3 flex items-center gap-2">
                   <Activity className="h-4 w-4 text-[#0E7C7B]" />
                   <span>Key Conditions Cured</span>
                 </h4>
@@ -89,7 +89,7 @@ export function DiseaseModal({
               {/* Medical Overview & Root Cause Grid */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-[#E2DAD0] bg-white p-5 shadow-xs">
-                  <h5 className="text-[11px] font-semibold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
+                  <h5 className="font-accent text-xs font-bold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
                     <Stethoscope className="h-3.5 w-3.5 text-[#C5A059]" />
                     <span>Understanding The Cause</span>
                   </h5>
@@ -99,7 +99,7 @@ export function DiseaseModal({
                 </div>
 
                 <div className="rounded-2xl border border-[#E2DAD0] bg-white p-5 shadow-xs">
-                  <h5 className="text-[11px] font-semibold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
+                  <h5 className="font-accent text-xs font-bold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
                     <Sparkles className="h-3.5 w-3.5 text-[#0E7C7B]" />
                     <span>Internal Root Cause</span>
                   </h5>
@@ -111,7 +111,7 @@ export function DiseaseModal({
 
               {/* Common Symptoms Checklist */}
               <div className="rounded-2xl border border-[#E2DAD0] bg-[#F5EFE6] p-5 sm:p-6 shadow-xs">
-                <h4 className="text-[11px] font-semibold tracking-[0.18em] text-[#14221B] uppercase mb-3 flex items-center gap-2">
+                <h4 className="font-accent text-xs font-bold tracking-[0.18em] text-[#14221B] uppercase mb-3 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-[#0E7C7B]" />
                   <span>Common Symptoms Experienced</span>
                 </h4>
@@ -131,7 +131,7 @@ export function DiseaseModal({
               {/* Homeopathy Advantage & Recovery Duration */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-[#0E7C7B]/25 bg-[#0E7C7B]/6 p-5 shadow-xs">
-                  <h5 className="text-[11px] font-semibold text-[#0E7C7B] uppercase tracking-[0.18em] flex items-center gap-1.5">
+                  <h5 className="font-accent text-xs font-bold text-[#0E7C7B] uppercase tracking-[0.18em] flex items-center gap-1.5">
                     <ShieldCheck className="h-4 w-4 text-[#0E7C7B]" />
                     <span>Why Homeopathy Cures Permanently</span>
                   </h5>
@@ -141,7 +141,7 @@ export function DiseaseModal({
                 </div>
 
                 <div className="rounded-2xl border border-[#C5A059]/35 bg-[#C5A059]/10 p-5 shadow-xs">
-                  <h5 className="text-[11px] font-semibold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
+                  <h5 className="font-accent text-xs font-bold text-[#14221B] uppercase tracking-[0.18em] flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-[#C5A059]" />
                     <span>Expected Recovery Time</span>
                   </h5>

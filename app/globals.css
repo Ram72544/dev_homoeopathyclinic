@@ -83,7 +83,7 @@ body {
   padding-right: env(safe-area-inset-right, 0px);
 }
 
-h1, h2, h3, h4, .font-serif {
+h1, h2, h3, .font-serif {
   font-family: var(--font-heading), "Playfair Display", Georgia, serif;
   letter-spacing: -0.015em;
 }
