@@ -13,6 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { ModernDatePicker } from "@/components/ui/modern-date-picker";
 
 const appointmentSchema = z.object({
   name: z
@@ -181,9 +182,6 @@ export function AppointmentForm() {
   }, [setValue]);
 
   const availableSlots = getSlotsForDate(selectedDate);
-  const dateField = register("date", {
-    onChange: (e) => setSelectedDate(e.target.value),
-  });
 
   async function onSubmit(values: AppointmentFormValues) {
     setSubmitError("");
@@ -337,18 +335,28 @@ export function AppointmentForm() {
 
           {/* Field 4: Preferred Date & Slot */}
           <div className="grid gap-3.5 sm:grid-cols-2">
-            <Field
-              label="Preferred Date *"
-              icon={<Calendar className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />}
-              error={errors.date?.message}
-            >
-              <input
-                type="date"
-                min={minDate}
-                {...dateField}
-                className="w-full rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
-              />
-            </Field>
+            <Controller
+              name="date"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Field
+                  label="Preferred Date *"
+                  icon={<Calendar className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />}
+                  error={fieldState.error?.message}
+                >
+                  <ModernDatePicker
+                    value={field.value}
+                    onChange={(val) => {
+                      field.onChange(val);
+                      setSelectedDate(val);
+                      setValue("time", "", { shouldValidate: false });
+                    }}
+                    minDate={minDate}
+                    error={fieldState.error?.message}
+                  />
+                </Field>
+              )}
+            />
 
             <Field label="Preferred Time Slot *" error={errors.time?.message}>
               <div className="relative group">
