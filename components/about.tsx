@@ -55,8 +55,8 @@ export function About() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] text-[#E5C583] shadow-xs">
                   <GraduationCap className="h-5 w-5" />
                 </div>
-                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">BHMS, MD (Homoeopathy)</p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Govt. Registered • AYUSH Council</p>
+                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">MD Specialist (Homoeopathy)</p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Classical Constitutional Physician</p>
               </div>
 
               <div className="rounded-2xl border border-[#14221B]/10 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#14221B]/25 dark:hover:border-[#E5C583]">

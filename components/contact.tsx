@@ -52,7 +52,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-5xl text-center"
         >
           <h2 className="font-serif text-[clamp(2.25rem,4vw+0.5rem,3.75rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight tracking-tight">
             Book Doctor Consultation
