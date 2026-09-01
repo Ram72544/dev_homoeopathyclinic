@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { site, navLinks } from "@/lib/site-config";
-import { Phone, Mail, MapPin, MessageCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { Phone, MessageCircle, ArrowUp } from "lucide-react";
 
 export function Footer() {
-  const [showAllServices, setShowAllServices] = useState(false);
-
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
@@ -33,7 +30,10 @@ export function Footer() {
   };
 
   const year = new Date().getFullYear();
-  const displayedServices = showAllServices ? site.services : site.services.slice(0, 6);
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
     <footer className="relative bg-transparent text-[#14221B] dark:text-[#FAF8F5] pt-6 pb-28 md:pb-8 overflow-hidden transition-colors duration-300">
@@ -44,153 +44,96 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
-        {/* Floating Compact Spatial Footer Container */}
-        <div className="rounded-[2rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-5 sm:p-7 lg:p-8 backdrop-blur-2xl shadow-[0_16px_40px_rgba(20,34,27,0.04)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-12 pb-6 border-b border-[#EAE3DA] dark:border-[#C5A059]/20">
-
-            {/* Column 1: Brand & Logo (4 Cols) */}
-            <div className="lg:col-span-4 space-y-3">
-              <div className="flex items-center gap-3.5">
-                <div className="relative h-15 w-15 sm:h-16 sm:w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.3)]">
-                  <Image
-                    src="/logo-concept-1-transparent.png"
-                    alt="Dr. Sheetal's Homoeopathy Clinic Medicine Vial Logo"
-                    width={256}
-                    height={256}
-                    sizes="(max-width: 640px) 60px, 64px"
-                    unoptimized
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <div className="flex flex-col justify-center min-w-0">
-                  <span className="font-serif text-2xl sm:text-[26px] font-normal leading-none text-[#14221B] dark:text-[#FAF8F5] whitespace-nowrap">
-                    Dr. Sheetal&apos;s
-                  </span>
-                  <span className="font-accent text-xs sm:text-[13px] font-bold tracking-[0.22em] text-[#0E7C7B] dark:text-[#14B8A6] uppercase whitespace-nowrap mt-1">
-                    Homoeopathy Clinic
-                  </span>
-                  <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#967531] dark:text-[#E5C583] mt-1 whitespace-nowrap">
-                    Natural Family Healing
-                  </span>
-                </div>
+        {/* Floating Minimalist Luxury Glass Footer Card */}
+        <div className="rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 p-6 sm:p-8 lg:p-10 backdrop-blur-2xl shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+          
+          {/* Top Brand & Action Row */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#14221B]/10 dark:border-white/10">
+            
+            {/* Brand Logo & Title */}
+            <div className="flex items-center gap-3.5 text-center md:text-left">
+              <div className="relative h-13 w-13 sm:h-14 sm:w-14 shrink-0 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.25)]">
+                <Image
+                  src="/logo-concept-1-transparent.png"
+                  alt="Dr. Sheetal's Homoeopathy Clinic Logo"
+                  width={256}
+                  height={256}
+                  sizes="56px"
+                  unoptimized
+                  className="h-full w-full object-contain"
+                />
               </div>
-
-              <p className="text-xs font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8] max-w-sm">
-                Personalized constitutional homeopathic care treating root causes with 100% natural, safe sweet pills for your family.
-              </p>
+              <div>
+                <h3 className="font-serif text-xl sm:text-2xl font-normal leading-tight text-[#14221B] dark:text-[#FAF8F5]">
+                  Dr. Sheetal&apos;s
+                </h3>
+                <p className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#0E7C7B] dark:text-[#E5C583] uppercase mt-0.5">
+                  HOMOEOPATHY CLINIC
+                </p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5 hidden sm:block">
+                  Classical Constitutional Medicine • Delhi NCR
+                </p>
+              </div>
             </div>
 
-            {/* Column 2: Quick Links (2 Cols) */}
-            <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
-                Navigation
-              </h4>
-              <ul className="space-y-1.5 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="transition-colors hover:text-[#0E7C7B] dark:hover:text-[#14B8A6]"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Quick Action Contact Pills */}
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={site.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[#14221B]/15 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#141A16] px-4 py-2 text-xs font-medium text-[#14221B] dark:text-[#FAF8F5] shadow-xs transition-all hover:bg-[#14221B] hover:text-[#FAF8F5] dark:hover:bg-[#E5C583] dark:hover:text-[#14221B] cursor-pointer"
+              >
+                <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" />
+                <span>WhatsApp Doctor</span>
+              </a>
 
-            {/* Column 3: Specialized Care with Expandable 12 Treatments (3.5 Cols) */}
-            <div className="lg:col-span-3 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
-                Specialized Care
-              </h4>
-              
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
-                {displayedServices.map((service) => (
-                  <li key={service.id}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        window.dispatchEvent(
-                          new CustomEvent("open-disease-modal", { detail: service.id })
-                        );
-                      }}
-                      className="text-left transition-colors hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] cursor-pointer truncate w-full"
-                    >
-                      {service.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              <a
+                href={`tel:${site.phone}`}
+                className="inline-flex items-center gap-2 rounded-full border border-[#14221B]/15 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#141A16] px-4 py-2 text-xs font-medium text-[#14221B] dark:text-[#FAF8F5] shadow-xs transition-all hover:bg-[#14221B] hover:text-[#FAF8F5] dark:hover:bg-[#E5C583] dark:hover:text-[#14221B] cursor-pointer"
+              >
+                <Phone className="h-3.5 w-3.5 text-[#C5A059] dark:text-[#E5C583]" />
+                <span>{site.phoneDisplay}</span>
+              </a>
 
-              {/* Expander Button */}
               <button
                 type="button"
-                onClick={() => setShowAllServices(!showAllServices)}
-                className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/25 dark:border-white/15 bg-white/90 dark:bg-[#14261D] px-3 py-1 text-[11px] font-medium text-[#0E7C7B] dark:text-[#FAF8F5] hover:bg-[#0E7C7B] hover:text-white dark:hover:bg-[#0E7C7B] dark:hover:text-white transition-all cursor-pointer shadow-2xs"
+                onClick={scrollToTop}
+                aria-label="Scroll to top of page"
+                className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-[#14221B]/15 dark:border-white/15 bg-white/80 dark:bg-[#141A16] text-[#14221B] dark:text-[#FAF8F5] hover:bg-[#14221B] hover:text-[#FAF8F5] dark:hover:bg-[#E5C583] dark:hover:text-[#14221B] transition-all cursor-pointer shadow-xs"
+                title="Back to top"
               >
-                <span>
-                  {showAllServices
-                    ? "Show Less"
-                    : "Explore All 12 Conditions & Treatments"}
-                </span>
-                {showAllServices ? (
-                  <ChevronUp className="h-3 w-3" />
-                ) : (
-                  <ChevronDown className="h-3 w-3" />
-                )}
+                <ArrowUp className="h-3.5 w-3.5" />
               </button>
             </div>
 
-            {/* Column 4: Contact Info (3 Cols) */}
-            <div className="lg:col-span-3 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
-                Clinic Contact
-              </h4>
-              <ul className="space-y-2 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
-                <li className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
-                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors">
-                    {site.phoneDisplay}
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <MessageCircle className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
-                  <a
-                    href={site.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors"
-                  >
-                    WhatsApp Consultation
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
-                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors">
-                    {site.email}
-                  </a>
-                </li>
-                <li className="flex items-start gap-2">
-                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
-                  <a
-                    href={site.googleUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors line-clamp-2"
-                  >
-                    {site.address}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
           </div>
 
-          {/* Bottom Copyright */}
-          <div className="pt-4 text-center text-[11px] font-light text-[#7A8A80]">
-            <p>&copy; {year} {site.name}. All rights reserved. Registered Homoeopathic Medical Practice.</p>
+          {/* Navigation Links Bar */}
+          <div className="py-5 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-xs font-light text-[#4A5D52] dark:text-[#A3ACA7]">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-[#14221B] dark:hover:text-[#FAF8F5]"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="font-medium text-[#0E7C7B] dark:text-[#E5C583] hover:underline"
+            >
+              Consultation Form
+            </a>
           </div>
+
+          {/* Bottom Copyright & Legal Line */}
+          <div className="pt-4 border-t border-[#14221B]/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-light text-[#7A8A80] text-center sm:text-left">
+            <p>&copy; {year} {site.name}. All rights reserved.</p>
+            <p>Registered Homoeopathic Medical Practice • 100% Patient Confidentiality</p>
+          </div>
+
         </div>
 
       </div>

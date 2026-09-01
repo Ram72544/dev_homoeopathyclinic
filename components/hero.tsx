@@ -66,31 +66,30 @@ export function Hero() {
                 {site.intro}
               </motion.p>
 
-              {/* Harmonious Cohesive Luxury Action Buttons */}
-              {/* Hero Action Buttons (Hidden on mobile where floating dock is active) */}
+              {/* Hero Action Buttons (Streamlined single primary button + clean link) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.7 }}
-                className="mt-8 sm:mt-10 hidden sm:flex flex-wrap items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
+                className="mt-8 sm:mt-10 hidden sm:flex flex-wrap items-center gap-4 w-full sm:w-auto"
               >
                 {/* Primary Action Button */}
                 <a
                   href={site.bookingUrl}
-                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
+                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#1C2C23] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.02] active:scale-95 cursor-pointer"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583] shrink-0" />
-                  <span>Schedule Consultation</span>
+                  <span>Book Consultation</span>
                   <ArrowUpRight className="h-4 w-4 text-[#E5C583]/80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
                 </a>
 
-                {/* Secondary Action Button */}
+                {/* Clean Link to Specializations */}
                 <a
-                  href={`tel:${site.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#14221B]/15 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#121714]/65 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5] hover:bg-white dark:hover:bg-[#1A221E] hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
+                  href="#services"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-[#14221B] dark:text-[#E5C583] hover:underline px-3 py-3.5 transition-colors group cursor-pointer"
                 >
-                  <Phone className="h-4 w-4 text-[#0E7C7B] dark:text-[#E5C583] shrink-0" />
-                  <span>Call Doctor: {site.phoneDisplay}</span>
+                  <span>Explore 12 Specializations</span>
+                  <span className="text-[#C5A059] group-hover:translate-x-1 transition-transform duration-200">→</span>
                 </a>
               </motion.div>
 
