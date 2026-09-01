@@ -3,6 +3,8 @@ import { DM_Sans, Playfair_Display, Cormorant_Garamond, Cinzel } from "next/font
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { site } from "@/lib/site-config";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 
 const bodyFont = DM_Sans({
   variable: "--font-body",
@@ -35,30 +37,97 @@ const accentFont = Cinzel({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.drsheetalclinic.com"
   ),
   title: {
-    default: `${site.name} — Homoeopathy in Your City`,
+    default: `${site.name} — Best Homoeopathy Doctor in Badarpur, Delhi NCR`,
     template: `%s | ${site.name}`,
   },
   description: site.intro,
   keywords: [
-    "homeopathy",
-    "homoeopathy",
-    "Dr. Sheetal",
-    "homeopathic clinic",
-    "natural treatment",
-    "classical homoeopathy",
+    "Dr. Sheetal Homoeopathy Clinic",
+    "Best Homeopathy Doctor in Badarpur",
+    "Homeopathic Clinic Delhi NCR",
+    "Classical Homoeopathy Treatment",
+    "Permanent Cure for Eczema Homeopathy",
+    "PCOS Treatment without Hormones",
+    "Safe Sweet Pills for Infants",
+    "Migraine and Thyroid Homeopathy",
   ],
+  authors: [{ name: "Dr. Sheetal, MD (Hom.)" }],
+  creator: "Dr. Sheetal",
+  publisher: "Dr. Sheetal's Homoeopathy Clinic",
+  alternates: {
+    canonical: "https://www.drsheetalclinic.com",
+  },
   openGraph: {
-    title: `${site.name}`,
+    title: `${site.name} — Classical Homoeopathic Healing`,
     description: site.intro,
+    url: "https://www.drsheetalclinic.com",
+    siteName: site.name,
     type: "website",
+    locale: "en_IN",
+  },
+  verification: {
+    google: "googlec7741f5817f41596",
+  },
+  other: {
+    "geo.region": "IN-DL",
+    "geo.placename": "New Delhi, Badarpur",
+    "geo.position": "28.506497;77.321668",
+    "ICBM": "28.506497, 77.321668",
   },
 };
 
-import { ThemeProvider } from "@/components/theme-provider";
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": ["MedicalBusiness", "Physician"],
+  "@id": "https://www.drsheetalclinic.com/#clinic",
+  name: site.name,
+  alternateName: "Dr Sheetal Homeopathy Clinic",
+  url: "https://www.drsheetalclinic.com",
+  logo: "https://www.drsheetalclinic.com/logo-concept-1-transparent.png",
+  image: "https://www.drsheetalclinic.com/images/clinic-sanctuary-v2.png",
+  description: site.intro,
+  medicalSpecialty: "Homeopathic",
+  telephone: "+919999999999",
+  priceRange: "₹₹",
+  currenciesAccepted: "INR",
+  paymentAccepted: "Cash, UPI, Google Pay, PhonePe, Paytm, Card",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Badarpur, Near Mathura Road",
+    addressLocality: "New Delhi",
+    addressRegion: "Delhi",
+    postalCode: "110044",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 28.506497,
+    longitude: 77.3216683,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "18:00",
+      closes: "21:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday"],
+      opens: "18:00",
+      closes: "21:00",
+    },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -71,6 +140,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${bodyFont.variable} ${headingFont.variable} ${luxuryFont.variable} ${accentFont.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalClinicSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-surface text-foreground transition-colors duration-300">
         <ThemeProvider
           attribute="class"
