@@ -90,7 +90,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   background-color: var(--surface-warm);
@@ -116,6 +116,23 @@ h1, h2, h3, .font-serif {
 
 section, [id] {
   scroll-margin-top: 5.5rem;
+}
+
+/* Subtle Champagne Gold Glow on Section Arrival */
+.section-arrival-glow {
+  animation: arrivalGlowPulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes arrivalGlowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0);
+  }
+  35% {
+    box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.35), 0 20px 50px -10px rgba(197, 160, 89, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0);
+  }
 }
 
 /* 120 FPS Hardware Acceleration Compositing Layer */
