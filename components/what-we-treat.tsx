@@ -4,16 +4,31 @@ import { useState, useEffect, useMemo } from "react";
 import { site, Service } from "@/lib/site-config";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiseaseModal } from "./disease-modal";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 
 const CATEGORIES = [
   { id: "all", label: "All Treatments (12)" },
   { id: "cancer-care", label: "Supportive Cancer Care", match: ["supportive-oncology-care"] },
-  { id: "diabetes-metabolism", label: "Diabetes & Metabolism", match: ["diabetes-blood-sugar", "thyroid-metabolic", "liver-cholesterol-health"] },
-  { id: "women-child", label: "Women & Child Health", match: ["pcos-womens-health", "child-health-immunity"] },
+  { id: "diabetes-metabolism", label: "Diabetes & Thyroid", match: ["diabetes-blood-sugar", "thyroid-metabolic", "liver-cholesterol-health"] },
+  { id: "women-child", label: "Women & Child", match: ["pcos-womens-health", "child-health-immunity"] },
   { id: "skin-allergies", label: "Skin & Allergies", match: ["skin-hair", "cough-sinus-asthma"] },
-  { id: "chronic-pain", label: "Chronic Pain & Digestion", match: ["joint-pain-arthritis", "gas-acidity-stomach", "migraine-stress-sleep", "kidney-stones-urinary"] },
+  { id: "chronic-pain", label: "Pain & Digestion", match: ["joint-pain-arthritis", "gas-acidity-stomach", "migraine-stress-sleep", "kidney-stones-urinary"] },
 ];
+
+const SERVICE_TAGS: Record<string, string> = {
+  "supportive-oncology-care": "Oncology Support",
+  "diabetes-blood-sugar": "Metabolic Care",
+  "skin-hair": "Dermatology",
+  "pcos-womens-health": "Women's Health",
+  "child-health-immunity": "Pediatrics",
+  "gas-acidity-stomach": "Gastroenterology",
+  "cough-sinus-asthma": "Respiratory Care",
+  "joint-pain-arthritis": "Orthopedic Care",
+  "migraine-stress-sleep": "Neurology & Sleep",
+  "thyroid-metabolic": "Endocrine Care",
+  "kidney-stones-urinary": "Renal Care",
+  "liver-cholesterol-health": "Hepatic Care",
+};
 
 export function WhatWeTreat() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
@@ -23,40 +38,32 @@ export function WhatWeTreat() {
   useEffect(() => {
     function handleOpenModal(e: Event) {
       const customEvent = e as CustomEvent<string>;
-      const serviceId = customEvent.detail;
-      const found = site.services.find(
-        (s) => s.id === serviceId || s.title.toLowerCase() === serviceId?.toLowerCase()
-      );
-      if (found) {
-        setSelectedService(found);
-      }
+      const found = site.services.find((s) => s.id === customEvent.detail);
+      if (found) setSelectedService(found);
     }
-
     window.addEventListener("open-disease-modal", handleOpenModal);
-    return () => {
-      window.removeEventListener("open-disease-modal", handleOpenModal);
-    };
+    return () => window.removeEventListener("open-disease-modal", handleOpenModal);
   }, []);
 
-  const displayedServices = useMemo(() => {
+  const filteredServices = useMemo(() => {
     if (activeCategory === "all") {
       return showAll ? site.services : site.services.slice(0, 6);
     }
-    const cat = CATEGORIES.find((c) => c.id === activeCategory);
-    if (!cat?.match) return site.services;
-    return site.services.filter((s) => cat.match?.includes(s.id));
+    const catObj = CATEGORIES.find((c) => c.id === activeCategory);
+    if (!catObj || !catObj.match) return site.services;
+    return site.services.filter((s) => catObj.match.includes(s.id));
   }, [activeCategory, showAll]);
 
   return (
-    <section id="services" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+    <section id="services" className="relative py-8 sm:py-12 md:py-16 bg-transparent overflow-hidden">
       {/* Soft Ambient Radial Light (Day Mode Only) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden dark:hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[700px] w-[1000px] rounded-full bg-radial from-[#F4EFE6]/70 via-[#F8F5EE]/30 to-transparent blur-3xl" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
-        
-        {/* Header Section */}
+
+        {/* Centered Editorial Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,21 +71,17 @@ export function WhatWeTreat() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] dark:text-[#E5C583] uppercase">
-            <Sparkles className="h-3 w-3 text-[#C5A059]" />
-            <span>Curated Specializations</span>
-          </div>
-
-          <h2 className="mt-3 font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight">
-            Conditions We Heal Permanently
+          <h2 className="font-serif text-[clamp(2.25rem,4vw+0.5rem,3.75rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight tracking-tight">
+            Conditions We Treat
           </h2>
-          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#9EB3A8]">
-            Comprehensive, individualized homoeopathic remedies designed to restore your body&apos;s natural vitality without side effects.
+
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed text-[#2C3B32] dark:text-[#CBD5E1]">
+            Gentle homoeopathic remedies chosen specifically for your body and symptoms to heal health problems naturally without side effects.
           </p>
         </motion.div>
 
-        {/* Filter Pills */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+        {/* Centered Horizontal Filter Pill Bar */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           {CATEGORIES.map((cat) => {
             const isSelected = activeCategory === cat.id;
             return (
@@ -89,11 +92,10 @@ export function WhatWeTreat() {
                   setActiveCategory(cat.id);
                   if (cat.id !== "all") setShowAll(true);
                 }}
-                className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 backdrop-blur-md cursor-pointer ${
-                  isSelected
-                    ? "border border-[#14221B] dark:border-[#C5A059]/45 bg-[#14221B] dark:bg-[#18201C] text-[#FAF8F5] dark:text-[#FAF8F5] shadow-md shadow-[#14221B]/15 dark:shadow-black/40 scale-105"
-                    : "border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-white/80 dark:bg-[#0E1310]/80 text-[#4A5D52] dark:text-[#A3ACA7] hover:border-[#14221B]/40 dark:hover:border-[#E5C583]/60 hover:bg-white dark:hover:bg-[#141A16] hover:text-[#14221B] dark:hover:text-[#FAF8F5]"
-                }`}
+                className={`rounded-full px-5 py-2.5 text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 backdrop-blur-md cursor-pointer ${isSelected
+                    ? "border border-[#14221B] dark:border-[#C5A059]/45 bg-[#14221B] dark:bg-[#18201C] text-[#FAF8F5] shadow-md shadow-[#14221B]/10 scale-105"
+                    : "border border-[#14221B]/10 dark:border-white/10 bg-white/70 dark:bg-[#0E1310]/70 text-[#2C3B32] dark:text-[#A3ACA7] hover:border-[#14221B]/30 dark:hover:border-[#E5C583]/50 hover:bg-white dark:hover:bg-[#141A16]"
+                  }`}
               >
                 {cat.label}
               </button>
@@ -101,23 +103,23 @@ export function WhatWeTreat() {
           })}
         </div>
 
-        {/* Clean Glassmorphism Cards Grid */}
+        {/* Symmetric 3-Column Luxury Treatment Grid */}
         <motion.div
           layout
           className="mt-10 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
-            {displayedServices.map((service, index) => {
+            {filteredServices.map((service, index) => {
               const Icon = service.icon;
+              const tagLabel = SERVICE_TAGS[service.id] || "Classical Care";
               return (
                 <motion.div
                   key={service.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.96 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.35, delay: index * 0.04 }}
-                  className="gpu-layer"
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.3, delay: index * 0.03 }}
                 >
                   <div
                     onClick={() => setSelectedService(service)}
@@ -127,33 +129,37 @@ export function WhatWeTreat() {
                       if (e.key === "Enter" || e.key === " ") setSelectedService(service);
                     }}
                     aria-label={`View medical details for ${service.title}`}
-                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.6)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583] hover:bg-white/95 dark:hover:bg-[#141A16] hover:shadow-[0_20px_50px_-10px_rgba(20,34,27,0.12)] dark:hover:shadow-[0_20px_50px_-10px_rgba(197,160,89,0.15)] hover:-translate-y-1"
+                    className="group relative flex h-full min-h-[250px] cursor-pointer flex-col justify-between rounded-[2rem] border border-[#14221B]/10 dark:border-[#C5A059]/30 bg-white/80 dark:bg-[#0E1310]/90 p-6 backdrop-blur-xl shadow-xs transition-all duration-300 active:scale-[0.98] hover:border-[#14221B]/30 dark:hover:border-[#E5C583] hover:bg-white dark:hover:bg-[#141A16] hover:shadow-lg hover:-translate-y-1"
                   >
-                    <div className="flex flex-col justify-between h-full">
-                      <div>
-                        {/* Icon */}
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md group-hover:scale-105 transition-all duration-300">
+                    <div>
+                      {/* Header: Symmetrical Icon & Concise Medical Tag */}
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#14221B] dark:bg-[#18201C] text-[#E5C583] shadow-xs group-hover:scale-105 transition-transform duration-300">
                           <Icon className="h-5 w-5" />
                         </div>
 
-                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#967531] dark:group-hover:text-[#E5C583] transition-colors duration-300">
+                        <span className="text-[11px] font-semibold tracking-wide text-[#0E7C7B] dark:text-[#E5C583] bg-[#0E7C7B]/8 dark:bg-[#C5A059]/10 px-3 py-1 rounded-full border border-[#0E7C7B]/15 dark:border-[#C5A059]/20">
+                          {tagLabel}
+                        </span>
+                      </div>
+
+                      {/* Title with Consistent Alignment */}
+                      <div className="mt-4 min-h-[3rem] flex items-center">
+                        <h3 className="font-serif text-xl font-normal text-[#14221B] dark:text-[#FAF8F5] tracking-tight group-hover:text-[#0E7C7B] dark:group-hover:text-[#E5C583] transition-colors leading-snug">
                           {service.title}
                         </h3>
-
-                        <p className="mt-2.5 text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#A3ACA7]">
-                          {service.shortDesc || service.description}
-                        </p>
                       </div>
 
-                      {/* Bottom Link with Clean Divider */}
-                      <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-4">
-                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#967531] dark:group-hover:text-[#E5C583] transition-colors">
-                          View Medical Details
-                        </span>
-                        <span className="text-xs text-[#C5A059] group-hover:translate-x-0.5 transition-transform duration-200">
-                          ↗
-                        </span>
-                      </div>
+                      {/* Short Description */}
+                      <p className="mt-2 text-xs sm:text-[13px] font-light text-[#2C3B32] dark:text-[#CBD5E1] line-clamp-2 leading-relaxed min-h-[2.5rem]">
+                        {service.shortDesc}
+                      </p>
+                    </div>
+
+                    {/* Action Link Locked at Bottom */}
+                    <div className="mt-5 pt-3.5 border-t border-[#14221B]/8 dark:border-white/10 flex items-center justify-between text-xs font-medium text-[#14221B] dark:text-[#E5C583] group-hover:underline">
+                      <span>Clinical Overview</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C5A059]" />
                     </div>
                   </div>
                 </motion.div>
@@ -162,28 +168,32 @@ export function WhatWeTreat() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Expand / Collapse All 12 Treatments Button (Only visible on All tab) */}
+        {/* Smart Expand/Collapse Action for All Treatments */}
         {activeCategory === "all" && (
           <div className="mt-10 flex justify-center">
             <button
               type="button"
-              onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-[#14221B]/20 dark:border-[#C5A059]/40 bg-white/90 dark:bg-[#141A16] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#14221B] dark:hover:border-[#E5C583] hover:bg-[#14221B] dark:hover:bg-[#18201C] hover:text-[#FAF8F5] dark:hover:text-[#E5C583] hover:shadow-md cursor-pointer"
+              onClick={() => setShowAll(!showAll)}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-[#14221B]/15 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/85 px-7 py-3.5 text-xs sm:text-sm font-medium text-[#14221B] dark:text-[#FAF8F5] shadow-xs backdrop-blur-md transition-all duration-300 hover:border-[#14221B]/40 dark:hover:border-[#E5C583] hover:bg-[#14221B] hover:text-[#FAF8F5] dark:hover:bg-[#18201C] dark:hover:text-[#E5C583] cursor-pointer"
             >
-              <span>{showAll ? "Show Less Specializations" : "Explore All 12 Conditions & Treatments"}</span>
-              <span className="font-serif text-base text-[#E5C583]">{showAll ? "↑" : "↓"}</span>
+              <span>{showAll ? "Show Less Treatments" : "Explore All 12 Treatments (6 more)"}</span>
+              {showAll ? (
+                <ChevronUp className="h-4 w-4 text-[#C5A059] transition-transform duration-300 group-hover:-translate-y-0.5" />
+              ) : (
+                <ChevronDown className="h-4 w-4 text-[#C5A059] transition-transform duration-300 group-hover:translate-y-0.5" />
+              )}
             </button>
           </div>
         )}
 
       </div>
 
-      {/* Disease Detail Popup Modal */}
+      {/* Interactive Medical Disease Modal */}
       <DiseaseModal
         service={selectedService}
-        open={!!selectedService}
-        onOpenChange={(open) => {
-          if (!open) setSelectedService(null);
+        open={Boolean(selectedService)}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) setSelectedService(null);
         }}
       />
     </section>

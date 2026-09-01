@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import { TrustRibbon } from "@/components/trust-ribbon";
 import { WhatWeTreat } from "@/components/what-we-treat";
 import { WhyHomeopathy } from "@/components/why-homeopathy";
 import { About } from "@/components/about";
@@ -15,6 +16,9 @@ export default function Home() {
       <main className="flex-1 w-full overflow-hidden">
         {/* 1. Hero Section */}
         <Hero />
+
+        {/* Dedicated Trust Ribbon */}
+        <TrustRibbon />
 
         {/* 2. Meet Dr. Sheetal (Doctor Practitioner Profile) */}
         <About />

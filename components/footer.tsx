@@ -36,7 +36,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative bg-transparent text-[#14221B] dark:text-[#FAF8F5] pt-6 pb-28 md:pb-8 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-transparent text-[#14221B] dark:text-[#FAF8F5] pt-0 sm:pt-2 pb-28 md:pb-8 overflow-hidden transition-colors duration-300">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

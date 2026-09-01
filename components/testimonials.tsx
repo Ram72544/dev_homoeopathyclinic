@@ -39,7 +39,7 @@ export function Testimonials() {
   }, [emblaApi]);
 
   return (
-    <section id="testimonials" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+    <section id="testimonials" className="relative py-4 sm:py-6 md:py-8 bg-transparent overflow-hidden">
       {/* Soft Ambient Light (Day Mode Only) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden dark:hidden" aria-hidden="true">
         <div className="absolute bottom-10 left-10 h-[550px] w-[550px] rounded-full bg-radial from-[#F4EFE6]/60 via-[#F8F5EE]/25 to-transparent blur-3xl" />
@@ -55,15 +55,10 @@ export function Testimonials() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] dark:text-[#E5C583] uppercase">
-            <Sparkles className="h-3 w-3 text-[#C5A059]" />
-            <span>Patient Stories &amp; Reviews</span>
-          </div>
-
-          <h2 className="mt-3 font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight">
+          <h2 className="font-serif text-[clamp(2.25rem,4vw+0.5rem,3.75rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight tracking-tight">
             Real Healing Experiences
           </h2>
-          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#9EB3A8]">
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#2C3B32] dark:text-[#CBD5E1]">
             Read how patients across Delhi NCR recovered their health permanently with gentle homeopathic remedies.
           </p>
         </motion.div>

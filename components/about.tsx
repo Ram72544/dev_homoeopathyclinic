@@ -9,7 +9,7 @@ export function About() {
   const { about } = site;
 
   return (
-    <section id="about" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+    <section id="about" className="relative py-4 sm:py-6 md:py-8 bg-transparent overflow-hidden">
       {/* Soft Ambient Light (Day Mode Only) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden dark:hidden" aria-hidden="true">
         <div className="absolute top-1/3 -right-20 h-[550px] w-[550px] rounded-full bg-radial from-[#F4EFE6]/60 via-[#F8F5EE]/30 to-transparent blur-3xl" />
@@ -26,49 +26,44 @@ export function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] dark:text-[#E5C583] uppercase mb-4">
-              <Sparkles className="h-3 w-3 text-[#C5A059]" />
-              <span>Practitioner Profile</span>
-            </div>
-
-            <h2 className="font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight">
+            <h2 className="font-serif text-[clamp(2.25rem,4vw+0.5rem,3.75rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight tracking-tight">
               Meet {about.doctorName}
             </h2>
 
-            <div className="space-y-4 text-base sm:text-lg font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8]">
+            <div className="space-y-4 text-base sm:text-lg font-light leading-relaxed text-[#2C3B32] dark:text-[#CBD5E1]">
               {about.bio.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
             </div>
 
-            <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-4 text-xs tracking-wider text-[#7A8A80] dark:text-[#9EB3A8] uppercase font-medium border-t border-[#EAE3DA] dark:border-white/10">
+            <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-4 text-xs tracking-wider text-[#7A8A80] dark:text-[#9EB3A8] uppercase font-medium border-t border-[#14221B]/10 dark:border-white/10">
               <span className="flex items-center gap-1.5 text-[#14221B] dark:text-[#FAF8F5]">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" /> Classical Practitioner
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" /> Classical Practitioner
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5 text-[#14221B] dark:text-[#FAF8F5]">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" /> Individualized Healing
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" /> Individualized Healing
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5 text-[#14221B] dark:text-[#FAF8F5]">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" /> Root-Cause Recovery
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" /> Root-Cause Recovery
               </span>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 pt-2">
-              <div className="rounded-2xl border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:hover:border-[#E5C583]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+              <div className="rounded-2xl border border-[#14221B]/10 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#14221B]/25 dark:hover:border-[#E5C583]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] text-[#E5C583] shadow-xs">
                   <GraduationCap className="h-5 w-5" />
                 </div>
-                <p className="mt-3 font-serif text-lg font-normal text-[#14221B] dark:text-[#FAF8F5]">MD Specialist (Homoeopathy)</p>
+                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">MD Specialist (Homoeopathy)</p>
                 <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Classical Constitutional Physician</p>
               </div>
 
-              <div className="rounded-2xl border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:hover:border-[#E5C583]">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+              <div className="rounded-2xl border border-[#14221B]/10 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#14221B]/25 dark:hover:border-[#E5C583]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] text-[#E5C583] shadow-xs">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <p className="mt-3 font-serif text-lg font-normal text-[#14221B] dark:text-[#FAF8F5]">Safe for All Generations</p>
+                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">Safe for All Generations</p>
                 <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Infants, Expecting Mothers &amp; Seniors</p>
               </div>
             </div>

@@ -31,37 +31,26 @@ export function Hero() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 flex flex-col items-start"
             >
-              {/* Trust Badge Pill */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="inline-flex items-center gap-2 rounded-full border border-[#0E7C7B]/20 dark:border-[#C5A059]/40 bg-[#0E7C7B]/8 dark:bg-[#C5A059]/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-[#0E7C7B] dark:text-[#E5C583] shadow-2xs backdrop-blur-md mb-4"
-              >
-                <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
-                <span>Classical Constitutional Homoeopathy</span>
-              </motion.div>
-
-              {/* Main Heading in Fluid 8K Typography */}
+              {/* Main Heading in Fluid Editorial Typography */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-[clamp(2.25rem,4.5vw+0.75rem,4.25rem)] font-normal leading-[1.12] tracking-normal text-[#14221B] dark:text-[#FAF8F5]"
+                transition={{ delay: 0.15, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-[clamp(2.5rem,5.2vw+0.5rem,4.75rem)] font-normal leading-[1.08] tracking-tight text-[#14221B] dark:text-[#FAF8F5]"
               >
                 Gentle, Natural &amp; <br />
-                <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] underline decoration-[#C5A059]/40 underline-offset-8">
+                <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] text-glow-emerald dark:text-glow-gold underline decoration-[#C5A059]/40 underline-offset-8">
                   Permanent Healing
                 </span>{" "}
                 for Your Whole Family
               </motion.h1>
 
-              {/* Simple Clear English Copy */}
+              {/* High-Contrast Clear English Copy */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="mt-5 max-w-xl text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#A3ACA7]"
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="mt-6 max-w-xl text-base sm:text-lg lg:text-xl font-light leading-relaxed tracking-wide text-[#2C3B32] dark:text-[#CBD5E1]"
               >
                 {site.intro}
               </motion.p>
@@ -70,13 +59,13 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.7 }}
-                className="mt-8 sm:mt-10 hidden sm:flex flex-wrap items-center gap-4 w-full sm:w-auto"
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 w-full sm:w-auto"
               >
                 {/* Primary Action Button */}
                 <a
                   href={site.bookingUrl}
-                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#1C2C23] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.02] active:scale-95 cursor-pointer"
+                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-8 py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#1C2C23] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.02] active:scale-95 cursor-pointer"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583] shrink-0" />
                   <span>Book Consultation</span>
@@ -92,28 +81,6 @@ export function Hero() {
                   <span className="text-[#C5A059] group-hover:translate-x-1 transition-transform duration-200">→</span>
                 </a>
               </motion.div>
-
-              {/* Trust Indicators Bar */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.7 }}
-                className="mt-6 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-5 sm:pt-6 w-full max-w-lg"
-              >
-                <div>
-                  <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">4+ Yrs</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Clinical Practice</p>
-                </div>
-                <div>
-                  <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">500+</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Happy Families</p>
-                </div>
-                <div>
-                  <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">100%</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Safe Sweet Pills</p>
-                </div>
-              </motion.div>
-
             </motion.div>
 
             {/* Right Column: High-DPI Visual Consultation Card */}

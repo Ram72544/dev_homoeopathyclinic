@@ -50,13 +50,13 @@ export const site = {
   shortName: "Dr. Sheetal's Clinic",
   tagline: "Gentle, Natural & Permanent Healing for Your Whole Family",
   intro:
-    "Get personalized homeopathic treatment that treats the root cause of your illness, not just temporary symptoms. 100% safe, natural sweet pills with zero side effects for kids, adults, and seniors.",
+    "Get personalized homoeopathic treatment that cures the root cause of your illness, not just temporary symptoms. 100% safe, natural sweet pills with zero side effects for your whole family.",
 
   // --- Contact -------------------------------------------------
   phoneDisplay: "+91 79053 71551",
   phone: "+917905371551",
   whatsapp: "917905371551",
-  whatsappUrl: "https://wa.me/917905371551?text=Hello%20Dr.%20Sheetal,%20I%20would%20like%20to%20consult%20regarding%20homeopathy%20treatment.",
+  whatsappUrl: "https://wa.me/917905371551?text=Hello%20Dr.%20Sheetal,%20I%20would%20like%20to%20consult%20regarding%20homoeopathy%20treatment.",
   email: "care@drsheetalclinic.com",
   address:
     "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
@@ -90,7 +90,7 @@ export const site = {
     experience: "4+ Years Clinical Practice",
     photo: "",
     bio: [
-      "Dr. Sheetal Tiwari is a qualified, registered Homoeopathic Doctor holding BHMS and MD in Homoeopathy. She practices classical homeopathy, which means finding the exact single medicine that matches your unique body type, personality, and full health history.",
+      "Dr. Sheetal Tiwari is a qualified, registered Homoeopathic Doctor holding BHMS and MD in Homoeopathy. She practices classical homoeopathy, which means finding the exact single medicine that matches your unique body type, personality, and full health history.",
       "With over 4 years of clinical experience, Dr. Sheetal Tiwari has successfully treated hundreds of patients across Delhi NCR and India for long-standing chronic health issues, skin allergies, digestive problems, and childhood illnesses — without heavy chemicals or side effects.",
     ],
   },

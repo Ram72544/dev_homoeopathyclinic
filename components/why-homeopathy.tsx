@@ -7,19 +7,16 @@ import { MessageSquare, Stethoscope, HeartPulse, Sparkles } from "lucide-react";
 
 const HEALING_STEPS = [
   {
-    step: "01",
     title: "Detailed Consultation",
     desc: "Doctor spends 30-45 mins listening carefully to your health history, symptoms, daily routine & stress factors.",
     icon: MessageSquare,
   },
   {
-    step: "02",
     title: "Individualized Remedy",
-    desc: "One single homeopathic medicine is customized specifically for your body type and constitutional makeup.",
+    desc: "You receive one single homoeopathic medicine selected specially for your unique body type, lifestyle, and health needs.",
     icon: Stethoscope,
   },
   {
-    step: "03",
     title: "Root Cause Recovery",
     desc: "Natural sweet pills work gently inside your body to rebuild immunity and permanently heal the illness.",
     icon: HeartPulse,
@@ -28,7 +25,7 @@ const HEALING_STEPS = [
 
 export function WhyHomeopathy() {
   return (
-    <section id="why" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
+    <section id="why" className="relative py-4 sm:py-6 md:py-8 bg-transparent overflow-hidden">
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
         {/* Main Floating Liquid Glass Container */}
@@ -56,15 +53,10 @@ export function WhyHomeopathy() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 mx-auto max-w-4xl text-center"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E5C583]/30 dark:border-[#C5A059]/40 bg-[#E5C583]/10 dark:bg-[#C5A059]/15 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#E5C583] uppercase mb-3">
-              <Sparkles className="h-3 w-3 text-[#E5C583]" />
-              <span>Trusted Natural Science</span>
-            </div>
-
-            <h2 className="font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-white mt-1 leading-tight">
-              Why Patients Choose Homeopathy
+            <h2 className="font-serif text-[clamp(2.25rem,4vw+0.5rem,3.75rem)] font-normal text-white mt-1 leading-[1.12] tracking-tight">
+              Why Patients Choose Classical Homoeopathy
             </h2>
-            <p className="mt-4 text-sm sm:text-base lg:text-lg font-light leading-relaxed tracking-wide text-white/80 dark:text-[#A3ACA7]">
+            <p className="mt-4 text-sm sm:text-base lg:text-lg font-light leading-relaxed tracking-wide text-white/85 dark:text-[#CBD5E1]">
               Gentle, scientifically proven &amp; 100% natural medicine designed for lasting vitality.
             </p>
           </motion.div>
@@ -85,10 +77,10 @@ export function WhyHomeopathy() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 dark:border-[#C5A059]/30 bg-white/15 dark:bg-[#1A221E] text-white group-hover:scale-105 transition-transform">
                     <Icon className="h-6 w-6 text-[#E5C583]" />
                   </div>
-                  <h3 className="mt-5 font-serif text-xl font-normal text-white">
+                  <h3 className="mt-5 font-serif text-xl font-normal text-white tracking-tight">
                     {benefit.title}
                   </h3>
-                  <p className="mt-2 text-sm font-light leading-relaxed text-white/75 dark:text-[#A3ACA7]">
+                  <p className="mt-2 text-sm font-light leading-relaxed text-white/80 dark:text-[#CBD5E1]">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -99,23 +91,27 @@ export function WhyHomeopathy() {
           {/* 3-Step Process Liquid Glass Capsule */}
           <div className="relative z-10 mt-10 sm:mt-12 overflow-hidden rounded-[2rem] border border-white/15 dark:border-[#C5A059]/30 bg-[#142A1E]/40 dark:bg-[#121714]/70 p-6 sm:p-10 lg:p-12 backdrop-blur-2xl [transform:translate3d(0,0,0)]">
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-              <span className="text-xs font-medium tracking-widest text-[#E5C583] uppercase block">Simplicity &amp; Care</span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1 font-normal">3 Steps to Your Permanent Recovery</h3>
+              <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1 font-normal tracking-tight">3 Steps to Your Permanent Recovery</h3>
             </div>
 
             <div className="grid gap-5 md:grid-cols-3">
               {HEALING_STEPS.map((s, idx) => {
                 const Icon = s.icon;
                 return (
-                  <div key={idx} className="relative space-y-3 p-5 sm:p-6 text-center sm:text-left rounded-2xl border border-white/15 dark:border-[#C5A059]/25 bg-white/[0.04] dark:bg-[#141A16]/60 backdrop-blur-md transition-all duration-300 hover:bg-white/[0.08] dark:hover:bg-[#1C2420] hover:dark:border-[#E5C583]/60">
-                    <div className="flex items-center gap-3 justify-center sm:justify-start">
-                      <span className="font-serif text-3xl font-normal text-[#E5C583]">{s.step}</span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 dark:border-[#C5A059]/30 bg-white/15 dark:bg-[#18201C] text-white">
-                        <Icon className="h-5 w-5 text-[#E5C583]" />
+                  <div key={idx} className="relative space-y-3 p-6 sm:p-7 text-left rounded-2xl border border-white/15 dark:border-[#C5A059]/25 bg-white/[0.04] dark:bg-[#141A16]/60 backdrop-blur-md transition-all duration-300 hover:bg-white/[0.08] dark:hover:bg-[#1C2420] hover:dark:border-[#E5C583]/60">
+                    {/* Icon prefixed with Heading */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/25 dark:border-[#C5A059]/30 bg-white/15 dark:bg-[#18201C] text-[#E5C583] shadow-xs">
+                        <Icon className="h-5 w-5" />
                       </div>
+                      <h4 className="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug">
+                        {s.title}
+                      </h4>
                     </div>
-                    <h4 className="font-serif text-xl font-normal text-white">{s.title}</h4>
-                    <p className="text-sm font-light leading-relaxed text-white/75 dark:text-[#A3ACA7]">{s.desc}</p>
+
+                    <p className="text-sm font-light leading-relaxed text-white/80 dark:text-[#CBD5E1]">
+                      {s.desc}
+                    </p>
                   </div>
                 );
               })}
