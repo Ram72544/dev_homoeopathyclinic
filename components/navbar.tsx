@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center shrink-0">
             <a
               href={site.bookingUrl}
-              className="group relative inline-flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-6 sm:px-7 py-3 sm:py-3.5 font-sans text-xs font-semibold tracking-wider text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] whitespace-nowrap shrink-0 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-6 sm:px-7 py-3 sm:py-3.5 font-sans text-xs font-semibold tracking-wider text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#1C2C23] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] whitespace-nowrap shrink-0 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               <Calendar className="h-3.5 w-3.5 text-[#E5C583]" />
               <span>BOOK CONSULTATION</span>
