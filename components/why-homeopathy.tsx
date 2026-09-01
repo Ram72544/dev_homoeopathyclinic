@@ -72,15 +72,19 @@ export function WhyHomeopathy() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/20 dark:border-[#C5A059]/35 bg-[#162D20]/45 dark:bg-[#141A16]/80 p-6 sm:p-7 backdrop-blur-2xl transition-all duration-400 hover:border-white/40 dark:hover:border-[#E5C583] hover:bg-[#1E3B2A]/65 dark:hover:bg-[#1C2420] hover:-translate-y-1 shadow-lg shadow-black/20 [transform:translate3d(0,0,0)]"
+                  className="group relative overflow-hidden rounded-2xl border border-white/15 dark:border-[#C5A059]/25 bg-white/[0.04] dark:bg-[#141A16]/60 p-6 sm:p-7 backdrop-blur-md transition-all duration-300 hover:bg-white/[0.08] dark:hover:bg-[#1C2420] hover:dark:border-[#E5C583]/60 shadow-lg shadow-black/20 [transform:translate3d(0,0,0)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 dark:border-[#C5A059]/30 bg-white/15 dark:bg-[#1A221E] text-white group-hover:scale-105 transition-transform">
-                    <Icon className="h-6 w-6 text-[#E5C583]" />
+                  {/* Icon prefixed with Heading */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/25 dark:border-[#C5A059]/30 bg-white/15 dark:bg-[#18201C] text-[#E5C583] shadow-xs group-hover:scale-105 transition-transform">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug">
+                      {benefit.title}
+                    </h3>
                   </div>
-                  <h3 className="mt-5 font-serif text-xl font-normal text-white tracking-tight">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-2 text-sm font-light leading-relaxed text-white/80 dark:text-[#CBD5E1]">
+
+                  <p className="mt-3 text-sm font-light leading-relaxed text-white/80 dark:text-[#CBD5E1]">
                     {benefit.description}
                   </p>
                 </motion.div>
