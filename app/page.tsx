@@ -1,9 +1,8 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { TrustRibbon } from "@/components/trust-ribbon";
+import { About } from "@/components/about";
 import { WhatWeTreat } from "@/components/what-we-treat";
 import { WhyHomeopathy } from "@/components/why-homeopathy";
-import { About } from "@/components/about";
 import { Testimonials } from "@/components/testimonials";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
@@ -14,11 +13,8 @@ export default function Home() {
     <>
       <Navbar />
       <main className="flex-1 w-full overflow-hidden">
-        {/* 1. Hero Section */}
+        {/* 1. Hero Section (with Integrated Clinical Indicators) */}
         <Hero />
-
-        {/* Dedicated Trust Ribbon */}
-        <TrustRibbon />
 
         {/* 2. Meet Dr. Sheetal (Doctor Practitioner Profile) */}
         <About />
