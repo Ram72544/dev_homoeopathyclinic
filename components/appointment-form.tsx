@@ -51,9 +51,31 @@ const SUNDAY_EVENING_SLOTS = [
   "8:00 PM – 9:00 PM (Prior Appointment Only)",
 ];
 
+function parseDateSafely(dateStr: string): Date | null {
+  if (!dateStr) return null;
+  // Check if standard ISO YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+    const [y, m, d] = dateStr.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+  // Check if DD/MM/YYYY or DD-MM-YYYY
+  const parts = dateStr.split(/[-/]/);
+  if (parts.length === 3) {
+    if (parts[0].length === 4) {
+      return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    }
+    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+  }
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? null : d;
+}
+
 function getSlotsForDate(dateStr: string): string[] {
   if (!dateStr) return [];
-  const day = new Date(`${dateStr}T00:00:00`).getDay();
+  const dateObj = parseDateSafely(dateStr);
+  if (!dateObj) return [...MORNING_SLOTS, ...EVENING_SLOTS];
+
+  const day = dateObj.getDay();
   // 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
   if (day === 2) {
     // Tuesday is Clinic Off
@@ -73,7 +95,10 @@ function todayISO(): string {
 }
 
 function formatDateLabel(dateStr: string): string {
-  return new Date(`${dateStr}T00:00:00`).toLocaleDateString("en-IN", {
+  if (!dateStr) return "";
+  const dateObj = parseDateSafely(dateStr);
+  if (!dateObj) return dateStr;
+  return dateObj.toLocaleDateString("en-IN", {
     weekday: "short",
     day: "2-digit",
     month: "short",
@@ -168,25 +193,31 @@ export function AppointmentForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: values.name,
-          phone: values.phone,
+          name: values.name.trim(),
+          phone: values.phone.trim(),
           slot,
-          concern: values.concern || `Consultation request for ${values.diseaseCategory || "General Health"}`,
-          diseaseCategory: values.diseaseCategory,
+          concern: values.concern?.trim() || `Consultation request for ${values.diseaseCategory || "General Health"}`,
+          diseaseCategory: values.diseaseCategory || "General Health Consultation",
         }),
       });
-      const data = (await response.json()) as { ok?: boolean; error?: string };
+
+      let data: { ok?: boolean; error?: string } = {};
+      try {
+        data = await response.json();
+      } catch {
+        // Fallback if non-JSON response
+      }
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "Failed to send consultation request");
+        throw new Error(data.error || "Unable to submit your request right now. Please try again or contact the clinic directly.");
       }
 
       setConfirmedDetails({
-        name: values.name,
-        phone: values.phone,
+        name: values.name.trim(),
+        phone: values.phone.trim(),
         diseaseCategory: values.diseaseCategory || "General Health Consultation",
         slot,
-        concern: values.concern,
+        concern: values.concern?.trim(),
       });
       setShowConfirmation(true);
       reset();
