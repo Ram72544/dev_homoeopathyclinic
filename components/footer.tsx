@@ -60,7 +60,7 @@ export function Footer() {
                   height={256}
                   sizes="48px"
                   unoptimized
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain transition-all duration-300 dark:drop-shadow-[0_0_14px_rgba(229,197,131,0.28)]"
                 />
               </div>
               <div className="leading-tight shrink-0 flex flex-col justify-center text-left">
