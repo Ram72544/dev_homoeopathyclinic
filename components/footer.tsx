@@ -133,10 +133,10 @@ export function Footer() {
             </li>
           </ul>
 
-          {/* Bottom Copyright & Legal Line */}
-          <div className="pt-4 border-t border-[#14221B]/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-light text-[#7A8A80] text-center sm:text-left">
+          {/* Bottom Copyright */}
+          <div className="pt-4 border-t border-[#14221B]/10 dark:border-white/10 flex flex-col items-center justify-center gap-1 text-[11px] font-light text-[#7A8A80] text-center">
             <p>&copy; {year} {site.name}. All rights reserved.</p>
-            <p>Registered Homoeopathic Medical Practice • 100% Patient Confidentiality</p>
+            <p className="text-[10.5px] opacity-80">Registered Homoeopathic Medical Practice • 100% Patient Confidentiality</p>
           </div>
 
         </div>
