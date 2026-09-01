@@ -49,8 +49,8 @@ export function WhatWeTreat() {
 
   return (
     <section id="services" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
-      {/* Soft Ambient Radial Light */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {/* Soft Ambient Radial Light (Day Mode Only) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden dark:hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[700px] w-[1000px] rounded-full bg-radial from-[#F4EFE6]/70 via-[#F8F5EE]/30 to-transparent blur-3xl" />
       </div>
 
@@ -64,15 +64,15 @@ export function WhatWeTreat() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] uppercase">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 px-3.5 py-1 text-xs font-sans font-semibold tracking-widest text-[#967531] dark:text-[#E5C583] uppercase">
             <Sparkles className="h-3 w-3 text-[#C5A059]" />
             <span>Curated Specializations</span>
           </div>
 
-          <h2 className="mt-3 font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] leading-tight">
+          <h2 className="mt-3 font-serif text-[clamp(2rem,3.5vw+0.5rem,3.5rem)] font-normal text-[#14221B] dark:text-[#FAF8F5] leading-tight">
             Conditions We Heal Permanently
           </h2>
-          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52]">
+          <p className="mt-4 text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#9EB3A8]">
             Comprehensive, individualized homoeopathic remedies designed to restore your body&apos;s natural vitality without side effects.
           </p>
         </motion.div>
@@ -91,15 +91,15 @@ export function WhatWeTreat() {
                 }}
                 className={`shrink-0 snap-start relative rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 active:scale-95 cursor-pointer touch-target ${
                   isActive
-                    ? "bg-[#14221B] text-[#FAF8F5] shadow-md"
-                    : "bg-white/85 text-[#4A5D52] hover:bg-white hover:text-[#14221B] border border-[#E8E1D5]"
+                    ? "bg-[#14221B] dark:bg-[#0E7C7B] text-[#FAF8F5] shadow-md"
+                    : "bg-white/85 dark:bg-[#14261D]/80 text-[#4A5D52] dark:text-[#9EB3A8] hover:bg-white dark:hover:bg-[#1A3326] hover:text-[#14221B] dark:hover:text-[#FAF8F5] border border-[#E8E1D5] dark:border-white/10"
                 }`}
               >
                 <span>{cat.label}</span>
                 {isActive && (
                   <motion.span
                     layoutId="activeCategoryPill"
-                    className="absolute inset-0 rounded-full border-2 border-[#C5A059]/50 pointer-events-none"
+                    className="absolute inset-0 rounded-full border-2 border-[#C5A059]/50 dark:border-[#E5C583]/70 pointer-events-none"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -134,7 +134,7 @@ export function WhatWeTreat() {
                       if (e.key === "Enter" || e.key === " ") setSelectedService(service);
                     }}
                     aria-label={`View medical details for ${service.title}`}
-                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 bg-white/75 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 hover:bg-white/95 hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] hover:-translate-y-1"
+                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-white/10 bg-white/75 dark:bg-[#0F1E16]/85 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583]/50 hover:bg-white/95 dark:hover:bg-[#14261D]/95 hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] hover:-translate-y-1"
                   >
                     <div className="flex flex-col justify-between h-full">
                       <div>
@@ -143,18 +143,18 @@ export function WhatWeTreat() {
                           <Icon className="h-5 w-5" />
                         </div>
 
-                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#0E7C7B] group-hover:text-[#14221B] transition-colors duration-300">
+                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#0E7C7B] dark:text-[#14B8A6] group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5] transition-colors duration-300">
                           {service.title}
                         </h3>
 
-                        <p className="mt-2.5 text-sm font-light leading-relaxed text-[#4A5D52]">
+                        <p className="mt-2.5 text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8]">
                           {service.shortDesc || service.description}
                         </p>
                       </div>
 
                       {/* Bottom Link with Clean Divider */}
-                      <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] pt-4">
-                        <span className="text-xs font-medium tracking-wide text-[#14221B] group-hover:text-[#0E7C7B] transition-colors">
+                      <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] dark:border-white/10 pt-4">
+                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#0E7C7B] dark:group-hover:text-[#14B8A6] transition-colors">
                           View Medical Details
                         </span>
                       </div>
@@ -172,7 +172,7 @@ export function WhatWeTreat() {
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 bg-white/90 px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] hover:bg-[#14221B] hover:text-white hover:shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 dark:border-white/15 bg-white/90 dark:bg-[#14261D] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#14B8A6] hover:bg-[#14221B] dark:hover:bg-[#0E7C7B] hover:text-white hover:shadow-md cursor-pointer"
             >
               <span>{showAll ? "Show Less Specializations" : "Explore All 12 Conditions & Treatments"}</span>
               <span className="font-serif text-base">{showAll ? "↑" : "↓"}</span>

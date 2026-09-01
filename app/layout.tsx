@@ -57,6 +57,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,10 +67,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${bodyFont.variable} ${headingFont.variable} ${luxuryFont.variable} ${accentFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-surface text-foreground">
-        {children}
+      <body className="min-h-full flex flex-col bg-surface text-foreground transition-colors duration-300">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

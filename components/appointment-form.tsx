@@ -191,24 +191,24 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 bg-white/85 p-6 sm:p-8 lg:p-9 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding"
+        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 dark:border-white/10 bg-white/85 dark:bg-[#0B1711]/90 p-6 sm:p-8 lg:p-9 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding"
       >
         {/* Fast & Reassuring Header */}
-        <div className="flex items-center justify-between border-b border-[#EAE3DA]/80 pb-5 mb-6">
+        <div className="flex items-center justify-between border-b border-[#EAE3DA]/80 dark:border-white/10 pb-5 mb-6">
           <div className="flex items-center gap-3.5">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md shrink-0">
               <HeartPulse className="h-5 w-5" />
             </div>
             <div>
-              <span className="text-[10px] font-semibold tracking-[0.2em] text-[#967531] uppercase block">
+              <span className="text-[10px] font-semibold tracking-[0.2em] text-[#967531] dark:text-[#E5C583] uppercase block">
                 Quick 30-Second Booking
               </span>
-              <h3 className="font-serif text-2xl sm:text-[1.75rem] font-normal text-[#14221B] mt-0.5 tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-[1.75rem] font-normal text-[#14221B] dark:text-[#FAF8F5] mt-0.5 tracking-tight">
                 Request a Consultation
               </h3>
             </div>
           </div>
-          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/20 bg-[#0E7C7B]/8 px-3.5 py-1.5 text-[11px] font-medium text-[#0E7C7B] shadow-2xs">
+          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/20 dark:border-[#14B8A6]/30 bg-[#0E7C7B]/8 dark:bg-[#14B8A6]/10 px-3.5 py-1.5 text-[11px] font-medium text-[#0E7C7B] dark:text-[#14B8A6] shadow-2xs">
             <Sparkles className="h-3 w-3 text-[#C5A059]" />
             <span>Direct Doctor Visit</span>
           </div>
@@ -216,11 +216,11 @@ export function AppointmentForm() {
 
         <div className="space-y-4 sm:space-y-4.5">
           {/* Field 1: Health Issue / Specialization */}
-          <Field label="Health Concern / Treatment Needed" icon={<Stethoscope className="h-3.5 w-3.5 text-[#0E7C7B]" />}>
+          <Field label="Health Concern / Treatment Needed" icon={<Stethoscope className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}>
             <div className="relative group">
               <select
                 {...register("diseaseCategory")}
-                className="w-full appearance-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
+                className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
               >
                 <option value="">-- Select Condition (e.g. Skin, Asthma, PCOS/PCOD, Joints) --</option>
                 {site.services.map((s) => (
@@ -230,7 +230,7 @@ export function AppointmentForm() {
                 ))}
                 <option value="General Consultation">General / Other Health Issue</option>
               </select>
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] transition-transform duration-200 group-hover:text-[#14221B]">
+              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] dark:text-[#9EB3A8] transition-transform duration-200 group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5]">
                 <ChevronDown className="h-4 w-4" />
               </div>
             </div>
@@ -244,7 +244,7 @@ export function AppointmentForm() {
               render={({ field, fieldState }) => (
                 <Field
                   label="Your Full Name *"
-                  icon={<User className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+                  icon={<User className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}
                   error={fieldState.error?.message}
                 >
                   <input
@@ -259,7 +259,7 @@ export function AppointmentForm() {
                         .slice(0, 50);
                       field.onChange(cleaned);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
+                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
                     placeholder="e.g. Rahul Sharma"
                   />
                 </Field>
@@ -272,7 +272,7 @@ export function AppointmentForm() {
               render={({ field, fieldState }) => (
                 <Field
                   label="Mobile / WhatsApp Number *"
-                  icon={<Phone className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+                  icon={<Phone className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}
                   error={fieldState.error?.message}
                 >
                   <input
@@ -284,7 +284,7 @@ export function AppointmentForm() {
                       const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                       field.onChange(digits);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
+                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
                     placeholder="10-digit mobile number"
                   />
                 </Field>
@@ -296,14 +296,14 @@ export function AppointmentForm() {
           <div className="grid gap-3.5 sm:grid-cols-2">
             <Field
               label="Preferred Date *"
-              icon={<Calendar className="h-3.5 w-3.5 text-[#0E7C7B]" />}
+              icon={<Calendar className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}
               error={errors.date?.message}
             >
               <input
                 type="date"
                 min={minDate}
                 {...dateField}
-                className="w-full rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 px-4 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
+                className="w-full rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
               />
             </Field>
 
@@ -312,7 +312,7 @@ export function AppointmentForm() {
                 <select
                   {...register("time")}
                   disabled={!selectedDate}
-                  className="w-full appearance-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/85 pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] disabled:opacity-50 min-h-[48px] cursor-pointer"
+                  className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] disabled:opacity-50 min-h-[48px] cursor-pointer"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -328,7 +328,7 @@ export function AppointmentForm() {
                     </option>
                   ))}
                 </select>
-                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] transition-transform duration-200 group-hover:text-[#14221B]">
+                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] dark:text-[#9EB3A8] transition-transform duration-200 group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5]">
                   <ChevronDown className="h-4 w-4" />
                 </div>
               </div>
@@ -341,7 +341,7 @@ export function AppointmentForm() {
               <button
                 type="button"
                 onClick={() => setShowOptionalNotes(true)}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0E7C7B] hover:text-[#14221B] transition-colors py-1 cursor-pointer group"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0E7C7B] dark:text-[#14B8A6] hover:text-[#14221B] dark:hover:text-[#FAF8F5] transition-colors py-1 cursor-pointer group"
               >
                 <span className="group-hover:underline underline-offset-2">+ Add symptoms or health note (optional)</span>
                 <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
@@ -349,13 +349,13 @@ export function AppointmentForm() {
             ) : (
               <div className="space-y-2 pt-1 animate-in fade-in duration-200">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-[#14221B]">
+                  <span className="text-xs font-medium text-[#14221B] dark:text-[#FAF8F5]">
                     Brief Symptoms / Notes (Optional)
                   </span>
                   <button
                     type="button"
                     onClick={() => setShowOptionalNotes(false)}
-                    className="text-[11px] text-[#7A8A80] hover:text-[#14221B] flex items-center gap-1 cursor-pointer"
+                    className="text-[11px] text-[#7A8A80] dark:text-[#9EB3A8] hover:text-[#14221B] dark:hover:text-[#FAF8F5] flex items-center gap-1 cursor-pointer"
                   >
                     <span>Hide note</span>
                     <ChevronUp className="h-3 w-3" />
@@ -372,7 +372,7 @@ export function AppointmentForm() {
                         const val = e.target.value.slice(0, 1000);
                         field.onChange(val);
                       }}
-                      className="w-full resize-none rounded-2xl border border-[#E8E1D5] bg-[#FAF8F5]/90 px-4 py-3 text-sm font-light text-[#14221B] outline-none transition-all duration-300 hover:border-[#D5CCBE] focus:border-[#0E7C7B] focus:bg-white focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] font-sans leading-relaxed"
+                      className="w-full resize-none rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/90 dark:bg-[#14261D] px-4 py-3 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] font-sans leading-relaxed"
                       placeholder={dynamicPlaceholder}
                     />
                   )}
@@ -385,7 +385,7 @@ export function AppointmentForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full relative overflow-hidden flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] px-8 py-4 text-xs sm:text-sm font-medium tracking-[0.14em] text-[#FAF8F5] uppercase border-t border-white/20 shadow-[0_12px_32px_-8px_rgba(15,34,24,0.5)] transition-all duration-300 hover:scale-[1.01] hover:from-[#142C20] hover:to-[#0E7C7B] hover:shadow-[0_16px_36px_-6px_rgba(14,124,123,0.4)] active:scale-[0.99] disabled:opacity-50 cursor-pointer min-h-[52px] mt-3"
+            className="w-full relative overflow-hidden flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] dark:from-[#0E7C7B] dark:to-[#1A3828] px-8 py-4 text-xs sm:text-sm font-medium tracking-[0.14em] text-[#FAF8F5] uppercase border-t border-white/20 shadow-[0_12px_32px_-8px_rgba(15,34,24,0.5)] transition-all duration-300 hover:scale-[1.01] hover:from-[#142C20] hover:to-[#0E7C7B] hover:shadow-[0_16px_36px_-6px_rgba(14,124,123,0.4)] active:scale-[0.99] disabled:opacity-50 cursor-pointer min-h-[52px] mt-3"
           >
             {isSubmitting ? (
               <Loader2 className="h-4 w-4 animate-spin text-[#E5C583]" />
@@ -396,10 +396,10 @@ export function AppointmentForm() {
           </button>
 
           {submitError && (
-            <p className="text-center text-xs text-red-600 font-light">{submitError}</p>
+            <p className="text-center text-xs text-red-600 dark:text-red-400 font-light">{submitError}</p>
           )}
 
-          <p className="flex items-center justify-center gap-1.5 text-center text-[11px] font-light text-[#7A8A80] pt-1">
+          <p className="flex items-center justify-center gap-1.5 text-center text-[11px] font-light text-[#7A8A80] dark:text-[#9EB3A8] pt-1">
             <ShieldCheck className="h-4 w-4 text-[#C5A059] shrink-0" />
             100% Confidential • Dr. Sheetal&apos;s clinic will call/message to confirm.
           </p>
@@ -407,20 +407,20 @@ export function AppointmentForm() {
       </form>
 
       <Dialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <DialogContent className="sm:max-w-md bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 border border-[#E8E1D5] shadow-2xl">
+        <DialogContent className="sm:max-w-md bg-[#FAF8F5] dark:bg-[#0B1711] rounded-3xl p-6 sm:p-8 border border-[#E8E1D5] dark:border-white/15 shadow-2xl text-[#14221B] dark:text-[#FAF8F5]">
           <DialogHeader className="items-center text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0E7C7B]/15 text-[#0E7C7B] mb-2">
-              <CheckCircle2 className="h-8 w-8 text-[#0E7C7B]" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0E7C7B]/15 text-[#0E7C7B] dark:text-[#14B8A6] mb-2">
+              <CheckCircle2 className="h-8 w-8 text-[#0E7C7B] dark:text-[#14B8A6]" />
             </div>
-            <DialogTitle className="font-serif text-2xl font-normal text-[#14221B]">
+            <DialogTitle className="font-serif text-2xl font-normal text-[#14221B] dark:text-[#FAF8F5]">
               Consultation Request Received!
             </DialogTitle>
-            <DialogDescription className="text-sm font-light leading-relaxed text-[#4A5D52] mt-2">
-              Thank you, <strong className="text-[#14221B] font-medium">{confirmedName}</strong>! Your appointment request has been submitted. Our team will contact you shortly to confirm your consultation.
+            <DialogDescription className="text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8] mt-2">
+              Thank you, <strong className="text-[#14221B] dark:text-[#FAF8F5] font-medium">{confirmedName}</strong>! Your appointment request has been submitted. Our team will contact you shortly to confirm your consultation.
             </DialogDescription>
           </DialogHeader>
           <button
-            className="mt-4 w-full rounded-full bg-[#14221B] py-3.5 text-xs font-medium tracking-widest text-[#FAF8F5] uppercase transition-colors hover:bg-[#0E7C7B] cursor-pointer"
+            className="mt-4 w-full rounded-full bg-[#14221B] dark:bg-[#0E7C7B] py-3.5 text-xs font-medium tracking-widest text-[#FAF8F5] uppercase transition-colors hover:bg-[#0E7C7B] cursor-pointer"
             onClick={() => setShowConfirmation(false)}
           >
             Done
@@ -444,12 +444,12 @@ function Field({
 }) {
   return (
     <label className="block space-y-1.5">
-      <span className="flex items-center gap-1.5 text-xs font-medium tracking-wide text-[#14221B]">
+      <span className="flex items-center gap-1.5 text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5]">
         {icon}
         {label}
       </span>
       {children}
-      {error && <span className="block text-xs text-red-600 font-light">{error}</span>}
+      {error && <span className="block text-xs text-red-600 dark:text-red-400 font-light">{error}</span>}
     </label>
   );
 }

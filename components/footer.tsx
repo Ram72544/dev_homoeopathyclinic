@@ -36,7 +36,7 @@ export function Footer() {
   const displayedServices = showAllServices ? site.services : site.services.slice(0, 6);
 
   return (
-    <footer className="relative bg-transparent text-[#14221B] pt-6 pb-28 md:pb-8 overflow-hidden">
+    <footer className="relative bg-transparent text-[#14221B] dark:text-[#FAF8F5] pt-6 pb-28 md:pb-8 overflow-hidden transition-colors duration-300">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -45,8 +45,8 @@ export function Footer() {
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
         {/* Floating Compact Spatial Footer Container */}
-        <div className="rounded-[2rem] border border-white/90 bg-white/80 p-5 sm:p-7 lg:p-8 backdrop-blur-2xl shadow-[0_16px_40px_rgba(20,34,27,0.04)]">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-12 pb-6 border-b border-[#EAE3DA]">
+        <div className="rounded-[2rem] border border-white/90 dark:border-white/10 bg-white/80 dark:bg-[#0B1711]/90 p-5 sm:p-7 lg:p-8 backdrop-blur-2xl shadow-[0_16px_40px_rgba(20,34,27,0.04)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)]">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-12 pb-6 border-b border-[#EAE3DA] dark:border-white/10">
 
             {/* Column 1: Brand & Logo (4 Cols) */}
             <div className="lg:col-span-4 space-y-3">
@@ -63,34 +63,34 @@ export function Footer() {
                   />
                 </div>
                 <div className="flex flex-col justify-center min-w-0">
-                  <span className="font-serif text-2xl sm:text-[26px] font-normal leading-none text-[#14221B] whitespace-nowrap">
+                  <span className="font-serif text-2xl sm:text-[26px] font-normal leading-none text-[#14221B] dark:text-[#FAF8F5] whitespace-nowrap">
                     Dr. Sheetal&apos;s
                   </span>
-                  <span className="font-accent text-xs sm:text-[13px] font-bold tracking-[0.22em] text-[#0E7C7B] uppercase whitespace-nowrap mt-1">
+                  <span className="font-accent text-xs sm:text-[13px] font-bold tracking-[0.22em] text-[#0E7C7B] dark:text-[#14B8A6] uppercase whitespace-nowrap mt-1">
                     Homoeopathy Clinic
                   </span>
-                  <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#967531] mt-1 whitespace-nowrap">
+                  <span className="font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#967531] dark:text-[#E5C583] mt-1 whitespace-nowrap">
                     Natural Family Healing
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs font-light leading-relaxed text-[#4A5D52] max-w-sm">
+              <p className="text-xs font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8] max-w-sm">
                 Personalized constitutional homeopathic care treating root causes with 100% natural, safe sweet pills for your family.
               </p>
             </div>
 
             {/* Column 2: Quick Links (2 Cols) */}
             <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B]">
+              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
                 Navigation
               </h4>
-              <ul className="space-y-1.5 text-xs font-light text-[#4A5D52]">
+              <ul className="space-y-1.5 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="transition-colors hover:text-[#0E7C7B]"
+                      className="transition-colors hover:text-[#0E7C7B] dark:hover:text-[#14B8A6]"
                     >
                       {link.label}
                     </a>
@@ -101,11 +101,11 @@ export function Footer() {
 
             {/* Column 3: Specialized Care with Expandable 12 Treatments (3.5 Cols) */}
             <div className="lg:col-span-3 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B]">
+              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
                 Specialized Care
               </h4>
               
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs font-light text-[#4A5D52]">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
                 {displayedServices.map((service) => (
                   <li key={service.id}>
                     <button
@@ -115,7 +115,7 @@ export function Footer() {
                           new CustomEvent("open-disease-modal", { detail: service.id })
                         );
                       }}
-                      className="text-left transition-colors hover:text-[#0E7C7B] cursor-pointer truncate w-full"
+                      className="text-left transition-colors hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] cursor-pointer truncate w-full"
                     >
                       {service.title}
                     </button>
@@ -127,7 +127,7 @@ export function Footer() {
               <button
                 type="button"
                 onClick={() => setShowAllServices(!showAllServices)}
-                className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/25 bg-white/90 px-3 py-1 text-[11px] font-medium text-[#0E7C7B] hover:bg-[#0E7C7B] hover:text-white transition-all cursor-pointer shadow-2xs"
+                className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/25 dark:border-white/15 bg-white/90 dark:bg-[#14261D] px-3 py-1 text-[11px] font-medium text-[#0E7C7B] dark:text-[#FAF8F5] hover:bg-[#0E7C7B] hover:text-white dark:hover:bg-[#0E7C7B] dark:hover:text-white transition-all cursor-pointer shadow-2xs"
               >
                 <span>
                   {showAllServices
@@ -144,40 +144,40 @@ export function Footer() {
 
             {/* Column 4: Contact Info (3 Cols) */}
             <div className="lg:col-span-3 space-y-2.5">
-              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B]">
+              <h4 className="font-accent text-xs font-bold uppercase tracking-[0.20em] text-[#14221B] dark:text-[#FAF8F5]">
                 Clinic Contact
               </h4>
-              <ul className="space-y-2 text-xs font-light text-[#4A5D52]">
+              <ul className="space-y-2 text-xs font-light text-[#4A5D52] dark:text-[#9EB3A8]">
                 <li className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B]" />
-                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] transition-colors">
+                  <Phone className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
+                  <a href={`tel:${site.phone}`} className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors">
                     {site.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MessageCircle className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B]" />
+                  <MessageCircle className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
                   <a
                     href={site.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#0E7C7B] transition-colors"
+                    className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors"
                   >
                     WhatsApp Consultation
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B]" />
-                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] transition-colors">
+                  <Mail className="h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
+                  <a href={`mailto:${site.email}`} className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors">
                     {site.email}
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0E7C7B]" />
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0E7C7B] dark:text-[#14B8A6]" />
                   <a
                     href={site.googleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#0E7C7B] transition-colors line-clamp-2"
+                    className="hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] transition-colors line-clamp-2"
                   >
                     {site.address}
                   </a>
