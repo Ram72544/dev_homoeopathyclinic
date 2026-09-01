@@ -176,7 +176,7 @@ export function DiseaseModal({
                       }
                     }, 120);
                   }}
-                  className="w-full relative overflow-hidden flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1A3828] to-[#0F2218] dark:from-[#0E7C7B] dark:to-[#1A3828] px-7 py-4 text-xs sm:text-sm font-medium tracking-[0.14em] text-[#FAF8F5] uppercase border-t border-white/20 shadow-[0_10px_25px_-5px_rgba(15,34,24,0.4)] transition-all duration-300 hover:from-[#142C20] hover:to-[#0E7C7B] hover:scale-[1.01] active:scale-[0.99] cursor-pointer min-h-[50px]"
+                  className="w-full flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-7 py-4 text-xs sm:text-sm font-medium tracking-[0.14em] text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.01] active:scale-[0.99] cursor-pointer min-h-[50px]"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583]" />
                   <span>Book Consultation for {service.title}</span>

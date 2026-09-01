@@ -91,8 +91,8 @@ export function WhatWeTreat() {
                 }}
                 className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 backdrop-blur-md cursor-pointer ${
                   isSelected
-                    ? "border border-[#0E7C7B] dark:border-[#E5C583] bg-[#0E7C7B] dark:bg-[#1C2520] text-white dark:text-[#E5C583] shadow-md shadow-[#0E7C7B]/20 dark:shadow-black/40 scale-105"
-                    : "border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-white/80 dark:bg-[#0E1310]/80 text-[#4A5D52] dark:text-[#A3ACA7] hover:border-[#0E7C7B]/60 dark:hover:border-[#E5C583]/60 hover:bg-white dark:hover:bg-[#141A16] hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
+                    ? "border border-[#14221B] dark:border-[#C5A059]/45 bg-[#14221B] dark:bg-[#18201C] text-[#FAF8F5] dark:text-[#FAF8F5] shadow-md shadow-[#14221B]/15 dark:shadow-black/40 scale-105"
+                    : "border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-white/80 dark:bg-[#0E1310]/80 text-[#4A5D52] dark:text-[#A3ACA7] hover:border-[#14221B]/40 dark:hover:border-[#E5C583]/60 hover:bg-white dark:hover:bg-[#141A16] hover:text-[#14221B] dark:hover:text-[#FAF8F5]"
                 }`}
               >
                 {cat.label}
@@ -127,7 +127,7 @@ export function WhatWeTreat() {
                       if (e.key === "Enter" || e.key === " ") setSelectedService(service);
                     }}
                     aria-label={`View medical details for ${service.title}`}
-                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.6)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583] hover:bg-white/95 dark:hover:bg-[#141A16] hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] dark:hover:shadow-[0_20px_50px_-10px_rgba(197,160,89,0.15)] hover:-translate-y-1"
+                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.6)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583] hover:bg-white/95 dark:hover:bg-[#141A16] hover:shadow-[0_20px_50px_-10px_rgba(20,34,27,0.12)] dark:hover:shadow-[0_20px_50px_-10px_rgba(197,160,89,0.15)] hover:-translate-y-1"
                   >
                     <div className="flex flex-col justify-between h-full">
                       <div>
@@ -136,7 +136,7 @@ export function WhatWeTreat() {
                           <Icon className="h-5 w-5" />
                         </div>
 
-                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#0E7C7B] dark:text-[#FAF8F5] group-hover:text-[#14221B] dark:group-hover:text-[#E5C583] transition-colors duration-300">
+                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#967531] dark:group-hover:text-[#E5C583] transition-colors duration-300">
                           {service.title}
                         </h3>
 
@@ -147,7 +147,7 @@ export function WhatWeTreat() {
 
                       {/* Bottom Link with Clean Divider */}
                       <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-4">
-                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#0E7C7B] dark:group-hover:text-[#E5C583] transition-colors">
+                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#967531] dark:group-hover:text-[#E5C583] transition-colors">
                           View Medical Details
                         </span>
                         <span className="text-xs text-[#C5A059] group-hover:translate-x-0.5 transition-transform duration-200">
@@ -168,7 +168,7 @@ export function WhatWeTreat() {
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 dark:border-[#C5A059]/40 bg-white/90 dark:bg-[#141A16] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:bg-[#14221B] dark:hover:bg-[#1C2420] hover:text-white dark:hover:text-[#E5C583] hover:shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2.5 rounded-full border border-[#14221B]/20 dark:border-[#C5A059]/40 bg-white/90 dark:bg-[#141A16] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#14221B] dark:hover:border-[#E5C583] hover:bg-[#14221B] dark:hover:bg-[#18201C] hover:text-[#FAF8F5] dark:hover:text-[#E5C583] hover:shadow-md cursor-pointer"
             >
               <span>{showAll ? "Show Less Specializations" : "Explore All 12 Conditions & Treatments"}</span>
               <span className="font-serif text-base text-[#E5C583]">{showAll ? "↑" : "↓"}</span>
