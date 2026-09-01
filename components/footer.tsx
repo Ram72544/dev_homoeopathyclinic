@@ -70,6 +70,9 @@ export function Footer() {
                 <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#E5C583] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
                   HOMOEOPATHY CLINIC
                 </span>
+                <span className="text-[11px] sm:text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-1 whitespace-nowrap">
+                  Classical Constitutional Medicine • Delhi NCR
+                </span>
               </div>
             </a>
 
