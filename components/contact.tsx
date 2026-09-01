@@ -75,7 +75,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 space-y-5"
+            className="lg:col-span-5 space-y-5 order-2 lg:order-1"
           >
             {/* Unified Clinical Info Panel */}
             <div className="rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden divide-y divide-[#EAE3DA]/80 dark:divide-[#C5A059]/20">
@@ -221,7 +221,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex flex-col h-full"
+            className="lg:col-span-7 flex flex-col h-full order-1 lg:order-2"
           >
             <AppointmentForm />
           </motion.div>
