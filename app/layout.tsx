@@ -53,12 +53,22 @@ export const metadata: Metadata = {
     "PCOS Treatment without Hormones",
     "Safe Sweet Pills for Infants",
     "Migraine and Thyroid Homeopathy",
+    "AYUSH Registered Homoeopathy Clinic",
   ],
-  authors: [{ name: "Dr. Sheetal, MD (Hom.)" }],
-  creator: "Dr. Sheetal",
+  authors: [{ name: "Dr. Sheetal Tiwari, MD (Hom.)" }],
+  creator: "Dr. Sheetal Tiwari",
   publisher: "Dr. Sheetal's Homoeopathy Clinic",
   alternates: {
     canonical: "https://www.drsheetalclinic.com",
+  },
+  icons: {
+    icon: [
+      { url: "/logo-concept-1-transparent.png", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/logo-concept-1-transparent.png",
+    apple: "/logo-concept-1-transparent.png",
   },
   openGraph: {
     title: `${site.name} — Classical Homoeopathic Healing`,
@@ -94,6 +104,21 @@ const medicalClinicSchema = {
   priceRange: "₹₹",
   currenciesAccepted: "INR",
   paymentAccepted: "Cash, UPI, Google Pay, PhonePe, Paytm, Card",
+  physician: {
+    "@type": "Physician",
+    name: "Dr. Sheetal Tiwari",
+    jobTitle: "Classical Homoeopathic Physician",
+    medicalSpecialty: "Homeopathic",
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "BHMS, MD (Homoeopathy)",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Central Council of Homoeopathy (CCH) / Ministry of AYUSH, Govt. of India",
+      },
+    },
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Badarpur, Near Mathura Road",
@@ -110,15 +135,21 @@ const medicalClinicSchema = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayOfWeek: ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
       opens: "10:00",
       closes: "13:00",
     },
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayOfWeek: ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
       opens: "18:00",
       closes: "21:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday"],
+      opens: "10:00",
+      closes: "13:00",
     },
     {
       "@type": "OpeningHoursSpecification",

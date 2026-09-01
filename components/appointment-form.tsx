@@ -263,7 +263,7 @@ export function AppointmentForm() {
                 {...register("diseaseCategory")}
                 className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
               >
-                <option value="">-- Select Condition (e.g. Skin, Asthma, PCOS/PCOD, Joints) --</option>
+                <option value="">Select Condition (e.g. Skin, Asthma, PCOS/PCOD, Joints)</option>
                 {site.services.map((s) => (
                   <option key={s.id} value={s.title}>
                     {s.title}
