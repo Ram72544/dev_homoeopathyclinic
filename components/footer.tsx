@@ -51,30 +51,27 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#14221B]/10 dark:border-white/10">
             
             {/* Brand Logo & Title */}
-            <div className="flex items-center gap-3.5 text-center md:text-left">
-              <div className="relative h-13 w-13 sm:h-14 sm:w-14 shrink-0 filter drop-shadow-[0_4px_16px_rgba(14,124,123,0.25)]">
+            <a href="#home" className="group flex items-center gap-3.5 text-center md:text-left cursor-pointer">
+              <div className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 filter drop-shadow-[0_2px_12px_rgba(14,124,123,0.3)] transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/logo-concept-1-transparent.png"
                   alt="Dr. Sheetal's Homoeopathy Clinic Logo"
                   width={256}
                   height={256}
-                  sizes="56px"
+                  sizes="48px"
                   unoptimized
                   className="h-full w-full object-contain"
                 />
               </div>
-              <div>
-                <h3 className="font-serif text-xl sm:text-2xl font-normal leading-tight text-[#14221B] dark:text-[#FAF8F5]">
+              <div className="leading-tight shrink-0 flex flex-col justify-center text-left">
+                <span className="font-serif text-base sm:text-xl lg:text-2xl font-normal leading-tight text-[#14221B] dark:text-[#FAF8F5] whitespace-nowrap group-hover:text-[#0E7C7B] dark:group-hover:text-[#E5C583] transition-colors duration-300">
                   Dr. Sheetal&apos;s
-                </h3>
-                <p className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#0E7C7B] dark:text-[#E5C583] uppercase mt-0.5">
+                </span>
+                <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#E5C583] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
                   HOMOEOPATHY CLINIC
-                </p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5 hidden sm:block">
-                  Classical Constitutional Medicine • Delhi NCR
-                </p>
+                </span>
               </div>
-            </div>
+            </a>
 
             {/* Quick Action Contact Pills */}
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -109,24 +106,29 @@ export function Footer() {
 
           </div>
 
-          {/* Navigation Links Bar */}
-          <div className="py-5 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-xs font-light text-[#4A5D52] dark:text-[#A3ACA7]">
+          {/* Navigation Links Bar (Exact same typography as Navbar) */}
+          <ul className="py-5 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2.5 font-sans text-xs tracking-wider uppercase">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-[#14221B] dark:hover:text-[#FAF8F5]"
-              >
-                {link.label}
-              </a>
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="group relative py-1 text-[#3D4E44] dark:text-[#A3ACA7] font-medium transition-colors duration-200 hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
+                >
+                  <span>{link.label}</span>
+                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#0E7C7B] dark:bg-[#E5C583] transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full" />
+                </a>
+              </li>
             ))}
-            <a
-              href="#contact"
-              className="font-medium text-[#0E7C7B] dark:text-[#E5C583] hover:underline"
-            >
-              Consultation Form
-            </a>
-          </div>
+            <li>
+              <a
+                href="#contact"
+                className="group relative py-1 font-semibold text-[#0E7C7B] dark:text-[#E5C583] transition-colors duration-200"
+              >
+                <span>CONSULTATION FORM</span>
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#0E7C7B] dark:bg-[#E5C583] transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full" />
+              </a>
+            </li>
+          </ul>
 
           {/* Bottom Copyright & Legal Line */}
           <div className="pt-4 border-t border-[#14221B]/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-light text-[#7A8A80] text-center sm:text-left">
