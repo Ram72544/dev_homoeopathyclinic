@@ -75,21 +75,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: message }, { status: 400 });
   }
 
-  const { name, phone, slot, concern, age, gender, diseaseCategory, duration, lifestyle } = parsed.data;
+  const { name, phone, slot, concern, diseaseCategory } = parsed.data;
 
-  const ageGenderStr = age || gender ? ` (${[age ? `${age} yrs` : "", gender].filter(Boolean).join(", ")})` : "";
+  const notesText =
+    concern && concern !== "Direct consultation booking request"
+      ? `\n📝 <b>Symptoms / Notes:</b>\n<i>${escapeHtml(concern)}</i>\n`
+      : "";
 
   const message =
-    `🌿 <b>New Consultation Request</b>\n` +
-    `A patient has submitted a detailed case profile.\n\n` +
-    `👤 <b>Patient:</b> ${escapeHtml(name)}${escapeHtml(ageGenderStr)}\n` +
-    `📞 <b>Phone:</b> ${escapeHtml(phone)}\n` +
-    `📅 <b>Preferred Slot:</b> ${escapeHtml(slot)}\n` +
-    `🩺 <b>Specialization:</b> ${escapeHtml(diseaseCategory || "General Consultation")}\n` +
-    `⏳ <b>Duration of Illness:</b> ${escapeHtml(duration || "Not specified")}\n` +
-    `🧬 <b>Daily Life / Factors:</b> ${escapeHtml(lifestyle || "Not specified")}\n` +
-    `💬 <b>Clinical Notes:</b> ${escapeHtml(concern)}\n\n` +
-    `Please reach out to review case & confirm visit. 💚`;
+    `🌿 <b>New Consultation Request Received</b>\n\n` +
+    `👤 <b>Patient Name:</b> ${escapeHtml(name)}\n` +
+    `📞 <b>Mobile / WhatsApp:</b> <code>${escapeHtml(phone)}</code>\n` +
+    `🩺 <b>Health Concern:</b> ${escapeHtml(diseaseCategory || "General Health Consultation")}\n` +
+    `📅 <b>Preferred Slot:</b> <b>${escapeHtml(slot)}</b>\n` +
+    notesText +
+    `\n💬 <a href="https://wa.me/91${escapeHtml(phone)}?text=Hello%20${encodeURIComponent(name)},%20we%20received%20your%20consultation%20request%20at%20Dr.%20Sheetal's%20Homoeopathy%20Clinic%20for%20${encodeURIComponent(slot)}.">Click here to WhatsApp Patient</a>\n` +
+    `⚡ <i>Please contact patient to confirm consultation visit.</i>`;
 
   try {
     await sendTelegramMessage(message);

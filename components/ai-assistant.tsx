@@ -108,7 +108,7 @@ export function AIAssistant() {
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
         aria-label="Open AI Health Assistant"
-        className="fixed bottom-5 sm:bottom-6 right-20 sm:right-24 z-40 flex items-center gap-2 rounded-full bg-[#14221B] px-4 py-3 sm:py-3.5 text-white shadow-xl hover:bg-[#0E7C7B] transition-all duration-300 [transform:translate3d(0,0,0)]"
+        className="fixed bottom-5 sm:bottom-6 right-20 sm:right-24 z-40 flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-4 py-3 sm:py-3.5 text-white dark:text-[#FAF8F5] shadow-xl hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] transition-all duration-300 [transform:translate3d(0,0,0)] cursor-pointer"
         style={{
           bottom: "calc(env(safe-area-inset-bottom, 0px) + 1.25rem)",
         }}
@@ -132,33 +132,33 @@ export function AIAssistant() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.96 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="flex h-[85vh] max-h-[640px] w-full max-w-[440px] flex-col overflow-hidden rounded-3xl bg-[#FAF8F5] shadow-2xl border border-white/90 [transform:translate3d(0,0,0)]"
+              className="flex h-[85vh] max-h-[640px] w-full max-w-[440px] flex-col overflow-hidden rounded-3xl bg-[#FAF8F5] dark:bg-[#0E1310] shadow-2xl border border-white/90 dark:border-[#C5A059]/35 [transform:translate3d(0,0,0)]"
             >
               {/* Header */}
-              <div className="flex items-center justify-between bg-gradient-to-r from-[#14221B] to-[#0E7C7B] p-4 text-white">
+              <div className="flex items-center justify-between bg-gradient-to-r from-[#14221B] to-[#0E7C7B] dark:from-[#18201C] dark:to-[#0E1310] p-4 text-white border-b border-white/10 dark:border-[#C5A059]/20">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <Sparkles className="h-5 w-5 text-[#E5C583]" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 dark:bg-[#1A221E] backdrop-blur-sm border border-white/20 dark:border-[#C5A059]/30">
+                    <Bot className="h-5 w-5 text-[#E5C583]" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-base leading-tight">AI Health Assistant</h3>
-                    <p className="text-[11px] text-[#A7F3D0] flex items-center gap-1.5 mt-0.5">
-                      <span className="h-2 w-2 rounded-full bg-[#34D399] animate-pulse"></span>
-                      Powered by Gemini AI
+                    <h3 className="font-serif font-normal text-base text-white">Dr. Sheetal&apos;s AI Assistant</h3>
+                    <p className="text-[11px] text-white/80 dark:text-[#A3ACA7] flex items-center gap-1.5 font-light">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]"></span>
+                      Instant Health &amp; Clinic Guide
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="rounded-full p-2 text-white/80 hover:bg-white/15 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Close Assistant"
+                  className="rounded-full p-1.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close chat"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Messages Area */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F4EFE6]/40">
+              {/* Chat Messages Body */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-sm">
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -166,31 +166,31 @@ export function AIAssistant() {
                       msg.sender === "user" ? "flex-row-reverse" : "flex-row"
                     }`}
                   >
+                    {msg.sender === "ai" && (
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0E7C7B]/15 dark:bg-[#C5A059]/15 text-[#0E7C7B] dark:text-[#E5C583] border border-[#0E7C7B]/30 dark:border-[#C5A059]/30">
+                        <Bot className="h-4 w-4" />
+                      </div>
+                    )}
                     <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
-                        msg.sender === "user"
-                          ? "bg-[#14221B] text-white"
-                          : "bg-[#0E7C7B]/15 text-[#0E7C7B] border border-[#0E7C7B]/30"
+                      className={`max-w-[82%] space-y-1 ${
+                        msg.sender === "user" ? "items-end" : "items-start"
                       }`}
                     >
-                      {msg.sender === "user" ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
-                    </div>
-                    <div className={`max-w-[82%] space-y-1`}>
                       <div
-                        className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                        className={`rounded-2xl px-4 py-2.5 text-[13.5px] leading-relaxed ${
                           msg.sender === "user"
-                            ? "bg-[#14221B] text-[#FAF8F5] rounded-br-none"
-                            : "bg-white text-[#14221B] border border-[#E8E1D5] shadow-xs rounded-bl-none font-light"
+                            ? "bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-white rounded-br-none"
+                            : "bg-white dark:bg-[#141A16] text-[#14221B] dark:text-[#FAF8F5] border border-[#E8E1D5] dark:border-[#C5A059]/25 shadow-2xs rounded-bl-none font-light"
                         }`}
                       >
-                        {msg.text.split("\n").map((paragraph, idx) => (
-                          <p key={idx} className={idx > 0 ? "mt-2" : ""}>
-                            {paragraph}
+                        {msg.text.split("\n").map((line, i) => (
+                          <p key={i} className={line.startsWith("•") ? "pl-2 py-0.5" : "py-0.5"}>
+                            {line}
                           </p>
                         ))}
                       </div>
                       <span
-                        className={`block text-[10px] text-[#7A8A80] ${
+                        className={`block text-[10px] text-[#7A8A80] dark:text-[#A3ACA7] ${
                           msg.sender === "user" ? "text-right" : "text-left"
                         }`}
                       >
@@ -202,14 +202,14 @@ export function AIAssistant() {
 
                 {loading && (
                   <div className="flex items-start gap-2.5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0E7C7B]/15 text-[#0E7C7B] border border-[#0E7C7B]/30">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0E7C7B]/15 dark:bg-[#C5A059]/15 text-[#0E7C7B] dark:text-[#E5C583] border border-[#0E7C7B]/30 dark:border-[#C5A059]/30">
                       <Bot className="h-4 w-4" />
                     </div>
-                    <div className="rounded-2xl rounded-bl-none bg-white border border-[#E8E1D5] px-4 py-3 shadow-xs">
+                    <div className="rounded-2xl rounded-bl-none bg-white dark:bg-[#141A16] border border-[#E8E1D5] dark:border-[#C5A059]/25 px-4 py-3 shadow-xs">
                       <div className="flex items-center gap-1.5">
-                        <div className="h-2 w-2 rounded-full bg-[#0E7C7B] animate-bounce"></div>
-                        <div className="h-2 w-2 rounded-full bg-[#0E7C7B] animate-bounce [animation-delay:0.2s]"></div>
-                        <div className="h-2 w-2 rounded-full bg-[#0E7C7B] animate-bounce [animation-delay:0.4s]"></div>
+                        <div className="h-2 w-2 rounded-full bg-[#C5A059] animate-bounce"></div>
+                        <div className="h-2 w-2 rounded-full bg-[#C5A059] animate-bounce [animation-delay:0.2s]"></div>
+                        <div className="h-2 w-2 rounded-full bg-[#C5A059] animate-bounce [animation-delay:0.4s]"></div>
                       </div>
                     </div>
                   </div>
@@ -218,22 +218,22 @@ export function AIAssistant() {
               </div>
 
               {/* Quick Questions Chips */}
-              <div className="px-4 py-2.5 bg-white border-t border-[#EAE3DA] overflow-x-auto whitespace-nowrap scrollbar-none flex gap-2">
+              <div className="px-4 py-2.5 bg-white dark:bg-[#0E1310] border-t border-[#EAE3DA] dark:border-[#C5A059]/20 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-2">
                 {QUICK_QUESTIONS.map((q, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSend(q)}
                     disabled={loading}
-                    className="inline-flex items-center gap-1.5 text-xs bg-[#FAF8F5] text-[#14221B] border border-[#E8E1D5] rounded-full px-3 py-1.5 hover:bg-[#0E7C7B]/10 hover:border-[#0E7C7B]/40 transition-all font-medium disabled:opacity-50 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs bg-[#FAF8F5] dark:bg-[#141A16] text-[#14221B] dark:text-[#FAF8F5] border border-[#E8E1D5] dark:border-[#C5A059]/30 rounded-full px-3 py-1.5 hover:bg-[#0E7C7B]/10 dark:hover:bg-[#1C2420] hover:border-[#0E7C7B]/40 dark:hover:border-[#E5C583] transition-all font-medium disabled:opacity-50 cursor-pointer"
                   >
-                    <MessageSquareText className="h-3 w-3 text-[#0E7C7B]" />
+                    <MessageSquareText className="h-3 w-3 text-[#0E7C7B] dark:text-[#E5C583]" />
                     {q}
                   </button>
                 ))}
               </div>
 
               {/* Footer Input Form */}
-              <div className="p-3 bg-white border-t border-[#EAE3DA] space-y-2">
+              <div className="p-3 bg-white dark:bg-[#0E1310] border-t border-[#EAE3DA] dark:border-[#C5A059]/20 space-y-2">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -247,12 +247,12 @@ export function AIAssistant() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about symptoms, remedies, timings..."
                     disabled={loading}
-                    className="flex-1 rounded-full border border-[#E8E1D5] bg-[#FAF8F5] px-4 py-2.5 text-sm focus:border-[#0E7C7B] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#0E7C7B]"
+                    className="flex-1 rounded-full border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5] dark:bg-[#141A16] px-4 py-2.5 text-sm text-[#14221B] dark:text-[#FAF8F5] focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:outline-none focus:ring-1 focus:ring-[#C5A059]/30"
                   />
                   <button
                     type="submit"
                     disabled={!input.trim() || loading}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#14221B] text-white hover:bg-[#0E7C7B] disabled:opacity-40 transition-all shadow-xs cursor-pointer"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/45 text-white dark:text-[#E5C583] hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] disabled:opacity-40 transition-all shadow-xs cursor-pointer"
                     aria-label="Send message"
                   >
                     <Send className="h-4 w-4" />
@@ -260,12 +260,12 @@ export function AIAssistant() {
                 </form>
 
                 {/* Appointment CTA link inside chat */}
-                <div className="flex items-center justify-between text-[11px] text-[#7A8A80] pt-1 border-t border-[#F4EFE6] px-1">
+                <div className="flex items-center justify-between text-[11px] text-[#7A8A80] dark:text-[#A3ACA7] pt-1 border-t border-[#F4EFE6] dark:border-[#C5A059]/15 px-1">
                   <span>Educational AI guidance</span>
                   <a
                     href="#contact-form"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-1 font-medium text-[#0E7C7B] hover:text-[#14221B] hover:underline"
+                    className="flex items-center gap-1 font-medium text-[#0E7C7B] dark:text-[#E5C583] hover:text-[#14221B] dark:hover:text-[#FAF8F5] hover:underline"
                   >
                     <Calendar className="h-3 w-3" />
                     Book Doctor Visit
