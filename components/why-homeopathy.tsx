@@ -8,19 +8,19 @@ import { MessageSquare, Stethoscope, HeartPulse, Sparkles } from "lucide-react";
 const HEALING_STEPS = [
   {
     step: "01",
-    title: "1. Detailed Consultation",
+    title: "Detailed Consultation",
     desc: "Doctor spends 30-45 mins listening carefully to your health history, symptoms, daily routine & stress factors.",
     icon: MessageSquare,
   },
   {
     step: "02",
-    title: "2. Individualized Remedy",
+    title: "Individualized Remedy",
     desc: "One single homeopathic medicine is customized specifically for your body type and constitutional makeup.",
     icon: Stethoscope,
   },
   {
     step: "03",
-    title: "3. Root Cause Recovery",
+    title: "Root Cause Recovery",
     desc: "Natural sweet pills work gently inside your body to rebuild immunity and permanently heal the illness.",
     icon: HeartPulse,
   },
@@ -30,10 +30,10 @@ export function WhyHomeopathy() {
   return (
     <section id="why" className="relative py-10 md:py-16 bg-transparent overflow-hidden">
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
-        
+
         {/* Main Floating Liquid Glass Container */}
         <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 dark:border-[#C5A059]/35 bg-[#0D2820]/90 dark:bg-[#0E1310]/90 p-6 sm:p-10 lg:p-14 xl:p-16 text-white backdrop-blur-3xl shadow-[0_30px_90px_rgba(0,0,0,0.3)] dark:shadow-[0_30px_90px_rgba(0,0,0,0.6)] [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
-          
+
           {/* Background Botanical Image Refracted Underneath Liquid Glass */}
           <div className="absolute inset-0 -z-10 opacity-25 dark:opacity-10 mix-blend-overlay pointer-events-none">
             <Image
