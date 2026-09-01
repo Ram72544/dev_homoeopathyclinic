@@ -82,8 +82,8 @@ export function Testimonials() {
                     <figure
                       className={`relative flex h-full flex-col justify-between rounded-[2rem] border p-5 sm:p-8 backdrop-blur-md transition-all duration-500 [transform:translate3d(0,0,0)] ${
                         isActive
-                          ? "border-[#C5A059] dark:border-[#E5C583]/70 bg-[#FAF8F5] dark:bg-[#0F1E16] shadow-xl shadow-[#14221B]/8 dark:shadow-black/40 opacity-100 scale-[1.01]"
-                          : "border-white/80 dark:border-white/10 bg-[#FAF8F5]/75 dark:bg-[#0B1711]/70 shadow-md shadow-[#14221B]/4 dark:shadow-black/20 opacity-60 scale-95"
+                          ? "border-[#C5A059] dark:border-[#E5C583] bg-[#FAF8F5] dark:bg-[#121815] shadow-xl shadow-[#14221B]/8 dark:shadow-[0_12px_40px_rgba(0,0,0,0.6)] opacity-100 scale-[1.01]"
+                          : "border-white/80 dark:border-[#C5A059]/30 bg-[#FAF8F5]/75 dark:bg-[#0E1310]/80 shadow-md shadow-[#14221B]/4 dark:shadow-black/20 opacity-60 scale-95 hover:dark:border-[#E5C583]/60"
                       }`}
                     >
                       <Quote

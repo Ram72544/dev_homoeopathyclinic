@@ -45,8 +45,8 @@ export function Footer() {
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
         {/* Floating Compact Spatial Footer Container */}
-        <div className="rounded-[2rem] border border-white/90 dark:border-white/10 bg-white/80 dark:bg-[#0B1711]/90 p-5 sm:p-7 lg:p-8 backdrop-blur-2xl shadow-[0_16px_40px_rgba(20,34,27,0.04)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)]">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-12 pb-6 border-b border-[#EAE3DA] dark:border-white/10">
+        <div className="rounded-[2rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-5 sm:p-7 lg:p-8 backdrop-blur-2xl shadow-[0_16px_40px_rgba(20,34,27,0.04)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-12 pb-6 border-b border-[#EAE3DA] dark:border-[#C5A059]/20">
 
             {/* Column 1: Brand & Logo (4 Cols) */}
             <div className="lg:col-span-4 space-y-3">

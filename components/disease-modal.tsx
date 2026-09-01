@@ -36,7 +36,7 @@ export function DiseaseModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-[2.25rem] border border-[#E0D8CC] dark:border-white/15 bg-[#FAF8F5] dark:bg-[#0B1711] p-6 sm:p-8 lg:p-9 shadow-[0_25px_70px_-15px_rgba(20,34,27,0.22)] dark:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.7)] text-[#14221B] dark:text-[#FAF8F5]">
+      <DialogContent className="max-h-[90vh] overflow-y-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-[2.25rem] border border-[#E0D8CC] dark:border-[#C5A059]/35 bg-[#FAF8F5] dark:bg-[#0E1310] p-6 sm:p-8 lg:p-9 shadow-[0_25px_70px_-15px_rgba(20,34,27,0.22)] dark:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] text-[#14221B] dark:text-[#FAF8F5]">
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -47,9 +47,9 @@ export function DiseaseModal({
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Modal Header */}
-            <div className="pb-5 border-b border-[#E8E1D5] dark:border-white/10">
+            <div className="pb-5 border-b border-[#E8E1D5] dark:border-[#C5A059]/20">
               <div className="flex items-center gap-3.5 pr-8">
-                <div className="flex h-12 w-12 sm:h-13 sm:w-13 items-center justify-center rounded-2xl border border-white/40 dark:border-white/20 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-md shrink-0">
+                <div className="flex h-12 w-12 sm:h-13 sm:w-13 items-center justify-center rounded-2xl border border-white/40 dark:border-[#C5A059]/40 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-md shrink-0">
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
@@ -61,7 +61,7 @@ export function DiseaseModal({
                   </DialogTitle>
                 </div>
               </div>
-              <DialogDescription className="text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8] mt-3">
+              <DialogDescription className="text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#A3ACA7] mt-3">
                 {service.shortDesc || service.description}
               </DialogDescription>
             </div>
@@ -71,14 +71,14 @@ export function DiseaseModal({
               {/* Treated Sub-Conditions Tags */}
               <div>
                 <h4 className="font-sans text-xs sm:text-[12.5px] font-bold tracking-wider text-[#14221B] dark:text-[#FAF8F5] uppercase mb-3 flex items-center gap-2">
-                  <Activity className="h-4 w-4 text-[#0E7C7B] dark:text-[#14B8A6]" />
+                  <Activity className="h-4 w-4 text-[#0E7C7B] dark:text-[#E5C583]" />
                   <span>Key Conditions Cured</span>
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {service.subConditions.map((condition) => (
                     <span
                       key={condition}
-                      className="rounded-full border border-[#DCD3C7] dark:border-white/15 bg-white dark:bg-[#14261D] px-3.5 py-1.5 text-xs font-medium text-[#14221B] dark:text-[#FAF8F5] shadow-2xs transition-transform hover:scale-105"
+                      className="rounded-full border border-[#DCD3C7] dark:border-[#C5A059]/30 bg-white dark:bg-[#141A16] px-3.5 py-1.5 text-xs font-medium text-[#14221B] dark:text-[#FAF8F5] shadow-2xs transition-transform hover:scale-105 dark:hover:border-[#E5C583]"
                     >
                       {condition}
                     </span>
@@ -88,38 +88,38 @@ export function DiseaseModal({
 
               {/* Medical Overview & Root Cause Grid */}
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[#E2DAD0] dark:border-white/10 bg-white dark:bg-[#102018] p-5 shadow-xs">
+                <div className="rounded-2xl border border-[#E2DAD0] dark:border-[#C5A059]/30 bg-white dark:bg-[#141A16] p-5 shadow-xs">
                   <h5 className="font-sans text-xs sm:text-[12px] font-bold text-[#14221B] dark:text-[#FAF8F5] uppercase tracking-wider flex items-center gap-1.5">
                     <Stethoscope className="h-3.5 w-3.5 text-[#C5A059]" />
                     <span>Understanding The Cause</span>
                   </h5>
-                  <p className="mt-2 text-xs sm:text-[13px] font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8]">
+                  <p className="mt-2 text-xs sm:text-[13px] font-light leading-relaxed text-[#4A5D52] dark:text-[#A3ACA7]">
                     {service.medicalOverview}
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-[#E2DAD0] dark:border-white/10 bg-white dark:bg-[#102018] p-5 shadow-xs">
+                <div className="rounded-2xl border border-[#E2DAD0] dark:border-[#C5A059]/30 bg-white dark:bg-[#141A16] p-5 shadow-xs">
                   <h5 className="font-sans text-xs sm:text-[12px] font-bold text-[#14221B] dark:text-[#FAF8F5] uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />
+                    <Sparkles className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />
                     <span>Internal Root Cause</span>
                   </h5>
-                  <p className="mt-2 text-xs sm:text-[13px] font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8]">
+                  <p className="mt-2 text-xs sm:text-[13px] font-light leading-relaxed text-[#4A5D52] dark:text-[#A3ACA7]">
                     {service.rootCause}
                   </p>
                 </div>
               </div>
 
               {/* Common Symptoms Checklist */}
-              <div className="rounded-2xl border border-[#E2DAD0] dark:border-white/10 bg-[#F5EFE6] dark:bg-[#14261D] p-5 sm:p-6 shadow-xs">
+              <div className="rounded-2xl border border-[#E2DAD0] dark:border-[#C5A059]/30 bg-[#F5EFE6] dark:bg-[#141A16] p-5 sm:p-6 shadow-xs">
                 <h4 className="font-sans text-xs sm:text-[12.5px] font-bold tracking-wider text-[#14221B] dark:text-[#FAF8F5] uppercase mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#0E7C7B] dark:text-[#14B8A6]" />
+                  <CheckCircle2 className="h-4 w-4 text-[#0E7C7B] dark:text-[#E5C583]" />
                   <span>Common Symptoms Experienced</span>
                 </h4>
                 <ul className="space-y-2.5">
                   {service.symptoms.map((symptom, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2.5 text-sm font-light text-[#3D4D44] dark:text-[#9EB3A8] leading-relaxed"
+                      className="flex items-start gap-2.5 text-sm font-light text-[#3D4D44] dark:text-[#A3ACA7] leading-relaxed"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-[#C5A059] mt-2 shrink-0" />
                       <span>{symptom}</span>

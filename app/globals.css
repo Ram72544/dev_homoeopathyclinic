@@ -27,27 +27,27 @@
 }
 
 .dark {
-  /* Rich Modern Obsidian Emerald & Champagne Gold Night Palette */
+  /* Ultra-Luxury Midnight Obsidian & Champagne Gold Night Palette */
   --teal: #14b8a6;
   --teal-dark: #0f766e;
   --teal-mid: #0d9488;
   --teal-emerald: #10b981;
   --gold: #e5c583;
   --gold-light: #fde68a;
-  --gold-dark: #ca8a04;
+  --gold-dark: #c5a059;
   --mint: #6ee7b7;
   --mint-dark: #34d399;
   --mint-soft: #064e3b;
-  --surface: #0a1c15;
-  --surface-warm: #07140e;
-  --surface-cream: #0e261d;
+  --surface: #0b0e0c;
+  --surface-warm: #070908;
+  --surface-cream: #111513;
   --foreground: #faf8f5;
-  --foreground-muted: #a3b8ad;
-  --muted: #80968b;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.14);
-  --card: #0d2218;
-  --card-glass: rgba(13, 34, 24, 0.85);
+  --foreground-muted: #a3aca7;
+  --muted: #808a85;
+  --border: rgba(197, 160, 89, 0.28);
+  --border-light: rgba(229, 197, 131, 0.45);
+  --card: #111613;
+  --card-glass: rgba(17, 22, 19, 0.85);
 }
 
 /* Display-P3 Wide Color Gamut (Apple Retina, LTPO & OLED displays) */

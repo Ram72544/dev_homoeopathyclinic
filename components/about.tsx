@@ -56,20 +56,20 @@ export function About() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 pt-2">
-              <div className="rounded-2xl border border-white/90 dark:border-white/10 bg-white/75 dark:bg-[#0F1E16]/85 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+              <div className="rounded-2xl border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:hover:border-[#E5C583]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
                   <GraduationCap className="h-5 w-5" />
                 </div>
                 <p className="mt-3 font-serif text-lg font-normal text-[#14221B] dark:text-[#FAF8F5]">MD Specialist (Homoeopathy)</p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#9EB3A8] mt-0.5">Classical Constitutional Physician</p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Classical Constitutional Physician</p>
               </div>
 
-              <div className="rounded-2xl border border-white/90 dark:border-white/10 bg-white/75 dark:bg-[#0F1E16]/85 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
+              <div className="rounded-2xl border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-5 shadow-lg shadow-[#14221B]/4 dark:shadow-black/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:hover:border-[#E5C583]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <p className="mt-3 font-serif text-lg font-normal text-[#14221B] dark:text-[#FAF8F5]">Safe for All Generations</p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#9EB3A8] mt-0.5">Infants, Expecting Mothers &amp; Seniors</p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Infants, Expecting Mothers &amp; Seniors</p>
               </div>
             </div>
           </motion.div>
@@ -82,7 +82,7 @@ export function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 relative w-full"
           >
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-white/15 bg-white/80 dark:bg-[#0B1711]/80 p-3.5 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding">
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/90 p-3.5 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding">
               <div className="relative min-h-[360px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[520px] xl:min-h-[560px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10 [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
                 <Image
                   src="/images/clinic-sanctuary-v2.png"

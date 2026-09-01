@@ -77,10 +77,10 @@ export function WhatWeTreat() {
           </p>
         </motion.div>
 
-        {/* Interactive Category Filter Pills (Horizontal Swipeable on Mobile) */}
-        <div className="mt-8 flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar scroll-smooth snap-x py-2 px-1 sm:px-0 sm:justify-center sm:flex-wrap">
+        {/* Filter Pills */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
           {CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat.id;
+            const isSelected = activeCategory === cat.id;
             return (
               <button
                 key={cat.id}
@@ -89,20 +89,13 @@ export function WhatWeTreat() {
                   setActiveCategory(cat.id);
                   if (cat.id !== "all") setShowAll(true);
                 }}
-                className={`shrink-0 snap-start relative rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 active:scale-95 cursor-pointer touch-target ${
-                  isActive
-                    ? "bg-[#14221B] dark:bg-[#0E7C7B] text-[#FAF8F5] shadow-md"
-                    : "bg-white/85 dark:bg-[#14261D]/80 text-[#4A5D52] dark:text-[#9EB3A8] hover:bg-white dark:hover:bg-[#1A3326] hover:text-[#14221B] dark:hover:text-[#FAF8F5] border border-[#E8E1D5] dark:border-white/10"
+                className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-[13px] font-medium tracking-wide transition-all duration-300 backdrop-blur-md cursor-pointer ${
+                  isSelected
+                    ? "border border-[#0E7C7B] dark:border-[#E5C583] bg-[#0E7C7B] dark:bg-[#1C2520] text-white dark:text-[#E5C583] shadow-md shadow-[#0E7C7B]/20 dark:shadow-black/40 scale-105"
+                    : "border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-white/80 dark:bg-[#0E1310]/80 text-[#4A5D52] dark:text-[#A3ACA7] hover:border-[#0E7C7B]/60 dark:hover:border-[#E5C583]/60 hover:bg-white dark:hover:bg-[#141A16] hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
                 }`}
               >
-                <span>{cat.label}</span>
-                {isActive && (
-                  <motion.span
-                    layoutId="activeCategoryPill"
-                    className="absolute inset-0 rounded-full border-2 border-[#C5A059]/50 dark:border-[#E5C583]/70 pointer-events-none"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
+                {cat.label}
               </button>
             );
           })}
@@ -134,28 +127,31 @@ export function WhatWeTreat() {
                       if (e.key === "Enter" || e.key === " ") setSelectedService(service);
                     }}
                     aria-label={`View medical details for ${service.title}`}
-                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-white/10 bg-white/75 dark:bg-[#0F1E16]/85 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583]/50 hover:bg-white/95 dark:hover:bg-[#14261D]/95 hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] hover:-translate-y-1"
+                    className="group relative flex h-full cursor-pointer flex-col justify-between rounded-[2.25rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/75 dark:bg-[#0E1310]/90 p-6 sm:p-7 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.6)] transition-all duration-300 active:scale-[0.98] hover:border-[#C5A059]/60 dark:hover:border-[#E5C583] hover:bg-white/95 dark:hover:bg-[#141A16] hover:shadow-[0_20px_50px_-10px_rgba(14,124,123,0.14)] dark:hover:shadow-[0_20px_50px_-10px_rgba(197,160,89,0.15)] hover:-translate-y-1"
                   >
                     <div className="flex flex-col justify-between h-full">
                       <div>
                         {/* Icon */}
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/35 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md group-hover:scale-105 transition-all duration-300">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/35 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md group-hover:scale-105 transition-all duration-300">
                           <Icon className="h-5 w-5" />
                         </div>
 
-                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#0E7C7B] dark:text-[#14B8A6] group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5] transition-colors duration-300">
+                        <h3 className="mt-5 font-serif text-xl sm:text-2xl font-normal text-[#0E7C7B] dark:text-[#FAF8F5] group-hover:text-[#14221B] dark:group-hover:text-[#E5C583] transition-colors duration-300">
                           {service.title}
                         </h3>
 
-                        <p className="mt-2.5 text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#9EB3A8]">
+                        <p className="mt-2.5 text-sm font-light leading-relaxed text-[#4A5D52] dark:text-[#A3ACA7]">
                           {service.shortDesc || service.description}
                         </p>
                       </div>
 
                       {/* Bottom Link with Clean Divider */}
-                      <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] dark:border-white/10 pt-4">
-                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#0E7C7B] dark:group-hover:text-[#14B8A6] transition-colors">
+                      <div className="mt-6 flex items-center justify-between border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-4">
+                        <span className="text-xs font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] group-hover:text-[#0E7C7B] dark:group-hover:text-[#E5C583] transition-colors">
                           View Medical Details
+                        </span>
+                        <span className="text-xs text-[#C5A059] group-hover:translate-x-0.5 transition-transform duration-200">
+                          ↗
                         </span>
                       </div>
                     </div>
@@ -172,10 +168,10 @@ export function WhatWeTreat() {
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 dark:border-white/15 bg-white/90 dark:bg-[#14261D] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#14B8A6] hover:bg-[#14221B] dark:hover:bg-[#0E7C7B] hover:text-white hover:shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/40 dark:border-[#C5A059]/40 bg-white/90 dark:bg-[#141A16] px-7 py-3 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] shadow-sm backdrop-blur-md transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:bg-[#14221B] dark:hover:bg-[#1C2420] hover:text-white dark:hover:text-[#E5C583] hover:shadow-md cursor-pointer"
             >
               <span>{showAll ? "Show Less Specializations" : "Explore All 12 Conditions & Treatments"}</span>
-              <span className="font-serif text-base">{showAll ? "↑" : "↓"}</span>
+              <span className="font-serif text-base text-[#E5C583]">{showAll ? "↑" : "↓"}</span>
             </button>
           </div>
         )}

@@ -18,7 +18,7 @@ export function Navbar() {
       className="sticky top-2.5 sm:top-4 z-50 mx-auto w-full max-w-[1536px] px-3 sm:px-6 lg:px-10"
     >
       {/* Floating Spatial Luxury Glass Navigation Bar */}
-      <nav className="w-full flex items-center justify-between rounded-full border border-white/90 dark:border-white/15 bg-[#FAF8F5]/90 dark:bg-[#0B1711]/90 px-3.5 sm:px-7 lg:px-10 py-2.5 sm:py-3.5 lg:py-4 backdrop-blur-2xl shadow-[0_16px_48px_-12px_rgba(20,34,27,0.07),0_1px_2px_rgba(255,255,255,0.95)_inset] dark:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.5)] [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
+      <nav className="w-full flex items-center justify-between rounded-full border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/90 dark:bg-[#0E1310]/90 px-3.5 sm:px-7 lg:px-10 py-2.5 sm:py-3.5 lg:py-4 backdrop-blur-2xl shadow-[0_16px_48px_-12px_rgba(20,34,27,0.07),0_1px_2px_rgba(255,255,255,0.95)_inset] dark:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.6)] [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
 
         {/* Brand with Prominent Logo & Typography */}
         <a
@@ -40,25 +40,25 @@ export function Navbar() {
             />
           </div>
           <span className="leading-tight shrink-0 flex flex-col justify-center">
-            <span className="font-serif text-base sm:text-xl lg:text-2xl font-normal leading-tight text-[#14221B] dark:text-[#FAF8F5] whitespace-nowrap group-hover:text-[#0E7C7B] dark:group-hover:text-[#14B8A6] transition-colors duration-300">
+            <span className="font-serif text-base sm:text-xl lg:text-2xl font-normal leading-tight text-[#14221B] dark:text-[#FAF8F5] whitespace-nowrap group-hover:text-[#0E7C7B] dark:group-hover:text-[#E5C583] transition-colors duration-300">
               Dr. Sheetal&apos;s
             </span>
-            <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#14B8A6] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
+            <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#E5C583] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
               HOMOEOPATHY CLINIC
             </span>
           </span>
         </a>
 
-        {/* Center Desktop Links */}
-        <ul className="hidden items-center gap-5 lg:gap-7 xl:gap-9 lg:flex shrink-0">
+        {/* Desktop Navigation Links */}
+        <ul className="hidden lg:flex items-center gap-6 xl:gap-8 font-sans text-xs tracking-wider uppercase">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative font-sans text-xs lg:text-[13px] font-medium tracking-[0.08em] text-[#4A5D52] dark:text-[#9EB3A8] uppercase transition-colors duration-300 hover:text-[#0E7C7B] dark:hover:text-[#14B8A6] whitespace-nowrap py-1 px-1 group"
+                className="group relative py-1 text-[#3D4E44] dark:text-[#A3ACA7] font-medium transition-colors duration-200 hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
               >
                 <span>{link.label}</span>
-                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#0E7C7B] dark:bg-[#14B8A6] transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full" />
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#0E7C7B] dark:bg-[#E5C583] transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full" />
               </a>
             </li>
           ))}
@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center shrink-0">
             <a
               href={site.bookingUrl}
-              className="group relative inline-flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#163828] border border-[#14221B] dark:border-[#2D5A45] px-6 sm:px-7 py-3 sm:py-3.5 font-sans text-xs font-semibold tracking-wider text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#1C4632] dark:hover:border-[#E5C583]/50 whitespace-nowrap shrink-0 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-6 sm:px-7 py-3 sm:py-3.5 font-sans text-xs font-semibold tracking-wider text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] whitespace-nowrap shrink-0 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <Calendar className="h-3.5 w-3.5 text-[#E5C583]" />
               <span>BOOK CONSULTATION</span>
@@ -83,11 +83,11 @@ export function Navbar() {
           {/* Mobile & Tablet Drawer Button */}
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-full p-2 sm:p-2.5 text-[#14221B] dark:text-[#FAF8F5] transition-colors hover:bg-white/80 dark:hover:bg-white/10 lg:hidden shrink-0 cursor-pointer"
-            aria-label="Toggle menu"
+            onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="mobile-menu"
+            aria-label={open ? "Close Navigation Menu" : "Open Navigation Menu"}
+            className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/80 dark:border-[#C5A059]/30 bg-white/70 dark:bg-[#121714]/80 text-[#14221B] dark:text-[#FAF8F5] shadow-xs backdrop-blur-md transition-all hover:bg-white dark:hover:bg-[#1A221E] active:scale-95 lg:hidden cursor-pointer"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -103,7 +103,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-white/15 bg-[#FAF8F5]/95 dark:bg-[#0B1711]/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50 [transform:translate3d(0,0,0)]"
+            className="mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50 [transform:translate3d(0,0,0)]"
           >
             <ul className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -111,7 +111,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-2xl px-4 py-3 text-xs font-medium tracking-wider text-[#14221B] dark:text-[#FAF8F5] uppercase transition-colors hover:bg-white dark:hover:bg-white/10 hover:text-[#0E7C7B] dark:hover:text-[#14B8A6]"
+                    className="block rounded-2xl px-4 py-3 text-xs font-medium tracking-wider text-[#14221B] dark:text-[#FAF8F5] uppercase transition-colors hover:bg-white dark:hover:bg-white/10 hover:text-[#0E7C7B] dark:hover:text-[#E5C583]"
                   >
                     {link.label}
                   </a>
@@ -121,7 +121,7 @@ export function Navbar() {
                 <a
                   href={site.bookingUrl}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-full bg-[#14221B] dark:bg-[#0E7C7B] px-6 py-3.5 text-xs font-medium tracking-wider text-[#FAF8F5] uppercase shadow-md transition-colors hover:bg-[#0E7C7B]"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-6 py-3.5 text-xs font-medium tracking-wider text-[#FAF8F5] uppercase shadow-md transition-colors hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583]"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583]" />
                   <span>Book Consultation</span>

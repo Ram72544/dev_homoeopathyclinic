@@ -20,7 +20,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
         {/* Main Floating Spatial Luxury Glass Container */}
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/85 dark:border-white/10 bg-[#FAF8F5]/80 dark:bg-[#0B1711]/85 p-6 sm:p-10 lg:p-14 xl:p-16 shadow-[0_25px_70px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_25px_70px_rgba(0,0,0,0.5)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/85 dark:border-[#C5A059]/35 bg-[#FAF8F5]/80 dark:bg-[#0E1310]/85 p-6 sm:p-10 lg:p-14 xl:p-16 shadow-[0_25px_70px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_25px_70px_rgba(0,0,0,0.6)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
 
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
 
@@ -36,7 +36,7 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.1, duration: 0.6 }}
-                className="inline-flex items-center gap-2 rounded-full border border-[#0E7C7B]/20 dark:border-[#14B8A6]/30 bg-[#0E7C7B]/8 dark:bg-[#14B8A6]/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-[#0E7C7B] dark:text-[#14B8A6] shadow-2xs backdrop-blur-md mb-4"
+                className="inline-flex items-center gap-2 rounded-full border border-[#0E7C7B]/20 dark:border-[#C5A059]/40 bg-[#0E7C7B]/8 dark:bg-[#C5A059]/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-[#0E7C7B] dark:text-[#E5C583] shadow-2xs backdrop-blur-md mb-4"
               >
                 <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
                 <span>Classical Constitutional Homoeopathy</span>
@@ -50,7 +50,7 @@ export function Hero() {
                 className="font-serif text-[clamp(2.25rem,4.5vw+0.75rem,4.25rem)] font-normal leading-[1.12] tracking-normal text-[#14221B] dark:text-[#FAF8F5]"
               >
                 Gentle, Natural &amp; <br />
-                <span className="italic font-normal text-[#0E7C7B] dark:text-[#14B8A6] underline decoration-[#C5A059]/40 underline-offset-8">
+                <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] underline decoration-[#C5A059]/40 underline-offset-8">
                   Permanent Healing
                 </span>{" "}
                 for Your Whole Family
@@ -61,7 +61,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="mt-5 max-w-xl text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#9EB3A8]"
+                className="mt-5 max-w-xl text-base sm:text-lg font-light leading-relaxed tracking-wide text-[#4A5D52] dark:text-[#A3ACA7]"
               >
                 {site.intro}
               </motion.p>
@@ -76,7 +76,7 @@ export function Hero() {
                 {/* Primary Action Button */}
                 <a
                   href={site.bookingUrl}
-                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#163828] border border-[#14221B] dark:border-[#2D5A45] px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#1C4632] dark:hover:border-[#E5C583]/50 hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
+                  className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#FAF8F5] shadow-md transition-all duration-300 hover:bg-[#0E7C7B] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
                 >
                   <Calendar className="h-4 w-4 text-[#E5C583] shrink-0" />
                   <span>Schedule Consultation</span>
@@ -86,7 +86,7 @@ export function Hero() {
                 {/* Secondary Action Button */}
                 <a
                   href={`tel:${site.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#14221B]/15 dark:border-[#2D5A45] bg-white/85 dark:bg-[#163828]/50 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#E5C583]/50 hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5] hover:bg-white dark:hover:bg-[#163828] hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#14221B]/15 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#121714]/65 px-7 py-3.5 sm:py-4 text-sm font-medium tracking-wide text-[#14221B] dark:text-[#FAF8F5] backdrop-blur-md shadow-xs transition-all duration-300 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5] hover:bg-white dark:hover:bg-[#1A221E] hover:scale-[1.01] active:scale-95 w-full sm:w-auto cursor-pointer"
                 >
                   <Phone className="h-4 w-4 text-[#0E7C7B] dark:text-[#E5C583] shrink-0" />
                   <span>Call Doctor: {site.phoneDisplay}</span>
@@ -98,19 +98,19 @@ export function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.7 }}
-                className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EAE3DA] dark:border-white/10 pt-6 w-full max-w-lg"
+                className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-6 w-full max-w-lg"
               >
                 <div>
                   <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">4+ Yrs</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#9EB3A8] uppercase mt-0.5">Clinical Practice</p>
+                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Clinical Practice</p>
                 </div>
                 <div>
                   <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">500+</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#9EB3A8] uppercase mt-0.5">Happy Families</p>
+                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Happy Families</p>
                 </div>
                 <div>
                   <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">100%</p>
-                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#9EB3A8] uppercase mt-0.5">Safe Sweet Pills</p>
+                  <p className="text-[11px] font-medium tracking-wider text-[#7A8A80] dark:text-[#A3ACA7] uppercase mt-0.5">Safe Sweet Pills</p>
                 </div>
               </motion.div>
 
@@ -123,7 +123,7 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 relative"
             >
-              <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-white/15 bg-white/70 dark:bg-[#0B1711]/75 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/40 bg-white/70 dark:bg-[#0E1310]/85 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
 
                 {/* Expanded High-Quality Image Container */}
                 <div className="relative h-[340px] sm:h-[480px] lg:h-[540px] xl:h-[580px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">

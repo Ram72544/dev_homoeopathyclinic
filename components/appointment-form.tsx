@@ -191,12 +191,12 @@ export function AppointmentForm() {
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 dark:border-white/10 bg-white/85 dark:bg-[#0B1711]/90 p-6 sm:p-8 lg:p-9 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding"
+        className="scroll-mt-36 rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 p-6 sm:p-8 lg:p-9 shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding"
       >
         {/* Fast & Reassuring Header */}
-        <div className="flex items-center justify-between border-b border-[#EAE3DA]/80 dark:border-white/10 pb-5 mb-6">
+        <div className="flex items-center justify-between border-b border-[#EAE3DA]/80 dark:border-[#C5A059]/20 pb-5 mb-6">
           <div className="flex items-center gap-3.5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md shrink-0">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/40 dark:border-[#C5A059]/30 bg-gradient-to-br from-[#1A3828] to-[#0D1E16] text-[#E5C583] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] backdrop-blur-md shrink-0">
               <HeartPulse className="h-5 w-5" />
             </div>
             <div>
@@ -208,7 +208,7 @@ export function AppointmentForm() {
               </h3>
             </div>
           </div>
-          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/20 dark:border-[#14B8A6]/30 bg-[#0E7C7B]/8 dark:bg-[#14B8A6]/10 px-3.5 py-1.5 text-[11px] font-medium text-[#0E7C7B] dark:text-[#14B8A6] shadow-2xs">
+          <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#0E7C7B]/20 dark:border-[#C5A059]/40 bg-[#0E7C7B]/8 dark:bg-[#C5A059]/10 px-3.5 py-1.5 text-[11px] font-medium text-[#0E7C7B] dark:text-[#E5C583] shadow-2xs">
             <Sparkles className="h-3 w-3 text-[#C5A059]" />
             <span>Direct Doctor Visit</span>
           </div>
@@ -216,11 +216,11 @@ export function AppointmentForm() {
 
         <div className="space-y-4 sm:space-y-4.5">
           {/* Field 1: Health Issue / Specialization */}
-          <Field label="Health Concern / Treatment Needed" icon={<Stethoscope className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}>
+          <Field label="Health Concern / Treatment Needed" icon={<Stethoscope className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />}>
             <div className="relative group">
               <select
                 {...register("diseaseCategory")}
-                className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
+                className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px] cursor-pointer"
               >
                 <option value="">-- Select Condition (e.g. Skin, Asthma, PCOS/PCOD, Joints) --</option>
                 {site.services.map((s) => (
@@ -230,7 +230,7 @@ export function AppointmentForm() {
                 ))}
                 <option value="General Consultation">General / Other Health Issue</option>
               </select>
-              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] dark:text-[#9EB3A8] transition-transform duration-200 group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5]">
+              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#7A8A80] dark:text-[#E5C583] transition-transform duration-200 group-hover:text-[#14221B] dark:group-hover:text-[#FAF8F5]">
                 <ChevronDown className="h-4 w-4" />
               </div>
             </div>
@@ -244,7 +244,7 @@ export function AppointmentForm() {
               render={({ field, fieldState }) => (
                 <Field
                   label="Your Full Name *"
-                  icon={<User className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}
+                  icon={<User className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />}
                   error={fieldState.error?.message}
                 >
                   <input
@@ -259,7 +259,7 @@ export function AppointmentForm() {
                         .slice(0, 50);
                       field.onChange(cleaned);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
+                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
                     placeholder="e.g. Rahul Sharma"
                   />
                 </Field>
@@ -272,7 +272,7 @@ export function AppointmentForm() {
               render={({ field, fieldState }) => (
                 <Field
                   label="Mobile / WhatsApp Number *"
-                  icon={<Phone className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#14B8A6]" />}
+                  icon={<Phone className="h-3.5 w-3.5 text-[#0E7C7B] dark:text-[#E5C583]" />}
                   error={fieldState.error?.message}
                 >
                   <input
@@ -284,7 +284,7 @@ export function AppointmentForm() {
                       const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                       field.onChange(digits);
                     }}
-                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-white/10 bg-[#FAF8F5]/85 dark:bg-[#14261D] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-white/20 focus:border-[#0E7C7B] dark:focus:border-[#14B8A6] focus:bg-white dark:focus:bg-[#1A3326] focus:ring-4 focus:ring-[#0E7C7B]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
+                    className="w-full rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] px-4 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] min-h-[48px]"
                     placeholder="10-digit mobile number"
                   />
                 </Field>

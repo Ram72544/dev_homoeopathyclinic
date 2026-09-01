@@ -21,7 +21,7 @@ export function MobileStickyBar() {
   };
 
   const orbClasses =
-    "flex h-13 w-13 items-center justify-center rounded-full bg-white dark:bg-[#14261D] text-[#0E7C7B] dark:text-[#14B8A6] border border-[#E8E1D5] dark:border-white/15 shadow-xs transition-all duration-200 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:bg-[#FAF8F5] dark:hover:bg-[#1A3326] hover:shadow-sm active:scale-90 cursor-pointer";
+    "flex h-13 w-13 items-center justify-center rounded-full bg-white dark:bg-[#141A16] text-[#0E7C7B] dark:text-[#E5C583] border border-[#E8E1D5] dark:border-[#C5A059]/35 shadow-xs transition-all duration-200 hover:border-[#0E7C7B] dark:hover:border-[#E5C583] hover:bg-[#FAF8F5] dark:hover:bg-[#1C2420] hover:shadow-sm active:scale-90 cursor-pointer";
 
   return (
     <aside
@@ -29,7 +29,7 @@ export function MobileStickyBar() {
       className="md:hidden fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4"
     >
       {/* Floating Frosted Glass Island with Generous Spacing */}
-      <div className="pointer-events-auto rounded-full border border-white/95 dark:border-white/15 bg-white/85 dark:bg-[#0B1711]/90 p-2.5 shadow-[0_20px_50px_-10px_rgba(20,34,27,0.16),0_1px_2px_rgba(255,255,255,0.95)_inset] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6)] backdrop-blur-2xl flex items-center gap-4 sm:gap-5 transition-colors duration-300">
+      <div className="pointer-events-auto rounded-full border border-white/95 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 p-2.5 shadow-[0_20px_50px_-10px_rgba(20,34,27,0.16),0_1px_2px_rgba(255,255,255,0.95)_inset] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7)] backdrop-blur-2xl flex items-center gap-4 sm:gap-5 transition-colors duration-300">
         
         {/* 1. WhatsApp Orb */}
         <a
