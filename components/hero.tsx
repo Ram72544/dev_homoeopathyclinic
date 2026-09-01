@@ -40,9 +40,9 @@ export function Hero() {
               >
                 Gentle, Natural &amp; <br />
                 <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] text-glow-emerald dark:text-glow-gold underline decoration-[#C5A059]/40 underline-offset-8">
-                  Permanent Healing
+                  Permanent Healing for
                 </span>{" "}
-                for Your Whole Family
+                Your Whole Family
               </motion.h1>
 
               {/* High-Contrast Clear English Copy */}
