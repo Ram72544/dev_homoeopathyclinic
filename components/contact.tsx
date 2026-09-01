@@ -45,7 +45,7 @@ export function Contact() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] dark:text-[#E5C583] uppercase">Consultation Timings</p>
-                  
+
                   <div className="mt-1 space-y-1.5 text-xs text-[#4A5D52] dark:text-[#A3ACA7]">
                     <div>
                       <p className="font-medium text-[#14221B] dark:text-[#FAF8F5]">Monday &amp; Wednesday – Saturday:</p>
@@ -201,7 +201,7 @@ export function Contact() {
                     );
                   })}
                 </div>
-                
+
                 <p className="mt-2.5 text-[11px] font-light text-[#4A5D52] dark:text-[#A3ACA7] flex items-center gap-1.5 bg-[#FAF8F5] dark:bg-[#141A16]/80 rounded-xl px-3 py-1.5 border border-[#EAE3DA]/60 dark:border-[#C5A059]/30">
                   <MapPin className="h-3 w-3 text-[#C5A059] shrink-0" />
                   <span>Landmark: 2 mins from <strong>Kali Badi Mandir</strong> &amp; <strong>Love Kush Sweets</strong>, Saurabh Vihar</span>
