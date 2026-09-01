@@ -64,7 +64,7 @@ export function About() {
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">Safe for All Generations</p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Infants, Expecting Mothers &amp; Seniors</p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Infants, Pregnant Women &amp; Seniors</p>
               </div>
             </div>
           </motion.div>

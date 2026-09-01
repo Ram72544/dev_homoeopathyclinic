@@ -115,7 +115,7 @@ export const site = {
       rootCause:
         "Cellular oxidative stress, chemotherapy toxicity, and weakened immune vitality.",
       homeopathyAdvantage:
-        "Homeopathy acts as a gentle, non-interfering adjuvant support. It alleviates nausea, heals painful mouth sores, eases nerve pain, restores natural appetite, and strengthens vitality alongside your primary medical care.",
+        "Homoeopathy acts as a gentle, non-interfering adjuvant support. It alleviates nausea, heals painful mouth sores, eases nerve pain, restores natural appetite, and strengthens vitality alongside your primary medical care.",
       symptoms: [
         "Severe nausea, vomiting, or altered taste following chemo cycles",
         "Debilitating chronic exhaustion and muscle weakness",
@@ -145,7 +145,7 @@ export const site = {
       rootCause:
         "Insulin receptor fatigue, chronic stress, pancreatic strain, or sedentary lifestyle.",
       homeopathyAdvantage:
-        "Classical homeopathy combined with proven mother tinctures (like Syzygium & Gymnema) stimulates natural insulin sensitivity, reduces sugar spikes, and protects kidneys and nerves from diabetic damage.",
+        "Classical homoeopathy combined with proven mother tinctures (like Syzygium & Gymnema) stimulates natural insulin sensitivity, reduces sugar spikes, and protects kidneys and nerves from diabetic damage.",
       symptoms: [
         "Elevated fasting blood sugar (>126 mg/dL) or HbA1c (>6.5%)",
         "Tingling, numbness, or burning sensation in feet and soles",
@@ -175,7 +175,7 @@ export const site = {
       rootCause:
         "Over-sensitive immune response, daily stress, blood toxicity, or digestion issues.",
       homeopathyAdvantage:
-        "Homeopathy cleanses your system from within and calms your immune response naturally. It restores your skin's healthy cell renewal without steroid side effects or skin thinning.",
+        "Homoeopathy cleanses your system from within and calms your immune response naturally. It restores your skin's healthy cell renewal without steroid side effects or skin thinning.",
       symptoms: [
         "Intense itching, burning sensation, or red inflamed skin patches",
         "Dry, scaling, or oozing skin eruptions triggered by weather changes",
@@ -205,7 +205,7 @@ export const site = {
       rootCause:
         "Hormonal axis imbalance, insulin resistance, thyroid fluctuations, or emotional stress.",
       homeopathyAdvantage:
-        "Homeopathy gently restores your natural monthly period cycle and helps dissolve ovarian cysts naturally without synthetic hormone pills or birth control.",
+        "Homoeopathy gently restores your natural monthly period cycle and helps dissolve ovarian cysts naturally without synthetic hormone pills or birth control.",
       symptoms: [
         "Delayed menstrual cycles (35 to 90+ days interval)",
         "Stubborn jawline acne, thinning hair, or unwanted facial hair growth",
@@ -235,7 +235,7 @@ export const site = {
       rootCause:
         "Underdeveloped childhood immunity or gut imbalance from frequent antibiotic use.",
       homeopathyAdvantage:
-        "Homeopathy offers 100% safe, sweet pills that kids love taking. It builds strong natural immunity and naturally shrinks enlarged tonsils so children avoid painful throat surgery.",
+        "Homoeopathy offers 100% safe, sweet pills that kids love taking. It builds strong natural immunity and naturally shrinks enlarged tonsils so children avoid painful throat surgery.",
       symptoms: [
         "Catching cold and throat infection every 2-3 weeks",
         "Difficulty swallowing, snoring, or mouth breathing due to enlarged adenoids",
@@ -265,7 +265,7 @@ export const site = {
       rootCause:
         "Irregular meal times, daily stress, weak digestive enzymes, or frequent antacid pills.",
       homeopathyAdvantage:
-        "Homeopathy balances your stomach acid levels naturally and heals your gut lining, ending painful bloating and digestive discomfort without lifetime antacid dependency.",
+        "Homoeopathy balances your stomach acid levels naturally and heals your gut lining, ending painful bloating and digestive discomfort without lifetime antacid dependency.",
       symptoms: [
         "Burning sensation in chest or throat after meals (Heartburn)",
         "Excessive abdominal gas, fullness, and severe bloating",
@@ -295,7 +295,7 @@ export const site = {
       rootCause:
         "Weak lung immunity, sensitive nasal lining, or inherited allergy tendencies.",
       homeopathyAdvantage:
-        "Homeopathy strengthens your lung immunity and naturally thins stubborn nasal mucus, helping you breathe freely without depending on lifelong inhalers or anti-allergic pills.",
+        "Homoeopathy strengthens your lung immunity and naturally thins stubborn nasal mucus, helping you breathe freely without depending on lifelong inhalers or anti-allergic pills.",
       symptoms: [
         "10-20 continuous morning sneezing fits upon waking",
         "Nasal blockage, post-nasal drip, and heavy sinus headache",
@@ -325,7 +325,7 @@ export const site = {
       rootCause:
         "Joint fluid depletion, cartilage wear, uric acid buildup, or spinal nerve pressure.",
       homeopathyAdvantage:
-        "Homeopathy reduces joint swelling and stiffness, promotes natural joint lubrication, and dissolves uric acid crystals safely without damaging your stomach or kidneys with painkillers.",
+        "Homoeopathy reduces joint swelling and stiffness, promotes natural joint lubrication, and dissolves uric acid crystals safely without damaging your stomach or kidneys with painkillers.",
       symptoms: [
         "Morning joint stiffness lasting over 30 minutes upon waking",
         "Sharp shooting pain from lower back down the leg (Sciatica)",
@@ -355,7 +355,7 @@ export const site = {
       rootCause:
         "Nerve sensitivity, stress hormones, irregular sleep patterns, or eye/neck strain.",
       homeopathyAdvantage:
-        "Homeopathy gently calms your nervous system, reduces the frequency of painful migraine attacks, and restores deep, relaxing sleep without sleeping pills or habit-forming medicines.",
+        "Homoeopathy gently calms your nervous system, reduces the frequency of painful migraine attacks, and restores deep, relaxing sleep without sleeping pills or habit-forming medicines.",
       symptoms: [
         "One-sided throbbing headache with nausea, vomiting, or light sensitivity",
         "Difficulty falling asleep or waking up exhausted at 2 AM",
@@ -385,7 +385,7 @@ export const site = {
       rootCause:
         "Thyroid gland weakness, immune imbalance (anti-TPO), or slow metabolic rate.",
       homeopathyAdvantage:
-        "Homeopathy gently stimulates your thyroid gland to produce its own natural hormones, helping boost your metabolism and energy level safely under medical guidance.",
+        "Homoeopathy gently stimulates your thyroid gland to produce its own natural hormones, helping boost your metabolism and energy level safely under medical guidance.",
       symptoms: [
         "Unexplained weight gain despite normal or low diet",
         "Constant sluggishness, brain fog, and low energy levels",
@@ -415,7 +415,7 @@ export const site = {
       rootCause:
         "Dehydration, mineral salt crystallization, or low urinary tract immunity.",
       homeopathyAdvantage:
-        "Homeopathy eases severe kidney pain spasms, smooths stone sharp edges, and helps flush out small to medium kidney stones naturally through urine without surgery.",
+        "Homoeopathy eases severe kidney pain spasms, smooths stone sharp edges, and helps flush out small to medium kidney stones naturally through urine without surgery.",
       symptoms: [
         "Sharp agonizing flank pain radiating from lower back to groin",
         "Burning, stinging pain during or after urination",
@@ -445,7 +445,7 @@ export const site = {
       rootCause:
         "Metabolic syndrome, refined carbohydrates, high triglycerides, or sluggish hepatic circulation.",
       homeopathyAdvantage:
-        "Homeopathy naturally stimulates healthy bile flow, reverses liver cell fat accumulation, and normalizes cholesterol levels safely without causing muscle cramps or enzyme spikes.",
+        "Homoeopathy naturally stimulates healthy bile flow, reverses liver cell fat accumulation, and normalizes cholesterol levels safely without causing muscle cramps or enzyme spikes.",
       symptoms: [
         "Ultrasound finding of Grade 1 or Grade 2 Fatty Liver",
         "High serum triglycerides or LDL cholesterol on lipid profile",
@@ -464,13 +464,13 @@ export const site = {
     {
       title: "Treats Root Cause",
       description:
-        "Instead of suppressing symptoms temporarily, homeopathy works deep inside your body to cure the real root cause.",
+        "Instead of suppressing symptoms temporarily, homoeopathy works deep inside your body to cure the real root cause.",
       icon: Leaf,
     },
     {
       title: "100% Safe & Natural",
       description:
-        "Sweet pills prepared from natural substances. Extremely safe for infants, pregnant mothers, and senior citizens.",
+        "Sweet pills prepared from natural substances. Extremely safe for infants, pregnant women, and senior citizens.",
       icon: ShieldCheck,
     },
     {
@@ -493,13 +493,13 @@ export const site = {
       name: "Priya Sharma",
       location: "New Delhi",
       quote:
-        "I suffered from severe skin allergy and itching for 3 years. After taking Dr. Sheetal's medicine for 4 months, my skin is completely clear. Best homeopathy doctor in Badarpur!",
+        "I suffered from severe skin allergy and itching for 3 years. After taking Dr. Sheetal's medicine for 4 months, my skin is completely clear. Best homoeopathy doctor in Badarpur!",
     },
     {
       name: "Rahul Verma",
       location: "Faridabad",
       quote:
-        "My 5-year-old son used to get cough and fever every single month. Homeopathy sweet pills improved his immunity tremendously. He rarely gets sick now.",
+        "My 5-year-old son used to get cough and fever every single month. Homoeopathic sweet pills improved his immunity tremendously. He rarely gets sick now.",
     },
     {
       name: "Anita Gupta",

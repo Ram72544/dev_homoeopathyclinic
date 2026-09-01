@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, Phone, Sparkles, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { Calendar, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site-config";
 
 export function Hero() {
@@ -36,13 +36,13 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-[clamp(2.5rem,5.2vw+0.5rem,4.75rem)] font-normal leading-[1.08] tracking-tight text-[#14221B] dark:text-[#FAF8F5]"
+                className="font-serif text-[clamp(2.25rem,4.2vw,3.85rem)] font-normal leading-[1.14] tracking-tight text-[#14221B] dark:text-[#FAF8F5]"
               >
                 Gentle, Natural &amp; <br />
                 <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] text-glow-emerald dark:text-glow-gold underline decoration-[#C5A059]/40 underline-offset-8">
-                  Permanent Healing for
-                </span>{" "}
-                Your Whole Family
+                  Permanent Healing
+                </span> <br />
+                <span className="whitespace-nowrap">For Your Whole Family</span>
               </motion.h1>
 
               {/* High-Contrast Clear English Copy */}
@@ -92,8 +92,8 @@ export function Hero() {
             >
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/40 bg-white/70 dark:bg-[#0E1310]/85 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
 
-                {/* Expanded High-Quality Image Container */}
-                <div className="relative h-[340px] sm:h-[480px] lg:h-[540px] xl:h-[580px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
+                {/* Proportional High-Quality Image Container */}
+                <div className="relative h-[340px] sm:h-[420px] lg:h-[460px] xl:h-[490px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
                   <Image
                     src="/images/homeopathy-remedies-v2.png"
                     alt="Homeopathy Sweet Pills and Medicine Vial"
