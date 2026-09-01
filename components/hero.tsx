@@ -67,11 +67,12 @@ export function Hero() {
               </motion.p>
 
               {/* Harmonious Cohesive Luxury Action Buttons */}
+              {/* Hero Action Buttons (Hidden on mobile where floating dock is active) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.7 }}
-                className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
+                className="mt-8 sm:mt-10 hidden sm:flex flex-wrap items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
               >
                 {/* Primary Action Button */}
                 <a
@@ -98,7 +99,7 @@ export function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.7 }}
-                className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-6 w-full max-w-lg"
+                className="mt-6 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-[#EAE3DA] dark:border-[#C5A059]/20 pt-5 sm:pt-6 w-full max-w-lg"
               >
                 <div>
                   <p className="font-serif text-2xl sm:text-3xl font-normal text-[#14221B] dark:text-[#FAF8F5]">4+ Yrs</p>
