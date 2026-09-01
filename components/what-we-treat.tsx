@@ -7,11 +7,12 @@ import { DiseaseModal } from "./disease-modal";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const CATEGORIES = [
-  { id: "all", label: "All Treatments" },
-  { id: "skin-resp", label: "Skin & Respiratory", match: ["skin-hair", "cough-sinus-asthma"] },
-  { id: "digestive-metabolic", label: "Gut, Liver & Metabolism", match: ["gas-acidity-stomach", "thyroid-metabolic", "diabetes-blood-sugar", "liver-cholesterol-health", "kidney-stones-urinary"] },
-  { id: "women-child", label: "Women & Child", match: ["pcos-womens-health", "child-health-immunity"] },
-  { id: "pain-mind", label: "Joints, Mind & Supportive Care", match: ["joint-pain-arthritis", "migraine-stress-sleep", "supportive-oncology-care"] },
+  { id: "all", label: "All Treatments (12)" },
+  { id: "cancer-care", label: "Supportive Cancer Care", match: ["supportive-oncology-care"] },
+  { id: "diabetes-metabolism", label: "Diabetes & Metabolism", match: ["diabetes-blood-sugar", "thyroid-metabolic", "liver-cholesterol-health"] },
+  { id: "women-child", label: "Women & Child Health", match: ["pcos-womens-health", "child-health-immunity"] },
+  { id: "skin-allergies", label: "Skin & Allergies", match: ["skin-hair", "cough-sinus-asthma"] },
+  { id: "chronic-pain", label: "Chronic Pain & Digestion", match: ["joint-pain-arthritis", "gas-acidity-stomach", "migraine-stress-sleep", "kidney-stones-urinary"] },
 ];
 
 export function WhatWeTreat() {
