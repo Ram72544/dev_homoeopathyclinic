@@ -54,9 +54,9 @@ export const site = {
 
   // --- Contact -------------------------------------------------
   phoneDisplay: "+91 79053 71551",
-  phone: "+917905371551",
-  whatsapp: "917905371551",
-  whatsappUrl: "https://wa.me/917905371551?text=Hello%20Dr.%20Sheetal,%20I%20would%20like%20to%20consult%20regarding%20homoeopathy%20treatment.",
+  phone: "+917827991551",
+  whatsapp: "917827991551",
+  whatsappUrl: "https://wa.me/917827991551?text=Hello%20Dr.%20Sheetal,%20I%20would%20like%20to%20consult%20regarding%20homoeopathy%20treatment.",
   email: "care@drsheetalclinic.com",
   address:
     "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
@@ -69,6 +69,7 @@ export const site = {
   social: {
     instagram: "#",
     facebook: "#",
+    telegram: "https://t.me/Dr_Sheetal_Clinic_Bot",
   },
 
   googleUrl:
