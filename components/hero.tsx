@@ -20,29 +20,29 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
 
         {/* Main Floating Spatial Luxury Glass Container */}
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/85 dark:border-[#C5A059]/35 bg-[#FAF8F5]/80 dark:bg-[#0E1310]/85 p-6 sm:p-10 lg:p-14 xl:p-16 shadow-[0_25px_70px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_25px_70px_rgba(0,0,0,0.6)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/85 dark:border-[#C5A059]/35 bg-[#FAF8F5]/80 dark:bg-[#0E1310]/85 p-5 sm:p-10 lg:p-14 xl:p-16 shadow-[0_25px_70px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_25px_70px_rgba(0,0,0,0.6)] backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300 w-full">
 
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16 w-full min-w-0">
 
             {/* Left Column: Spatial Hero Content */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 flex flex-col items-start"
+              className="lg:col-span-7 flex flex-col items-start w-full min-w-0"
             >
               {/* Main Heading in Fluid Editorial Typography */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-[clamp(2.25rem,4.2vw,3.85rem)] font-normal leading-[1.14] tracking-tight text-[#14221B] dark:text-[#FAF8F5]"
+                className="font-serif text-[clamp(1.85rem,5vw,3.85rem)] font-normal leading-[1.14] tracking-tight text-[#14221B] dark:text-[#FAF8F5] break-words"
               >
                 Gentle, Natural &amp; <br />
                 <span className="italic font-normal text-[#0E7C7B] dark:text-[#E5C583] text-glow-emerald dark:text-glow-gold underline decoration-[#C5A059]/40 underline-offset-8">
                   Permanent Healing
                 </span> <br />
-                <span className="whitespace-nowrap">For Your Whole Family</span>
+                <span className="sm:whitespace-nowrap">For Your Whole Family</span>
               </motion.h1>
 
               {/* High-Contrast Clear English Copy */}
@@ -88,7 +88,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 relative"
+              className="lg:col-span-5 relative w-full min-w-0"
             >
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/40 bg-white/70 dark:bg-[#0E1310]/85 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
 

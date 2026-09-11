@@ -34,7 +34,7 @@ export function TrustRibbon() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="rounded-full border border-white/90 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/85 px-6 sm:px-10 py-3.5 sm:py-4 backdrop-blur-2xl shadow-[0_12px_35px_-10px_rgba(20,34,27,0.05),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+        className="rounded-3xl sm:rounded-full border border-white/90 dark:border-[#C5A059]/35 bg-white/80 dark:bg-[#0E1310]/85 px-4 sm:px-10 py-3.5 sm:py-4 backdrop-blur-2xl shadow-[0_12px_35px_-10px_rgba(20,34,27,0.05),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-center justify-between divide-y md:divide-y-0 md:divide-x divide-[#14221B]/8 dark:divide-white/10">
           {TRUST_PILLARS.map((pillar, idx) => {

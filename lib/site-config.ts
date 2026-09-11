@@ -53,7 +53,7 @@ export const site = {
     "Get personalized homoeopathic treatment that cures the root cause of your illness, not just temporary symptoms. 100% safe, natural sweet pills with zero side effects for your whole family.",
 
   // --- Contact -------------------------------------------------
-  phoneDisplay: "+91 79053 71551",
+  phoneDisplay: "+91 78279 91551",
   phone: "+917827991551",
   whatsapp: "917827991551",
   whatsappUrl: "https://wa.me/917827991551?text=Hello%20Dr.%20Sheetal,%20I%20would%20like%20to%20consult%20regarding%20homoeopathy%20treatment.",
@@ -523,7 +523,7 @@ export const navLinks = [
   { label: "TREATMENTS", href: "#services" },
   { label: "WHY US", href: "#why" },
   { label: "REVIEWS", href: "#testimonials" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "CONTACT", href: "#contact-details" },
 ];
 
 export const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(

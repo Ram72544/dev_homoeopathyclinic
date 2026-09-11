@@ -15,7 +15,7 @@ export function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-2.5 sm:top-4 z-50 mx-auto w-full max-w-[1536px] px-3 sm:px-6 lg:px-10"
+      className="sticky top-2.5 sm:top-4 z-50 mx-auto w-full max-w-[1536px] px-3 sm:px-6 lg:px-10 relative"
     >
       {/* Floating Spatial Luxury Glass Navigation Bar */}
       <nav className="w-full flex items-center justify-between rounded-full border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/90 dark:bg-[#0E1310]/90 px-3.5 sm:px-7 lg:px-10 py-2.5 sm:py-3.5 lg:py-4 backdrop-blur-2xl shadow-[0_16px_48px_-12px_rgba(20,34,27,0.07),0_1px_2px_rgba(255,255,255,0.95)_inset] dark:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.6)] [transform:translate3d(0,0,0)] [backface-visibility:hidden] bg-clip-padding transition-colors duration-300">
@@ -103,7 +103,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50 [transform:translate3d(0,0,0)]"
+            className="absolute top-full left-3 right-3 sm:left-6 sm:right-6 mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50 [transform:translate3d(0,0,0)]"
           >
             <ul className="flex flex-col gap-2">
               {navLinks.map((link) => (

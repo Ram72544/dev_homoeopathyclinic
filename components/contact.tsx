@@ -38,7 +38,7 @@ const NEARBY_HUBS = [
 
 export function Contact() {
   return (
-    <section id="contact" className="relative py-4 sm:py-6 md:py-8 bg-transparent overflow-hidden scroll-mt-24">
+    <section id="contact" className="relative py-4 sm:py-6 md:py-8 bg-transparent overflow-hidden scroll-mt-24 sm:scroll-mt-32">
       {/* Soft Ambient Light (Day Mode Only) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden dark:hidden" aria-hidden="true">
         <div className="absolute top-1/4 right-10 h-[600px] w-[600px] rounded-full bg-radial from-[#F4EFE6]/60 via-[#F8F5EE]/25 to-transparent blur-3xl" />
@@ -62,7 +62,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="mt-10 sm:mt-12 grid gap-8 lg:grid-cols-12 items-start">
+        <div className="mt-8 sm:mt-12 grid gap-8 lg:grid-cols-12 items-start">
 
           {/* Left Column: Unified Info Card + Map */}
           <motion.div
@@ -73,11 +73,11 @@ export function Contact() {
             className="lg:col-span-5 space-y-5 order-2 lg:order-1"
           >
             {/* Unified Clinical Info Panel */}
-            <div className="rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden divide-y divide-[#EAE3DA]/80 dark:divide-[#C5A059]/20">
+            <div id="contact-details" className="scroll-mt-24 rounded-[2rem] sm:rounded-[2.5rem] border border-white/90 dark:border-[#C5A059]/35 bg-white/85 dark:bg-[#0E1310]/90 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(20,34,27,0.06),0_1px_2px_rgba(255,255,255,0.9)_inset] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden divide-y divide-[#EAE3DA]/80 dark:divide-[#C5A059]/20">
 
               {/* Phone */}
-              <div className="flex items-center gap-4 px-6 py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs">
+              <div className="flex items-center gap-3.5 sm:gap-4 px-4.5 sm:px-6 py-3 sm:py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
@@ -89,8 +89,8 @@ export function Contact() {
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-4 px-6 py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs">
+              <div className="flex items-center gap-3.5 sm:gap-4 px-4.5 sm:px-6 py-3 sm:py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
@@ -102,8 +102,8 @@ export function Contact() {
               </div>
 
               {/* Address */}
-              <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs mt-0.5">
+              <div className="flex items-start gap-3.5 sm:gap-4 px-4.5 sm:px-6 py-3 sm:py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs mt-0.5">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
@@ -115,14 +115,14 @@ export function Contact() {
               </div>
 
               {/* Timings */}
-              <div className="flex items-start gap-4 px-6 py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs mt-0.5">
+              <div className="flex items-start gap-3.5 sm:gap-4 px-4.5 sm:px-6 py-3 sm:py-4.5 hover:bg-white/95 dark:hover:bg-[#141A16] transition-colors duration-200 group">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] border border-transparent dark:border-[#C5A059]/30 text-[#E5C583] shadow-xs mt-0.5">
                   <Clock className="h-4 w-4" />
                 </div>
                 <div>
                   <p className="text-[10px] font-medium tracking-[0.2em] text-[#7A8A80] dark:text-[#E5C583] uppercase">Consultation Timings</p>
 
-                  <div className="mt-1 space-y-1.5 text-xs text-[#4A5D52] dark:text-[#A3ACA7]">
+                  <div className="mt-1 space-y-1 text-xs text-[#4A5D52] dark:text-[#A3ACA7]">
                     <div>
                       <p className="font-medium text-[#14221B] dark:text-[#FAF8F5]">Monday &amp; Wednesday – Saturday:</p>
                       <p className="font-light pl-2 mt-0.5">• Morning: 10:00 AM – 1:00 PM</p>

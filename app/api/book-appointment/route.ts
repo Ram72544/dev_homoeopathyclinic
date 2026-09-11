@@ -164,3 +164,41 @@ export async function POST(request: Request) {
     whatsappUrl: waUrl,
   });
 }
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const isTest = searchParams.get("test") === "true";
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) {
+    return NextResponse.json({
+      ok: false,
+      configured: false,
+      message: "Telegram credentials (TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID) are missing from the server environment.",
+    });
+  }
+
+  if (isTest) {
+    const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    const delivered = await sendTelegramNotification(
+      `🔔 <b>Clinic System Test</b>\n\nTelegram integration is active and functioning properly.\n🕒 <i>${timestamp} (IST)</i>`,
+      `Clinic System Test: Telegram integration is active and functioning properly at ${timestamp} (IST).`
+    );
+    return NextResponse.json({
+      ok: delivered,
+      delivered,
+      message: delivered
+        ? "Test notification successfully delivered to clinic Telegram."
+        : "Telegram API rejected or could not deliver the test message.",
+    });
+  }
+
+  return NextResponse.json({
+    ok: true,
+    configured: true,
+    chatIdMasked: chatId.length > 4 ? `${chatId.slice(0, 3)}***${chatId.slice(-2)}` : "***",
+    hint: "Add ?test=true to trigger a live Telegram test message.",
+  });
+}
+

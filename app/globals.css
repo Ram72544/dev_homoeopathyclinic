@@ -92,10 +92,16 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   background-color: var(--surface-warm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -106,9 +112,6 @@ body {
   letter-spacing: -0.012em;
   overflow-x: hidden;
   min-height: 100vh;
-  /* Safe Area Inset Support for Modern Mobile / iPhone Dynamic Island */
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
 }
 
 h1,
@@ -122,6 +125,13 @@ h3,
 section,
 [id] {
   scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 640px) {
+  section,
+  [id] {
+    scroll-margin-top: 7.5rem;
+  }
 }
 
 /* Subtle Champagne Gold Glow on Section Arrival */

@@ -73,8 +73,28 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       if (targetElement) {
         e.preventDefault();
 
-        // Calculate dynamic navbar height clearance
-        const navbarHeight = window.innerWidth < 640 ? 76 : 92;
+        // Check if device is mobile or touch
+        const isTouchOrMobile =
+          window.matchMedia("(pointer: coarse)").matches ||
+          window.innerWidth < 1024;
+
+        if (isTouchOrMobile) {
+          // Native hardware-accelerated smooth scrolling on mobile
+          targetElement.scrollIntoView({ behavior: "smooth" });
+
+          if (window.history.pushState) {
+            window.history.pushState(null, "", `#${targetId}`);
+          }
+
+          targetElement.classList.add("section-arrival-glow");
+          setTimeout(() => {
+            targetElement.classList.remove("section-arrival-glow");
+          }, 1400);
+          return;
+        }
+
+        // Desktop: cinematic ease-in-out cubic curve (with generous clearance below the floating navbar)
+        const navbarHeight = 120;
         const elementRect = targetElement.getBoundingClientRect();
         const absoluteElementTop = elementRect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
         const finalTargetY = Math.max(0, absoluteElementTop - navbarHeight);
@@ -96,12 +116,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     }
 
     window.addEventListener("wheel", handleUserInterrupt, { passive: true });
-    window.addEventListener("touchmove", handleUserInterrupt, { passive: true });
     document.addEventListener("click", handleAnchorClick, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleUserInterrupt);
-      window.removeEventListener("touchmove", handleUserInterrupt);
       document.removeEventListener("click", handleAnchorClick);
       if (activeScrollAnimationId !== null) {
         cancelAnimationFrame(activeScrollAnimationId);
