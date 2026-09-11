@@ -50,12 +50,12 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden lg:flex items-center gap-6 xl:gap-8 font-sans text-xs tracking-wider uppercase">
+        <ul className="hidden xl:flex items-center gap-6 xl:gap-8 font-sans text-xs tracking-wider uppercase">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative py-1 text-[#3D4E44] dark:text-[#A3ACA7] font-medium transition-colors duration-200 hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
+                className="group relative py-1 text-[#3D4E44] dark:text-[#A3ACA7] font-medium whitespace-nowrap transition-colors duration-200 hover:text-[#0E7C7B] dark:hover:text-[#FAF8F5]"
               >
                 <span>{link.label}</span>
                 <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#0E7C7B] dark:bg-[#E5C583] transition-all duration-300 group-hover:w-full group-hover:left-0 rounded-full" />
@@ -70,7 +70,7 @@ export function Navbar() {
           <ThemeToggle />
 
           {/* Desktop Book Consultation Button */}
-          <div className="hidden lg:flex items-center shrink-0">
+          <div className="hidden xl:flex items-center shrink-0">
             <a
               href={site.bookingUrl}
               className="group relative inline-flex items-center gap-2 rounded-full bg-[#14221B] dark:bg-[#18201C] border border-[#14221B] dark:border-[#C5A059]/45 px-6 sm:px-7 py-3 sm:py-3.5 font-sans text-xs font-semibold tracking-wider text-[#FAF8F5] uppercase shadow-md transition-all duration-300 hover:bg-[#1C2C23] dark:hover:bg-[#222C27] dark:hover:border-[#E5C583] whitespace-nowrap shrink-0 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
@@ -87,7 +87,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/80 dark:border-[#C5A059]/30 bg-white/70 dark:bg-[#121714]/80 text-[#14221B] dark:text-[#FAF8F5] shadow-xs backdrop-blur-md transition-all hover:bg-white dark:hover:bg-[#1A221E] active:scale-95 lg:hidden cursor-pointer"
+            className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/80 dark:border-[#C5A059]/30 bg-white/70 dark:bg-[#121714]/80 text-[#14221B] dark:text-[#FAF8F5] shadow-xs backdrop-blur-md transition-all hover:bg-white dark:hover:bg-[#1A221E] active:scale-95 xl:hidden cursor-pointer"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -103,7 +103,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-full left-3 right-3 sm:left-6 sm:right-6 mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 p-5 shadow-2xl backdrop-blur-2xl lg:hidden z-50 [transform:translate3d(0,0,0)]"
+            className="absolute top-full left-3 right-3 sm:left-6 sm:right-6 mt-2.5 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/90 dark:border-[#C5A059]/35 bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 p-5 shadow-2xl backdrop-blur-2xl xl:hidden z-50 [transform:translate3d(0,0,0)]"
           >
             <ul className="flex flex-col gap-2">
               {navLinks.map((link) => (
