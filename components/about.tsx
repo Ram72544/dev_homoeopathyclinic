@@ -81,7 +81,7 @@ export function About() {
               <div className="relative min-h-[360px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[520px] xl:min-h-[560px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10 [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
                 <Image
                   src="/images/clinic-sanctuary-v2.png"
-                  alt="Dr Sheetal Homoeopathic Clinic Consultation Sanctuary Interior"
+                  alt="Dr Sheetal Homoeopathy Clinic Consultation Sanctuary Interior"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, (max-width: 1536px) 48vw, 720px"
                   quality={95}

@@ -29,7 +29,7 @@ export function Navbar() {
           <div className="relative h-12 w-12 sm:h-14 sm:w-14 lg:h-15 lg:w-15 shrink-0 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_3px_14px_rgba(14,124,123,0.30)]">
             <Image
               src="/logo-concept-1-transparent.png"
-              alt="Dr. Sheetal's Homoeopathic Clinic Logo"
+              alt="Dr. Sheetal's Homoeopathy Clinic Logo"
               width={256}
               height={256}
               sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 60px"
@@ -44,7 +44,7 @@ export function Navbar() {
               Dr. Sheetal&apos;s
             </span>
             <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#E5C583] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
-              HOMOEOPATHIC CLINIC
+              HOMOEOPATHY CLINIC
             </span>
           </span>
         </a>

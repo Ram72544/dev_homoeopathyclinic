@@ -26,7 +26,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ fontSize: 80, fontWeight: 700 }}>Dr. Sheetal&apos;s</div>
-        <div style={{ fontSize: 36, marginTop: 20 }}>Homoeopathic Clinic</div>
+        <div style={{ fontSize: 36, marginTop: 20 }}>Homoeopathy Clinic</div>
       </div>
     ),
     { ...size }

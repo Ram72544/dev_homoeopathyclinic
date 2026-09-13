@@ -46,7 +46,7 @@ export type Benefit = {
 
 export const site = {
   // --- Identity -------------------------------------------------
-  name: "Dr. Sheetal's Homoeopathic Clinic",
+  name: "Dr. Sheetal's Homoeopathy Clinic",
   shortName: "Dr. Sheetal's Clinic",
   tagline: "Gentle, Natural & Permanent Healing for Your Whole Family",
   intro:
@@ -62,7 +62,7 @@ export const site = {
     "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
 
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=Dr.+Sheetal's+Homoeopathic+Clinic,+Saurabh+Vihar,+Hari+Nagar+Extn,+Jaitpur,+Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=Dr.+Sheetal's+Homoeopathy+Clinic,+Saurabh+Vihar,+Hari+Nagar+Extn,+Jaitpur,+Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed",
 
   bookingUrl: "#contact",
 
@@ -73,7 +73,7 @@ export const site = {
   },
 
   googleUrl:
-    "https://www.google.com/maps/place/Dr.+Sheetal's+Homoeopathic+Clinic/@28.506497,77.321668,16z/data=!4m6!3m5!1s0x390ce7724f1e3f15:0x8431485b70a4a30e!8m2!3d28.506497!4d77.3216683!16s%2Fg%2F11zgz3w3hv?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D",
+    "https://www.google.com/maps/place/Dr.+Sheetal's+Homoeopathy+Clinic/@28.506497,77.321668,16z/data=!4m6!3m5!1s0x390ce7724f1e3f15:0x8431485b70a4a30e!8m2!3d28.506497!4d77.3216683!16s%2Fg%2F11zgz3w3hv?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D",
 
   // --- Timings --------------------------------------------------
   timings: [

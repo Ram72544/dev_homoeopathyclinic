@@ -130,7 +130,7 @@ export async function POST(request: Request) {
   const notesPlain = notes ? `\nSymptoms / Notes: ${notes}\n` : "";
 
   const cleanWaText = encodeURIComponent(
-    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathic Clinic for ${slot}.`
+    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathy Clinic for ${slot}.`
   );
   const waUrl = `https://wa.me/91${phone}?text=${cleanWaText}`;
 
