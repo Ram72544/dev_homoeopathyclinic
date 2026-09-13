@@ -148,7 +148,7 @@ export function Contact() {
               <div className="relative h-[220px] sm:h-[240px] w-full overflow-hidden rounded-[2rem] bg-[#0E7C7B]/10">
                 <iframe
                   src={site.mapsEmbedUrl}
-                  title="Dr. Sheetal's Homoeopathy Clinic location map"
+                  title="Dr. Sheetal's Homoeopathic Clinic location map"
                   width="100%"
                   height="100%"
                   loading="lazy"

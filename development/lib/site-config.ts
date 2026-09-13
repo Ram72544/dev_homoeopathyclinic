@@ -46,7 +46,7 @@ export type Benefit = {
 
 export const site = {
   // --- Identity -------------------------------------------------
-  name: "Dr. Sheetal's Homoeopathy Clinic",
+  name: "Dr. Sheetal's Homoeopathic Clinic",
   shortName: "Dr. Sheetal's Clinic",
   tagline: "Gentle, Natural & Permanent Healing for Your Whole Family",
   intro:
@@ -62,7 +62,7 @@ export const site = {
     "D-160/1, Saurabh Vihar, Near Kali Badi Mandir, Hari Nagar Extn., Jaitpur, Badarpur, New Delhi - 110044",
 
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=Dr.+Sheetal's+Homoeopathy+Clinic,+Saurabh+Vihar,+Hari+Nagar+Extn,+Jaitpur,+Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=Dr.+Sheetal's+Homoeopathic+Clinic,+Saurabh+Vihar,+Hari+Nagar+Extn,+Jaitpur,+Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed",
 
   bookingUrl: "#contact",
 

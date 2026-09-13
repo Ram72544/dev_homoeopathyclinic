@@ -55,7 +55,7 @@ export function Footer() {
               <div className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 filter drop-shadow-[0_2px_12px_rgba(14,124,123,0.3)] transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/logo-concept-1-transparent.png"
-                  alt="Dr. Sheetal's Homoeopathy Clinic Logo"
+                  alt="Dr. Sheetal's Homoeopathic Clinic Logo"
                   width={256}
                   height={256}
                   sizes="48px"
@@ -68,7 +68,7 @@ export function Footer() {
                   Dr. Sheetal&apos;s
                 </span>
                 <span className="font-accent text-[8.5px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] sm:tracking-[0.24em] text-[#0E7C7B] dark:text-[#E5C583] uppercase whitespace-nowrap mt-0.5 sm:mt-1">
-                  HOMOEOPATHY CLINIC
+                  HOMOEOPATHIC CLINIC
                 </span>
                 <span className="text-[11px] sm:text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-1 whitespace-nowrap">
                   Classical Constitutional Medicine • Delhi NCR

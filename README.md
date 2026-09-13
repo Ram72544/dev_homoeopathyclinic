@@ -1,6 +1,6 @@
-# Dr. Sheetal's Homoeopathy Clinic Website
+# Dr. Sheetal's Homoeopathic Clinic Website
 
-A modern, responsive, single-page website for Dr. Sheetal's Homoeopathy Clinic, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+A modern, responsive, single-page website for Dr. Sheetal's Homoeopathic Clinic, built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
 ## Quick start
 

@@ -45,7 +45,8 @@ export const metadata: Metadata = {
   },
   description: site.intro,
   keywords: [
-    "Dr. Sheetal Homoeopathy Clinic",
+    "Dr. Sheetal's Homoeopathic Clinic",
+    "Dr. Sheetal Homoeopathic Clinic",
     "Best Homeopathy Doctor in Badarpur",
     "Homeopathic Clinic Delhi NCR",
     "Classical Homoeopathy Treatment",
@@ -53,11 +54,11 @@ export const metadata: Metadata = {
     "PCOS Treatment without Hormones",
     "Safe Sweet Pills for Infants",
     "Migraine and Thyroid Homeopathy",
-    "AYUSH Registered Homoeopathy Clinic",
+    "AYUSH Registered Homoeopathic Clinic",
   ],
   authors: [{ name: "Dr. Sheetal Tiwari, MD (Hom.)" }],
   creator: "Dr. Sheetal Tiwari",
-  publisher: "Dr. Sheetal's Homoeopathy Clinic",
+  publisher: "Dr. Sheetal's Homoeopathic Clinic",
   alternates: {
     canonical: "https://www.drsheetalclinic.com",
   },
