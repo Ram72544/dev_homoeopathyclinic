@@ -155,6 +155,16 @@ export function Contact() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-full rounded-[2rem] border-0 filter contrast-[1.03] saturate-[0.9] dark:invert-[0.92] dark:hue-rotate-180 dark:contrast-[1.15] dark:brightness-[0.88] dark:saturate-[0.75] transition-all duration-700 group-hover:scale-[1.01]"
                 />
+                {/* Floating Clinic Name Badge */}
+                <div className="absolute top-3.5 left-3.5 z-10 max-w-[calc(100%-145px)] pointer-events-none">
+                  <div className="flex items-center gap-2 rounded-full bg-[#FAF8F5]/95 dark:bg-[#0E1310]/95 border border-[#14221B]/15 dark:border-[#C5A059]/40 px-3.5 py-1.5 shadow-lg backdrop-blur-md">
+                    <span className="h-2 w-2 rounded-full bg-[#0E7C7B] dark:bg-[#E5C583] animate-pulse shrink-0" />
+                    <span className="text-[11px] sm:text-xs font-serif font-medium text-[#14221B] dark:text-[#FAF8F5] truncate">
+                      {site.name}
+                    </span>
+                  </div>
+                </div>
+
                 {/* Floating Directions Button */}
                 <div className="absolute top-3.5 right-3.5 z-10">
                   <a
