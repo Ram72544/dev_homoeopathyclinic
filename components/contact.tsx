@@ -153,7 +153,7 @@ export function Contact() {
                   height="100%"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full rounded-[2rem] border-0 filter contrast-[1.03] saturate-[0.9] dark:invert-[0.92] dark:hue-rotate-180 dark:contrast-[1.15] dark:brightness-[0.88] dark:saturate-[0.75] transition-all duration-700 group-hover:scale-[1.01]"
+                  className="absolute -top-[56px] left-0 w-full h-[calc(100%+56px)] rounded-[2rem] border-0 filter contrast-[1.03] saturate-[0.9] dark:invert-[0.92] dark:hue-rotate-180 dark:contrast-[1.15] dark:brightness-[0.88] dark:saturate-[0.75] transition-all duration-700 group-hover:scale-[1.01]"
                 />
 
                 {/* Floating Directions Button */}
