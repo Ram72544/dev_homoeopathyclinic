@@ -36,9 +36,12 @@ function escapeHtml(value: string): string {
     .replace(/>/g, "&gt;");
 }
 
+const DEFAULT_TELEGRAM_BOT_TOKEN = "8843656104:AAFJ9MxrhZ1Q4PZt6ka479uqlEphWqMiF_s";
+const DEFAULT_TELEGRAM_CHAT_ID = "1319904248";
+
 async function sendTelegramNotification(htmlText: string, plainText: string): Promise<boolean> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const token = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
     console.warn("[book-appointment] Telegram credentials not configured in environment");
@@ -168,8 +171,8 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const isTest = searchParams.get("test") === "true";
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const token = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
     return NextResponse.json({
