@@ -73,7 +73,7 @@ export const site = {
   },
 
   googleUrl:
-    "https://www.google.com/maps/place/Dr.+Sheetal's+Homoeopathy+Clinic/@28.506497,77.321668,16z/data=!4m6!3m5!1s0x390ce7724f1e3f15:0x8431485b70a4a30e!8m2!3d28.506497!4d77.3216683!16s%2Fg%2F11zgz3w3hv?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D",
+    "https://www.google.com/maps/place/Dr.+Sheetal's+Homoeopathic+Clinic/@28.506497,77.321668,16z/data=!4m6!3m5!1s0x390ce7724f1e3f15:0x8431485b70a4a30e!8m2!3d28.506497!4d77.3216683!16s%2Fg%2F11zgz3w3hv?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D",
 
   // --- Timings --------------------------------------------------
   timings: [
