@@ -143,5 +143,20 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Runtime form data
-/data
+data/
 .env.local
+**/.env.local
+
+# OS Metadata
+.DS_Store
+**/.DS_Store
+
+# Playwright Test Automation Artifacts
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+**/test-results/
+**/playwright-report/
+**/blob-report/
+

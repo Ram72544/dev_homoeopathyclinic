@@ -71,28 +71,93 @@ function parseDateSafely(dateStr: string): Date | null {
   return isNaN(d.getTime()) ? null : d;
 }
 
-function getSlotsForDate(dateStr: string): string[] {
-  if (!dateStr) return [];
+function getClinicCurrentTime(): { dateISO: string; currentMinutes: number } {
+  const now = new Date();
+  try {
+    const formatter = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const parts = formatter.format(now).split(", ");
+    const dateISO = parts[0];
+    const [h, m] = parts[1].split(":").map(Number);
+    return {
+      dateISO,
+      currentMinutes: h * 60 + m,
+    };
+  } catch {
+    const offsetMs = now.getTimezoneOffset() * 60000;
+    const dateISO = new Date(now.getTime() - offsetMs).toISOString().slice(0, 10);
+    return {
+      dateISO,
+      currentMinutes: now.getHours() * 60 + now.getMinutes(),
+    };
+  }
+}
+
+function getSlotStartMinutes(slot: string): number {
+  const match = slot.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if (!match) return 0;
+  let hour = parseInt(match[1], 10);
+  const minutes = parseInt(match[2], 10);
+  const isPM = match[3].toUpperCase() === "PM";
+  if (isPM && hour !== 12) hour += 12;
+  if (!isPM && hour === 12) hour = 0;
+  return hour * 60 + minutes;
+}
+
+type SlotResult = {
+  slots: string[];
+  reason?: "tuesday" | "all_passed";
+};
+
+function getSlotsForDate(dateStr: string): SlotResult {
+  if (!dateStr) return { slots: [] };
   const dateObj = parseDateSafely(dateStr);
-  if (!dateObj) return [...MORNING_SLOTS, ...EVENING_SLOTS];
+  if (!dateObj) return { slots: [...MORNING_SLOTS, ...EVENING_SLOTS] };
 
   const day = dateObj.getDay();
   // 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
   if (day === 2) {
     // Tuesday is Clinic Off
-    return [];
+    return { slots: [], reason: "tuesday" };
   }
-  if (day === 0) {
-    // Sunday: Morning OPD + Evening Prior Appt Only
-    return [...MORNING_SLOTS, ...SUNDAY_EVENING_SLOTS];
+
+  const baseSlots =
+    day === 0
+      ? [...MORNING_SLOTS, ...SUNDAY_EVENING_SLOTS]
+      : [...MORNING_SLOTS, ...EVENING_SLOTS];
+
+  // Compare with current clinic time
+  const clinicTime = getClinicCurrentTime();
+  const y = dateObj.getFullYear();
+  const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const d = String(dateObj.getDate()).padStart(2, "0");
+  const selectedISO = `${y}-${m}-${d}`;
+
+  // If selected date is today, show ONLY slots after the current time
+  if (selectedISO === clinicTime.dateISO) {
+    const futureSlots = baseSlots.filter((slot) => {
+      const slotStart = getSlotStartMinutes(slot);
+      return slotStart > clinicTime.currentMinutes;
+    });
+
+    if (futureSlots.length === 0) {
+      return { slots: [], reason: "all_passed" };
+    }
+    return { slots: futureSlots };
   }
-  return [...MORNING_SLOTS, ...EVENING_SLOTS];
+
+  return { slots: baseSlots };
 }
 
 function todayISO(): string {
-  const now = new Date();
-  const offsetMs = now.getTimezoneOffset() * 60000;
-  return new Date(now.getTime() - offsetMs).toISOString().slice(0, 10);
+  return getClinicCurrentTime().dateISO;
 }
 
 function formatDateLabel(dateStr: string): string {
@@ -181,7 +246,19 @@ export function AppointmentForm() {
     };
   }, [setValue]);
 
-  const availableSlots = getSlotsForDate(selectedDate);
+  const slotData = useMemo(() => getSlotsForDate(selectedDate), [selectedDate]);
+  const availableSlots = slotData.slots;
+  const isTuesday = slotData.reason === "tuesday";
+  const allSlotsPassedToday = slotData.reason === "all_passed";
+
+  const selectedTime = watch("time");
+
+  // Automatically reset time if it was selected and is no longer available (e.g. after date change)
+  useEffect(() => {
+    if (selectedTime && !availableSlots.includes(selectedTime)) {
+      setValue("time", "", { shouldValidate: false });
+    }
+  }, [availableSlots, selectedTime, setValue]);
 
   async function onSubmit(values: AppointmentFormValues) {
     setSubmitError("");
@@ -362,15 +439,17 @@ export function AppointmentForm() {
               <div className="relative group">
                 <select
                   {...register("time")}
-                  disabled={!selectedDate}
+                  disabled={!selectedDate || availableSlots.length === 0}
                   className="w-full appearance-none rounded-2xl border border-[#E8E1D5] dark:border-[#C5A059]/30 bg-[#FAF8F5]/85 dark:bg-[#141A16] pl-4 pr-11 py-3.5 text-sm font-light text-[#14221B] dark:text-[#FAF8F5] outline-none transition-all duration-300 hover:border-[#D5CCBE] dark:hover:border-[#E5C583]/60 focus:border-[#0E7C7B] dark:focus:border-[#E5C583] focus:bg-white dark:focus:bg-[#1C2420] focus:ring-4 focus:ring-[#C5A059]/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] disabled:opacity-50 min-h-[48px] cursor-pointer"
                   defaultValue=""
                 >
                   <option value="" disabled>
                     {!selectedDate
                       ? "Pick date first"
-                      : availableSlots.length === 0
+                      : isTuesday
                       ? "Tuesday is Weekly Off (Clinic Closed)"
+                      : allSlotsPassedToday
+                      ? "All slots for today have ended (Pick upcoming date)"
                       : "Select convenient slot"}
                   </option>
                   {availableSlots.map((slot) => (
@@ -383,6 +462,11 @@ export function AppointmentForm() {
                   <ChevronDown className="h-4 w-4" />
                 </div>
               </div>
+              {allSlotsPassedToday && (
+                <span className="block text-xs text-amber-600 dark:text-[#E5C583] font-light pt-1.5">
+                  All consultation slots for today have already concluded. Please choose tomorrow or another upcoming date.
+                </span>
+              )}
             </Field>
           </div>
 
