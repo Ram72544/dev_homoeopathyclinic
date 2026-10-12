@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { BadgeCheck, Quote, Star, Sparkles } from "lucide-react";
+import { BadgeCheck, Quote, Star } from "lucide-react";
 import { site } from "@/lib/site-config";
 import { motion } from "framer-motion";
 

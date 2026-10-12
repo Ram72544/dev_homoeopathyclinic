@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, Clock, Sparkles, Navigation, Train, Car, Compass } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Navigation, Train, Car, Compass } from "lucide-react";
 import { site } from "@/lib/site-config";
 import { AppointmentForm } from "@/components/appointment-form";
 import { motion } from "framer-motion";
