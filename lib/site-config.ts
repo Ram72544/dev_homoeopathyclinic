@@ -68,7 +68,6 @@ export const site = {
   social: {
     instagram: "#",
     facebook: "#",
-    telegram: "https://t.me/Dr_Sheetal_Clinic_Bot",
   },
 
   googleUrl:
