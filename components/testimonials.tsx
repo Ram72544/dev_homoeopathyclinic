@@ -8,12 +8,21 @@ import { site } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
 function initials(name: string): string {
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join("");
+  let result = "";
+  let inWord = false;
+  for (let i = 0; i < name.length; i++) {
+    const char = name[i];
+    if (char !== " " && char !== "\t" && char !== "\n" && char !== "\r") {
+      if (!inWord) {
+        result += char.toUpperCase();
+        inWord = true;
+        if (result.length === 2) break;
+      }
+    } else {
+      inWord = false;
+    }
+  }
+  return result;
 }
 
 export function Testimonials() {
