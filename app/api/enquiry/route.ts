@@ -57,6 +57,23 @@ function withLock<T>(fn: () => Promise<T>): Promise<T> {
   return job;
 }
 
+function countWords(text: string): number {
+  let count = 0;
+  let inWord = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (char !== " " && char !== "\t" && char !== "\n" && char !== "\r") {
+      if (!inWord) {
+        count++;
+        inWord = true;
+      }
+    } else {
+      inWord = false;
+    }
+  }
+  return count;
+}
+
 function validateBody(body: unknown): { name: string; phone: string; message: string } {
   if (typeof body !== "object" || body === null) {
     throw new Error("Invalid request body");
@@ -80,7 +97,7 @@ function validateBody(body: unknown): { name: string; phone: string; message: st
   if (!PHONE_RE.test(trimmedPhone)) {
     throw new Error("Invalid phone");
   }
-  const wordCount = trimmedMessage.split(/\s+/).filter(Boolean).length;
+  const wordCount = countWords(trimmedMessage);
   if (!trimmedMessage || wordCount > MAX_MESSAGE_WORDS) {
     throw new Error("Invalid message");
   }
