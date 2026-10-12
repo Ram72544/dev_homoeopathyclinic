@@ -1,5 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const appointmentSchema = z.object({
   name: z
@@ -44,7 +45,7 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
   const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    console.warn("[book-appointment] Telegram credentials not configured in environment");
+    logger.warn("Notification credentials not configured in environment", "book-appointment");
     return false;
   }
 
@@ -68,9 +69,9 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
     }
 
     const errText = await response.text().catch(() => "");
-    console.warn(`[book-appointment] HTML parse error, retrying plain text: ${response.status} ${errText}`);
+    logger.warn(`HTML dispatch error, retrying plain text: ${response.status} ${errText}`, "book-appointment");
   } catch (error) {
-    console.warn("[book-appointment] Initial HTML dispatch failed, retrying plain text:", error);
+    logger.warn("Initial HTML dispatch failed, retrying plain text", "book-appointment", error);
   }
 
   // Second try: Plain text fallback (guaranteed to deliver)
@@ -90,10 +91,10 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
     }
 
     const fallbackErr = await fallbackResponse.text().catch(() => "");
-    console.error(`[book-appointment] Telegram fallback API error: ${fallbackResponse.status} ${fallbackErr}`);
+    logger.error(`Notification fallback error: ${fallbackResponse.status} ${fallbackErr}`, "book-appointment");
     return false;
   } catch (err) {
-    console.error("[book-appointment] Telegram dispatch failed completely:", err);
+    logger.error("Notification dispatch failed completely", "book-appointment", err);
     return false;
   }
 }
@@ -159,10 +160,18 @@ export async function POST(request: Request) {
     try {
       const delivered = await sendTelegramNotification(htmlMessage, plainMessage);
       if (!delivered) {
-        console.error(`[book-appointment] Warning: Consultation request for ${name} (${phone}) could not be sent to Telegram.`);
+        logger.error(
+          `Consultation request notification could not be delivered for ${name} (${phone})`,
+          "book-appointment"
+        );
+      } else {
+        logger.info(
+          `Consultation request notification delivered successfully for ${name}`,
+          "book-appointment"
+        );
       }
     } catch (err) {
-      console.error("[book-appointment] Background Telegram notification failed:", err);
+      logger.error("Background notification dispatch failed", "book-appointment", err);
     }
   });
 
