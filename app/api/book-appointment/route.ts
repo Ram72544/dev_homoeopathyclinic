@@ -67,11 +67,8 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
     if (response.ok) {
       return true;
     }
-
-    const errText = await response.text().catch(() => "");
-    logger.warn(`HTML dispatch error, retrying plain text: ${response.status} ${errText}`, "book-appointment");
-  } catch (error) {
-    logger.warn("Initial HTML dispatch failed, retrying plain text", "book-appointment", error);
+  } catch {
+    // Expected fallback path: seamlessly proceed to plain text
   }
 
   // Second try: Plain text fallback (guaranteed to deliver)
@@ -90,11 +87,10 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
       return true;
     }
 
-    const fallbackErr = await fallbackResponse.text().catch(() => "");
-    logger.error(`Notification fallback error: ${fallbackResponse.status} ${fallbackErr}`, "book-appointment");
+    logger.error(`Notification delivery failed with status ${fallbackResponse.status}`, "book-appointment");
     return false;
   } catch (err) {
-    logger.error("Notification dispatch failed completely", "book-appointment", err);
+    logger.error("Notification delivery failed", "book-appointment", err);
     return false;
   }
 }
