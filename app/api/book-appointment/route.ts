@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 
 const appointmentSchema = z.object({
@@ -154,13 +154,19 @@ export async function POST(request: Request) {
     `\nWhatsApp Link: ${waUrl}\n` +
     `Please contact patient to confirm consultation visit.`;
 
-  const delivered = await sendTelegramNotification(htmlMessage, plainMessage);
+  // Non-blocking background notification dispatch via Next.js after()
+  after(async () => {
+    try {
+      const delivered = await sendTelegramNotification(htmlMessage, plainMessage);
+      if (!delivered) {
+        console.error(`[book-appointment] Warning: Consultation request for ${name} (${phone}) could not be sent to Telegram.`);
+      }
+    } catch (err) {
+      console.error("[book-appointment] Background Telegram notification failed:", err);
+    }
+  });
 
-  if (!delivered) {
-    console.error(`[book-appointment] Warning: Consultation request for ${name} (${phone}) could not be sent to Telegram.`);
-  }
-
-  // Always return success to the patient so their booking is confirmed
+  // Immediately return success to the patient so their booking is confirmed
   return NextResponse.json({
     ok: true,
     name,

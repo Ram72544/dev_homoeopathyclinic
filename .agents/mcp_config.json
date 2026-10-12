@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jules": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google/jules-mcp"
+      ],
+      "env": {}
+    }
+  }
+}
