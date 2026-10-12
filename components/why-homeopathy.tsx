@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { site } from "@/lib/site-config";
 import { motion } from "framer-motion";
-import { MessageSquare, Stethoscope, HeartPulse, Sparkles } from "lucide-react";
+import { MessageSquare, Stethoscope, HeartPulse } from "lucide-react";
 
 const HEALING_STEPS = [
   {

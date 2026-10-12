@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Award, GraduationCap, Sparkles, CheckCircle2, ShieldCheck } from "lucide-react";
+import { GraduationCap, CheckCircle2, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site-config";
 import { motion } from "framer-motion";
 
@@ -17,7 +17,7 @@ export function About() {
 
       <div className="relative z-10 mx-auto max-w-[1536px] px-3 sm:px-6 lg:px-10">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          
+
           {/* Left: Bio & Qualifications */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -63,8 +63,8 @@ export function About() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#14221B] dark:bg-[#18201C] text-[#E5C583] shadow-xs">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">Safe for All Generations</p>
-                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Infants, Pregnant Women &amp; Seniors</p>
+                <p className="mt-3 font-serif text-lg font-normal tracking-tight text-[#14221B] dark:text-[#FAF8F5]">Senior Researcher</p>
+                <p className="text-xs font-light text-[#7A8A80] dark:text-[#A3ACA7] mt-0.5">Central Council For Research In Homoeopathy</p>
               </div>
             </div>
           </motion.div>

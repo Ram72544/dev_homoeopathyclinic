@@ -209,16 +209,11 @@ export function AppointmentForm() {
 
   const selectedCategory = watch("diseaseCategory");
 
-  const currentService = useMemo(() => {
-    return site.services.find((s) => s.title === selectedCategory);
-  }, [selectedCategory]);
+  const currentService = site.services.find((s) => s.title === selectedCategory);
 
-  const dynamicPlaceholder = useMemo(() => {
-    if (currentService?.caseQuestions) {
-      return currentService.caseQuestions;
-    }
-    return "Any specific symptoms, duration, or previous treatments you'd like Dr. Sheetal to know beforehand (optional)...";
-  }, [currentService]);
+  const dynamicPlaceholder =
+    currentService?.caseQuestions ||
+    "Any specific symptoms, duration, or previous treatments you'd like Dr. Sheetal to know beforehand (optional)...";
 
   // Listen for prefill event from DiseaseModal
   useEffect(() => {

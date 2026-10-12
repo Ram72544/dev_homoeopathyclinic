@@ -63,7 +63,9 @@ export function ModernDatePicker({
   const [viewMonth, setViewMonth] = useState(initialDate.getMonth()); // 0-indexed
 
   // Keep view in sync when value changes externally
-  useEffect(() => {
+  const [prevValue, setPrevValue] = useState(value);
+  if (value !== prevValue) {
+    setPrevValue(value);
     if (value) {
       const parsed = parseISODate(value);
       if (parsed) {
@@ -71,7 +73,7 @@ export function ModernDatePicker({
         setViewMonth(parsed.getMonth());
       }
     }
-  }, [value]);
+  }
 
   // Click outside to close
   useEffect(() => {

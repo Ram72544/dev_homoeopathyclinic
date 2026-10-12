@@ -13,7 +13,6 @@ import {
   Flame,
   Droplets,
   Activity,
-  Heart,
 } from "lucide-react";
 
 export type Service = {
