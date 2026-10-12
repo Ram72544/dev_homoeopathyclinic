@@ -5,6 +5,7 @@ import path from "path";
 const DATA_DIR = path.join(process.cwd(), "data");
 const ENQUIRIES_FILE = path.join(DATA_DIR, "enquiries.json");
 
+let isDataDirEnsured = false;
 let writeQueue: Promise<unknown> = Promise.resolve();
 
 type EnquiryRecord = {
@@ -106,7 +107,10 @@ export async function POST(request: Request) {
     const date = toIndiaDate(now);
 
     const record = await withLock(async () => {
-      await fs.mkdir(DATA_DIR, { recursive: true });
+      if (!isDataDirEnsured) {
+        await fs.mkdir(DATA_DIR, { recursive: true });
+        isDataDirEnsured = true;
+      }
       const records = await readRecords();
       const patientNo = generatePatientNo(records, date);
       const newRecord: EnquiryRecord = {
