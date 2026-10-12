@@ -88,7 +88,12 @@ function validateBody(body: unknown): { name: string; phone: string; message: st
 }
 
 function generatePatientNo(records: EnquiryRecord[], dateKey: string): string {
-  const count = records.filter((r) => r.date === dateKey).length + 1;
+  let count = 1;
+  for (let i = 0; i < records.length; i++) {
+    if (records[i].date === dateKey) {
+      count++;
+    }
+  }
   return `OPD${String(count).padStart(4, "0")}`;
 }
 
