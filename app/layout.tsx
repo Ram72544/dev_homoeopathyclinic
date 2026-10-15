@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, Playfair_Display, Cormorant_Garamond, Cinzel } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -190,6 +191,20 @@ export default function RootLayout({
           </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18514533653"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag-aw-18514533653" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18514533653');
+          `}
+        </Script>
       </body>
     </html>
   );
