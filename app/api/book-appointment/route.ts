@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 
 const appointmentSchema = z.object({
@@ -7,15 +7,15 @@ const appointmentSchema = z.object({
     .trim()
     .min(1, "Name is required")
     .max(60, "Name is too long")
-    .regex(/^[A-Za-z\s'.-]+$/, "Only letters, spaces, apostrophes and hyphens are allowed"),
+    .regex(
+      /^[A-Za-z\s'.-]+$/,
+      "Only letters, spaces, apostrophes and hyphens are allowed",
+    ),
   phone: z
     .string()
     .trim()
     .regex(/^\d{10}$/, "Enter a valid 10-digit phone number"),
-  slot: z
-    .string()
-    .trim()
-    .min(1, "Please select a preferred date & time slot"),
+  slot: z.string().trim().min(1, "Please select a preferred date & time slot"),
   concern: z
     .string()
     .trim()
@@ -36,15 +36,21 @@ function escapeHtml(value: string): string {
     .replace(/>/g, "&gt;");
 }
 
-const DEFAULT_TELEGRAM_BOT_TOKEN = "8843656104:AAFJ9MxrhZ1Q4PZt6ka479uqlEphWqMiF_s";
+const DEFAULT_TELEGRAM_BOT_TOKEN =
+  "8843656104:AAFJ9MxrhZ1Q4PZt6ka479uqlEphWqMiF_s";
 const DEFAULT_TELEGRAM_CHAT_ID = "1319904248";
 
-async function sendTelegramNotification(htmlText: string, plainText: string): Promise<boolean> {
+async function sendTelegramNotification(
+  htmlText: string,
+  plainText: string,
+): Promise<boolean> {
   const token = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    console.warn("[book-appointment] Telegram credentials not configured in environment");
+    console.warn(
+      "[book-appointment] Telegram credentials not configured in environment",
+    );
     return false;
   }
 
@@ -68,9 +74,14 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
     }
 
     const errText = await response.text().catch(() => "");
-    console.warn(`[book-appointment] HTML parse error, retrying plain text: ${response.status} ${errText}`);
+    console.warn(
+      `[book-appointment] HTML parse error, retrying plain text: ${response.status} ${errText}`,
+    );
   } catch (error) {
-    console.warn("[book-appointment] Initial HTML dispatch failed, retrying plain text:", error);
+    console.warn(
+      "[book-appointment] Initial HTML dispatch failed, retrying plain text:",
+      error,
+    );
   }
 
   // Second try: Plain text fallback (guaranteed to deliver)
@@ -90,10 +101,15 @@ async function sendTelegramNotification(htmlText: string, plainText: string): Pr
     }
 
     const fallbackErr = await fallbackResponse.text().catch(() => "");
-    console.error(`[book-appointment] Telegram fallback API error: ${fallbackResponse.status} ${fallbackErr}`);
+    console.error(
+      `[book-appointment] Telegram fallback API error: ${fallbackResponse.status} ${fallbackErr}`,
+    );
     return false;
   } catch (err) {
-    console.error("[book-appointment] Telegram dispatch failed completely:", err);
+    console.error(
+      "[book-appointment] Telegram dispatch failed completely:",
+      err,
+    );
     return false;
   }
 }
@@ -105,13 +121,14 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json(
       { ok: false, error: "Invalid JSON body" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   const parsed = appointmentSchema.safeParse(payload);
   if (!parsed.success) {
-    const message = parsed.error.issues[0]?.message ?? "Invalid request details";
+    const message =
+      parsed.error.issues[0]?.message ?? "Invalid request details";
     return NextResponse.json({ ok: false, error: message }, { status: 400 });
   }
 
@@ -119,9 +136,7 @@ export async function POST(request: Request) {
 
   const concernLabel = diseaseCategory || "General Health Consultation";
   const notes =
-    concern && concern !== "Direct consultation booking request"
-      ? concern
-      : "";
+    concern && concern !== "Direct consultation booking request" ? concern : "";
 
   const notesHtml = notes
     ? `\n📝 <b>Symptoms / Notes:</b>\n<i>${escapeHtml(notes)}</i>\n`
@@ -130,7 +145,7 @@ export async function POST(request: Request) {
   const notesPlain = notes ? `\nSymptoms / Notes: ${notes}\n` : "";
 
   const cleanWaText = encodeURIComponent(
-    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathy Clinic for ${slot}.`
+    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathy Clinic for ${slot}.`,
   );
   const waUrl = `https://wa.me/91${phone}?text=${cleanWaText}`;
 
@@ -154,11 +169,15 @@ export async function POST(request: Request) {
     `\nWhatsApp Link: ${waUrl}\n` +
     `Please contact patient to confirm consultation visit.`;
 
-  const delivered = await sendTelegramNotification(htmlMessage, plainMessage);
+  after(async () => {
+    const delivered = await sendTelegramNotification(htmlMessage, plainMessage);
 
-  if (!delivered) {
-    console.error(`[book-appointment] Warning: Consultation request for ${name} (${phone}) could not be sent to Telegram.`);
-  }
+    if (!delivered) {
+      console.error(
+        `[book-appointment] Warning: Consultation request for ${name} (${phone}) could not be sent to Telegram.`,
+      );
+    }
+  });
 
   // Always return success to the patient so their booking is confirmed
   return NextResponse.json({
@@ -178,15 +197,18 @@ export async function GET(request: Request) {
     return NextResponse.json({
       ok: false,
       configured: false,
-      message: "Telegram credentials (TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID) are missing from the server environment.",
+      message:
+        "Telegram credentials (TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID) are missing from the server environment.",
     });
   }
 
   if (isTest) {
-    const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    const timestamp = new Date().toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
+    });
     const delivered = await sendTelegramNotification(
       `🔔 <b>Clinic System Test</b>\n\nTelegram integration is active and functioning properly.\n🕒 <i>${timestamp} (IST)</i>`,
-      `Clinic System Test: Telegram integration is active and functioning properly at ${timestamp} (IST).`
+      `Clinic System Test: Telegram integration is active and functioning properly at ${timestamp} (IST).`,
     );
     return NextResponse.json({
       ok: delivered,
@@ -200,8 +222,8 @@ export async function GET(request: Request) {
   return NextResponse.json({
     ok: true,
     configured: true,
-    chatIdMasked: chatId.length > 4 ? `${chatId.slice(0, 3)}***${chatId.slice(-2)}` : "***",
+    chatIdMasked:
+      chatId.length > 4 ? `${chatId.slice(0, 3)}***${chatId.slice(-2)}` : "***",
     hint: "Add ?test=true to trigger a live Telegram test message.",
   });
 }
-
