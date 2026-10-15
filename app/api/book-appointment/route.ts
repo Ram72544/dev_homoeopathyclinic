@@ -8,15 +8,15 @@ const appointmentSchema = z.object({
     .trim()
     .min(1, "Name is required")
     .max(60, "Name is too long")
-    .regex(/^[A-Za-z\s'.-]+$/, "Only letters, spaces, apostrophes and hyphens are allowed"),
+    .regex(
+      /^[A-Za-z\s'.-]+$/,
+      "Only letters, spaces, apostrophes and hyphens are allowed",
+    ),
   phone: z
     .string()
     .trim()
     .regex(/^\d{10}$/, "Enter a valid 10-digit phone number"),
-  slot: z
-    .string()
-    .trim()
-    .min(1, "Please select a preferred date & time slot"),
+  slot: z.string().trim().min(1, "Please select a preferred date & time slot"),
   concern: z
     .string()
     .trim()
@@ -37,10 +37,14 @@ function escapeHtml(value: string): string {
     .replace(/>/g, "&gt;");
 }
 
-const DEFAULT_TELEGRAM_BOT_TOKEN = "8843656104:AAFJ9MxrhZ1Q4PZt6ka479uqlEphWqMiF_s";
+const DEFAULT_TELEGRAM_BOT_TOKEN =
+  "8843656104:AAFJ9MxrhZ1Q4PZt6ka479uqlEphWqMiF_s";
 const DEFAULT_TELEGRAM_CHAT_ID = "1319904248";
 
-async function sendTelegramNotification(htmlText: string, plainText: string): Promise<boolean> {
+async function sendTelegramNotification(
+  htmlText: string,
+  plainText: string,
+): Promise<boolean> {
   const token = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
 
@@ -102,13 +106,14 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json(
       { ok: false, error: "Invalid JSON body" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   const parsed = appointmentSchema.safeParse(payload);
   if (!parsed.success) {
-    const message = parsed.error.issues[0]?.message ?? "Invalid request details";
+    const message =
+      parsed.error.issues[0]?.message ?? "Invalid request details";
     return NextResponse.json({ ok: false, error: message }, { status: 400 });
   }
 
@@ -116,9 +121,7 @@ export async function POST(request: Request) {
 
   const concernLabel = diseaseCategory || "General Health Consultation";
   const notes =
-    concern && concern !== "Direct consultation booking request"
-      ? concern
-      : "";
+    concern && concern !== "Direct consultation booking request" ? concern : "";
 
   const notesHtml = notes
     ? `\n📝 <b>Symptoms / Notes:</b>\n<i>${escapeHtml(notes)}</i>\n`
@@ -127,7 +130,7 @@ export async function POST(request: Request) {
   const notesPlain = notes ? `\nSymptoms / Notes: ${notes}\n` : "";
 
   const cleanWaText = encodeURIComponent(
-    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathy Clinic for ${slot}.`
+    `Hello ${name}, we received your consultation request at Dr. Sheetal's Homoeopathy Clinic for ${slot}.`,
   );
   const waUrl = `https://wa.me/91${phone}?text=${cleanWaText}`;
 
@@ -211,4 +214,3 @@ export async function GET(request: Request) {
     status: "active",
   });
 }
-
