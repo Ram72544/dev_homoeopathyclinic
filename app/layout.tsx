@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, Playfair_Display, Cormorant_Garamond, Cinzel } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { site } from "@/lib/site-config";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -191,6 +192,7 @@ export default function RootLayout({
           </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18514533653"
